@@ -1,0 +1,14 @@
+com\arelance\sgaejb_jpa\services\personaservice\PersonaService.class
+com\arelance\sgaejb_jpa\MainServlet.class
+com\arelance\sgajpa\domain\Aficion.class
+com\arelance\sgaejb_jpa\PreUpdatePersona.class
+com\arelance\sgaejb_jpa\services\aficionservices\impl\AficionServiceImpl.class
+com\arelance\sgaejb_jpa\dao\persona\PersonaDAO.class
+com\arelance\sgaejb_jpa\PostUpdatePersona.class
+com\arelance\sgaejb_jpa\services\personaservice\impl\PersonaServiceImpl.class
+com\arelance\sgaejb_jpa\dao\aficion\impl\AficionDAOImpl.class
+com\arelance\sgaejb_jpa\PostAltaAficion.class
+com\arelance\sgaejb_jpa\dao\persona\impl\PersonaDAOImpl.class
+com\arelance\sgaejb_jpa\services\aficionservices\AficionService.class
+com\arelance\sgaejb_jpa\dao\aficion\AficionDAO.class
+com\arelance\sgajpa\domain\Persona.class
