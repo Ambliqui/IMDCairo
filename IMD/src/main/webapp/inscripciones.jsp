@@ -17,8 +17,6 @@
             <h2>Actividades en las que participo</h2>
         </div>
         <div class ="container">
-            ${usuarioSesion.emailLogin}
-            ${usuarioSesion.usuario.nombreUsuario}
             <ul>
                 <li><a href="detalleActividad.jsp">Futbol</a></li>
                 <li><a href="detalleActividad.jsp">Baloncesto</a></li>

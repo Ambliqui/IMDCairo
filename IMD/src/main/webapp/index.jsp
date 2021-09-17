@@ -19,21 +19,16 @@
             <h3>Actividades disponibles</h3>
             <hr>
         </div>
-        <div class ="container">
-            <ul>
-                <div class="row justify-content-center">
-                    <div class="col-2">Actividad</div>
-                    <div class="col-2 text-center">Localizacion</div>
-                    <div class="col-2 text-right">Precio</div>
+
+        <div class="row">
+            <c:forEach items="${actividades}" var="actividad">
+                <div class="col-sm-4 card card-body">
+                    <div class="card-header">${actividad.nombreActividad}</div>
+                    <h5 class="card-title">${actividad.lugarActividad}</h5>
+                    <p class="card-text">${actividad.descripcionActividad}</p>
+                    <a href="PreDetalleServlet?actividad=${actividad.idActividad}" class="btn btn-primary">Detalles</a>
                 </div>
-                <c:forEach items="${actividades}" var="actividad">
-                    <div class="row justify-content-center">
-                        <div class="col-2"><a href="PreDetalleServlet?actividad=${actividad.idActividad}">${actividad.nombreActividad}</a></div>
-                        <div class="col-2 text-center">${actividad.lugarActividad}</div>
-                        <div class="col-2 text-right">${actividad.precioActividad}€</div>
-                    </div>
-                </c:forEach>
-            </ul>
+            </c:forEach>
         </div>
         <%@include file="./include_HTML/footer.jsp"%>
     </body>

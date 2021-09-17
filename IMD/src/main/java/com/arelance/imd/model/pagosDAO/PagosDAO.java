@@ -8,14 +8,13 @@ package com.arelance.imd.model.pagosDAO;
 import com.arelance.imd.domain.FormaPago;
 import com.arelance.imd.domain.Usuario;
 import java.util.List;
-import javax.ejb.Local;
 
 /**
  *
  * @author Mefisto
  */
 
-@Local
+//TODO: Si pongo @Local casca el programa
 public interface PagosDAO {
     
     List<FormaPago> metodosPagoUsuario(Usuario usuario);

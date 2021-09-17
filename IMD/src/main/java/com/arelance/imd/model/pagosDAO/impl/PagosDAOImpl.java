@@ -5,10 +5,18 @@
  */
 package com.arelance.imd.model.pagosDAO.impl;
 
+import com.arelance.imd.conecction.Conexion;
 import com.arelance.imd.domain.FormaPago;
 import com.arelance.imd.domain.Usuario;
 import com.arelance.imd.model.pagosDAO.PagosDAO;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
