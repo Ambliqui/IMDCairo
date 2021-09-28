@@ -5,8 +5,11 @@
  */
 package com.arelance.imd.controler.inscripciones;
 
+import com.arelance.imd.domain.Login;
+import com.arelance.imd.services.login.ServicesLogin;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,10 +32,17 @@ public class PreInscripcionesServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
+    @Inject
+    ServicesLogin servicesLogin;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        response.sendRedirect("./inscripciones.jsp");
+        
+        Login login = (Login) request.getSession().getAttribute("usuarioSesion");
+        request.setAttribute("CAI", "CAI");
+        servicesLogin.refreshLogin(login);
+        request.setAttribute("usuarioPrueba", login);
+        response.sendRedirect("inscripciones.jsp");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

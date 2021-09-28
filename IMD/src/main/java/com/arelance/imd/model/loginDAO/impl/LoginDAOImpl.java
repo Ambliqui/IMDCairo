@@ -29,14 +29,21 @@ public class LoginDAOImpl implements LoginDAO {
 
     @Override
     public Login findLoginById(Login login) {
+        
         return em.find(Login.class, login.getIdUsuarioLogin());
     }
 
     @Override
     public Login findLoginByEmail(Login login) {
-        Query query =em.createQuery("FROM Login l WHERE l.emailLogin =:email");
-        query.setParameter("email", login.getEmailLogin());
-        return (Login) query.getSingleResult();
+        
+        return (Login) em.createNamedQuery("Login.findByEmailLogin")
+                .setParameter("emailLogin", login.getEmailLogin())
+                .getSingleResult();
+    }
+
+    @Override
+    public void refreshLogin(Login login) {
+        em.refresh(em.merge(login));
     }
 
 }

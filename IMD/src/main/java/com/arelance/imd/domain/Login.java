@@ -10,7 +10,9 @@ import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -40,20 +42,20 @@ public class Login implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
+//    @Basic(optional = false)
     @Column(name = "id_usuario_login")
     private Integer idUsuarioLogin;
-    @Basic(optional = false)
+//    @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 255)
     @Column(name = "email_login")
     private String emailLogin;
-    @Basic(optional = false)
+//    @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "password_login")
     private String passwordLogin;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "login")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "login", fetch = FetchType.EAGER)
     private Collection<Usuario> usuarioCollection;
 
     public Login() {

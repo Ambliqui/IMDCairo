@@ -55,6 +55,7 @@ public class PostLoginServlet extends HttpServlet {
         login.setIdUsuarioLogin(usuarioEncontrado.getIdUsuarioLogin());
 
         if (usuarioEncontrado.getEmailLogin().equals(email) && usuarioEncontrado.getPasswordLogin().equals(password)) {    //Credenciales OK
+            request.getSession(true);
             request.getSession().setAttribute("usuarioSesion", login);
             request.getRequestDispatcher("PreIndexServlet").forward(request, response);
             return;
