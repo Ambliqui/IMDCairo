@@ -3,16 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.deportessa.proyectodeportes.excepcionesAntiguas;
+package com.deportessa.proyectodeportes.servicios;
 
 /**
  *
  * @author pryet
  */
-public class EmailIncorrectoException extends Exception {
-
-    public EmailIncorrectoException(String msg) {
-        super(msg);
-    }
+public class xxx {
     
 }

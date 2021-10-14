@@ -6,7 +6,7 @@
 package com.deportessa.proyectodeportes.daojpa.impl;
 
 import com.deportessa.proyectodeportes.modelo.Cliente;
-import com.deportessa.proyectodeportes.prueba.exceptions.NonexistentEntityException;
+import com.deportessa.proyectodeportes.daojpa.exceptions.NonexistentEntityException;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;

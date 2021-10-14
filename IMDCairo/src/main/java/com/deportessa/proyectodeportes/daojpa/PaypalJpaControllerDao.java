@@ -7,7 +7,7 @@ package com.deportessa.proyectodeportes.daojpa;
 
 import com.deportessa.proyectodeportes.modelo.Inscripcion;
 import com.deportessa.proyectodeportes.modelo.Paypal;
-import com.deportessa.proyectodeportes.prueba.exceptions.NonexistentEntityException;
+import com.deportessa.proyectodeportes.daojpa.exceptions.NonexistentEntityException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Local;

@@ -6,8 +6,8 @@
 package com.deportessa.proyectodeportes.daojpa;
 
 import com.deportessa.proyectodeportes.modelo.Actividad;
-import com.deportessa.proyectodeportes.prueba.exceptions.IllegalOrphanException;
-import com.deportessa.proyectodeportes.prueba.exceptions.NonexistentEntityException;
+import com.deportessa.proyectodeportes.daojpa.exceptions.IllegalOrphanException;
+import com.deportessa.proyectodeportes.daojpa.exceptions.NonexistentEntityException;
 import java.util.List;
 import javax.ejb.Local;
 

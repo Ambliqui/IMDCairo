@@ -1,4 +1,4 @@
-package com.deportessa.proyectodeportes.dao.exceptionsAntiguo;
+package com.deportessa.proyectodeportes.daojpa.exceptions;
 
 public class PreexistingEntityException extends Exception {
     public PreexistingEntityException(String message, Throwable cause) {

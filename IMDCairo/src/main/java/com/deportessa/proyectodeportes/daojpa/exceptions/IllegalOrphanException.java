@@ -1,4 +1,4 @@
-package com.deportessa.proyectodeportes.dao.exceptionsAntiguo;
+package com.deportessa.proyectodeportes.daojpa.exceptions;
 
 import java.util.ArrayList;
 import java.util.List;

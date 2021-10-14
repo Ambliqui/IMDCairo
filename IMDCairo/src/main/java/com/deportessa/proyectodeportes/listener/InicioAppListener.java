@@ -5,10 +5,7 @@
  */
 package com.deportessa.proyectodeportes.listener;
 
-import com.deportessa.proyectodeportes.servicios.ActividadServicioLocal;
-import com.deportessa.proyectodeportes.vista.actividadDto.ActividadDTO;
-import java.util.List;
-import javax.inject.Inject;
+
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
@@ -19,8 +16,8 @@ import javax.servlet.ServletContextListener;
  */
 public class InicioAppListener implements ServletContextListener {
 
-    @Inject
-    private ActividadServicioLocal actividadEJB;
+//    @Inject
+//    private ActividadServicioLocal actividadEJB;
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {

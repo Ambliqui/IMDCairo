@@ -18,8 +18,8 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import com.deportessa.proyectodeportes.daojpa.ActividadJpaControllerDao;
-import com.deportessa.proyectodeportes.prueba.exceptions.IllegalOrphanException;
-import com.deportessa.proyectodeportes.prueba.exceptions.NonexistentEntityException;
+import com.deportessa.proyectodeportes.daojpa.exceptions.IllegalOrphanException;
+import com.deportessa.proyectodeportes.daojpa.exceptions.NonexistentEntityException;
 
 /**
  *
