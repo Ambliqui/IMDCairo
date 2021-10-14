@@ -4,13 +4,13 @@
             <img src="img/logo.jpg" alt="100" width="75"/>
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="principal.jsp">Inicio</a>
+                    <a class="nav-link active" aria-current="page" href="PrePrincipalServlet">Inicio</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="login.jsp">Login</a>                 
+                    <a class="nav-link" href="PreLoginServlet">Login</a>                 
                 </li> 
                 <li class="nav-item">
-                    <a class="nav-link" href="registro.jsp">Registro</a>                 
+                    <a class="nav-link" href="PreRegistroServlet">Registro</a>                 
                 </li>                      
             </ul>                      
         </div>
