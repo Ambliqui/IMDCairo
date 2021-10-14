@@ -63,8 +63,8 @@ public class Actividad implements Serializable{
    
     @JoinColumn(name = "id_entrenador_actividad", referencedColumnName = "id_entrenador")
     @ManyToOne(optional = false, fetch = FetchType.LAZY)
-    
     private Entrenador idEntrenadorActividad;
+    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "actividad", fetch = FetchType.LAZY)
     private List<Inscripcion> inscripciones;
 
@@ -157,7 +157,7 @@ public class Actividad implements Serializable{
         if (!Objects.equals(this.idEntrenadorActividad, other.idEntrenadorActividad)) {
             return false;
         }
-        return Objects.equals(this.inscripciones, other.inscripciones);
+        return true;//Objects.equals(this.inscripciones, other.inscripciones);
     }
 
 
@@ -211,10 +211,8 @@ public class Actividad implements Serializable{
 
     @Override
     public String toString() {
-        return "Actividad{" + "idActividad=" + idActividad + ", nombre=" + nombre + ", lugar=" + lugar + ", descripcion=" + descripcion + ", precio=" + precio + ", dias=" + dias + ", idEntrenadorActividad=" + idEntrenadorActividad + ", inscripciones=" + inscripciones + '}';
+        return "Actividad{" + "idActividad=" + idActividad + ", nombre=" + nombre + ", lugar=" + lugar + ", descripcion=" + descripcion + ", precio=" + precio + ", dias=" + dias + ", idEntrenadorActividad=" + idEntrenadorActividad +'}';
     }
 
-
-    
     
 }

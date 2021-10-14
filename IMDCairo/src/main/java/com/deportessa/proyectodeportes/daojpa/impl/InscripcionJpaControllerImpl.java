@@ -5,7 +5,6 @@
  */
 package com.deportessa.proyectodeportes.daojpa.impl;
 
-import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
@@ -18,7 +17,6 @@ import com.deportessa.proyectodeportes.daojpa.exceptions.NonexistentEntityExcept
 import com.deportessa.proyectodeportes.daojpa.exceptions.PreexistingEntityException;
 import java.util.List;
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
 import com.deportessa.proyectodeportes.daojpa.InscripcionJpaControllerDao;
 import javax.ejb.Stateless;

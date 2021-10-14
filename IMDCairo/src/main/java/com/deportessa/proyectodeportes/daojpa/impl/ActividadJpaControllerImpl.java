@@ -33,34 +33,34 @@ public class ActividadJpaControllerImpl implements ActividadJpaControllerDao {
 
     @Override
     public void create(Actividad actividad) {
-        if (actividad.getInscripciones() == null) {
-            actividad.setInscripciones(new ArrayList<Inscripcion>());
-        }
+//        if (actividad.getInscripciones() == null) {
+//            actividad.setInscripciones(new ArrayList<Inscripcion>());
+//        }
         Entrenador idEntrenadorActividad = actividad.getIdEntrenadorActividad();
         if (idEntrenadorActividad != null) {
             idEntrenadorActividad = em.getReference(idEntrenadorActividad.getClass(), idEntrenadorActividad.getIdEntrenador());
             actividad.setIdEntrenadorActividad(idEntrenadorActividad);
         }
         List<Inscripcion> attachedInscripciones = new ArrayList<Inscripcion>();
-        for (Inscripcion inscripcionesInscripcionToAttach : actividad.getInscripciones()) {
-            inscripcionesInscripcionToAttach = em.getReference(inscripcionesInscripcionToAttach.getClass(), inscripcionesInscripcionToAttach.getActividadMetodoPagoPK());
-            attachedInscripciones.add(inscripcionesInscripcionToAttach);
-        }
-        actividad.setInscripciones(attachedInscripciones);
+//        for (Inscripcion inscripcionesInscripcionToAttach : actividad.getInscripciones()) {
+//            inscripcionesInscripcionToAttach = em.getReference(inscripcionesInscripcionToAttach.getClass(), inscripcionesInscripcionToAttach.getActividadMetodoPagoPK());
+//            attachedInscripciones.add(inscripcionesInscripcionToAttach);
+//        }
+//        actividad.setInscripciones(attachedInscripciones);
         em.persist(actividad);
         if (idEntrenadorActividad != null) {
             idEntrenadorActividad.getActividadListEntrenador().add(actividad);
             idEntrenadorActividad = em.merge(idEntrenadorActividad);
         }
-        for (Inscripcion inscripcionesInscripcion : actividad.getInscripciones()) {
-            Actividad oldActividadOfInscripcionesInscripcion = inscripcionesInscripcion.getActividad();
-            inscripcionesInscripcion.setActividad(actividad);
-            inscripcionesInscripcion = em.merge(inscripcionesInscripcion);
-            if (oldActividadOfInscripcionesInscripcion != null) {
-                oldActividadOfInscripcionesInscripcion.getInscripciones().remove(inscripcionesInscripcion);
-                oldActividadOfInscripcionesInscripcion = em.merge(oldActividadOfInscripcionesInscripcion);
-            }
-        }
+//        for (Inscripcion inscripcionesInscripcion : actividad.getInscripciones()) {
+//            Actividad oldActividadOfInscripcionesInscripcion = inscripcionesInscripcion.getActividad();
+//            inscripcionesInscripcion.setActividad(actividad);
+//            inscripcionesInscripcion = em.merge(inscripcionesInscripcion);
+//            if (oldActividadOfInscripcionesInscripcion != null) {
+//                oldActividadOfInscripcionesInscripcion.getInscripciones().remove(inscripcionesInscripcion);
+//                oldActividadOfInscripcionesInscripcion = em.merge(oldActividadOfInscripcionesInscripcion);
+//            }
+//        }
     }
 
     @Override

@@ -7,9 +7,11 @@ package com.deportessa.proyectodeportes.daojpa.impl;
 
 import com.deportessa.proyectodeportes.daojpa.ActividadJpaControllerDao;
 import com.deportessa.proyectodeportes.daojpa.ClienteJpaControllerDao;
+import com.deportessa.proyectodeportes.daojpa.InscripcionJpaControllerDao;
 import com.deportessa.proyectodeportes.daojpa.MetodoPagoJpaControllerDao;
 import com.deportessa.proyectodeportes.modelo.Actividad;
 import com.deportessa.proyectodeportes.modelo.Cliente;
+import com.deportessa.proyectodeportes.modelo.Inscripcion;
 import com.deportessa.proyectodeportes.modelo.MetodoPago;
 import com.deportessa.proyectodeportes.modelo.Tarjeta;
 import java.io.IOException;
@@ -38,7 +40,8 @@ public class PruebaDAO extends HttpServlet {
     ClienteJpaControllerDao clienteDAO;
     @Inject
     MetodoPagoJpaControllerDao metodoDAO;
-
+    @Inject
+    InscripcionJpaControllerDao inscripcionDAO;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -89,8 +92,8 @@ public class PruebaDAO extends HttpServlet {
         mp.editarMetodoPago(nueva);
         try {
             metodoDAO.edit(mp);
-            cliente2=clienteDAO.findCliente(2);
-            cliente1=clienteDAO.findCliente(1);
+            cliente2 = clienteDAO.findCliente(2);
+            cliente1 = clienteDAO.findCliente(1);
             clienteDAO.edit(cliente2);
             clienteDAO.edit(cliente1);
             clienteDAO.edit(cliente2);
@@ -99,12 +102,21 @@ public class PruebaDAO extends HttpServlet {
         } catch (Exception ex) {
             Logger.getLogger(PruebaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         List<MetodoPago> lista3 = cliente1.getMetodosPagoCliente();
         for (MetodoPago p : lista3) {
             System.out.println(p);
         }
-
+//////////// INSCRIPCIONES  /////////////////////////
+        Inscripcion insc = new Inscripcion(futbol, cliente1.getMetodosPagoCliente().get(0));
+        mp=cliente1.getMetodosPagoCliente().get(0);
+        mp.addInscripcion(insc);
+        try {
+            metodoDAO.edit(mp);
+        } catch (Exception ex) {
+            Logger.getLogger(PruebaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println(mp.getInscripciones().size());
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
