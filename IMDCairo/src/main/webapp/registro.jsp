@@ -31,9 +31,7 @@
                         <p><a href="registro_2.jsp" class="link-danger">Siguiente</a></p>
                     </div> 
                 </form>
-
             </div>
-       
         </div> 
     </section>
          <%@ include file="structure/footer.jsp" %>

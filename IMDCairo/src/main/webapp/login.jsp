@@ -14,31 +14,27 @@
                         <img src="img/logo.jpg" alt="100%" width="100%">          
                     </div>
                     <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                        <form>
+                        <form action="PostLoginServlet">
                             <div class="form-outline mb-4">
                                 <label class="form-label">Email</label>
-                                <input type="email" class="form-control form-control-lg"
+                                <input type="email" name="email" class="form-control form-control-lg"
                                        placeholder="Introduzca email" />                              
                             </div>
                             <div class="form-outline mb-3">
                                 <label class="form-label">Password</label>
-                                <input type="password" class="form-control form-control-lg"
+                                <input type="password" name="password" class="form-control form-control-lg"
                                        placeholder="Introduzca password" />
                             </div>
                             <div class="text-center text-lg-start mt-4 pt-2">
-                                <button type="button" class="btn btn-outline-info""
-                                        style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
-                                <p class="small fw-bold mt-2 pt-1 mb-0">¿No tienes cuenta? <a href="registro.jsp"
-                                                                                              class="link-danger">Registrate</a></p>
+                                <!-- TODO: En serio un button? -->
+                                <input type="submit" value="Login" class="btn btn-outline-info" style="padding-left: 2.5rem; padding-right: 2.5rem;"></input>
+                                <p class="small fw-bold mt-2 pt-1 mb-0">¿No tienes cuenta? <a href="registro.jsp" class="link-danger">Registrate</a></p>
                             </div>
                         </form>
                     </div>
-                   
                 </div>
             </div>  
-        <%@ include file="structure/footer.jsp" %>
-    </section>
- 
-
-</body>
+            <%@ include file="structure/footer.jsp" %>
+        </section>
+    </body>
 </html>
