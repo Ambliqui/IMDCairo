@@ -28,7 +28,7 @@
                         </div> 
                     </div>
                     <div class="align-items-center">
-                        <p><a href="registro_2.jsp" class="link-danger">Siguiente</a></p>
+                        <p><a href="registro_datos_personales.jsp" class="link-danger">Siguiente</a></p>
                     </div> 
                 </form>
             </div>

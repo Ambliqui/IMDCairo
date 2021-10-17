@@ -3,7 +3,7 @@
 <html>
     <%@ include file="structure/head.jsp" %>
     <body>
-        <%@ include file="structure/header.jsp" %>
+        <%@ include file="structure/header_no_login.jsp" %>
         <div style="height:100px;" >
             <h2 class="text-center" ><p>Login</p></h2>
         </div>
@@ -28,7 +28,7 @@
                             <div class="text-center text-lg-start mt-4 pt-2">
                                 <!-- TODO: En serio un button? -->
                                 <input type="submit" value="Login" class="btn btn-outline-info" style="padding-left: 2.5rem; padding-right: 2.5rem;"></input>
-                                <p class="small fw-bold mt-2 pt-1 mb-0">¿No tienes cuenta? <a href="registro.jsp" class="link-danger">Registrate</a></p>
+                                <p class="small fw-bold mt-2 pt-1 mb-0">¿No tienes cuenta? <a href="registro_usuario.jsp" class="link-danger">Registrate</a></p>
                             </div>
                         </form>
                     </div>

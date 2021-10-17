@@ -1,6 +1,6 @@
 <%@ include file="structure/head.jsp" %>
 <body>
-    <%@ include file="structure/header.jsp" %>
+    <%@ include file="structure/header_no_login.jsp" %>
     <div style="height: 5px;" >
         <h2 class="text-center" ><p>Registro</p></h2>
     </div>
