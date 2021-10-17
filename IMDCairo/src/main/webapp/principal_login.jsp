@@ -1,93 +1,60 @@
-<%-- 
-    Document   : principal
-    Created on : 08-sep-2021, 10:15:03
-    Author     : damon
---%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#"><img src="img/logo.jpg" alt="100" width="75"/></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Inicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Compras</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                NombreUsuario
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#">Mi Perfil</a></li>          
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Cerrar Sesion</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Buscar</button>
-                    </form>
-                </div>     
-            </div>
-        </nav>
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-body">
-                        <img src="img/futbol.jpg" alt="300" width="300"/>
-                        <h5 class="card-title">Futbol</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <p>199.50 €/año</p>
-                        <button type="button" class="btn btn-outline-info">Detalles</button>
-                        <button type="button" class="btn btn-outline-success">Comprar</button>                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-body">
-                        <img src="img/natacion.jpg" alt="300" width="300"/>
-                        <h5 class="card-title">Natacion</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <p>19,95 €/mes</p>
-                        <button type="button" class="btn btn-outline-info">Detalles</button>
-                        <button type="button" class="btn btn-outline-success">Comprar</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card">
-                    <div class="card-body">
-                        <img src="img/ajedrez.jpg" alt="250" width="265"/>
-                        <h5 class="card-title">Ajedrez</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <p>9,95 €/mes</p>
-                        <button type="button" class="btn btn-outline-info">Detalles</button>
-                        <button type="button" class="btn btn-outline-success">Comprar</button>
-                    </div>
-                </div>
-            </div>
+    <%@ include file="structure/head.jsp" %>
+    <body> 
+        <%@ include file="structure/header_login.jsp" %>
+        <div style="height: 100px;" >
+            <h2 class="text-center" ><p>Nuestros deportes</p></h2>
+        </div>        
+        <div class="row row-cols-3 row-cols-md-3 g-4" class="card-body" class="col-sm-6">
+            <article>
+                <img src="img/1.jpeg" alt="300" width="100%"/>
+                <h5  class="text-center">Futbol</h5>
+                <p>El sueño de todo niño iberico, ser como un portugues o como un argentino.</p>
+                <p class="text-center">10 €</p>
+                <button type="button" class="btn btn-outline-info">Detalles</button>
+            </article>
+            <article>
+                <img src="img/2.jpg" alt="300" width="100%"/>
+                <h5 class="text-center">Natacion</h5>
+                <p>Si quieres participar en la pelicula live action de la sirenita este es tu momento.</p>
+                <p class="text-center">11 €</p>
+                <button type="button" class="btn btn-outline-info">Detalles</button>
+            </article>
+            <article>
+                <img src="img/3.jpg" alt="300" width="100%"/>
+                <h5 class="text-center">Ajedrez</h5>
+                <p>Con todo lo mejor de Gambito de Dama y Juego de Tronos. Vive la experiencia sin tener plataformas streaming.</p>
+                <p class="text-center">12 €</p>
+               <button type="button" class="btn btn-outline-info">Detalles</button>
+            </article>
+             <article>
+                <img src="img/4.jpg" alt="300" width="100%"/>
+                <h5 class="text-center">Baloncesto</h5>
+                <p>Todo se centra en pasar por el aro. Una bella oda a la vida misma y lo que vas a pasar dia a dia.</p>
+                <p class="text-center">13 €</p>
+               <button type="button" class="btn btn-outline-info">Detalles</button>
+            </article>
+            <article>
+                <img src="img/5.jpg" alt="300" width="100%"/>
+                <h5 class="text-center">Hockey</h5>
+                <p>Deporte exotico que solo vemos en las olimpiadas y no conoces a nadie que lo practique. Se tu el primero.</p>
+                <p class="text-center">14 €</p>
+               <button type="button" class="btn btn-outline-info">Detalles</button>
+            </article>
+            <article>
+                <img src="img/6.jpg" alt="300" width="100%"/>
+                <h5 class="text-center">Tenis</h5>
+                <p>Todos quieren ser Rafa Nadal.</p>
+                <p class="text-center">15 €</p>
+               <button type="button" class="btn btn-outline-info">Detalles</button>
+            </article>                      
         </div>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        <c:forEach items="${listaActividades}" var="actividad">
+            ${actividad.nombre}
+        </c:forEach>
+        <%@ include file="structure/footer.jsp" %>
     </body>
 </html>
-
-
-
