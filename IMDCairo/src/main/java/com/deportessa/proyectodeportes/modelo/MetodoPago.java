@@ -16,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -35,7 +36,8 @@ public abstract class MetodoPago implements Serializable {
     @Column(name = "id_pago")
     private int idPago;
     
-    @OneToMany(mappedBy = "metodoPago",cascade = CascadeType.PERSIST)
+    @OneToMany(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "id_pago")
     private List<Inscripcion> inscripciones;
     
     public abstract void editarMetodoPago(MetodoPago metodoPago);

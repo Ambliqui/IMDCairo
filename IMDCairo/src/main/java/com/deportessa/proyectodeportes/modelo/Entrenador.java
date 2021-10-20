@@ -7,16 +7,12 @@ package com.deportessa.proyectodeportes.modelo;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 import java.util.Objects;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -38,8 +34,8 @@ public class Entrenador implements Serializable {
     @Column(name = "id_entrenador")
     private Integer idEntrenador;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEntrenadorActividad", fetch = FetchType.LAZY)
-    private List<Actividad> actividadListEntrenador;
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEntrenadorActividad", fetch = FetchType.LAZY)
+//    private List<Actividad> actividadListEntrenador;
 
     @NotNull
     @Size(min = 1, max = 45)
@@ -107,19 +103,19 @@ public class Entrenador implements Serializable {
         this.fechaAltaEntrenador = fechaAltaEntrenador;
     }
 
-    public List<Actividad> getActividadListEntrenador() {
-        return actividadListEntrenador;
-    }
-
-    public void setActividadListEntrenador(List<Actividad> actividadListEntrenador) {
-        this.actividadListEntrenador = actividadListEntrenador;
-    }
+//    public List<Actividad> getActividadListEntrenador() {
+//        return actividadListEntrenador;
+//    }
+//
+//    public void setActividadListEntrenador(List<Actividad> actividadListEntrenador) {
+//        this.actividadListEntrenador = actividadListEntrenador;
+//    }
 
     @Override
     public int hashCode() {
         int hash = 3;
         hash = 19 * hash + Objects.hashCode(this.idEntrenador);
-        hash = 19 * hash + Objects.hashCode(this.actividadListEntrenador);
+       // hash = 19 * hash + Objects.hashCode(this.actividadListEntrenador);
         hash = 19 * hash + Objects.hashCode(this.nombreEntrenador);
         hash = 19 * hash + Objects.hashCode(this.apellido1Entrenador);
         hash = 19 * hash + Objects.hashCode(this.apellido2Entrenador);
@@ -138,13 +134,13 @@ public class Entrenador implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Entrenador other = (Entrenador) obj;
+        //final Entrenador other = (Entrenador) obj;
         return true;
     }
 
     @Override
     public String toString() {
-        return "Entrenador{" + "idEntrenador=" + idEntrenador + ", actividadListEntrenador=" + actividadListEntrenador + ", nombreEntrenador=" + nombreEntrenador + ", apellido1Entrenador=" + apellido1Entrenador + ", apellido2Entrenador=" + apellido2Entrenador + ", fechaAltaEntrenador=" + fechaAltaEntrenador + '}';
+        return "Entrenador{" + "idEntrenador=" + idEntrenador +  ", nombreEntrenador=" + nombreEntrenador + ", apellido1Entrenador=" + apellido1Entrenador + ", apellido2Entrenador=" + apellido2Entrenador + ", fechaAltaEntrenador=" + fechaAltaEntrenador + '}';
     }
 
    

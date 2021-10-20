@@ -5,10 +5,11 @@
  */
 package com.deportessa.proyectodeportes.daojpa.impl;
 
-import com.deportessa.proyectodeportes.daojpa.ActividadJpaControllerDao;
-import com.deportessa.proyectodeportes.daojpa.ClienteJpaControllerDao;
-import com.deportessa.proyectodeportes.daojpa.InscripcionJpaControllerDao;
-import com.deportessa.proyectodeportes.daojpa.MetodoPagoJpaControllerDao;
+
+import com.deportessa.proyectodeportes.daojpa.ActividadFacadeLocal;
+import com.deportessa.proyectodeportes.daojpa.ClienteFacadeLocal;
+import com.deportessa.proyectodeportes.daojpa.InscripcionFacadeLocal;
+import com.deportessa.proyectodeportes.daojpa.MetodoPagoFacadeLocal;
 import com.deportessa.proyectodeportes.modelo.Actividad;
 import com.deportessa.proyectodeportes.modelo.Cliente;
 import com.deportessa.proyectodeportes.modelo.Inscripcion;
@@ -16,7 +17,6 @@ import com.deportessa.proyectodeportes.modelo.MetodoPago;
 import com.deportessa.proyectodeportes.modelo.Tarjeta;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,13 +35,13 @@ import javax.servlet.http.HttpServletResponse;
 public class PruebaDAO extends HttpServlet {
 
     @Inject
-    ActividadJpaControllerDao actiDAO;
+    ActividadFacadeLocal actiDAO;
     @Inject
-    ClienteJpaControllerDao clienteDAO;
+    ClienteFacadeLocal clienteDAO;
     @Inject
-    MetodoPagoJpaControllerDao metodoDAO;
+    MetodoPagoFacadeLocal metodoDAO;
     @Inject
-    InscripcionJpaControllerDao inscripcionDAO;
+    InscripcionFacadeLocal inscripcionDAO;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -81,19 +81,19 @@ public class PruebaDAO extends HttpServlet {
             Logger.getLogger(PruebaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        List<MetodoPago> lista2 = clienteDAO.findCliente(1).getMetodosPagoCliente();
+        List<MetodoPago> lista2 = clienteDAO.find(1).getMetodosPagoCliente();
         for (MetodoPago p : lista2) {
             System.out.println(p);
         }
 
         /////////// EDITAR METODO DE PAGO ////////////////////
         Tarjeta nueva = new Tarjeta(0000, 5, 3000, 258);
-        MetodoPago mp = metodoDAO.findMetodoPago(1);
+        MetodoPago mp = metodoDAO.find(1);
         mp.editarMetodoPago(nueva);
         try {
             metodoDAO.edit(mp);
-            cliente2 = clienteDAO.findCliente(2);
-            cliente1 = clienteDAO.findCliente(1);
+            cliente2 = clienteDAO.find(2);
+            cliente1 = clienteDAO.find(1);
             clienteDAO.edit(cliente2);
             clienteDAO.edit(cliente1);
             clienteDAO.edit(cliente2);
