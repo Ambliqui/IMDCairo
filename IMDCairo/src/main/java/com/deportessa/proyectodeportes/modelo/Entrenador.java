@@ -34,9 +34,6 @@ public class Entrenador implements Serializable {
     @Column(name = "id_entrenador")
     private Integer idEntrenador;
 
-//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "idEntrenadorActividad", fetch = FetchType.LAZY)
-//    private List<Actividad> actividadListEntrenador;
-
     @NotNull
     @Size(min = 1, max = 45)
     @Column(name = "nombre_entrenador")
@@ -103,19 +100,11 @@ public class Entrenador implements Serializable {
         this.fechaAltaEntrenador = fechaAltaEntrenador;
     }
 
-//    public List<Actividad> getActividadListEntrenador() {
-//        return actividadListEntrenador;
-//    }
-//
-//    public void setActividadListEntrenador(List<Actividad> actividadListEntrenador) {
-//        this.actividadListEntrenador = actividadListEntrenador;
-//    }
 
     @Override
     public int hashCode() {
         int hash = 3;
         hash = 19 * hash + Objects.hashCode(this.idEntrenador);
-       // hash = 19 * hash + Objects.hashCode(this.actividadListEntrenador);
         hash = 19 * hash + Objects.hashCode(this.nombreEntrenador);
         hash = 19 * hash + Objects.hashCode(this.apellido1Entrenador);
         hash = 19 * hash + Objects.hashCode(this.apellido2Entrenador);
@@ -134,7 +123,6 @@ public class Entrenador implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        //final Entrenador other = (Entrenador) obj;
         return true;
     }
 

@@ -89,8 +89,7 @@ public class Inscripcion implements Serializable {
         final Inscripcion other = (Inscripcion) obj;
         return Objects.equals(this.actividadMetodoPagoPK, other.actividadMetodoPagoPK);
     }
-//TODO: Comprobar si es necesario hacer el new DATE() para obtener la fecha 
-//o es suficienta con el column definition
+
     @PrePersist
     public void prePersist() {
         obtenerIds();

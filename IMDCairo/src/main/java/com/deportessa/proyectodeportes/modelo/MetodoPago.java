@@ -85,14 +85,6 @@ public abstract class MetodoPago implements Serializable {
         this.idPago = idPago;
     }
 
-//    public Cliente getCliente() {
-//        return clientePago;
-//    }
-//
-//    public void setCliente(Cliente cliente) {
-//        this.clientePago = cliente;
-//    }
-
     public List<Inscripcion> getInscripciones() {
         return inscripciones;
     }
