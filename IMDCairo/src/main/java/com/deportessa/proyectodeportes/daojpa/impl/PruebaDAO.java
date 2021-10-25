@@ -5,16 +5,18 @@
  */
 package com.deportessa.proyectodeportes.daojpa.impl;
 
-import com.deportessa.proyectodeportes.daojpa.ActividadJpaControllerDao;
-import com.deportessa.proyectodeportes.daojpa.ClienteJpaControllerDao;
-import com.deportessa.proyectodeportes.daojpa.MetodoPagoJpaControllerDao;
+
+import com.deportessa.proyectodeportes.daojpa.ActividadFacadeLocal;
+import com.deportessa.proyectodeportes.daojpa.ClienteFacadeLocal;
+import com.deportessa.proyectodeportes.daojpa.InscripcionFacadeLocal;
+import com.deportessa.proyectodeportes.daojpa.MetodoPagoFacadeLocal;
 import com.deportessa.proyectodeportes.modelo.Actividad;
 import com.deportessa.proyectodeportes.modelo.Cliente;
+import com.deportessa.proyectodeportes.modelo.Inscripcion;
 import com.deportessa.proyectodeportes.modelo.MetodoPago;
 import com.deportessa.proyectodeportes.modelo.Tarjeta;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,12 +35,13 @@ import javax.servlet.http.HttpServletResponse;
 public class PruebaDAO extends HttpServlet {
 
     @Inject
-    ActividadJpaControllerDao actiDAO;
+    ActividadFacadeLocal actiDAO;
     @Inject
-    ClienteJpaControllerDao clienteDAO;
+    ClienteFacadeLocal clienteDAO;
     @Inject
-    MetodoPagoJpaControllerDao metodoDAO;
-
+    MetodoPagoFacadeLocal metodoDAO;
+    @Inject
+    InscripcionFacadeLocal inscripcionDAO;
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -78,19 +81,19 @@ public class PruebaDAO extends HttpServlet {
             Logger.getLogger(PruebaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        List<MetodoPago> lista2 = clienteDAO.findCliente(1).getMetodosPagoCliente();
+        List<MetodoPago> lista2 = clienteDAO.find(1).getMetodosPagoCliente();
         for (MetodoPago p : lista2) {
             System.out.println(p);
         }
 
         /////////// EDITAR METODO DE PAGO ////////////////////
         Tarjeta nueva = new Tarjeta(0000, 5, 3000, 258);
-        MetodoPago mp = metodoDAO.findMetodoPago(1);
+        MetodoPago mp = metodoDAO.find(1);
         mp.editarMetodoPago(nueva);
         try {
             metodoDAO.edit(mp);
-            cliente2=clienteDAO.findCliente(2);
-            cliente1=clienteDAO.findCliente(1);
+            cliente2 = clienteDAO.find(2);
+            cliente1 = clienteDAO.find(1);
             clienteDAO.edit(cliente2);
             clienteDAO.edit(cliente1);
             clienteDAO.edit(cliente2);
@@ -99,12 +102,21 @@ public class PruebaDAO extends HttpServlet {
         } catch (Exception ex) {
             Logger.getLogger(PruebaDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         List<MetodoPago> lista3 = cliente1.getMetodosPagoCliente();
         for (MetodoPago p : lista3) {
             System.out.println(p);
         }
-
+//////////// INSCRIPCIONES  /////////////////////////
+        Inscripcion insc = new Inscripcion(futbol, cliente1.getMetodosPagoCliente().get(0));
+        mp=cliente1.getMetodosPagoCliente().get(0);
+        mp.addInscripcion(insc);
+        try {
+            metodoDAO.edit(mp);
+        } catch (Exception ex) {
+            Logger.getLogger(PruebaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        System.out.println(mp.getInscripciones().size());
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

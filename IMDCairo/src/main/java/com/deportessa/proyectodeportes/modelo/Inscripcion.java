@@ -37,7 +37,7 @@ public class Inscripcion implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaAltaInscripcion;
 
-    @ManyToOne(optional = false)
+    @ManyToOne
     @MapsId("idActividadInscripcion")
     @JoinColumn(name = "id_actividad")
     private Actividad actividad;

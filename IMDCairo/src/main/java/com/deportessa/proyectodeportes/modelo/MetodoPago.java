@@ -6,8 +6,9 @@
 package com.deportessa.proyectodeportes.modelo;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -34,22 +36,21 @@ public abstract class MetodoPago implements Serializable {
     @Column(name = "id_pago")
     private int idPago;
     
-//    @ManyToOne
-//    @NotNull
-//    @JoinColumn(name = "id_cliente_metodo_pago",referencedColumnName = "id_cliente")
-//    private Cliente clientePago;
-    
-    @OneToMany(mappedBy = "metodoPago")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_pago")
     private List<Inscripcion> inscripciones;
     
     public abstract void editarMetodoPago(MetodoPago metodoPago);
     
     public MetodoPago() {
     }
-    
-//    public MetodoPago(Cliente clientePago) {
-//        this.clientePago = clientePago;
-//    }
+
+    public void addInscripcion(Inscripcion inscripcion){
+        if(inscripciones==null){
+            inscripciones=new ArrayList<>();
+        }
+        inscripciones.add(inscripcion);
+    }
 
     @Override
     public int hashCode() {
