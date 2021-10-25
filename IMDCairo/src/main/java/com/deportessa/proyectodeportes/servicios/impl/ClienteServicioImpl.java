@@ -19,7 +19,7 @@ public class ClienteServicioImpl implements ClienteServicio {
     
     @Override
     public Cliente loginCliente(Cliente cliente) {
-        //TODO: Devolver un cliente administrado desde el DAO
+        //TODO: Devolver un cliente DTO
 //        cliente = clienteDao.edit(cliente);
         return clienteDao.find(cliente.getIdCliente());
     }

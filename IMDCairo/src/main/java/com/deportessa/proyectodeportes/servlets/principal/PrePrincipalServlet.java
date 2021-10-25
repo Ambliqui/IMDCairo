@@ -5,8 +5,12 @@
  */
 package com.deportessa.proyectodeportes.servlets.principal;
 
+import com.deportessa.proyectodeportes.daojpa.impl.ActividadFacade;
+import com.deportessa.proyectodeportes.modelo.Actividad;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,12 +33,20 @@ public class PrePrincipalServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
+    @Inject
+    ActividadFacade actividadFacade;
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
 
+        //TODO: No se esta trayendo la lista del contexto
 //        List<Actividad> actividades = (List<Actividad>) request.getServletContext().getAttribute("listaActividades");
 //        request.setAttribute("listaActividades", actividades);
+        
+        request.setAttribute("listaActividades", actividadFacade.findAll());
+        request.getRequestDispatcher("principal.jsp").forward(request, response);
         
         
     }

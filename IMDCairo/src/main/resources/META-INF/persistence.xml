@@ -3,16 +3,8 @@
   <!-- Define Persistence Unit -->
   <persistence-unit name="pu" transaction-type="JTA">
     <jta-data-source>jdbc/Sakila</jta-data-source>
-    <class>com.arelance.imd.domain.Login</class>
-    <class>com.arelance.imd.domain.Transferencia</class>
-    <class>com.arelance.imd.domain.Actividad</class>
-    <class>com.arelance.imd.domain.FormaPago</class>
-    <class>com.arelance.imd.domain.Entrenador</class>
-    <class>com.arelance.imd.domain.Inscripcion</class>
-    <class>com.arelance.imd.domain.Usuario</class>
-    <class>com.arelance.imd.domain.Tarjeta</class>
     <properties>
-      <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+      <property name="javax.persistence.schema-generation.database.action" value="create"/>
     </properties>
   </persistence-unit>
 </persistence>
