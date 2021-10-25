@@ -33,10 +33,6 @@ public class Transferencia extends MetodoPago implements Serializable {
     public Transferencia(int numCuenta) {
         this.numCuenta = numCuenta;
     }
-
-//    public Transferencia(Cliente cliente) {
-//        super(cliente);
-//    }
     
     @Override
     public void editarMetodoPago(MetodoPago metodoPago) {
@@ -71,10 +67,7 @@ public class Transferencia extends MetodoPago implements Serializable {
             return false;
         }
         final Transferencia other = (Transferencia) obj;
-        if (this.numCuenta != other.numCuenta) {
-            return false;
-        }
-        return true;
+        return this.numCuenta == other.numCuenta;
     }
 
     @Override

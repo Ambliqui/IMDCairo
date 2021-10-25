@@ -157,7 +157,7 @@ public class Actividad implements Serializable{
         if (!Objects.equals(this.idEntrenadorActividad, other.idEntrenadorActividad)) {
             return false;
         }
-        return true;//Objects.equals(this.inscripciones, other.inscripciones);
+        return true;
     }
 
 

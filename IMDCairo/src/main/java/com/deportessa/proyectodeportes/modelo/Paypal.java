@@ -31,11 +31,6 @@ public class Paypal extends MetodoPago implements Serializable {
     public Paypal() {
     }
 
-//    public Paypal(int numPaypal, Cliente cliente) {
-//        super(cliente);
-//        this.numPaypal = numPaypal;
-//    }
-
     public Paypal(int numPaypal) {
         this.numPaypal = numPaypal;
     }

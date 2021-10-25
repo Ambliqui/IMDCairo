@@ -42,7 +42,6 @@ public class Tarjeta extends MetodoPago implements Serializable {
     }
 
     public Tarjeta(int numTarjeta, int mesTarjeta, int annoTarjeta, int cvsTarjeta) {
-        //super(clientePago);
         this.numTarjeta = numTarjeta;
         this.mesTarjeta = mesTarjeta;
         this.annoTarjeta = annoTarjeta;
@@ -55,7 +54,6 @@ public class Tarjeta extends MetodoPago implements Serializable {
         this.cvsTarjeta=((Tarjeta)metodoPago).cvsTarjeta;
         this.mesTarjeta=((Tarjeta)metodoPago).mesTarjeta;
         this.numTarjeta=((Tarjeta)metodoPago).numTarjeta;
-        //super.setCliente(((Tarjeta)metodoPago).getCliente());
     }
 
     @Override
