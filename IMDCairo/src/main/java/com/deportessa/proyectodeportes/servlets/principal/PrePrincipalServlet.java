@@ -31,7 +31,15 @@ public class PrePrincipalServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+<<<<<<< Updated upstream:IMDCairo/src/main/java/com/deportessa/proyectodeportes/servlets/principal/PrePrincipalServlet.java
         request.getRequestDispatcher("principal.jsp").forward(request, response);
+=======
+
+//        List<Actividad> actividades = (List<Actividad>) request.getServletContext().getAttribute("listaActividades");
+//        request.setAttribute("listaActividades", actividades);
+        
+        
+>>>>>>> Stashed changes:IMDCairo/src/main/java/com/deportessa/proyectodeportes/vista/principal/PrePrincipalServlet.java
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
