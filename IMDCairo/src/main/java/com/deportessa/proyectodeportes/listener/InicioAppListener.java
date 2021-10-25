@@ -6,7 +6,7 @@
 package com.deportessa.proyectodeportes.listener;
 
 
-import com.deportessa.proyectodeportes.daojpa.ActividadJpaControllerDao;
+import com.deportessa.proyectodeportes.daojpa.ActividadFacadeLocal;
 import javax.inject.Inject;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -19,11 +19,11 @@ import javax.servlet.ServletContextListener;
 public class InicioAppListener implements ServletContextListener {
 
     @Inject
-    ActividadJpaControllerDao actividadDao;
+    ActividadFacadeLocal actividadDao;
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        sce.getServletContext().setAttribute("listaActividades", actividadDao.findActividadEntities());
+        sce.getServletContext().setAttribute("listaActividades", actividadDao.findAll());
     }
 
     @Override

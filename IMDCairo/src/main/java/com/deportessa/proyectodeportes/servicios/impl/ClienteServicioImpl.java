@@ -5,7 +5,7 @@
  */
 package com.deportessa.proyectodeportes.servicios.impl;
 
-import com.deportessa.proyectodeportes.daojpa.ClienteJpaControllerDao;
+import com.deportessa.proyectodeportes.daojpa.ClienteFacadeLocal;
 import com.deportessa.proyectodeportes.modelo.Cliente;
 import com.deportessa.proyectodeportes.servicios.ClienteServicio;
 import javax.ejb.Stateless;
@@ -15,13 +15,13 @@ import javax.inject.Inject;
 public class ClienteServicioImpl implements ClienteServicio {
 
     @Inject
-    ClienteJpaControllerDao clienteDao;
+    ClienteFacadeLocal clienteDao;
     
     @Override
     public Cliente loginCliente(Cliente cliente) {
         //TODO: Devolver un cliente administrado desde el DAO
 //        cliente = clienteDao.edit(cliente);
-        return clienteDao.findCliente(cliente.getIdCliente());
+        return clienteDao.find(cliente.getIdCliente());
     }
     
 }
