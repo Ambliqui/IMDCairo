@@ -7,6 +7,8 @@ package com.deportessa.proyectodeportes.servlets.principal;
 
 import com.deportessa.proyectodeportes.daojpa.impl.ActividadFacade;
 import com.deportessa.proyectodeportes.modelo.Actividad;
+import com.deportessa.proyectodeportes.servicios.ActividadServicio;
+import com.deportessa.proyectodeportes.servicios.ClienteServicio;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -35,7 +37,7 @@ public class PrePrincipalServlet extends HttpServlet {
      */
     
     @Inject
-    ActividadFacade actividadFacade;
+    ActividadServicio actividadFacade;
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -44,8 +46,9 @@ public class PrePrincipalServlet extends HttpServlet {
         //TODO: No se esta trayendo la lista del contexto
 //        List<Actividad> actividades = (List<Actividad>) request.getServletContext().getAttribute("listaActividades");
 //        request.setAttribute("listaActividades", actividades);
-        
-        request.setAttribute("listaActividades", actividadFacade.findAll());
+
+        List<Actividad> actividades = actividadFacade.findAll();
+        request.setAttribute("listaActividades", actividades);
         request.getRequestDispatcher("principal.jsp").forward(request, response);
         
         

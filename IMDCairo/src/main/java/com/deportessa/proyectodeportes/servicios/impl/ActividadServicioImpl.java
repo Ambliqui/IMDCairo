@@ -19,7 +19,7 @@ public class ActividadServicioImpl implements ActividadServicio {
     ActividadFacadeLocal actividadDao;
     
     @Override
-    public List<Actividad> findAllActividades() {
+    public List<Actividad> findAll() {
         return actividadDao.findAll();
     }
     
