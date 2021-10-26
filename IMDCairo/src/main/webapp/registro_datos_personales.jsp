@@ -8,22 +8,21 @@
         <div class="container-fluid h-custom">    
             <div class="row d-flex justify-content-center align-items-center h-75">    
                 <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1" >
-                    <form>
+                    <form action="PostRegistroServlet">
                         <div class="form-outline mb-4">
                             <label class="form-label">Nombre</label>
-                            <input type="name" class="form-control" placeholder="Introduzca nombre">                                 
+                            <input type="text" name="nombre" class="form-control" placeholder="Introduzca nombre">                                 
                             <div class="form-outline mb-4"> 
                                 <label class="form-label">Apellidos</label>
-                                <input name="surname" type="text" class="form-control" placeholder="Introduzca apellidos">
-
+                                <input name="apellidos" type="text" class="form-control" placeholder="Introduzca apellidos">
                                 <div class="form-outline mb-4">
                                     <label class="form-label">Telefono</label>
-                                    <input type="phone" class="form-control" placeholder="Introduzca telefono">
+                                    <input type="phone" name="telefono" class="form-control" placeholder="Introduzca telefono">
                                 </div>
                             </div> 
                         </div>
                         <div class="align-items-center">
-                            <button type="submit" class="btn btn-outline-success">Registro</button>
+                            <button type="submit" class="btn btn-outline-primary">Registro</button>
                         </div> 
                     </form>                     
                 </div>

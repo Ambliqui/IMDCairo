@@ -24,7 +24,8 @@ public class InicioAppListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        sce.getServletContext().setAttribute("listaActividades", actividadServicio.findAll());
+        //TODO: Poner actividades en Contexto
+//        sce.getServletContext().setAttribute("listaActividades", actividadServicio.findAll());
     }
 
     @Override
