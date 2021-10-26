@@ -16,5 +16,5 @@ import javax.ejb.Local;
 @Local
 public interface ActividadServicio {
     
-    List<Actividad> findAllActividades();
+    List<Actividad> findAll();
 }

@@ -5,8 +5,14 @@
  */
 package com.deportessa.proyectodeportes.servlets.principal;
 
+import com.deportessa.proyectodeportes.daojpa.impl.ActividadFacade;
+import com.deportessa.proyectodeportes.modelo.Actividad;
+import com.deportessa.proyectodeportes.servicios.ActividadServicio;
+import com.deportessa.proyectodeportes.servicios.ClienteServicio;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,17 +35,23 @@ public class PrePrincipalServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
+    @Inject
+    ActividadServicio actividadFacade;
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-<<<<<<< Updated upstream:IMDCairo/src/main/java/com/deportessa/proyectodeportes/servlets/principal/PrePrincipalServlet.java
-        request.getRequestDispatcher("principal.jsp").forward(request, response);
-=======
 
+
+        //TODO: No se esta trayendo la lista del contexto
 //        List<Actividad> actividades = (List<Actividad>) request.getServletContext().getAttribute("listaActividades");
 //        request.setAttribute("listaActividades", actividades);
+
+        List<Actividad> actividades = actividadFacade.findAll();
+        request.setAttribute("listaActividades", actividades);
+        request.getRequestDispatcher("principal.jsp").forward(request, response);
         
         
->>>>>>> Stashed changes:IMDCairo/src/main/java/com/deportessa/proyectodeportes/vista/principal/PrePrincipalServlet.java
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

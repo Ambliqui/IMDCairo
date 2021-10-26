@@ -5,7 +5,7 @@
  */
 package com.deportessa.proyectodeportes.servicios.impl;
 
-import com.deportessa.proyectodeportes.daojpa.ActividadJpaControllerDao;
+import com.deportessa.proyectodeportes.daojpa.ActividadFacadeLocal;
 import com.deportessa.proyectodeportes.modelo.Actividad;
 import com.deportessa.proyectodeportes.servicios.ActividadServicio;
 import java.util.List;
@@ -16,11 +16,11 @@ import javax.inject.Inject;
 public class ActividadServicioImpl implements ActividadServicio {
 
     @Inject
-    ActividadJpaControllerDao actividadDao;
+    ActividadFacadeLocal actividadDao;
     
     @Override
-    public List<Actividad> findAllActividades() {
-        return actividadDao.findActividadEntities();
+    public List<Actividad> findAll() {
+        return actividadDao.findAll();
     }
     
 }
