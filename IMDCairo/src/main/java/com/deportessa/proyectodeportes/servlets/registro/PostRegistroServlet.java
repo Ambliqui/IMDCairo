@@ -31,7 +31,22 @@ public class PostRegistroServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
+        
+        Boolean validacion;
+        
+        String email = request.getParameter("email");
+        String cemail = request.getParameter("cemail");
+        String password = request.getParameter("password");
+        String cpassword = request.getParameter("cpassword");
+        
+        //ESCENARIOS
+        
+        //password diferentes
+        validacion = email.equals(cemail) ? true : false;
+        //email diferente
+        validacion = password.equals(cpassword) ? true : false;
+        //email repetido
+        
 
     }
 

@@ -12,9 +12,9 @@
             <c:forEach items="${listaActividades}" var="actividad">
             <article>
                 <img src=img/${actividad.idActividad}.jpg alt="300" width="100%"/>
-                <h5  class="text-center"><c:out value="${actividad.nombre}"/></h5>
+                <h5 class="text-center"><c:out value="${actividad.nombre}"/></h5>
                 <p><c:out value="${actividad.descripcion}"/></p>
-                <p class="text-center"><c:out value="${actividad.precio}"/></p>
+                <p class="text-center"><c:out value="${actividad.precio}€"/></p>
                 <button type="button" class="btn btn-outline-info">Detalles</button>
             </article>
             </c:forEach>                    

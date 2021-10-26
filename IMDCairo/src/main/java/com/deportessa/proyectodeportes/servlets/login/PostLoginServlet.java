@@ -6,9 +6,9 @@
 package com.deportessa.proyectodeportes.servlets.login;
 
 import com.deportessa.proyectodeportes.modelo.Cliente;
+import com.deportessa.proyectodeportes.pruebas.isi.ClienteTest;
 import com.deportessa.proyectodeportes.servicios.ClienteServicio;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,6 +35,9 @@ public class PostLoginServlet extends HttpServlet {
     
     @Inject
     ClienteServicio clienteServicio;
+    //TODO: Quitar clase de pruebas cuando implemente Antonio el metodo en la fachada
+    @Inject
+    ClienteTest clienteTest;
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -46,8 +49,22 @@ public class PostLoginServlet extends HttpServlet {
         
         cliente.setPassCliente(password);
         cliente.setEmailCliente(email);
-        //TODO: Controlar lo que devuelve una entidad de cliente
-        clienteServicio.loginCliente(cliente);
+        
+        //TODO: Controlar los escenarios del caso de uso de Login
+        Cliente clienteSession = clienteTest.findEmail(email);
+        
+        //Escenario email sin formato correcto
+        
+        //Escenario email no encontrado
+        
+        //Escenario password no coincidente
+        
+        //Caso OK
+        request.getSession(true);
+        request.getSession().setAttribute("clienteSession", clienteSession);
+        
+        request.getRequestDispatcher("principal.jsp").forward(request, response);
+    
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
