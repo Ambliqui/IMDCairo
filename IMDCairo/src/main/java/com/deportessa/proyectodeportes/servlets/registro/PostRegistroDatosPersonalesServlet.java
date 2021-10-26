@@ -17,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Mefisto
  */
-@WebServlet(name = "PostRegistroServlet", urlPatterns = {"/PostRegistroServlet"})
-public class PostRegistroServlet extends HttpServlet {
+@WebServlet(name = "PostRegistroDatosPersonalesServlet", urlPatterns = {"/PostRegistroDatosPersonalesServlet"})
+public class PostRegistroDatosPersonalesServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,23 +31,19 @@ public class PostRegistroServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        Boolean validacion;
-        
-        String email = request.getParameter("email");
-        String cemail = request.getParameter("cemail");
-        String password = request.getParameter("password");
-        String cpassword = request.getParameter("cpassword");
-        
-        //ESCENARIOS
-        
-        //password diferentes
-        validacion = email.equals(cemail) ? true : false;
-        //email diferente
-        validacion = password.equals(cpassword) ? true : false;
-        //email repetido
-        
-
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet PostRegistroDatosPersonalesServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet PostRegistroDatosPersonalesServlet at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -8,7 +8,7 @@
         <div class="container-fluid h-custom">    
             <div class="row d-flex justify-content-center align-items-center h-75">    
                 <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1" >
-                    <form action="PostRegistroServlet">
+                    <form action="PostRegistroDatosPersonalesServlet">
                         <div class="form-outline mb-4">
                             <label class="form-label">Nombre</label>
                             <input type="text" name="nombre" class="form-control" placeholder="Introduzca nombre">                                 

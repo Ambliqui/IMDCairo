@@ -28,7 +28,7 @@
                             <div class="text-center text-lg-start mt-4 pt-2">
                                 <!-- TODO: En serio un button? -->
                                 <input type="submit" value="Login" class="btn btn-outline-info" style="padding-left: 2.5rem; padding-right: 2.5rem;"></input>
-                                <p class="small fw-bold mt-2 pt-1 mb-0">¿No tienes cuenta? <a href="registro_usuario.jsp" class="link-danger">Registrate</a></p>
+                                <p class="small fw-bold mt-2 pt-1 mb-0">¿No tienes cuenta? <a href="PreRegistroUsuarioServlet" class="link-danger">Registrate</a></p>
                             </div>
                         </form>
                     </div>
