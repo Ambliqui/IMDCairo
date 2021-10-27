@@ -6,6 +6,6 @@
     <body> 
         <%@ include file="structure/header_login.jsp" %>
         
-         <%@ include file="structure/footer.jsp" %>
+        <%@ include file="structure/footer.jsp" %>
     </body>
 </html>
