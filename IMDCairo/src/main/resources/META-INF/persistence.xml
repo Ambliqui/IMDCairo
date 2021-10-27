@@ -2,6 +2,7 @@
 <persistence version="2.2" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
   <!-- Define Persistence Unit -->
   <persistence-unit name="pu" transaction-type="JTA">
+<<<<<<< Updated upstream
     <jta-data-source>jdbc/Sakila</jta-data-source>
     <class>com.arelance.imd.domain.Login</class>
     <class>com.arelance.imd.domain.Transferencia</class>
@@ -11,6 +12,9 @@
     <class>com.arelance.imd.domain.Inscripcion</class>
     <class>com.arelance.imd.domain.Usuario</class>
     <class>com.arelance.imd.domain.Tarjeta</class>
+=======
+    <jta-data-source>jdbc/SakilaXXX</jta-data-source>
+>>>>>>> Stashed changes
     <properties>
     </properties>
   </persistence-unit>

@@ -26,10 +26,15 @@
                                        placeholder="Introduzca password" />
                             </div>
                             <div class="text-center text-lg-start mt-4 pt-2">
+<<<<<<< Updated upstream
                                 <button type="button" class="btn btn-outline-info""
                                         style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
                                 <p class="small fw-bold mt-2 pt-1 mb-0">¿No tienes cuenta? <a href="registro.jsp"
                                                                                               class="link-danger">Registrate</a></p>
+=======
+                                <input type="submit" value="Login" class="btn btn-outline-info" style="padding-left: 2.5rem; padding-right: 2.5rem;"></input>
+                                <p class="small fw-bold mt-2 pt-1 mb-0">¿No tienes cuenta? <a href="PreRegistroUsuarioServlet" class="link-danger">Registrate</a></p>
+>>>>>>> Stashed changes
                             </div>
                         </form>
                     </div>
