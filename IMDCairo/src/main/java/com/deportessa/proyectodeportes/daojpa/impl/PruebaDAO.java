@@ -54,71 +54,77 @@ public class PruebaDAO extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        /////////////////// AÑADIR ACTIVIDAD ///////////////////////
-        Actividad jockey = new Actividad("jockey playa", "playa", "comer arena", new BigDecimal(20), "L-Mi-V");
-        Actividad futbol = new Actividad("futbol", "campos de futbol", "pegar patas", new BigDecimal(10), "L-M-Mi");
-        actiDAO.create(jockey);
-        actiDAO.create(futbol);
-
-        /////////////// AÑADIR CLIENTE /////////////////
-        Cliente cliente1 = new Cliente("prueba@email.com", "1234", "paco", "perez", "garcia", "666555444");
-        Cliente cliente2 = new Cliente("prueba2@email.com", "1234", "paco2", "perez2", "garcia2", "222222222");
-        clienteDAO.create(cliente1);
-        clienteDAO.create(cliente2);
-
-        /////////////// AÑADIR TARJETA /////////////////
-        Tarjeta t2 = new Tarjeta(123, 12, 2022, 555);
-        Tarjeta t3 = new Tarjeta(222, 12, 2022, 555);
-        Tarjeta t4 = new Tarjeta(333, 12, 2022, 555);
-
-        cliente1.addMPago(t2);
-        cliente1.addMPago(t3);
-        cliente2.addMPago(t4);
-        try {
-            clienteDAO.edit(cliente1);
-            clienteDAO.edit(cliente2);
-        } catch (Exception ex) {
-            Logger.getLogger(PruebaDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        List<MetodoPago> lista2 = clienteDAO.find(1).getMetodosPagoCliente();
-        for (MetodoPago p : lista2) {
-            System.out.println(p);
-        }
-
-        /////////// EDITAR METODO DE PAGO ////////////////////
-        Tarjeta nueva = new Tarjeta(0000, 5, 3000, 258);
-        MetodoPago mp = metodoDAO.find(1);
-        mp.editarMetodoPago(nueva);
-        try {
-            metodoDAO.edit(mp);
-            cliente2 = clienteDAO.find(2);
-            cliente1 = clienteDAO.find(1);
-            clienteDAO.edit(cliente2);
-            clienteDAO.edit(cliente1);
-            clienteDAO.edit(cliente2);
-            clienteDAO.edit(cliente1);
-
-        } catch (Exception ex) {
-            Logger.getLogger(PruebaDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        List<MetodoPago> lista3 = cliente1.getMetodosPagoCliente();
-        for (MetodoPago p : lista3) {
-            System.out.println(p);
-        }
-//////////// INSCRIPCIONES  /////////////////////////
-        Inscripcion insc = new Inscripcion(futbol, cliente1.getMetodosPagoCliente().get(0));
-        mp=cliente1.getMetodosPagoCliente().get(0);
-        mp.addInscripcion(insc);
-        try {
-            metodoDAO.edit(mp);
-        } catch (Exception ex) {
-            Logger.getLogger(PruebaDAO.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        System.out.println(mp.getInscripciones().size());
+//        /////////////////// AÑADIR ACTIVIDAD ///////////////////////
+//        Actividad jockey = new Actividad("jockey playa", "playa", "comer arena", new BigDecimal(20), "L-Mi-V");
+//        Actividad futbol = new Actividad("futbol", "campos de futbol", "pegar patas", new BigDecimal(10), "L-M-Mi");
+//        actiDAO.create(jockey);
+//        actiDAO.create(futbol);
+//
+//        /////////////// AÑADIR CLIENTE /////////////////
+//        Cliente cliente1 = new Cliente("prueba@email.com", "1234", "paco", "perez", "garcia", "666555444");
+//        Cliente cliente2 = new Cliente("prueba2@email.com", "1234", "paco2", "perez2", "garcia2", "222222222");
+//        clienteDAO.create(cliente1);
+//        clienteDAO.create(cliente2);
+//
+//        /////////////// AÑADIR TARJETA /////////////////
+//        Tarjeta t2 = new Tarjeta(123, 12, 2022, 555);
+//        Tarjeta t3 = new Tarjeta(222, 12, 2022, 555);
+//        Tarjeta t4 = new Tarjeta(333, 12, 2022, 555);
+//
+//        cliente1.addMPago(t2);
+//        cliente1.addMPago(t3);
+//        cliente2.addMPago(t4);
+//        try {
+//            clienteDAO.edit(cliente1);
+//            clienteDAO.edit(cliente2);
+//        } catch (Exception ex) {
+//            Logger.getLogger(PruebaDAO.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//
+//        List<MetodoPago> lista2 = clienteDAO.find(1).getMetodosPagoCliente();
+//        for (MetodoPago p : lista2) {
+//            System.out.println(p);
+//        }
+//
+//        /////////// EDITAR METODO DE PAGO ////////////////////
+//        Tarjeta nueva = new Tarjeta(0000, 5, 3000, 258);
+//        MetodoPago mp = metodoDAO.find(1);
+//        mp.editarMetodoPago(nueva);
+//        try {
+//            metodoDAO.edit(mp);
+//            cliente2 = clienteDAO.find(2);
+//            cliente1 = clienteDAO.find(1);
+//            clienteDAO.edit(cliente2);
+//            clienteDAO.edit(cliente1);
+//            clienteDAO.edit(cliente2);
+//            clienteDAO.edit(cliente1);
+//
+//        } catch (Exception ex) {
+//            Logger.getLogger(PruebaDAO.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//
+//        List<MetodoPago> lista3 = cliente1.getMetodosPagoCliente();
+//        for (MetodoPago p : lista3) {
+//            System.out.println(p);
+//        }
+////////////// INSCRIPCIONES  /////////////////////////
+//        Inscripcion insc = new Inscripcion(futbol, cliente1.getMetodosPagoCliente().get(0));
+//        mp=cliente1.getMetodosPagoCliente().get(0);
+//        mp.addInscripcion(insc);
+//        try {
+//            metodoDAO.edit(mp);
+//        } catch (Exception ex) {
+//            Logger.getLogger(PruebaDAO.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        System.out.println(mp.getInscripciones().size());
+        
+        
+        
+        
+        System.out.println(clienteDAO.findByEmail("prueba@email.com")) ;
+        System.out.println(clienteDAO.findByEmail("xxx@email.com")) ;
     }
-
+    
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
