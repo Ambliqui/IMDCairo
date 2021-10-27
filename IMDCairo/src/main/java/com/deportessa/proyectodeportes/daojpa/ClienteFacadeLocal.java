@@ -7,6 +7,7 @@ package com.deportessa.proyectodeportes.daojpa;
 
 import com.deportessa.proyectodeportes.modelo.Cliente;
 import java.util.List;
+import java.util.Optional;
 import javax.ejb.Local;
 
 /**
@@ -29,5 +30,7 @@ public interface ClienteFacadeLocal {
     List<Cliente> findRange(int[] range);
 
     int count();
+
+    Optional<Cliente> findByEmail(String email);
     
 }
