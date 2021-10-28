@@ -61,9 +61,9 @@ public class PruebaDAO extends HttpServlet {
 //        actiDAO.create(futbol);
 //
 //        /////////////// AÑADIR CLIENTE /////////////////
-//        Cliente cliente1 = new Cliente("prueba@email.com", "1234", "paco", "perez", "garcia", "666555444");
+        Cliente cliente1 = new Cliente("prueba@email.com", "1234", "paco", "garcia", "666555444");
 //        Cliente cliente2 = new Cliente("prueba2@email.com", "1234", "paco2", "perez2", "garcia2", "222222222");
-//        clienteDAO.create(cliente1);
+        clienteDAO.create(cliente1);
 //        clienteDAO.create(cliente2);
 //
 //        /////////////// AÑADIR TARJETA /////////////////
