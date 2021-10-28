@@ -10,6 +10,7 @@ import com.deportessa.proyectodeportes.daojpa.ClienteFacadeLocal;
 import com.deportessa.proyectodeportes.modelo.Cliente;
 import com.deportessa.proyectodeportes.servicios.ClienteServicio;
 import java.util.Optional;
+import java.util.ResourceBundle;
 import java.util.function.Supplier;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -35,7 +36,7 @@ public class ClienteServicioImpl implements ClienteServicio {
     @Override
     public Cliente findEmail(String email) throws EmailNoExistsException{
         Optional <Cliente> cliente =clienteDao.findByEmail(email);
-        return cliente.orElseThrow(() -> new EmailNoExistsException("Email no encontrado"));
+        return cliente.orElseThrow(() -> new EmailNoExistsException(ResourceBundle.getBundle("bundle.errores").getString("cliente.emailnotfound")));
     }
     
 }
