@@ -7,7 +7,6 @@ package com.deportessa.proyectodeportes.daojpa.impl;
 
 import com.deportessa.proyectodeportes.daojpa.ClienteFacadeLocal;
 import com.deportessa.proyectodeportes.modelo.Cliente;
-import java.util.List;
 import java.util.Optional;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -46,11 +45,6 @@ public class ClienteFacade extends AbstractFacade<Cliente> implements ClienteFac
         Predicate pEmail = cb.equal(fromEmpleado.get("emailCliente"), email);
         query.select(fromEmpleado).where(pEmail);
         TypedQuery tQuery = em.createQuery(query);
-        List<Cliente> resultado= tQuery.getResultList();
-        if (resultado.isEmpty()) {
-            return Optional.empty();
-        }
-        return Optional.of(resultado.get(0));
+        return tQuery.getResultStream().findFirst();
     }
-    
 }
