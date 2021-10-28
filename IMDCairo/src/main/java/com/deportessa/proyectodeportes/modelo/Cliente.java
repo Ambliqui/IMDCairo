@@ -68,10 +68,6 @@ public class Cliente implements Serializable {
     private String apellido1Cliente;
 
     @Size(max = 45)
-    @Column(name = "apellido_2_cliente")
-    private String apellido2Cliente;
-
-    @Size(max = 45)
     @Column(name = "telefono_cliente")
     private String telefonoCliente;
 
@@ -89,12 +85,11 @@ public class Cliente implements Serializable {
         this.fechaRegistroCliente = new Date();
     }
 
-    public Cliente(String emailCliente, String passCliente, String nombreCliente, String apellido1Cliente, String apellido2Cliente, String telefonoCliente) {
+    public Cliente(String emailCliente, String passCliente, String nombreCliente, String apellido1Cliente, String telefonoCliente) {
         this.emailCliente = emailCliente;
         this.passCliente = passCliente;
         this.nombreCliente = nombreCliente;
         this.apellido1Cliente = apellido1Cliente;
-        this.apellido2Cliente = apellido2Cliente;
         this.telefonoCliente = telefonoCliente;
     }
 
@@ -148,14 +143,6 @@ public class Cliente implements Serializable {
         this.apellido1Cliente = apellido1Cliente;
     }
 
-    public String getApellido2Cliente() {
-        return apellido2Cliente;
-    }
-
-    public void setApellido2Cliente(String apellido2Cliente) {
-        this.apellido2Cliente = apellido2Cliente;
-    }
-
     public String getTelefonoCliente() {
         return telefonoCliente;
     }
@@ -187,7 +174,6 @@ public class Cliente implements Serializable {
         hash = 79 * hash + Objects.hashCode(this.passCliente);
         hash = 79 * hash + Objects.hashCode(this.nombreCliente);
         hash = 79 * hash + Objects.hashCode(this.apellido1Cliente);
-        hash = 79 * hash + Objects.hashCode(this.apellido2Cliente);
         hash = 79 * hash + Objects.hashCode(this.telefonoCliente);
         hash = 79 * hash + Objects.hashCode(this.fechaRegistroCliente);
         hash = 79 * hash + Objects.hashCode(this.metodosPagoCliente);
@@ -219,9 +205,6 @@ public class Cliente implements Serializable {
         if (!Objects.equals(this.apellido1Cliente, other.apellido1Cliente)) {
             return false;
         }
-        if (!Objects.equals(this.apellido2Cliente, other.apellido2Cliente)) {
-            return false;
-        }
         if (!Objects.equals(this.telefonoCliente, other.telefonoCliente)) {
             return false;
         }
@@ -236,7 +219,7 @@ public class Cliente implements Serializable {
 
     @Override
     public String toString() {
-        return "Cliente{" + "emailCliente=" + emailCliente + ", passCliente=" + passCliente + ", nombreCliente=" + nombreCliente + ", apellido1Cliente=" + apellido1Cliente + ", apellido2Cliente=" + apellido2Cliente + ", telefonoCliente=" + telefonoCliente + ", fechaRegistroCliente=" + fechaRegistroCliente + ", metodosPagoCliente=" + metodosPagoCliente + ", idCliente=" + idCliente + '}';
+        return "Cliente{" + "emailCliente=" + emailCliente + ", passCliente=" + passCliente + ", nombreCliente=" + nombreCliente + ", apellido1Cliente=" + apellido1Cliente +", telefonoCliente=" + telefonoCliente + ", fechaRegistroCliente=" + fechaRegistroCliente + ", metodosPagoCliente=" + metodosPagoCliente + ", idCliente=" + idCliente + '}';
     }
 
 }
