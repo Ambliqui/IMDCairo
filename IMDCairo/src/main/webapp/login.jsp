@@ -3,7 +3,7 @@
 <html>
     <%@ include file="structure/head.jsp" %>
     <body>
-        <%@ include file="structure/header_no_login.jsp" %>
+        <%@ include file="structure/header.jsp" %>
         <div style="height:100px;" >
             <h2 class="text-center" ><p>Login</p></h2>
         </div>
