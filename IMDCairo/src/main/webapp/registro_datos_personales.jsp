@@ -1,3 +1,5 @@
+<%@page contentType="text/html" pageEncoding="UTF-8" session="false"%>
+<!DOCTYPE html>
 <%@ include file="structure/head.jsp" %>
 <body>
     <%@ include file="structure/header_no_login.jsp" %>
@@ -8,7 +10,7 @@
         <div class="container-fluid h-custom">    
             <div class="row d-flex justify-content-center align-items-center h-75">    
                 <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1" >
-                    <form action="PostRegistroServlet">
+                    <form action="PostRegistroDatosPersonalesServlet">
                         <div class="form-outline mb-4">
                             <label class="form-label">Nombre</label>
                             <input type="text" name="nombre" class="form-control" placeholder="Introduzca nombre">                                 
@@ -37,7 +39,7 @@
                             <div class="col-lg-6 mx-auto">
                                 <div class="card card-header">
                                         <ul role="tablist" class="nav bg-light nav-pills rounded nav-fill mb-3">
-                                            <li class="nav-item"> <a data-toggle="pill" href="#credit-card" class="nav-link active "> <i class="fas fa-credit-card mr-2"></i> Tarjeta de crédito/débito </a> </li>
+                                            <li class="nav-item"> <a data-toggle="pill" href="#credit-card" class="nav-link active "> <i class="fas fa-credit-card mr-2"></i> Tarjeta de crÃ©dito/dÃ©bito </a> </li>
                                             <li class="nav-item"> <a data-toggle="pill" href="#paypal" class="nav-link "> <i class="fab fa-paypal mr-2"></i> Paypal </a> </li>
                                             <li class="nav-item"> <a data-toggle="pill" href="#net-banking" class="nav-link "> <i class="fas fa-mobile-alt mr-2"></i> Transferencia </a> </li>
                                         </ul>

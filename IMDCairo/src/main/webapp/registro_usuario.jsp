@@ -1,3 +1,5 @@
+<%@page contentType="text/html" pageEncoding="UTF-8" session="false"%>
+<!DOCTYPE html>
 <%@ include file="structure/head.jsp" %>
 <body>
     <%@ include file="structure/header.jsp" %>
@@ -7,7 +9,7 @@
     <section>
         <div class="row d-flex justify-content-center align-items-center h-75">
             <div class="col-md-9 col-lg-6 col-xl-5">
-                <img src="img/logo.jpg" alt="100%" width="100%">          
+                <img src="resources/images/pagina/comun/logo.jpg" alt="100%" width="100%">          
             </div>
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
                 <form>
@@ -28,7 +30,7 @@
                         </div> 
                     </div>
                     <div class="align-items-center">
-                        <p><a href="registro_datos_personales.jsp" class="link-danger">Siguiente</a></p>
+                        <p><a href="PreRegistroDatosPersonalesServlet" class="link-danger">Siguiente</a></p>
                     </div> 
                 </form>
             </div>
