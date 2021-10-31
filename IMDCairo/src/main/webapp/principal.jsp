@@ -11,7 +11,7 @@
         <div class="row row-cols-3 row-cols-md-3 g-4" class="card-body" class="col-sm-6">
             <c:forEach items="${listaActividades}" var="actividad">
             <article>
-                <img src=img/${actividad.idActividad}.jpg alt="300" width="100%"/>
+                <img src=resources/images/deportes/${actividad.idActividad}.jpg alt="300" width="100%"/>
                 <h5 class="text-center"><c:out value="${actividad.nombre}"/></h5>
                 <p><c:out value="${actividad.descripcion}"/></p>
                 <p class="text-center"><c:out value="${actividad.precio}€"/></p>
