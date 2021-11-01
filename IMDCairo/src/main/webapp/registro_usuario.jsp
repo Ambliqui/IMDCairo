@@ -12,31 +12,25 @@
                 <img src="resources/images/pagina/comun/logo.jpg" alt="100%" width="100%">          
             </div>
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                <form>
+                <form action="PostRegistroUsuarioServlet">
                     <div>
                         <label class="form-label">Email</label>
-                        <input type="email" class="form-control"
-                               placeholder="Introduzca email" />                                 
-                        <div> 
-                            <input name="cemail" type="text" class="form-control" placeholder="Repite Email">
-                        </div> 
+                        <input name="email" type="email" class="form-control" placeholder="Introduzca email" />
+                        <input name="cemail" type="email" class="form-control" placeholder="Repite Email"7>
                     </div>
                     <div>
                         <label class="form-label">Password</label>
-                        <input type="password" class="form-control"
-                              placeholder="Introduzca password" />
-                        <div> 
-                            <input name="cpassword" type="password" class="form-control" placeholder="Repite Password">
-                        </div> 
+                        <input name="password" type="password" class="form-control" placeholder="Introduzca password" />
+                        <input name="cpassword" type="password" class="form-control" placeholder="Repite Password"/>
                     </div>
                     <div class="align-items-center">
-                        <p><a href="PreRegistroDatosPersonalesServlet" class="link-danger">Siguiente</a></p>
+                        <input type="submit" class="link-primary" value="Siguiente"/>
                     </div> 
                 </form>
             </div>
         </div> 
     </section>
-         <%@ include file="structure/footer.jsp" %>
+    <%@ include file="structure/footer.jsp" %>
 </body>
 </html>
 

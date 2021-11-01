@@ -52,21 +52,24 @@ public class PostLoginServlet extends HttpServlet {
         cliente.setPassCliente(password);
         cliente.setEmailCliente(email);
 
-        //TODO: Controlar los escenarios del caso de uso de Login
         Cliente clienteSession = new Cliente();
         try {
             clienteSession = clienteServicio.findEmail(email);
-            request.getSession(true);
-            request.getSession().setAttribute("clienteSession", clienteSession);
+            if (clienteSession.getPassCliente().equals(password)) {
+                request.getSession(true);
+                request.getSession().setAttribute("clienteSession", clienteSession);
+                request.getRequestDispatcher("PrePrincipalServlet").forward(request, response);
+                return;
+            //Escenario password no coincidente
+            }
+        //Escenario email no encontrado
         } catch (EmailNoExistsException ex) {
             Logger.getLogger(PostLoginServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         //Escenario email sin formato correcto
-        //Escenario email no encontrado
-        //Escenario password no coincidente
-        //Caso OK
-        request.getRequestDispatcher("PrePrincipalServlet").forward(request, response);
+        request.getRequestDispatcher("PreLoginServlet").forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
