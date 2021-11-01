@@ -12,12 +12,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import com.deportessa.proyectodeportes.daojpa.TarjetaLocal;
 import com.deportessa.proyectodeportes.daojpa.qulifiers.TarjetaMysql;
+import javax.ejb.Singleton;
 
 /**
  *
  * @author Antonio
  */
-@Stateless
+@Singleton
 @TarjetaMysql
 public class TarjetaMySqlImpl extends DaoGenericoAbstracto<Tarjeta, Integer> implements TarjetaLocal {
 

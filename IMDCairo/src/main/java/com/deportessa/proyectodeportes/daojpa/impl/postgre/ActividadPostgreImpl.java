@@ -8,7 +8,7 @@ import com.deportessa.proyectodeportes.daojpa.ActividadLocal;
 import com.deportessa.proyectodeportes.daojpa.DaoGenericoAbstracto;
 import com.deportessa.proyectodeportes.daojpa.qulifiers.ActividadPostgre;
 import com.deportessa.proyectodeportes.modelo.Actividad;
-import javax.ejb.Stateless;
+import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -16,7 +16,7 @@ import javax.persistence.PersistenceContext;
  *
  * @author Antonio
  */
-@Stateless
+@Singleton
 @ActividadPostgre
 public class ActividadPostgreImpl extends DaoGenericoAbstracto<Actividad, Integer> implements ActividadLocal{
     

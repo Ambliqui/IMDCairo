@@ -10,7 +10,7 @@ import com.deportessa.proyectodeportes.daojpa.ClienteLocal;
 import com.deportessa.proyectodeportes.daojpa.qulifiers.ClienteMysql;
 import com.deportessa.proyectodeportes.modelo.Cliente;
 import java.util.Optional;
-import javax.ejb.Stateless;
+import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -23,7 +23,7 @@ import javax.persistence.criteria.Root;
  *
  * @author Antonio
  */
-@Stateless
+@Singleton
 @ClienteMysql
 public class ClienteMySqlImpl extends DaoGenericoAbstracto<Cliente, Integer> implements ClienteLocal {
 

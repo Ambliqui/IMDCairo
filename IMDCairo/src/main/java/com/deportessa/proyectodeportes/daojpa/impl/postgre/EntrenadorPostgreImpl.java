@@ -8,7 +8,7 @@ import com.deportessa.proyectodeportes.daojpa.DaoGenericoAbstracto;
 import com.deportessa.proyectodeportes.daojpa.EntrenadorLocal;
 import com.deportessa.proyectodeportes.daojpa.qulifiers.EntrenadorPostgre;
 import com.deportessa.proyectodeportes.modelo.Entrenador;
-import javax.ejb.Stateless;
+import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -16,7 +16,7 @@ import javax.persistence.PersistenceContext;
  *
  * @author Antonio
  */
-@Stateless
+@Singleton
 @EntrenadorPostgre
 public class EntrenadorPostgreImpl extends DaoGenericoAbstracto<Entrenador, Integer> implements EntrenadorLocal {
 

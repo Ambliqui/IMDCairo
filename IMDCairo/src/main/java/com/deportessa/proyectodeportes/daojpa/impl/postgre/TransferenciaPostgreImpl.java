@@ -8,7 +8,7 @@ import com.deportessa.proyectodeportes.daojpa.DaoGenericoAbstracto;
 import com.deportessa.proyectodeportes.daojpa.TransferenciaLocal;
 import com.deportessa.proyectodeportes.daojpa.qulifiers.TransferenciaPostgre;
 import com.deportessa.proyectodeportes.modelo.Transferencia;
-import javax.ejb.Stateless;
+import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -16,7 +16,7 @@ import javax.persistence.PersistenceContext;
  *
  * @author Antonio
  */
-@Stateless
+@Singleton
 @TransferenciaPostgre
 public class TransferenciaPostgreImpl extends DaoGenericoAbstracto<Transferencia, Integer> implements TransferenciaLocal {
 
