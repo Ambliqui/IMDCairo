@@ -6,7 +6,6 @@
 package com.deportessa.proyectodeportes.listener;
 
 
-import com.deportessa.proyectodeportes.daojpa.ActividadFacadeLocal;
 import com.deportessa.proyectodeportes.servicios.ActividadServicio;
 import javax.inject.Inject;
 import javax.servlet.ServletContextEvent;
