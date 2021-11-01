@@ -5,7 +5,7 @@
  */
 package com.deportessa.proyectodeportes.daojpa;
 
-import com.deportessa.proyectodeportes.modelo.Paypal;
+import com.deportessa.proyectodeportes.modelo.Tarjeta;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -14,19 +14,17 @@ import javax.ejb.Local;
  * @author Antonio
  */
 @Local
-public interface PaypalFacadeLocal {
+public interface TarjetaLocal {
 
-    void create(Paypal paypal);
+    void create(Tarjeta tarjeta);
+    
+    void edit(Tarjeta tarjeta);
 
-    void edit(Paypal paypal);
+    void remove(Tarjeta tarjeta);
 
-    void remove(Paypal paypal);
+    List<Tarjeta> findAll();
 
-    Paypal find(Object id);
-
-    List<Paypal> findAll();
-
-    List<Paypal> findRange(int[] range);
+    List<Tarjeta> findRange(int[] range);
 
     int count();
     

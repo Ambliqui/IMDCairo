@@ -3,22 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.deportessa.proyectodeportes.daojpa.impl;
+package com.deportessa.proyectodeportes.daojpa.impl.MySql;
 
-import com.deportessa.proyectodeportes.daojpa.MetodoPagoFacadeLocal;
+import com.deportessa.proyectodeportes.daojpa.DaoGenericoAbstracto;
 import com.deportessa.proyectodeportes.modelo.MetodoPago;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import com.deportessa.proyectodeportes.daojpa.MetodoPagoLocal;
+import com.deportessa.proyectodeportes.daojpa.qulifiers.MetodoPagoMysql;
 
 /**
  *
  * @author Antonio
  */
 @Stateless
-public class MetodoPagoFacade extends AbstractFacade<MetodoPago> implements MetodoPagoFacadeLocal {
+@MetodoPagoMysql
+public class MetodoPagoMySqlImpl extends DaoGenericoAbstracto<MetodoPago, Integer> implements MetodoPagoLocal {
 
-    @PersistenceContext(unitName = "pu")
+    @PersistenceContext(unitName = "mysql", name = "jdbc/Sakila")
     private EntityManager em;
 
     @Override
@@ -26,7 +29,7 @@ public class MetodoPagoFacade extends AbstractFacade<MetodoPago> implements Meto
         return em;
     }
 
-    public MetodoPagoFacade() {
+    public MetodoPagoMySqlImpl() {
         super(MetodoPago.class);
     }
     

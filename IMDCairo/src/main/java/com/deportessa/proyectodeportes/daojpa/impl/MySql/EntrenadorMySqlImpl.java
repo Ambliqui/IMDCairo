@@ -3,22 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.deportessa.proyectodeportes.daojpa.impl;
+package com.deportessa.proyectodeportes.daojpa.impl.MySql;
 
-import com.deportessa.proyectodeportes.daojpa.EntrenadorFacadeLocal;
+import com.deportessa.proyectodeportes.daojpa.DaoGenericoAbstracto;
 import com.deportessa.proyectodeportes.modelo.Entrenador;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import com.deportessa.proyectodeportes.daojpa.EntrenadorLocal;
+import com.deportessa.proyectodeportes.daojpa.qulifiers.EntrenadorMysql;
 
 /**
  *
  * @author Antonio
  */
 @Stateless
-public class EntrenadorFacade extends AbstractFacade<Entrenador> implements EntrenadorFacadeLocal {
+@EntrenadorMysql
+public class EntrenadorMySqlImpl extends DaoGenericoAbstracto<Entrenador, Integer> implements EntrenadorLocal {
 
-    @PersistenceContext(unitName = "pu")
+     @PersistenceContext(unitName = "mysql", name = "jdbc/Sakila")
     private EntityManager em;
 
     @Override
@@ -26,7 +29,7 @@ public class EntrenadorFacade extends AbstractFacade<Entrenador> implements Entr
         return em;
     }
 
-    public EntrenadorFacade() {
+    public EntrenadorMySqlImpl() {
         super(Entrenador.class);
     }
     

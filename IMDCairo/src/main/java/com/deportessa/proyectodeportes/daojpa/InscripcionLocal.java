@@ -5,7 +5,7 @@
  */
 package com.deportessa.proyectodeportes.daojpa;
 
-import com.deportessa.proyectodeportes.modelo.Actividad;
+import com.deportessa.proyectodeportes.modelo.Inscripcion;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -14,19 +14,17 @@ import javax.ejb.Local;
  * @author Antonio
  */
 @Local
-public interface ActividadFacadeLocal {
+public interface InscripcionLocal {
 
-    void create(Actividad actividad);
+    void create(Inscripcion inscripcion);
+    
+    void edit(Inscripcion inscripcion);
 
-    void edit(Actividad actividad);
+    void remove(Inscripcion inscripcion);
 
-    void remove(Actividad actividad);
+    List<Inscripcion> findAll();
 
-    Actividad find(Object id);
-
-    List<Actividad> findAll();
-
-    List<Actividad> findRange(int[] range);
+    List<Inscripcion> findRange(int[] range);
 
     int count();
     

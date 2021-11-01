@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.deportessa.proyectodeportes.daojpa.impl;
+package com.deportessa.proyectodeportes.daojpa;
 
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -12,38 +12,45 @@ import javax.persistence.EntityManager;
  *
  * @author Antonio
  * @param <T>
+ * @param <ID>
  */
-public abstract class AbstractFacade<T> {
+public abstract class DaoGenericoAbstracto<T, ID> {
 
     private final Class<T> entityClass;
 
-    public AbstractFacade(Class<T> entityClass) {
+    public DaoGenericoAbstracto(Class<T> entityClass) {
         this.entityClass = entityClass;
     }
 
     protected abstract EntityManager getEntityManager();
 
+
     public void create(T entity) {
         getEntityManager().persist(entity);
     }
+
 
     public void edit(T entity) {
         getEntityManager().merge(entity);
     }
 
+
     public void remove(T entity) {
         getEntityManager().remove(getEntityManager().merge(entity));
     }
 
-    public T find(Object id) {
+
+    public T find(ID id) {
         return getEntityManager().find(entityClass, id);
     }
+
 
     public List<T> findAll() {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
         return getEntityManager().createQuery(cq).getResultList();
     }
+
 
     public List<T> findRange(int[] range) {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
@@ -53,6 +60,7 @@ public abstract class AbstractFacade<T> {
         q.setFirstResult(range[0]);
         return q.getResultList();
     }
+
 
     public int count() {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();

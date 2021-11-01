@@ -3,29 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.deportessa.proyectodeportes.daojpa.impl;
+package com.deportessa.proyectodeportes.daojpa;
 
 
-import com.deportessa.proyectodeportes.daojpa.ActividadFacadeLocal;
-import com.deportessa.proyectodeportes.daojpa.ClienteFacadeLocal;
-import com.deportessa.proyectodeportes.daojpa.InscripcionFacadeLocal;
-import com.deportessa.proyectodeportes.daojpa.MetodoPagoFacadeLocal;
-import com.deportessa.proyectodeportes.modelo.Actividad;
 import com.deportessa.proyectodeportes.modelo.Cliente;
-import com.deportessa.proyectodeportes.modelo.Inscripcion;
-import com.deportessa.proyectodeportes.modelo.MetodoPago;
-import com.deportessa.proyectodeportes.modelo.Tarjeta;
 import java.io.IOException;
-import java.math.BigDecimal;
-import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.deportessa.proyectodeportes.daojpa.factory.DaoAbstractFactoryLocal;
+import com.deportessa.proyectodeportes.daojpa.factory.qualifiers.FactoryDaoMySql;
 
 /**
  *
@@ -34,14 +24,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "PruebaDAO", urlPatterns = {"/prueba"})
 public class PruebaDAO extends HttpServlet {
 
+    
     @Inject
-    ActividadFacadeLocal actiDAO;
-    @Inject
-    ClienteFacadeLocal clienteDAO;
-    @Inject
-    MetodoPagoFacadeLocal metodoDAO;
-    @Inject
-    InscripcionFacadeLocal inscripcionDAO;
+    @FactoryDaoMySql
+    private DaoAbstractFactoryLocal daoFactoryLocal;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -61,9 +48,12 @@ public class PruebaDAO extends HttpServlet {
 //        actiDAO.create(futbol);
 //
 //        /////////////// AÑADIR CLIENTE /////////////////
+
         Cliente cliente1 = new Cliente("prueba@email.com", "1234", "paco", "garcia", "666555444");
 //        Cliente cliente2 = new Cliente("prueba2@email.com", "1234", "paco2", "perez2", "garcia2", "222222222");
-        clienteDAO.create(cliente1);
+            daoFactoryLocal.getClienteDaoLocal().create(cliente1);
+
+        //clienteDAO.create(cliente1);
 //        clienteDAO.create(cliente2);
 //
 //        /////////////// AÑADIR TARJETA /////////////////
@@ -119,10 +109,10 @@ public class PruebaDAO extends HttpServlet {
 //        System.out.println(mp.getInscripciones().size());
         
         
+        System.out.println(daoFactoryLocal.getClienteDaoLocal().findByEmail("prueba@email.com"));
         
-        
-        System.out.println(clienteDAO.findByEmail("prueba@email.com")) ;
-        System.out.println(clienteDAO.findByEmail("xxx@email.com")) ;
+//        System.out.println(clienteDAO.findByEmail("prueba@email.com")) ;
+//        System.out.println(clienteDAO.findByEmail("xxx@email.com")) ;
     }
     
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

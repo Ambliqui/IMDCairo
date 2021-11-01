@@ -3,22 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.deportessa.proyectodeportes.daojpa.impl;
+package com.deportessa.proyectodeportes.daojpa.impl.MySql;
 
-import com.deportessa.proyectodeportes.daojpa.TarjetaFacadeLocal;
+import com.deportessa.proyectodeportes.daojpa.DaoGenericoAbstracto;
 import com.deportessa.proyectodeportes.modelo.Tarjeta;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import com.deportessa.proyectodeportes.daojpa.TarjetaLocal;
+import com.deportessa.proyectodeportes.daojpa.qulifiers.TarjetaMysql;
 
 /**
  *
  * @author Antonio
  */
 @Stateless
-public class TarjetaFacade extends AbstractFacade<Tarjeta> implements TarjetaFacadeLocal {
+@TarjetaMysql
+public class TarjetaMySqlImpl extends DaoGenericoAbstracto<Tarjeta, Integer> implements TarjetaLocal {
 
-    @PersistenceContext(unitName = "pu")
+    @PersistenceContext(unitName = "mysql", name = "jdbc/Sakila")
     private EntityManager em;
 
     @Override
@@ -26,7 +29,7 @@ public class TarjetaFacade extends AbstractFacade<Tarjeta> implements TarjetaFac
         return em;
     }
 
-    public TarjetaFacade() {
+    public TarjetaMySqlImpl() {
         super(Tarjeta.class);
     }
     

@@ -3,22 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.deportessa.proyectodeportes.daojpa.impl;
+package com.deportessa.proyectodeportes.daojpa.impl.MySql;
 
-import com.deportessa.proyectodeportes.daojpa.InscripcionFacadeLocal;
+import com.deportessa.proyectodeportes.daojpa.DaoGenericoAbstracto;
 import com.deportessa.proyectodeportes.modelo.Inscripcion;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import com.deportessa.proyectodeportes.daojpa.InscripcionLocal;
+import com.deportessa.proyectodeportes.daojpa.qulifiers.InscripcionMysql;
 
 /**
  *
  * @author Antonio
  */
 @Stateless
-public class InscripcionFacade extends AbstractFacade<Inscripcion> implements InscripcionFacadeLocal {
+@InscripcionMysql
+public class InscripcionMySqlImpl extends DaoGenericoAbstracto<Inscripcion, Integer> implements InscripcionLocal {
 
-    @PersistenceContext(unitName = "pu")
+     @PersistenceContext(unitName = "mysql", name = "jdbc/Sakila")
     private EntityManager em;
 
     @Override
@@ -26,7 +29,7 @@ public class InscripcionFacade extends AbstractFacade<Inscripcion> implements In
         return em;
     }
 
-    public InscripcionFacade() {
+    public InscripcionMySqlImpl() {
         super(Inscripcion.class);
     }
     

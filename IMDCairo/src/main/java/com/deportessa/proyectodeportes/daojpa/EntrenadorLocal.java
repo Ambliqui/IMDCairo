@@ -14,15 +14,13 @@ import javax.ejb.Local;
  * @author Antonio
  */
 @Local
-public interface EntrenadorFacadeLocal {
+public interface EntrenadorLocal {
 
     void create(Entrenador entrenador);
-
+    
     void edit(Entrenador entrenador);
 
     void remove(Entrenador entrenador);
-
-    Entrenador find(Object id);
 
     List<Entrenador> findAll();
 
