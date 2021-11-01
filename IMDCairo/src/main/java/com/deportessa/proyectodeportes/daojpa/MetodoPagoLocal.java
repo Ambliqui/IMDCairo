@@ -14,15 +14,13 @@ import javax.ejb.Local;
  * @author Antonio
  */
 @Local
-public interface MetodoPagoFacadeLocal {
+public interface MetodoPagoLocal {
 
     void create(MetodoPago metodoPago);
-
+    
     void edit(MetodoPago metodoPago);
 
     void remove(MetodoPago metodoPago);
-
-    MetodoPago find(Object id);
 
     List<MetodoPago> findAll();
 

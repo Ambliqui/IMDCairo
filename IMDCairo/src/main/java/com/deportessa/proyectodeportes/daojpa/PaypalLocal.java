@@ -5,7 +5,7 @@
  */
 package com.deportessa.proyectodeportes.daojpa;
 
-import com.deportessa.proyectodeportes.modelo.Inscripcion;
+import com.deportessa.proyectodeportes.modelo.Paypal;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -14,19 +14,17 @@ import javax.ejb.Local;
  * @author Antonio
  */
 @Local
-public interface InscripcionFacadeLocal {
+public interface PaypalLocal {
 
-    void create(Inscripcion inscripcion);
+    void create(Paypal paypal);
+    
+    void edit(Paypal paypal);
 
-    void edit(Inscripcion inscripcion);
+    void remove(Paypal paypal);
 
-    void remove(Inscripcion inscripcion);
+    List<Paypal> findAll();
 
-    Inscripcion find(Object id);
-
-    List<Inscripcion> findAll();
-
-    List<Inscripcion> findRange(int[] range);
+    List<Paypal> findRange(int[] range);
 
     int count();
     

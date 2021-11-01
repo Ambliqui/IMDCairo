@@ -5,7 +5,7 @@
  */
 package com.deportessa.proyectodeportes.daojpa;
 
-import com.deportessa.proyectodeportes.modelo.Tarjeta;
+import com.deportessa.proyectodeportes.modelo.Transferencia;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -14,19 +14,17 @@ import javax.ejb.Local;
  * @author Antonio
  */
 @Local
-public interface TarjetaFacadeLocal {
+public interface TransferenciaLocal {
 
-    void create(Tarjeta tarjeta);
+    void create(Transferencia transferencia);
+    
+    void edit(Transferencia transferencia);
 
-    void edit(Tarjeta tarjeta);
+    void remove(Transferencia transferencia);
 
-    void remove(Tarjeta tarjeta);
+    List<Transferencia> findAll();
 
-    Tarjeta find(Object id);
-
-    List<Tarjeta> findAll();
-
-    List<Tarjeta> findRange(int[] range);
+    List<Transferencia> findRange(int[] range);
 
     int count();
     

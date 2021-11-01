@@ -3,9 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.deportessa.proyectodeportes.daojpa.impl;
+package com.deportessa.proyectodeportes.daojpa.impl.MySql;
 
-import com.deportessa.proyectodeportes.daojpa.ClienteFacadeLocal;
+import com.deportessa.proyectodeportes.daojpa.DaoGenericoAbstracto;
+import com.deportessa.proyectodeportes.daojpa.ClienteLocal;
+import com.deportessa.proyectodeportes.daojpa.qulifiers.ClienteMysql;
 import com.deportessa.proyectodeportes.modelo.Cliente;
 import java.util.Optional;
 import javax.ejb.Stateless;
@@ -22,9 +24,10 @@ import javax.persistence.criteria.Root;
  * @author Antonio
  */
 @Stateless
-public class ClienteFacade extends AbstractFacade<Cliente> implements ClienteFacadeLocal {
+@ClienteMysql
+public class ClienteMySqlImpl extends DaoGenericoAbstracto<Cliente, Integer> implements ClienteLocal {
 
-    @PersistenceContext(unitName = "pu")
+     @PersistenceContext(unitName = "mysql", name = "jdbc/Sakila")
     private EntityManager em;
 
     @Override
@@ -32,7 +35,7 @@ public class ClienteFacade extends AbstractFacade<Cliente> implements ClienteFac
         return em;
     }
 
-    public ClienteFacade() {
+    public ClienteMySqlImpl() {
         super(Cliente.class);
     }
 

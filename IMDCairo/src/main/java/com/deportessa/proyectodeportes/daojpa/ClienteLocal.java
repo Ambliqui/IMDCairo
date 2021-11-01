@@ -15,15 +15,13 @@ import javax.ejb.Local;
  * @author Antonio
  */
 @Local
-public interface ClienteFacadeLocal {
+public interface ClienteLocal {
 
     void create(Cliente cliente);
 
     void edit(Cliente cliente);
 
     void remove(Cliente cliente);
-
-    Cliente find(Object id);
 
     List<Cliente> findAll();
 
