@@ -8,7 +8,7 @@ import com.deportessa.proyectodeportes.daojpa.DaoGenericoAbstracto;
 import com.deportessa.proyectodeportes.daojpa.InscripcionLocal;
 import com.deportessa.proyectodeportes.daojpa.qulifiers.InscripcionPostgre;
 import com.deportessa.proyectodeportes.modelo.Inscripcion;
-import javax.ejb.Stateless;
+import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -16,7 +16,7 @@ import javax.persistence.PersistenceContext;
  *
  * @author Antonio
  */
-@Stateless
+@Singleton
 @InscripcionPostgre
 public class InscripcionPostgreImpl extends DaoGenericoAbstracto<Inscripcion, Integer> implements InscripcionLocal {
 

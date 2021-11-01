@@ -8,7 +8,7 @@ import com.deportessa.proyectodeportes.daojpa.DaoGenericoAbstracto;
 import com.deportessa.proyectodeportes.daojpa.MetodoPagoLocal;
 import com.deportessa.proyectodeportes.daojpa.qulifiers.MetodoPagoPostgre;
 import com.deportessa.proyectodeportes.modelo.MetodoPago;
-import javax.ejb.Stateless;
+import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -16,7 +16,7 @@ import javax.persistence.PersistenceContext;
  *
  * @author Antonio
  */
-@Stateless
+@Singleton
 @MetodoPagoPostgre
 public class MetodoPagoPostgreImpl extends DaoGenericoAbstracto<MetodoPago, Integer> implements MetodoPagoLocal{
 

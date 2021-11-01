@@ -7,17 +7,17 @@ package com.deportessa.proyectodeportes.daojpa.impl.MySql;
 
 import com.deportessa.proyectodeportes.daojpa.DaoGenericoAbstracto;
 import com.deportessa.proyectodeportes.modelo.MetodoPago;
-import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import com.deportessa.proyectodeportes.daojpa.MetodoPagoLocal;
 import com.deportessa.proyectodeportes.daojpa.qulifiers.MetodoPagoMysql;
+import javax.ejb.Singleton;
 
 /**
  *
  * @author Antonio
  */
-@Stateless
+@Singleton
 @MetodoPagoMysql
 public class MetodoPagoMySqlImpl extends DaoGenericoAbstracto<MetodoPago, Integer> implements MetodoPagoLocal {
 

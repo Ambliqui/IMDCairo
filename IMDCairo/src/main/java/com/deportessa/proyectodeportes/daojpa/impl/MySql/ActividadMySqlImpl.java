@@ -7,17 +7,17 @@ package com.deportessa.proyectodeportes.daojpa.impl.MySql;
 
 import com.deportessa.proyectodeportes.daojpa.DaoGenericoAbstracto;
 import com.deportessa.proyectodeportes.modelo.Actividad;
-import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import com.deportessa.proyectodeportes.daojpa.ActividadLocal;
 import com.deportessa.proyectodeportes.daojpa.qulifiers.ActividadMysql;
+import javax.ejb.Singleton;
 
 /**
  *
  * @author Antonio
  */
-@Stateless
+@Singleton
 @ActividadMysql
 public class ActividadMySqlImpl extends DaoGenericoAbstracto<Actividad,Integer> implements ActividadLocal {
 

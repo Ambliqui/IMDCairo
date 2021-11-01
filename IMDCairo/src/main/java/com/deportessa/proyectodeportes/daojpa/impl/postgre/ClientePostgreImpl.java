@@ -9,7 +9,7 @@ import com.deportessa.proyectodeportes.daojpa.DaoGenericoAbstracto;
 import com.deportessa.proyectodeportes.daojpa.qulifiers.ClientePostgre;
 import com.deportessa.proyectodeportes.modelo.Cliente;
 import java.util.Optional;
-import javax.ejb.Stateless;
+import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -22,7 +22,7 @@ import javax.persistence.criteria.Root;
  *
  * @author Antonio
  */
-@Stateless
+@Singleton
 @ClientePostgre
 public class ClientePostgreImpl extends DaoGenericoAbstracto<Cliente, Integer> implements ClienteLocal{
 

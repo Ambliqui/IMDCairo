@@ -8,7 +8,7 @@ import com.deportessa.proyectodeportes.daojpa.DaoGenericoAbstracto;
 import com.deportessa.proyectodeportes.daojpa.TarjetaLocal;
 import com.deportessa.proyectodeportes.daojpa.qulifiers.TarjetaPostgre;
 import com.deportessa.proyectodeportes.modelo.Tarjeta;
-import javax.ejb.Stateless;
+import javax.ejb.Singleton;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
@@ -16,7 +16,7 @@ import javax.persistence.PersistenceContext;
  *
  * @author Antonio
  */
-@Stateless
+@Singleton
 @TarjetaPostgre
 public class TarjetaPostgreImpl extends DaoGenericoAbstracto<Tarjeta, Integer> implements TarjetaLocal{
 
