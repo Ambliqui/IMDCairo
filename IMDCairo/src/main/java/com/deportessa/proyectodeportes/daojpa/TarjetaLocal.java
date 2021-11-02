@@ -23,6 +23,8 @@ public interface TarjetaLocal {
     void remove(Tarjeta tarjeta);
 
     List<Tarjeta> findAll();
+    
+    Tarjeta find(Integer id);
 
     List<Tarjeta> findRange(int[] range);
 

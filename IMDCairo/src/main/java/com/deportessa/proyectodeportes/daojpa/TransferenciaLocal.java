@@ -23,6 +23,8 @@ public interface TransferenciaLocal {
     void remove(Transferencia transferencia);
 
     List<Transferencia> findAll();
+    
+    Transferencia find(Integer id);
 
     List<Transferencia> findRange(int[] range);
 

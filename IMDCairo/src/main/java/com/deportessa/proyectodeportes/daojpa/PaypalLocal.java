@@ -23,6 +23,8 @@ public interface PaypalLocal {
     void remove(Paypal paypal);
 
     List<Paypal> findAll();
+    
+    Paypal find(Integer id);
 
     List<Paypal> findRange(int[] range);
 

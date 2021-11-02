@@ -23,6 +23,8 @@ public interface EntrenadorLocal {
     void remove(Entrenador entrenador);
 
     List<Entrenador> findAll();
+    
+    Entrenador find(Integer id);
 
     List<Entrenador> findRange(int[] range);
 

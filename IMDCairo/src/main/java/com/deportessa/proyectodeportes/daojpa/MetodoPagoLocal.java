@@ -23,6 +23,8 @@ public interface MetodoPagoLocal {
     void remove(MetodoPago metodoPago);
 
     List<MetodoPago> findAll();
+    
+    MetodoPago find(Integer id);
 
     List<MetodoPago> findRange(int[] range);
 

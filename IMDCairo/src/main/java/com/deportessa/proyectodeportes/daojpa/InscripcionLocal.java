@@ -23,6 +23,8 @@ public interface InscripcionLocal {
     void remove(Inscripcion inscripcion);
 
     List<Inscripcion> findAll();
+    
+    Inscripcion find(Integer id);
 
     List<Inscripcion> findRange(int[] range);
 

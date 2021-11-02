@@ -24,6 +24,8 @@ public interface ClienteLocal {
     void remove(Cliente cliente);
 
     List<Cliente> findAll();
+    
+    Cliente find(Integer id);
 
     List<Cliente> findRange(int[] range);
 

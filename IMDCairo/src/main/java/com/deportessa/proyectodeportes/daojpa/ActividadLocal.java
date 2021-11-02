@@ -23,6 +23,8 @@ public interface ActividadLocal {
     void remove(Actividad actividad);
 
     List<Actividad> findAll();
+    
+    Actividad find(Integer id);
 
     List<Actividad> findRange(int[] range);
 
