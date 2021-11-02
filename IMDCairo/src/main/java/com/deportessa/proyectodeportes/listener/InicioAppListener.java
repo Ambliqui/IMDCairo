@@ -6,7 +6,7 @@
 package com.deportessa.proyectodeportes.listener;
 
 
-import com.deportessa.proyectodeportes.servicios.ActividadServicio;
+
 import javax.inject.Inject;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -19,7 +19,7 @@ import javax.servlet.ServletContextListener;
 public class InicioAppListener implements ServletContextListener {
 
     @Inject
-    ActividadServicio actividadServicio;
+   // ActividadServicio actividadServicio;
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
