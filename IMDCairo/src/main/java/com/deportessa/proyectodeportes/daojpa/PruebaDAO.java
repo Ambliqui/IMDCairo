@@ -16,6 +16,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.deportessa.proyectodeportes.daojpa.factory.DaoAbstractFactoryLocal;
 import com.deportessa.proyectodeportes.daojpa.factory.qualifiers.FactoryDaoMySql;
+import com.deportessa.proyectodeportes.modelo.MetodoPago;
+import com.deportessa.proyectodeportes.modelo.Paypal;
+import com.deportessa.proyectodeportes.modelo.Tarjeta;
+import java.util.List;
 
 /**
  *
@@ -56,13 +60,17 @@ public class PruebaDAO extends HttpServlet {
 //        clienteDAO.create(cliente2);
 //
 //        /////////////// AÑADIR TARJETA /////////////////
-//        Tarjeta t2 = new Tarjeta(123, 12, 2022, 555);
-//        Tarjeta t3 = new Tarjeta(222, 12, 2022, 555);
-//        Tarjeta t4 = new Tarjeta(333, 12, 2022, 555);
-//
-//        cliente1.addMPago(t2);
-//        cliente1.addMPago(t3);
+        Tarjeta t2 = new Tarjeta(123, 12, 2022, 555);
+        Tarjeta t3 = new Tarjeta(222, 12, 2022, 555);
+        Tarjeta t4 = new Tarjeta(333, 12, 2022, 555);
+        
+        Paypal p=new Paypal("prueba@email.com");
+        
+        cliente1.addMPago(t2);
+        cliente1.addMPago(t3);
+        cliente1.addMPago(p);
 //        cliente2.addMPago(t4);
+        daoFactoryLocal.getClienteDaoLocal().edit(cliente1);
 //        try {
 //            clienteDAO.edit(cliente1);
 //            clienteDAO.edit(cliente2);
@@ -107,7 +115,11 @@ public class PruebaDAO extends HttpServlet {
 //        }
 //        System.out.println(mp.getInscripciones().size());
         
-        
+       List<MetodoPago> mPago= daoFactoryLocal.getClienteDaoLocal().findByEmail("prueba@email.com").get().getMetodosPagoCliente();
+        for (MetodoPago metodoPago : mPago) {
+            System.out.println(metodoPago);
+        }
+        System.out.println(daoFactoryLocal.getPayPalDaoLocal().find(1));
         System.out.println(daoFactoryLocal.getClienteDaoLocal().findByEmail("prueba@email.com"));
         
 //        System.out.println(clienteDAO.findByEmail("prueba@email.com")) ;

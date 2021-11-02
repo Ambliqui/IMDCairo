@@ -18,7 +18,7 @@ import javax.servlet.ServletContextListener;
  */
 public class InicioAppListener implements ServletContextListener {
 
-    @Inject
+   // @Inject
    // ActividadServicio actividadServicio;
 
     @Override

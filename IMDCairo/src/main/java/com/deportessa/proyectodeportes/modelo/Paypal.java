@@ -6,6 +6,7 @@
 package com.deportessa.proyectodeportes.modelo;
 
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,25 +26,25 @@ public class Paypal extends MetodoPago implements Serializable {
     private static final long serialVersionUID = 1L;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "num_paypal")
-    private int numPaypal;
+    @Column(name = "correo")
+    private String correo;
 
     public Paypal() {
     }
 
-    public Paypal(int numPaypal) {
-        this.numPaypal = numPaypal;
+    public Paypal(String correo) {
+        this.correo = correo;
     }
     
     @Override
     public void editarMetodoPago(MetodoPago metodoPago) {
-        this.numPaypal=((Paypal)metodoPago).numPaypal;
+        this.correo=((Paypal)metodoPago).correo;
     }
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 19 * hash + this.numPaypal;
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.correo);
         return hash;
     }
 
@@ -59,15 +60,22 @@ public class Paypal extends MetodoPago implements Serializable {
             return false;
         }
         final Paypal other = (Paypal) obj;
-        return this.numPaypal == other.numPaypal;
+        return Objects.equals(this.correo, other.correo);
     }
 
-    public int getNumPaypal() {
-        return numPaypal;
+    public String getCorreo() {
+        return correo;
     }
 
-    public void setNumPaypal(int numPaypal) {
-        this.numPaypal = numPaypal;
+    public void setCorreo(String correo) {
+        this.correo = correo;
     }
+
+    @Override
+    public String toString() {
+        return "Paypal{" + "correo=" + correo + '}';
+    }
+
+   
 
 }
