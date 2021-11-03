@@ -3,10 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.deportessa.proyectodeportes.servlets.registro;
+package com.deportessa.proyectodeportes.servlets.principal;
 
-import com.deportessa.proyectodeportes.modelo.Cliente;
-import com.deportessa.proyectodeportes.modelo.Tarjeta;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -19,10 +17,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Mefisto
  */
-@WebServlet(name = "PostRegistroDatosPersonalesServlet", urlPatterns = {"/PostRegistroDatosPersonalesServlet"})
-public class PostRegistroDatosPersonalesServlet extends HttpServlet {
+@WebServlet(name = "PostPrincipalServlet", urlPatterns = {"/PostPrincipalServlet"})
+public class PostPrincipalServlet extends HttpServlet {
 
-    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -35,44 +32,8 @@ public class PostRegistroDatosPersonalesServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        ////////////// DATOS DE USUARIO //////////////////////
-
-        String nombre = request.getParameter("nombre");
-        String apellidos = request.getParameter("Apellidos");
-        String telefono = request.getParameter("telefono");
         
-        //TODO: Pasar validadores y crear cliente en caso afirmativo
-        
-        Cliente cliente = new Cliente();
-        cliente.setNombreCliente(nombre);
-        cliente.setApellido1Cliente(apellidos);
-        cliente.setTelefonoCliente(telefono);
-        
-        //////////////// DATOS DE TARJETA ////////////////////////
-        
-//        Integer numeroTarjeta = Integer.parseInt(request.getParameter("numeroTarjeta"));
-//        Integer mesTarjeta = Integer.parseInt(request.getParameter("mesTarjeta"));
-//        Integer annoTarjeta = Integer.parseInt(request.getParameter("annoTarjeta"));
-//        Integer csvTarjeta = Integer.parseInt(request.getParameter("csvTarjeta"));
-        
-        //TODO: Pasar validadores y crear tarjeta en caso afirmativo
-        
-//        Tarjeta tarjeta = new Tarjeta();
-//        tarjeta.setNumTarjeta(numeroTarjeta);
-//        tarjeta.setMesTarjeta(mesTarjeta);
-//        tarjeta.setAnnoTarjeta(annoTarjeta);
-//        tarjeta.setCvsTarjeta(csvTarjeta);
-        
-        //////////////// DATOS PAYPAL //////////////////////
-        
-//        String cuentaPaypal = request.getParameter("cuentaPaypal");
-        
-        
-        //////////////// DATOS BANCARIA ///////////////////////
-        
-//        Integer cuentaBancaria = Integer.parseInt(request.getParameter("cuentaBancaria"));
-        
-        
+        request.getSession().getServletContext().getAttribute("listaActividades");
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
