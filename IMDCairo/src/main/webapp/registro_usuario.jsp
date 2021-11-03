@@ -25,7 +25,10 @@
                     </div>
                     <div class="align-items-center">
                         <input type="submit" class="link-primary" value="Siguiente"/>
-                    </div> 
+                    </div>
+                    <c:forEach items="${errores}" var="error">
+                        ${error.getMessage()}
+                    </c:forEach>
                 </form>
             </div>
         </div> 

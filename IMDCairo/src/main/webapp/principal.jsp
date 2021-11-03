@@ -15,7 +15,7 @@
                 <h5 class="text-center"><c:out value="${actividad.nombre}"/></h5>
                 <p><c:out value="${actividad.descripcion}"/></p>
                 <p class="text-center"><c:out value="${actividad.precio}€"/></p>
-                <button type="button" class="btn btn-outline-info">Detalles</button>
+                <button type="button" class="btn btn-outline-info"><a href="PreDetallesServlet?actividad=${actividad.idActividad}">Detalles</a></button>
             </article>
             </c:forEach>                    
         </div>

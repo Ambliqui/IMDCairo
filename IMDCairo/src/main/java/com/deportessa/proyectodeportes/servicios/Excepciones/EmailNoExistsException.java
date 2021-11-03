@@ -13,6 +13,6 @@ public class EmailNoExistsException extends Exception{
 
     public EmailNoExistsException(String string) {
         super(string);
-    }   
+    }
     
 }

@@ -6,18 +6,19 @@
     <body> 
         <%@ include file="structure/header.jsp" %>
         <div style="height: 100px;" >
-            <h2 class="text-center" ><p>Nuestros deportes</p></h2>
+            <h2 class="text-center" ><p>Detalles Actividad</p></h2>
         </div>
         <div class="row row-cols-3 row-cols-md-3 g-4" class="card-body" class="col-sm-6">
-             <c:forEach items="${listaActividades}" var="actividad">
             <article>
-                <img src=img/${actividad.idActividad}.jpg alt="300" width="100%"/>
-                <h5 class="text-center"><c:out value="${actividad.nombre}"/></h5>
-                <p><c:out value="${actividad.descripcion}"/></p>
-                <p class="text-center"><c:out value="${actividad.precio}€"/></p>
-                <button type="button" class="btn btn-outline-info">Inscribirte</button>
+                <form action="PostDetalleServlet">
+                    <h5 class="text-center"><c:out value="${actividad.nombre}"/></h5>
+                    <img src=resources/images/deportes/${actividad.idActividad}.jpg alt="300" width="100%"/>
+                    <p><c:out value="${actividad.descripcion}"/></p>
+                    <p class="text-center"><c:out value="${actividad.precio}€"/></p>
+                    <button type="button" class="btn btn-outline-info">Inscribirte</button>
+                    <input type="submit" value="Inscribirse">
+                </form>
             </article>
-            </c:forEach>                    
         </div>
         <%@ include file="structure/footer.jsp" %>
     </body>
