@@ -5,7 +5,6 @@
  */
 package com.deportessa.proyectodeportes.servicios;
 
-import com.deportessa.proyectodeportes.modelo.Actividad;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -14,10 +13,17 @@ import javax.ejb.Local;
  * @author Mefisto
  */
 @Local
-public interface ActividadServicio {
+public interface Crud<T> {
+
     
+    void create(T t);
+
+    void update(T t);
+
+    void delete(T t);
+
+    T read(Integer n);
     
-    List<Actividad> findAll();
-    
-    Actividad find(Integer idActividad);
+    List<T> readAll();
+
 }

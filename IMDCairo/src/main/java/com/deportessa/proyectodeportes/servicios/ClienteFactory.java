@@ -5,19 +5,16 @@
  */
 package com.deportessa.proyectodeportes.servicios;
 
-import com.deportessa.proyectodeportes.modelo.Actividad;
-import java.util.List;
-import javax.ejb.Local;
-
 /**
  *
  * @author Mefisto
  */
-@Local
-public interface ActividadServicio {
+public class ClienteFactory implements Factory{
+
     
+    @Override
+    public Crud createCrud() {
+        return new ClienteCrud();
+    }
     
-    List<Actividad> findAll();
-    
-    Actividad find(Integer idActividad);
 }

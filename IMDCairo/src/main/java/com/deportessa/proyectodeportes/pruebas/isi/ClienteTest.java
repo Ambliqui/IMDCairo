@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.deportessa.proyectodeportes.servicios;
+package com.deportessa.proyectodeportes.pruebas.isi;
 
-import com.deportessa.proyectodeportes.modelo.Actividad;
-import java.util.List;
+import com.deportessa.proyectodeportes.modelo.Cliente;
 import javax.ejb.Local;
 
 /**
@@ -14,10 +13,11 @@ import javax.ejb.Local;
  * @author Mefisto
  */
 @Local
-public interface ActividadServicio {
+public interface ClienteTest {
     
     
-    List<Actividad> findAll();
+    Cliente findEmail(Cliente cliente);
     
-    Actividad find(Integer idActividad);
+    Cliente findEmail(String email);
+    
 }
