@@ -15,6 +15,7 @@ import javax.inject.Inject;
 @Stateless
 public class ActividadServicioImpl implements ActividadServicio {
 
+    
     @Inject
     ActividadFacadeLocal actividadDao;
     
