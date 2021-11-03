@@ -4,13 +4,17 @@
  */
 package com.deportessa.proyectodeportes.servicios.validaciones;
 
+import com.deportessa.proyectodeportes.servicios.Excepciones.CamposNoCoincidentesException;
+import com.deportessa.proyectodeportes.servicios.Excepciones.LongitudNoDeseadaException;
+import java.util.Optional;
+
 /**
  *
  * @author Mefisto
  */
 public interface Validaciones {
     
-    Boolean camposIdenticos(String campo1, String campo2);
+    Optional<CamposNoCoincidentesException> camposIdenticos(String campo1, String campo2);
     
     Boolean campoRelleno (String campo);
     
@@ -20,12 +24,12 @@ public interface Validaciones {
     
     Boolean campoRelleno (Double campo);
     
-    Boolean longitudCampo(String campo, Integer longitudMinima);
+    Optional<LongitudNoDeseadaException> longitudCampo(String campo, Integer longitudMinima);
     
-    Boolean longitudCampo(Integer campo, Integer valordMinimo);
+    Optional<LongitudNoDeseadaException> longitudCampo(Integer campo, Integer valordMinimo);
     
-    Boolean longitudCampo(Long campo, Integer valordMinimo);
+    LongitudNoDeseadaException longitudCampo(Long campo, Integer valordMinimo);
     
-    Boolean longitudCampo(Double campo, Integer valordMinimo);
+    LongitudNoDeseadaException longitudCampo(Double campo, Integer valordMinimo);
     
 }

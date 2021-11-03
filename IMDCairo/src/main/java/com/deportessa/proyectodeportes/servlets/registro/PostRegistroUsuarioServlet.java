@@ -32,40 +32,41 @@ public class PostRegistroUsuarioServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
     @Inject
     ClienteServicio clienteServicio;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        Cliente clienteSession = new Cliente();
-        
-        String email = request.getParameter("email");
-        String cEmail = request.getParameter("cemail");
-        String password = request.getParameter("password");
-        String cPassword = request.getParameter("cpassword");
-
-        //Caso de uso --> introducir usuario y contraseña y que la contraseña no esté repetida
-        //Escenario OK
-        //TODO cambiar los if por validadores
-        //Escenario Email no coincidente        
-        //Escenario password no coincidente
-        if (password.equals(cPassword) && email.equals(cEmail)) {
-            try {
-                clienteServicio.findEmail(email);
-                //Escenario email no encontrado
-            } catch (EmailNoExistsException ex) {
-                request.getSession(true);
-                request.setAttribute("email", email);
-                request.setAttribute("password", password);
+//        Cliente clienteSession = new Cliente();
+//        
+//        String email = request.getParameter("email");
+//        String cEmail = request.getParameter("cemail");
+//        String password = request.getParameter("password");
+//        String cPassword = request.getParameter("cpassword");
+//
+//        //Caso de uso --> introducir usuario y contraseña y que la contraseña no esté repetida
+//        //Escenario OK
+//        //TODO cambiar los if por validadores
+//        //Escenario Email no coincidente        
+//        //Escenario password no coincidente
+//        if (password.equals(cPassword) && email.equals(cEmail)) {
+//            try {
+//                clienteServicio.findEmail(email);
+//                //Escenario email no encontrado
+//            } catch (EmailNoExistsException ex) {
+//                request.getSession(true);
+//                request.setAttribute("email", email);
+//                request.setAttribute("password", password);
                 request.getRequestDispatcher("PreRegistroDatosPersonalesServlet").forward(request, response);
-                //Escenario password no coincidente
-            }
-        }else{
-            request.getRequestDispatcher("PreRegistroUsuarioServlet").forward(request, response);
-        }
-        //Escenario Email existente
-        
+//                //Escenario password no coincidente
+//            }
+//        }else{
+//            request.getRequestDispatcher("PreRegistroUsuarioServlet").forward(request, response);
+//        }
+//        //Escenario Email existente
+//        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
