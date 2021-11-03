@@ -22,5 +22,10 @@ public class ActividadServicioImpl implements ActividadServicio {
     public List<Actividad> findAll() {
         return actividadDao.findAll();
     }
+
+    @Override
+    public Actividad find(Integer idActividad) {
+        return actividadDao.find(idActividad);
+    }
     
 }

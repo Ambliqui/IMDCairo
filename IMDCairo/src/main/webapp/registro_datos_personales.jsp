@@ -12,6 +12,8 @@
                 <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1" >
                     <form action="PostRegistroDatosPersonalesServlet">
                         <div class="form-outline mb-4">
+                            <input id="email" type="email" name="email" value="${email}" hidden/>
+                            <input id="password" type="password" name="password" value="${password}" hidden/>
                             <label class="form-label">Nombre</label>
                             <input type="text" name="nombre" class="form-control" placeholder="Introduzca nombre">                                 
                             <div class="form-outline mb-4"> 
@@ -51,7 +53,7 @@
                                                         <h6>Numero de tarjeta</h6>
                                                     </label>
                                                     <div class="input-group"> 
-                                                        <input type="text" name="cardNumber" placeholder="Numero de tarjeta" class="form-control " required>                                          
+                                                        <input type="text" name="numeroTarjeta" placeholder="Numero de tarjeta" class="form-control " required>                                          
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -59,15 +61,15 @@
                                                         <div class="form-group">
                                                             <h6>Fecha de caducidad</h6>
                                                             <div class="input-group">
-                                                                <input type="number" min="01" max="12" placeholder="MM" name="" class="form-control" required> 
-                                                                <input type="number" min="00" max="99"placeholder="YY" name="" class="form-control" required> 
+                                                                <input type="number" min="01" max="12" placeholder="MM" name="mesTarjeta" class="form-control" required> 
+                                                                <input type="number" min="00" max="99"placeholder="YY" name="annoTarjeta" class="form-control" required> 
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-4">
                                                         <div class="form-group mb-4"> 
                                                             <h6>CVS</h6>
-                                                            <input type="text" required class="form-control"> 
+                                                            <input type="text" name="cvsTarjeta" required class="form-control"> 
                                                         </div>
                                                     </div>
                                                 </div>       
@@ -76,7 +78,7 @@
                                         <div id="paypal" class="tab-pane fade pt-3">
                                             <h6 class="pb-2">Paypal</h6>
                                             <div class="form-group">
-                                                <input type="text" required class="form-control" placeholder="Inserte cuenta paypal">
+                                                <input type="text" name="cuentaPaypal" required class="form-control" placeholder="Inserte cuenta paypal">
                                             </div>
                                         </div>   
                                         <div id="net-banking" class="tab-pane fade pt-3">
