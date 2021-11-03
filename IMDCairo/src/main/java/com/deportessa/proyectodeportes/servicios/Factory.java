@@ -15,6 +15,7 @@ import javax.ejb.Local;
 @FunctionalInterface
 public interface Factory {
     
+    
     Crud createCrud();
     
 }

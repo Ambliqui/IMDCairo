@@ -15,6 +15,7 @@ import javax.ejb.Local;
 @Local
 public interface ClienteTest {
     
+    
     Cliente findEmail(Cliente cliente);
     
     Cliente findEmail(String email);

@@ -15,6 +15,7 @@ import javax.ejb.Local;
 @Local
 public interface Crud<T> {
 
+    
     void create(T t);
 
     void update(T t);

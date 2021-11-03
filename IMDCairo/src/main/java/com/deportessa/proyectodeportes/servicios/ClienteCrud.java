@@ -17,6 +17,7 @@ import javax.inject.Inject;
 
 public class ClienteCrud implements Crud<Cliente>{
     
+    
     @Inject
     ClienteFacadeLocal clienteFacadeLocal;
 

@@ -11,6 +11,7 @@ package com.deportessa.proyectodeportes.servicios;
  */
 public class ClienteFactory implements Factory{
 
+    
     @Override
     public Crud createCrud() {
         return new ClienteCrud();

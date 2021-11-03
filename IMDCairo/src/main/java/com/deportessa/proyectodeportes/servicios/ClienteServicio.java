@@ -16,6 +16,7 @@ import javax.ejb.Local;
 @Local
 public interface ClienteServicio {
 
+    
     Cliente loginCliente(Cliente cliente);
 
     Cliente findEmail(Cliente cliente);

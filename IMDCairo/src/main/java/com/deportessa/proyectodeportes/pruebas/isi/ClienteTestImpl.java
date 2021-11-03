@@ -18,6 +18,7 @@ import javax.persistence.criteria.Root;
 @Stateless
 public class ClienteTestImpl implements ClienteTest {
 
+    
     @PersistenceContext(unitName = "pu")
     private EntityManager em;
 
