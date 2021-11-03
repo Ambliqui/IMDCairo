@@ -22,6 +22,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "PostRegistroDatosPersonalesServlet", urlPatterns = {"/PostRegistroDatosPersonalesServlet"})
 public class PostRegistroDatosPersonalesServlet extends HttpServlet {
 
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.

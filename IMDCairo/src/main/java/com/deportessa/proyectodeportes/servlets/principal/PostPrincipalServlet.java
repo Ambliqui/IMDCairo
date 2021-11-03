@@ -32,6 +32,7 @@ public class PostPrincipalServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        
         request.getSession().getServletContext().getAttribute("listaActividades");
     }
 
