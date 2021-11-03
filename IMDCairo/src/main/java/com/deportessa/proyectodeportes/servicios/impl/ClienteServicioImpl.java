@@ -18,6 +18,7 @@ import javax.inject.Inject;
 @Stateless
 public class ClienteServicioImpl implements ClienteServicio {
 
+    
     @Inject
     ClienteFacadeLocal clienteDao;
     
