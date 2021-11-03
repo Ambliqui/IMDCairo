@@ -19,7 +19,7 @@ import javax.persistence.criteria.Root;
 public class ClienteTestImpl implements ClienteTest {
 
     
-    @PersistenceContext(unitName = "pu")
+    @PersistenceContext(unitName = "mysql")
     private EntityManager em;
 
     @Override

@@ -5,12 +5,9 @@
  */
 package com.deportessa.proyectodeportes.servlets.principal;
 
-import com.deportessa.proyectodeportes.daojpa.impl.ActividadFacade;
 import com.deportessa.proyectodeportes.modelo.Actividad;
 import com.deportessa.proyectodeportes.servicios.ActividadServicio;
-import com.deportessa.proyectodeportes.servicios.ClienteServicio;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.ServletException;

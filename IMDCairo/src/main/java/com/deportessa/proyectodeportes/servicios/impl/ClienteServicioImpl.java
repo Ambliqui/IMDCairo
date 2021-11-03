@@ -6,12 +6,12 @@
 package com.deportessa.proyectodeportes.servicios.impl;
 
 import com.deportessa.proyectodeportes.servicios.Excepciones.EmailNoExistsException;
-import com.deportessa.proyectodeportes.daojpa.ClienteFacadeLocal;
+import com.deportessa.proyectodeportes.daojpa.factory.DaoAbstractFactoryLocal;
+import com.deportessa.proyectodeportes.daojpa.factory.qualifiers.FactoryDaoMySql;
 import com.deportessa.proyectodeportes.modelo.Cliente;
 import com.deportessa.proyectodeportes.servicios.ClienteServicio;
 import java.util.Optional;
 import java.util.ResourceBundle;
-import java.util.function.Supplier;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -20,13 +20,14 @@ public class ClienteServicioImpl implements ClienteServicio {
 
     
     @Inject
-    ClienteFacadeLocal clienteDao;
+    @FactoryDaoMySql
+    private DaoAbstractFactoryLocal daoFactoryLocal;
     
     @Override
     public Cliente loginCliente(Cliente cliente) {
         //TODO: Devolver un cliente DTO
 //        cliente = clienteDao.edit(cliente);
-        return clienteDao.find(cliente.getIdCliente());
+        return daoFactoryLocal.getClienteDaoLocal().find(cliente.getIdCliente());
     }
 
     @Override
@@ -36,7 +37,7 @@ public class ClienteServicioImpl implements ClienteServicio {
 
     @Override
     public Cliente findEmail(String email) throws EmailNoExistsException{
-        Optional <Cliente> cliente =clienteDao.findByEmail(email);
+        Optional <Cliente> cliente =daoFactoryLocal.getClienteDaoLocal().findByEmail(email);
         return cliente.orElseThrow(() -> new EmailNoExistsException(ResourceBundle.getBundle("bundle.errores").getString("cliente.emailnotfound")));
     }
     
