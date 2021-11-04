@@ -9,6 +9,8 @@ import com.deportessa.proyectodeportes.daojpa.factory.DaoAbstractFactoryLocal;
 import com.deportessa.proyectodeportes.daojpa.factory.qualifiers.FactoryDaoMySql;
 import com.deportessa.proyectodeportes.modelo.Actividad;
 import com.deportessa.proyectodeportes.modelo.Cliente;
+import com.deportessa.proyectodeportes.modelo.Inscripcion;
+import com.deportessa.proyectodeportes.modelo.Tarjeta;
 import java.math.BigDecimal;
 import javax.inject.Inject;
 import javax.servlet.ServletContextEvent;
@@ -29,12 +31,13 @@ public class InicioAppListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        if(daoFactoryLocal.getActividadDaoLocal().findAll().isEmpty()){
+        if (daoFactoryLocal.getActividadDaoLocal().findAll().isEmpty()) {
             inicializarbbdd();
         }
         
+
         //TODO: Poner actividades en Contexto
-       // sce.getServletContext().setAttribute("listaActividades", daoFactoryLocal.getActividadDaoLocal().findAll());
+        // sce.getServletContext().setAttribute("listaActividades", daoFactoryLocal.getActividadDaoLocal().findAll());
     }
 
     private void inicializarbbdd() {
@@ -58,6 +61,30 @@ public class InicioAppListener implements ServletContextListener {
         daoFactoryLocal.getActividadDaoLocal().create(actividad5);
         daoFactoryLocal.getActividadDaoLocal().create(actividad6);
 
+        //crear metodo de pago
+        Tarjeta t = new Tarjeta(111, 5, 2022, 254);
+        Tarjeta t1 = new Tarjeta(222, 2, 2022, 169);
+        Tarjeta t2 = new Tarjeta(333, 8, 2023, 555);
+
+        //añadir tarjeta al cliente
+        cliente = daoFactoryLocal.getClienteDaoLocal().findByEmail(cliente.getEmailCliente()).get();
+        cliente.addMPago(t);
+        cliente.addMPago(t1);
+        daoFactoryLocal.getClienteDaoLocal().edit(cliente);
+        cliente1 = daoFactoryLocal.getClienteDaoLocal().findByEmail(cliente1.getEmailCliente()).get();
+        cliente1.addMPago(t2);
+        daoFactoryLocal.getClienteDaoLocal().edit(cliente1);
+        
+        Inscripcion inscripcion=new Inscripcion(actividad, t);
+        Inscripcion inscripcion2=new Inscripcion(actividad2, t);
+        Inscripcion inscripcion3=new Inscripcion(actividad3, t);
+        Inscripcion inscripcion4=new Inscripcion(actividad4, t2);
+        
+        daoFactoryLocal.getInscripcionDaoLocal().create(inscripcion);
+        daoFactoryLocal.getInscripcionDaoLocal().create(inscripcion2);
+        daoFactoryLocal.getInscripcionDaoLocal().create(inscripcion3);
+        daoFactoryLocal.getInscripcionDaoLocal().create(inscripcion4);
+        
     }
 
     @Override
