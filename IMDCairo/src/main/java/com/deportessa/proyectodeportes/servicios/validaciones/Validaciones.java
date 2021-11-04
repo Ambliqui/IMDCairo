@@ -5,6 +5,8 @@
 package com.deportessa.proyectodeportes.servicios.validaciones;
 
 import com.deportessa.proyectodeportes.servicios.Excepciones.CamposNoCoincidentesException;
+import com.deportessa.proyectodeportes.servicios.Excepciones.EmailNoExistsException;
+import com.deportessa.proyectodeportes.servicios.Excepciones.EmailNoFormateadoException;
 import com.deportessa.proyectodeportes.servicios.Excepciones.LongitudNoDeseadaException;
 import java.util.Optional;
 
@@ -15,6 +17,10 @@ import java.util.Optional;
 public interface Validaciones {
     
     Optional<CamposNoCoincidentesException> camposIdenticos(String campo1, String campo2);
+    
+    Optional<EmailNoExistsException> emailNoExistente(String email);
+    
+    Optional<EmailNoFormateadoException> emailNoFormateado(String email);
     
     Boolean campoRelleno (String campo);
     

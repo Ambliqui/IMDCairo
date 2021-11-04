@@ -4,9 +4,10 @@
  */
 package com.deportessa.proyectodeportes.servicios.validaciones;
 
-import com.deportessa.proyectodeportes.servicios.Excepciones.CamposNoCoincidentesException;
-import com.deportessa.proyectodeportes.servicios.Excepciones.LongitudNoDeseadaException;
+import com.deportessa.proyectodeportes.servicios.Excepciones.*;
 import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.ejb.Stateless;
 
 @Stateless
@@ -23,8 +24,17 @@ public class ValidacionesImpl implements Validaciones {
     }
 
     @Override
+    public Optional<EmailNoExistsException> emailNoExistente(String email) {
+        if (true) {
+            return Optional.empty();
+        } else {
+            return Optional.of( new EmailNoExistsException("El email no se encuentra en la base de datos"));
+        }
+    }
+
+    @Override
     public Boolean campoRelleno(String campo) {
-        if (campo != null && campo.trim().length() != 0 ) {
+        if (campo != null && campo.trim().length() != 0) {
             return true;
         } else {
             return false;
@@ -48,10 +58,10 @@ public class ValidacionesImpl implements Validaciones {
 
     @Override
     public Optional<LongitudNoDeseadaException> longitudCampo(String campo, Integer longitudMinima) {
-        if(campo.trim().length()>= longitudMinima){
+        if (campo.trim().length() >= longitudMinima) {
             return Optional.empty(); //LongitudNoDeseadaException exception = new LongitudNoDeseadaException("La longuitud no es la deseada");
 //            return exception;
-        }else{
+        } else {
             LongitudNoDeseadaException exception = new LongitudNoDeseadaException("La longuitud no es la deseada");
             return Optional.of(exception);
         }
@@ -71,5 +81,21 @@ public class ValidacionesImpl implements Validaciones {
     public LongitudNoDeseadaException longitudCampo(Double campo, Integer valordMinimo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-    
+
+    @Override
+    public Optional<EmailNoFormateadoException> emailNoFormateado(String email) {
+                // Patrón para validar el email
+        Pattern pattern = Pattern
+                .compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                        + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+ 
+        Matcher mather = pattern.matcher(email);
+ 
+        if (mather.find() == true) {
+            return Optional.empty();
+        } else {
+            return Optional.of(new EmailNoFormateadoException("El email no tiene el formato correcto"));
+        }
+    }
+
 }

@@ -45,11 +45,11 @@ public class RegistroUsuarioFilter implements Filter {
         //list<Exception> limpiar(exceptions)
         
         //TODO: Hacer validaciones patterns para ciertos tipos de campos
-        validaciones.longitudCampo(request.getParameter("email"),1).ifPresent((error) -> exceptions.add( error));
-        validaciones.longitudCampo(request.getParameter("password"),1).ifPresent((error) -> exceptions.add( error));
-//        exceptions.add(validaciones.camposIdenticos(request.getParameter("email"), request.getParameter("cemail")));
-//        exceptions.add(validaciones.camposIdenticos(request.getParameter("password"), request.getParameter("cpassword")));
+        validaciones.longitudCampo(request.getParameter("email"), 1).ifPresent((error) -> exceptions.add(error));
+        validaciones.longitudCampo(request.getParameter("password"), 1).ifPresent((error) -> exceptions.add(error));
+        validaciones.emailNoFormateado(request.getParameter("email"));//.ifPresent((error) -> exceptions.add(error));
         
+
         if (exceptions.isEmpty()) {
 //            httpServletRequest.getRequestDispatcher("PreRegistroDatosPersonalesServlet").forward(request, response);
             chain.doFilter(request, response);
