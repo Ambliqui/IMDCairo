@@ -5,7 +5,7 @@
  */
 package com.deportessa.proyectodeportes.servicios.impl;
 
-import com.deportessa.proyectodeportes.servicios.Excepciones.EmailNoExistsException;
+import com.deportessa.proyectodeportes.servicios.excepciones.EmailNoExistsException;
 import com.deportessa.proyectodeportes.daojpa.factory.DaoAbstractFactoryLocal;
 import com.deportessa.proyectodeportes.daojpa.factory.qualifiers.FactoryDaoMySql;
 import com.deportessa.proyectodeportes.modelo.Cliente;

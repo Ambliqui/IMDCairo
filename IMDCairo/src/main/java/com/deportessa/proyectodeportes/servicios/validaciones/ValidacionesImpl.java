@@ -4,7 +4,10 @@
  */
 package com.deportessa.proyectodeportes.servicios.validaciones;
 
-import com.deportessa.proyectodeportes.servicios.Excepciones.*;
+import com.deportessa.proyectodeportes.servicios.excepciones.EmailNoFormateadoException;
+import com.deportessa.proyectodeportes.servicios.excepciones.LongitudNoDeseadaException;
+import com.deportessa.proyectodeportes.servicios.excepciones.CamposNoCoincidentesException;
+import com.deportessa.proyectodeportes.servicios.excepciones.EmailNoExistsException;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -62,7 +65,7 @@ public class ValidacionesImpl implements Validaciones {
             return Optional.empty(); //LongitudNoDeseadaException exception = new LongitudNoDeseadaException("La longuitud no es la deseada");
 //            return exception;
         } else {
-            LongitudNoDeseadaException exception = new LongitudNoDeseadaException("La longuitud no es la deseada");
+            LongitudNoDeseadaException exception = new LongitudNoDeseadaException("La longuitud mínima del campo debe ser: " + longitudMinima);
             return Optional.of(exception);
         }
     }

@@ -4,10 +4,10 @@
  */
 package com.deportessa.proyectodeportes.servicios.validaciones;
 
-import com.deportessa.proyectodeportes.servicios.Excepciones.CamposNoCoincidentesException;
-import com.deportessa.proyectodeportes.servicios.Excepciones.EmailNoExistsException;
-import com.deportessa.proyectodeportes.servicios.Excepciones.EmailNoFormateadoException;
-import com.deportessa.proyectodeportes.servicios.Excepciones.LongitudNoDeseadaException;
+import com.deportessa.proyectodeportes.servicios.excepciones.CamposNoCoincidentesException;
+import com.deportessa.proyectodeportes.servicios.excepciones.EmailNoExistsException;
+import com.deportessa.proyectodeportes.servicios.excepciones.EmailNoFormateadoException;
+import com.deportessa.proyectodeportes.servicios.excepciones.LongitudNoDeseadaException;
 import java.util.Optional;
 
 /**

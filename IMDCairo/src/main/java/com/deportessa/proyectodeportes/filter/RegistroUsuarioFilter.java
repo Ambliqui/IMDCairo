@@ -6,16 +6,12 @@ package com.deportessa.proyectodeportes.filter;
 
 import com.deportessa.proyectodeportes.servicios.validaciones.Validaciones;
 import java.io.IOException;
-import java.io.PrintStream;
-import java.io.PrintWriter;
-import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
 import javax.servlet.DispatcherType;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
-import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -45,21 +41,27 @@ public class RegistroUsuarioFilter implements Filter {
         //list<Exception> limpiar(exceptions)
         
         //TODO: Hacer validaciones patterns para ciertos tipos de campos
-        validaciones.longitudCampo(request.getParameter("email"), 1).ifPresent((error) -> exceptions.add(error));
-        validaciones.longitudCampo(request.getParameter("password"), 1).ifPresent((error) -> exceptions.add(error));
-        validaciones.emailNoFormateado(request.getParameter("email"));//.ifPresent((error) -> exceptions.add(error));
+        validaciones.emailNoFormateado(request.getParameter("email")).ifPresent((error) -> exceptions.add(error));
+        validaciones.camposIdenticos(request.getParameter("email"), request.getParameter("cemail")).ifPresent((error) -> exceptions.add(error));
+        validaciones.longitudCampo(request.getParameter("password"), 8).ifPresent((error) -> exceptions.add(error));
+        validaciones.camposIdenticos(request.getParameter("password"), request.getParameter("cpassword")).ifPresent((error) -> exceptions.add(error));
+//        validaciones.emailNoExistente(request.getParameter("email")).ifPresent((error) -> exceptions.add(error));
         
-
         if (exceptions.isEmpty()) {
-//            httpServletRequest.getRequestDispatcher("PreRegistroDatosPersonalesServlet").forward(request, response);
             chain.doFilter(request, response);
         } else {
+
+            //Recuperamos lo que nos ha escrito el cliente para volver a mostrarlo en pantalla
+            httpServletRequest.setAttribute("email", request.getParameter("email"));
+            httpServletRequest.setAttribute("cemail", request.getParameter("cemail"));
+            httpServletRequest.setAttribute("password", request.getParameter("password"));
+            httpServletRequest.setAttribute("cpassword", request.getParameter("cpassword"));
+            
+            //Devolvemos los errores
             httpServletRequest.setAttribute("errores", exceptions);
             httpServletRequest.getRequestDispatcher("PreRegistroUsuarioServlet").forward(request, response);
         }
 
-        //TODO pruebas, quitar despues de hacer las pruebas
-        System.out.println("La lista es asi de grande: " + exceptions.size());
     }
 
 }

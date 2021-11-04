@@ -9,7 +9,7 @@ package com.deportessa.proyectodeportes.servlets.login;
 import com.deportessa.proyectodeportes.modelo.Cliente;
 import com.deportessa.proyectodeportes.pruebas.isi.ClienteTest;
 import com.deportessa.proyectodeportes.servicios.ClienteServicio;
-import com.deportessa.proyectodeportes.servicios.Excepciones.EmailNoExistsException;
+import com.deportessa.proyectodeportes.servicios.excepciones.EmailNoExistsException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;

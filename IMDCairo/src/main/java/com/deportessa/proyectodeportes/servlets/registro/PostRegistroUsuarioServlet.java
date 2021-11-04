@@ -8,7 +8,7 @@ package com.deportessa.proyectodeportes.servlets.registro;
 
 import com.deportessa.proyectodeportes.modelo.Cliente;
 import com.deportessa.proyectodeportes.servicios.ClienteServicio;
-import com.deportessa.proyectodeportes.servicios.Excepciones.EmailNoExistsException;
+import com.deportessa.proyectodeportes.servicios.excepciones.EmailNoExistsException;
 import java.io.IOException;
 import javax.inject.Inject;
 import javax.servlet.ServletException;

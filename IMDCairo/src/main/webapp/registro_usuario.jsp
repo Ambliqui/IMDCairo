@@ -15,19 +15,19 @@
                 <form action="PostRegistroUsuarioServlet">
                     <div>
                         <label class="form-label">Email</label>
-                        <input name="email" type="email" class="form-control" placeholder="Introduzca email" />
-                        <input name="cemail" type="email" class="form-control" placeholder="Repite Email"7>
+                        <input name="email" type="email" value="${email}" class="form-control" placeholder="Introduzca email" />
+                        <input name="cemail" type="email" value="${cemail}" class="form-control" placeholder="Repite Email"7>
                     </div>
                     <div>
                         <label class="form-label">Password</label>
-                        <input name="password" type="password" class="form-control" placeholder="Introduzca password" />
-                        <input name="cpassword" type="password" class="form-control" placeholder="Repite Password"/>
+                        <input name="password" type="password" value="${password}" class="form-control" placeholder="Introduzca password" />
+                        <input name="cpassword" type="password" value="${cpassword}" class="form-control" placeholder="Repite Password"/>
                     </div>
                     <div class="align-items-center">
                         <input type="submit" class="link-primary" value="Siguiente"/>
                     </div>
                     <c:forEach items="${errores}" var="error">
-                        ${error.getMessage()}
+                        <c:out value="${error.getMessage()}"/><br/>
                     </c:forEach>
                 </form>
             </div>
