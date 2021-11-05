@@ -14,7 +14,7 @@
                         <img src="resources/images/pagina/comun/logo.jpg" alt="100%" width="100%">          
                     </div>
                     <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                        <form action="PostLoginServlet">
+                        <form action="PostLoginServlet?accion=login">
                             <div class="form-outline mb-4">
                                 <label class="form-label">Email</label>
                                 <input type="email" name="email" class="form-control form-control-lg"
@@ -25,6 +25,11 @@
                                 <input type="password" name="password" class="form-control form-control-lg"
                                        placeholder="Introduzca password" />
                             </div>
+                            <!-- TODO: Revisar ubicacion -->
+                            <c:forEach items="${errores}" var="error">
+                                Error
+                                <c:out value="${error.getMessage()}"/><br/>
+                            </c:forEach>
                             <div class="text-center text-lg-start mt-4 pt-2">
                                 <!-- TODO: En serio un button? -->
                                 <input type="submit" value="Login" class="btn btn-outline-info" style="padding-left: 2.5rem; padding-right: 2.5rem;"></input>
