@@ -11,7 +11,7 @@ import com.deportessa.proyectodeportes.servicios.excepciones.LongitudNoDeseadaEx
 import java.util.Optional;
 
 /**
- *
+ * Interfaz de las distintas validaciones de nuestro programa
  * @author Mefisto
  */
 public interface Validaciones {
@@ -24,18 +24,6 @@ public interface Validaciones {
     
     Boolean campoRelleno (String campo);
     
-    Boolean campoRelleno (Integer campo);
-    
-    Boolean campoRelleno (Long campo);
-    
-    Boolean campoRelleno (Double campo);
-    
     Optional<LongitudNoDeseadaException> longitudCampo(String campo, Integer longitudMinima);
-    
-    Optional<LongitudNoDeseadaException> longitudCampo(Integer campo, Integer valordMinimo);
-    
-    LongitudNoDeseadaException longitudCampo(Long campo, Integer valordMinimo);
-    
-    LongitudNoDeseadaException longitudCampo(Double campo, Integer valordMinimo);
     
 }

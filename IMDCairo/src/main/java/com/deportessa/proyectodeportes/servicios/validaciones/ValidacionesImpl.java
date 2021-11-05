@@ -28,6 +28,7 @@ public class ValidacionesImpl implements Validaciones {
 
     @Override
     public Optional<EmailNoExistsException> emailNoExistente(String email) {
+        //TODO: Cambiar a lo que nos devuelve realmente el metodo de la excepcion
         if (true) {
             return Optional.empty();
         } else {
@@ -45,44 +46,13 @@ public class ValidacionesImpl implements Validaciones {
     }
 
     @Override
-    public Boolean campoRelleno(Integer campo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Boolean campoRelleno(Long campo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public Boolean campoRelleno(Double campo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public Optional<LongitudNoDeseadaException> longitudCampo(String campo, Integer longitudMinima) {
         if (campo.trim().length() >= longitudMinima) {
-            return Optional.empty(); //LongitudNoDeseadaException exception = new LongitudNoDeseadaException("La longuitud no es la deseada");
-//            return exception;
+            return Optional.empty();
         } else {
             LongitudNoDeseadaException exception = new LongitudNoDeseadaException("La longuitud mínima del campo debe ser: " + longitudMinima);
             return Optional.of(exception);
         }
-    }
-
-    @Override
-    public Optional<LongitudNoDeseadaException> longitudCampo(Integer campo, Integer valordMinimo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public LongitudNoDeseadaException longitudCampo(Long campo, Integer valordMinimo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public LongitudNoDeseadaException longitudCampo(Double campo, Integer valordMinimo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
