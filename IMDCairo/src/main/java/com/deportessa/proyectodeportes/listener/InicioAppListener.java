@@ -31,61 +31,12 @@ public class InicioAppListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        if (daoFactoryLocal.getActividadDaoLocal().findAll().isEmpty()) {
-            inicializarbbdd();
-        }
         
-
         //TODO: Poner actividades en Contexto
         // sce.getServletContext().setAttribute("listaActividades", daoFactoryLocal.getActividadDaoLocal().findAll());
     }
 
-    private void inicializarbbdd() {
-        //crear clientes
-        Cliente cliente = new Cliente("1@1", "1", "Paco", "perez", "666555444");
-        Cliente cliente1 = new Cliente("2@2", "1", "Maria", "Martínez", "666333999");
-        daoFactoryLocal.getClienteDaoLocal().create(cliente);
-        daoFactoryLocal.getClienteDaoLocal().create(cliente1);
-
-        //crear actividades
-        Actividad actividad = new Actividad("Fútbol", "Campo de fútbol", "Dale a la pelota con el pie", new BigDecimal(13), "M-Mi-J");
-        Actividad actividad2 = new Actividad("Natacióin", "Piscina cubierta", "Respirar siempre con la cabeza fuera del agua", new BigDecimal(18), "M-Mi-J");
-        Actividad actividad3 = new Actividad("Ajedrez", "Sala de ajedrez", "Si no quieres lesionarte esta es tu actividad", new BigDecimal(7), "L-M-V");
-        Actividad actividad4 = new Actividad("Baloncesto", "Polideportivo", "Te vas a doblar el dedo para atras", new BigDecimal(10), "Mi-V");
-        Actividad actividad5 = new Actividad("Jockey", "Polideportivo", "Dale a la pelota con el palo", new BigDecimal(10), "L-Mi-V");
-        Actividad actividad6 = new Actividad("Tenis", "Polideportivo", "Por la tele se ve mas facil", new BigDecimal(18), "M-Mi-J");
-        daoFactoryLocal.getActividadDaoLocal().create(actividad);
-        daoFactoryLocal.getActividadDaoLocal().create(actividad2);
-        daoFactoryLocal.getActividadDaoLocal().create(actividad3);
-        daoFactoryLocal.getActividadDaoLocal().create(actividad4);
-        daoFactoryLocal.getActividadDaoLocal().create(actividad5);
-        daoFactoryLocal.getActividadDaoLocal().create(actividad6);
-
-        //crear metodo de pago
-        Tarjeta t = new Tarjeta(111, 5, 2022, 254);
-        Tarjeta t1 = new Tarjeta(222, 2, 2022, 169);
-        Tarjeta t2 = new Tarjeta(333, 8, 2023, 555);
-
-        //añadir tarjeta al cliente
-        cliente = daoFactoryLocal.getClienteDaoLocal().findByEmail(cliente.getEmailCliente()).get();
-        cliente.addMPago(t);
-        cliente.addMPago(t1);
-        daoFactoryLocal.getClienteDaoLocal().edit(cliente);
-        cliente1 = daoFactoryLocal.getClienteDaoLocal().findByEmail(cliente1.getEmailCliente()).get();
-        cliente1.addMPago(t2);
-        daoFactoryLocal.getClienteDaoLocal().edit(cliente1);
-        
-        Inscripcion inscripcion=new Inscripcion(actividad, t);
-        Inscripcion inscripcion2=new Inscripcion(actividad2, t);
-        Inscripcion inscripcion3=new Inscripcion(actividad3, t);
-        Inscripcion inscripcion4=new Inscripcion(actividad4, t2);
-        
-        daoFactoryLocal.getInscripcionDaoLocal().create(inscripcion);
-        daoFactoryLocal.getInscripcionDaoLocal().create(inscripcion2);
-        daoFactoryLocal.getInscripcionDaoLocal().create(inscripcion3);
-        daoFactoryLocal.getInscripcionDaoLocal().create(inscripcion4);
-        
-    }
+   
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {

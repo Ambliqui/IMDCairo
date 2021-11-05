@@ -5,11 +5,8 @@
  */
 package com.deportessa.proyectodeportes.servlets.misActividades;
 
-import com.deportessa.proyectodeportes.modelo.Actividad;
 import com.deportessa.proyectodeportes.modelo.Cliente;
-import com.deportessa.proyectodeportes.servicios.ClienteServicio;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,7 +19,7 @@ import com.deportessa.proyectodeportes.servicios.InscripcionServicio;
  *
  * @author pryet
  */
-@WebServlet(name = "PreMisActividades", urlPatterns = {"/login/preMisActividades"})
+@WebServlet(name = "PreMisActividades", urlPatterns = {"/preMisActividades"})
 public class PreMisActividades extends HttpServlet {
 
     @Inject
@@ -41,7 +38,7 @@ public class PreMisActividades extends HttpServlet {
         Cliente cliente=(Cliente) request.getSession().getAttribute("clienteSession");
        request.setAttribute("inscripciones", inscripcionServicio.getInscripciones(cliente));
        
-        request.getRequestDispatcher(".././misActividades.jsp").forward(request, response);
+        request.getRequestDispatcher("./misActividades.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

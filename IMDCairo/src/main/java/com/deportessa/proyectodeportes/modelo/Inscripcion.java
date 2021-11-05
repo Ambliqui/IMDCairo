@@ -54,10 +54,6 @@ public class Inscripcion implements Serializable {
         this.actividadMetodoPagoPK = new ActividadMetodoPagoPK(idActividad, idPago);
     }
 
-    @PrePersist
-    private void setId(){
-        actividadMetodoPagoPK=new ActividadMetodoPagoPK(actividad.getIdActividad(), metodoPago.getIdPago());
-    }
     
     public Inscripcion(Actividad actividad, MetodoPago metodoPago) {
         this.actividad = actividad;

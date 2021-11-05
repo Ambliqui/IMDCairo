@@ -6,24 +6,35 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html lang="es" class="h-100">
     <%@ include file="structure/head.jsp" %>
-    <body>       
+    <body class="d-flex flex-column h-100">       
+
         <%@ include file="structure/header_login.jsp" %>
-        <div style="height: 100px;" >
-            <h2 class="text-center" ><p>Sus actividades</p></h2>
-        </div>
-        <div class="row row-cols-3 row-cols-md-3 g-4" class="card-body" class="col-sm-6">
-            <c:forEach items="${inscripciones}" var="insc">
-            <article>
-                <p>Fecha de inscripción: ${insc.fechaAltaInscripcion}</p>
-                <img src=resources/images/deportes/${insc.actividad.idActividad}.jpg alt="300" width="100%"/>
-                <h5 class="text-center"><c:out value="${insc.actividad.nombre}"/></h5>
-                <p><c:out value="${insc.actividad.descripcion}"/></p>
-                <button type="button" class="btn btn-outline-info"><a href="PreDetallesServlet?actividad=${insc.actividad.idActividad}">Detalles</a></button>
-            </article>
-            </c:forEach>                    
-        </div>
+        <header style="height: 100px;" >
+            <h2 class="text-center" > Sus actividades</h2>
+        </header>
+        
+        <main class="container">
+            <table class="table table-hover">
+                <thead>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Fecha alta</th>
+                </thead>
+                <tbody>
+                    <c:forEach items="${inscripciones}" var="insc">
+
+                        <tr>
+                            <td>${insc.actividad.nombre}</td>
+                            <td>${insc.actividad.descripcion}</td>
+                            <td>${insc.getFechaAlta()}</td>
+                        </tr>
+
+                    </c:forEach> 
+                </tbody>
+            </table>
+        </main>
         <%@ include file="structure/footer.jsp" %>
     </body>
 </html>
