@@ -5,7 +5,7 @@
 <body class="d-flex flex-column h-100">
     <%@ include file="structure/header_no_login.jsp" %>
     <div style="height: 5px;" >
-        <h2 class="text-center" ><p>Registro</p></h2>
+        <h2 class="text-center" >Registro</h2>
     </div>
     <section class="flex-shrink-0">
         <div class="container-fluid h-custom">       
@@ -28,7 +28,7 @@
                                 <input name="apellidos" type="text" class="form-control" placeholder="Introduzca apellidos">
                                 <div class="form-outline mb-4">
                                     <label class="form-label">Telefono</label>
-                                    <input type="phone" name="telefono" class="form-control" placeholder="Introduzca telefono">
+                                    <input type="text" name="telefono" class="form-control" placeholder="Introduzca telefono">
                                 </div>
                             </div> 
                         </div>

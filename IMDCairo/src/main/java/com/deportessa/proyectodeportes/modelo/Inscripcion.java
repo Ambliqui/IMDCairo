@@ -50,10 +50,11 @@ public class Inscripcion implements Serializable {
     public Inscripcion() {
     }
 
-    public Inscripcion(int idActividad, int idCliente) {
-        this.actividadMetodoPagoPK = new ActividadMetodoPagoPK(idActividad, idCliente);
+    public Inscripcion(int idActividad, int idPago) {
+        this.actividadMetodoPagoPK = new ActividadMetodoPagoPK(idActividad, idPago);
     }
 
+    
     public Inscripcion(Actividad actividad, MetodoPago metodoPago) {
         this.actividad = actividad;
         this.metodoPago = metodoPago;
