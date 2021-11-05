@@ -34,11 +34,7 @@ public class RegistroUsuarioFilter implements Filter {
             throws IOException, ServletException {
 
         HttpServletRequest httpServletRequest = (HttpServletRequest) request;
-
         List<Exception> exceptions = new ArrayList<>();
-
-        //metodo no null 
-        //list<Exception> limpiar(exceptions)
         
         //TODO: Hacer validaciones patterns para ciertos tipos de campos
         validaciones.emailNoFormateado(request.getParameter("email")).ifPresent((error) -> exceptions.add(error));
