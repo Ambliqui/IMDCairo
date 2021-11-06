@@ -5,6 +5,7 @@
  */
 package com.deportessa.proyectodeportes.servicios;
 
+import com.deportessa.proyectodeportes.servicios.dto.InscripcionDTO;
 import com.deportessa.proyectodeportes.modelo.Cliente;
 import com.deportessa.proyectodeportes.modelo.Inscripcion;
 import java.util.List;
@@ -17,4 +18,6 @@ import javax.ejb.Local;
 @Local
 public interface InscripcionServicio {
     List<Inscripcion> getInscripciones(Cliente cliente);
+    List<InscripcionDTO> getInscripcionesDTO(Cliente cliente);
+    void baja(Integer idActividad, Integer idPago);
 }

@@ -130,6 +130,11 @@ public class Tarjeta extends MetodoPago implements Serializable {
         return "Tarjeta{" + "numTarjeta=" + numTarjeta + ", mesTarjeta=" + mesTarjeta + ", annoTarjeta=" + annoTarjeta + ", cvsTarjeta=" + cvsTarjeta + '}';
     }
 
+    @Override
+    public String getDatos() {
+        return String.valueOf(this.numTarjeta);
+    }
+
     
 
 }

@@ -5,25 +5,26 @@
  */
 package com.deportessa.proyectodeportes.servlets.misActividades;
 
-import com.deportessa.proyectodeportes.modelo.Cliente;
+import com.deportessa.proyectodeportes.servicios.InscripcionServicio;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.deportessa.proyectodeportes.servicios.InscripcionServicio;
 
 /**
  *
  * @author pryet
  */
-@WebServlet(name = "PreMisActividades", urlPatterns = {"/preMisActividades"})
-public class PreMisActividades extends HttpServlet {
+@WebServlet(name = "Baja", urlPatterns = {"/baja"})
+public class Baja extends HttpServlet {
 
     @Inject
-    InscripcionServicio inscripcionServicio;
+    InscripcionServicio inscServ;
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -35,11 +36,11 @@ public class PreMisActividades extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        Cliente cliente=(Cliente) request.getSession().getAttribute("clienteSession");
-        request.setAttribute("inscripciones", inscripcionServicio.getInscripcionesDTO(cliente));
-       //request.setAttribute("inscripciones", inscripcionServicio.getInscripciones(cliente));
-       
-        request.getRequestDispatcher("./misActividades.jsp").forward(request, response);
+        
+       Integer idActividad=Integer.parseInt(request.getParameter("actividad"));
+       Integer idPago=Integer.parseInt(request.getParameter("mPago"));
+        inscServ.baja(idActividad, idPago);
+        request.getRequestDispatcher("./preMisActividades").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

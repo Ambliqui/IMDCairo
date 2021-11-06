@@ -41,6 +41,7 @@ public abstract class MetodoPago implements Serializable {
     private List<Inscripcion> inscripciones;
     
     public abstract void editarMetodoPago(MetodoPago metodoPago);
+    public abstract String getDatos();
     
     public MetodoPago() {
     }

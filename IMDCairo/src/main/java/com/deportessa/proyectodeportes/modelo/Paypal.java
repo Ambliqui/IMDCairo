@@ -76,6 +76,11 @@ public class Paypal extends MetodoPago implements Serializable {
         return "Paypal{" + "correo=" + correo + '}';
     }
 
+    @Override
+    public String getDatos() {
+        return this.correo;
+    }
+
    
 
 }
