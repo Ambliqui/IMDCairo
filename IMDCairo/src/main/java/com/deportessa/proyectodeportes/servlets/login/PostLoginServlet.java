@@ -49,7 +49,7 @@ public class PostLoginServlet extends HttpServlet {
 
         Cliente clienteSession = new Cliente();
         try {
-            clienteSession = clienteServicio.findEmail("1@1.com");
+            clienteSession = clienteServicio.findEmail(email);
                 request.getSession(true);
                 request.getSession().setAttribute("clienteSession", clienteSession);
                 request.getRequestDispatcher("PrePrincipalServlet").forward(request, response);
