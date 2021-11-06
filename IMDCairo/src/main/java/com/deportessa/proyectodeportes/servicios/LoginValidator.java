@@ -33,7 +33,7 @@ public class LoginValidator implements ActionController {
         validaciones.emailNoFormateado(request.getParameter("email")).ifPresent((error) -> exceptions.add(error));
 
         if (exceptions.isEmpty()) {
-            return "/PrePrincipalServlet";
+            return "/PostLoginServlet";
         } else {
             //Recuperamos lo que nos ha escrito el cliente para volver a mostrarlo en pantalla
             request.setAttribute("email", request.getParameter("email"));

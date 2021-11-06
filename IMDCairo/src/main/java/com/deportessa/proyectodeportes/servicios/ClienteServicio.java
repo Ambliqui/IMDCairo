@@ -7,7 +7,7 @@ package com.deportessa.proyectodeportes.servicios;
 
 import com.deportessa.proyectodeportes.modelo.Actividad;
 import com.deportessa.proyectodeportes.modelo.Cliente;
-import com.deportessa.proyectodeportes.servicios.Excepciones.EmailNoExistsException;
+import com.deportessa.proyectodeportes.servicios.excepciones.EmailNoExistsException;
 import java.util.List;
 import javax.ejb.Local;
 

@@ -1,5 +1,5 @@
 
-<%@page contentType="text/html" pageEncoding="UTF-8" session="false"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <%@ include file="structure/head.jsp" %>
@@ -15,8 +15,16 @@
                     <img src=resources/images/deportes/${actividad.idActividad}.jpg alt="300" width="100%"/>
                     <p><c:out value="${actividad.descripcion}"/></p>
                     <p class="text-center"><c:out value="${actividad.precio}€"/></p>
-                    <button type="button" class="btn btn-outline-info">Inscribirte</button>
-                    <input type="submit" value="Inscribirse">
+
+
+                    <label for="metodoPago">Escoge un metodo de pago</label>
+                    <select name="metodoPago" id="metodoPago">
+                        <c:forEach items="${clienteSession.metodosPagoCliente}" var="metodo" >
+                            <option value="${metodo.idPago}"><c:out value="${metodo.getClass().getName()} ${metodo.idPago}"/></option>
+                        </c:forEach>
+                    </select>
+                    <br><br>
+                    <input type="submit" class="btn btn-outline-info" value="Inscribirse">
                 </form>
             </article>
         </div>

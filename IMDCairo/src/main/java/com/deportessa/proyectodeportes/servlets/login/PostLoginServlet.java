@@ -45,33 +45,19 @@ public class PostLoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        request.getRequestDispatcher("ActionsServices").forward(request, response);
-        
-//        Cliente cliente = new Cliente();
-//
-//        String email = request.getParameter("email");
-//        String password = request.getParameter("password");
-//
-//        cliente.setPassCliente(password);
-//        cliente.setEmailCliente(email);
-//
-//        Cliente clienteSession = new Cliente();
-//        try {
-//            clienteSession = clienteServicio.findEmail(email);
-//            if (clienteSession.getPassCliente().equals(password)) {
-//                request.getSession(true);
-//                request.getSession().setAttribute("clienteSession", clienteSession);
-//                request.getRequestDispatcher("PrePrincipalServlet").forward(request, response);
-//                return;
-//            //Escenario password no coincidente
-//            }
-//        //Escenario email no encontrado
-//        } catch (EmailNoExistsException ex) {
-//            Logger.getLogger(PostLoginServlet.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//
-//        //Escenario email sin formato correcto
-//        request.getRequestDispatcher("PreLoginServlet").forward(request, response);
+        String email = request.getParameter("email");
+
+        Cliente clienteSession = new Cliente();
+        try {
+            clienteSession = clienteServicio.findEmail("1@1");
+                request.getSession(true);
+                request.getSession().setAttribute("clienteSession", clienteSession);
+                request.getRequestDispatcher("PrePrincipalServlet").forward(request, response);
+
+        } catch (EmailNoExistsException ex) {
+            Logger.getLogger(PostLoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         
     }
 

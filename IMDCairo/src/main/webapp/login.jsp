@@ -14,15 +14,15 @@
                         <img src="resources/images/pagina/comun/logo.jpg" alt="100%" width="100%">          
                     </div>
                     <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                        <form action="PostLoginServlet?accion=login">
+                        <form action="ActionsServices?accion=login">
                             <div class="form-outline mb-4">
                                 <label class="form-label">Email</label>
-                                <input type="email" name="email" class="form-control form-control-lg"
+                                <input type="email" name="email" class="form-control form-control-lg" value="${email}"
                                        placeholder="Introduzca email" />                              
                             </div>
                             <div class="form-outline mb-3">
                                 <label class="form-label">Password</label>
-                                <input type="password" name="password" class="form-control form-control-lg"
+                                <input type="password" name="password" class="form-control form-control-lg" value="${password}"
                                        placeholder="Introduzca password" />
                             </div>
                             <!-- TODO: Revisar ubicacion -->
