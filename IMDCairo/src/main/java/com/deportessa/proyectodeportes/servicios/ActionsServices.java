@@ -4,7 +4,6 @@
  */
 package com.deportessa.proyectodeportes.servicios;
 
-import com.deportessa.proyectodeportes.servicios.qualifiers.DatosPersonalesValidatorQ;
 import com.deportessa.proyectodeportes.servicios.qualifiers.LoginQ;
 import java.io.IOException;
 import java.util.HashMap;
@@ -16,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.deportessa.proyectodeportes.servicios.qualifiers.DatosPersonalesQ;
 
 /**
  *
@@ -26,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 public class ActionsServices extends HttpServlet {
 
     @Inject
-    @DatosPersonalesValidatorQ
+    @DatosPersonalesQ
     private ActionController datosPersonalesVal;
     
     @Inject

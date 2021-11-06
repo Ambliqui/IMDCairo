@@ -20,5 +20,5 @@ import javax.inject.Qualifier;
 @Qualifier
 @Retention(RUNTIME)
 @Target({METHOD, FIELD, PARAMETER, TYPE})
-public @interface DatosPersonalesValidatorQ {
+public @interface DatosPersonalesQ {
 }

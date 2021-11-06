@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 
 @LoginQ
-public class LoginValidator implements ActionController {
+public class LoginServlet implements ActionController {
 
     @Inject
     private Validaciones validaciones;

@@ -1,6 +1,5 @@
 package com.deportessa.proyectodeportes.servicios;
 
-import com.deportessa.proyectodeportes.servicios.qualifiers.DatosPersonalesValidatorQ;
 import com.deportessa.proyectodeportes.servicios.validaciones.Validaciones;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,14 +8,15 @@ import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.deportessa.proyectodeportes.servicios.qualifiers.DatosPersonalesQ;
 
 /**
  *
  * @author Mefisto
  */
 
-@DatosPersonalesValidatorQ
-public class DatosPersonalesValidator implements ActionController {
+@DatosPersonalesQ
+public class DatosPersonalesServlet implements ActionController {
 
     @Inject
     private Validaciones validaciones;
