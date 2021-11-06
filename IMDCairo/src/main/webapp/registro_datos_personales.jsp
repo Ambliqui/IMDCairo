@@ -1,41 +1,41 @@
 <%@page contentType="text/html" pageEncoding="UTF-8" session="false"%>
 <!DOCTYPE html>
 <html lang="es" class="h-100">
-<%@ include file="structure/head.jsp" %>
-<body class="d-flex flex-column h-100">
-    <%@ include file="structure/header_no_login.jsp" %>
-    <div style="height: 5px;" >
-        <h2 class="text-center" >Registro</h2>
-    </div>
-    <section class="flex-shrink-0">
-        <div class="container-fluid h-custom">       
-                <form class="row d-flex justify-content-center align-items-start h-75 " action="PostRegistroDatosPersonalesServlet">
-                    
+    <%@ include file="structure/head.jsp" %>
+    <body class="d-flex flex-column h-100">
+        <%@ include file="structure/header_no_login.jsp" %>
+        <div style="height: 5px;" >
+            <h2 class="text-center" >Registro</h2>
+        </div>
+        <section class="flex-shrink-0">
+            <div class="container-fluid h-custom">       
+                <form id="registroForm" class="row d-flex justify-content-center align-items-start h-75 " action="ActionsServices">
                     <div class="container py-5 col-md-8 col-lg-6 col-xl-4 offset-xl-1" >
                         <div class="row mb-4">
-                                <div class="col-lg-8 mx-auto text-center">
-                                    <h4>Datos Personales</h4>
-                                </div>
-                            </div> 
-
+                            <div class="col-lg-8 mx-auto text-center">
+                                <h4>Datos Personales</h4>
+                            </div>
+                        </div>
                         <div class="form-outline mb-4">
-                            <input id="email" type="email" name="email" value="${email}" hidden/>
-                            <input id="password" type="password" name="password" value="${password}" hidden/>
+                            <input id="email" type="email" name="email" value="${email}" hidden>
+                            <input id="password" type="password" name="password" value="${password}" hidden>
                             <label class="form-label">Nombre</label>
-                            <input type="text" name="nombre" class="form-control" placeholder="Introduzca nombre">                                 
+                            <input type="text" name="nombre" class="form-control" value="${nombre}" placeholder="Introduzca nombre">                                 
                             <div class="form-outline mb-4"> 
                                 <label class="form-label">Apellidos</label>
-                                <input name="apellidos" type="text" class="form-control" placeholder="Introduzca apellidos">
+                                <input name="apellidos" type="text" class="form-control" value="${apellidos}" placeholder="Introduzca apellidos">
                                 <div class="form-outline mb-4">
                                     <label class="form-label">Telefono</label>
-                                    <input type="text" name="telefono" class="form-control" placeholder="Introduzca telefono">
+                                    <input type="tel" name="telefono" class="form-control" value="${telefono}" placeholder="Introduzca telefono">
                                 </div>
                             </div> 
                         </div>
                         <div class="align-items-center">
-                            <button type="submit" class="btn btn-outline-primary">Registro</button>
+                            <input type="submit" name ="accion" value="Registrar" class="btn btn-outline-primary">
                         </div> 
-
+                    <c:forEach items="${errores}" var="error">
+                        <c:out value="${error.getMessage()}"/><br/>
+                    </c:forEach>
                     </div>
                     <div class="col-md-9 col-lg-6 col-xl-5">
                         <div class="container py-5">
@@ -44,7 +44,6 @@
                                     <h4>Metodo de pago</h4>
                                 </div>
                             </div> 
-
                             <div class="accordion accordion-flush" id="accordionFlushExample">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="flush-headingOne">
@@ -58,12 +57,13 @@
                                         </button>
                                     </h2>
                                     <div id="flush-collapseOne" class="accordion-collapse collapse show" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body"><form role="form" onsubmit="event.preventDefault()">
+                                        <div class="accordion-body">
+                                            <form role="form" onsubmit="event.preventDefault()">
                                                 <div class="form-group"> <label for="cardNumber">
                                                         <h6>Numero de tarjeta</h6>
                                                     </label>
                                                     <div class="input-group"> 
-                                                        <input type="text" name="numeroTarjeta" placeholder="Numero de tarjeta" class="form-control " required>                                          
+                                                        <input type="text" name="numeroTarjeta" placeholder="Numero de tarjeta" class="form-control" form="RegistroForm" required>
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -71,15 +71,15 @@
                                                         <div class="form-group">
                                                             <h6>Fecha de caducidad</h6>
                                                             <div class="input-group">
-                                                                <input type="number" min="01" max="12" placeholder="MM" name="mesTarjeta" class="form-control" required> 
-                                                                <input type="number" min="00" max="99" placeholder="YY" name="annoTarjeta" class="form-control" required> 
+                                                                <input type="number" min="01" max="12" placeholder="MM" name="mesTarjeta" class="form-control" form="RegistroForm" required> 
+                                                                <input type="number" min="00" max="99" placeholder="YY" name="annoTarjeta" class="form-control" form="RegistroForm" required> 
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-4">
                                                         <div class="form-group mb-4"> 
                                                             <h6>CVS</h6>
-                                                            <input type="text" name="cvsTarjeta" required class="form-control"> 
+                                                            <input type="text" name="cvsTarjeta" required class="form-control" form="RegistroForm">
                                                         </div>
                                                     </div>
                                                 </div>       
@@ -101,7 +101,7 @@
                                     <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
                                         <div class="accordion-body"><h6 class="pb-2">Paypal</h6>
                                             <div class="form-group">
-                                                <input type="text" name="cuentaPaypal" required class="form-control" placeholder="Inserte cuenta paypal">
+                                                <input type="text" name="cuentaPaypal" required class="form-control" placeholder="Inserte cuenta paypal" form="RegistroForm">
                                             </div>
                                         </div>
                                     </div>
@@ -120,23 +120,20 @@
                                     <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                                         <div class="accordion-body"><h6>Registra tu numero de cuenta</h6>
                                             <div class="form-group">
-                                                <input type="text" required class="form-control" placeholder="Inserte IBAN">
+                                                <input type="text" name="IBAN" required class="form-control" placeholder="Inserte IBAN" form="RegistroForm">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                         </div>        
                     </div>
-                </form>    
-      
-        </div>
-             
-    </section>
- <%@ include file="structure/footer.jsp" %>   
- <script src="resources/js/acordeon.js"></script>
-</body>
+                </form>
+            </div>
+        </section>
+        <%@ include file="structure/footer.jsp" %>   
+        <script src="resources/js/acordeon.js"></script>
+    </body>
 </html>
 
 

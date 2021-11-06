@@ -15,10 +15,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * Este Servlet lo usamos para hacer la validacion de la pagina del
+ * alta de email y password
  * @author Mefisto
  */
-
 @RegistroUsuarioServicioQ
 public class RegistroUsuarioServicio implements ActionController {
 
@@ -30,15 +30,20 @@ public class RegistroUsuarioServicio implements ActionController {
 
         List<Exception> exceptions = new ArrayList<>();
 
-        //TODO: Hacer validaciones patterns para ciertos tipos de campos
         validaciones.emailNoFormateado(request.getParameter("email")).ifPresent((error) -> exceptions.add(error));
-        validaciones.camposIdenticos(request.getParameter("email"), request.getParameter("cemail")).ifPresent((error) -> exceptions.add(error));
-        validaciones.longitudCampo(request.getParameter("password"), 8).ifPresent((error) -> exceptions.add(error));
-        validaciones.camposIdenticos(request.getParameter("password"), request.getParameter("cpassword")).ifPresent((error) -> exceptions.add(error));
-//        validaciones.emailNoExistente(request.getParameter("email")).ifPresent((error) -> exceptions.add(error));//        validaciones.emailNoExistente(request.getParameter("email")).ifPresent((error) -> exceptions.add(error));
+        if (exceptions.isEmpty()) {
+            validaciones.camposIdenticos("Email", "Confirmacion de email", request.getParameter("email"), request.getParameter("cemail")).ifPresent((error) -> exceptions.add(error));
+            if (exceptions.isEmpty()) {
+                validaciones.longitudCampo("Password", request.getParameter("password"), 8).ifPresent((error) -> exceptions.add(error));
+                validaciones.camposIdenticos("Password", "Confirmacion de password", request.getParameter("password"), request.getParameter("cpassword")).ifPresent((error) -> exceptions.add(error));
+                if (exceptions.isEmpty()) {
+                    validaciones.emailRepetido(request.getParameter("email")).ifPresent((error) -> exceptions.add(error));
+                }
+            }
+        }
 
         if (exceptions.isEmpty()) {
-            return "PreRegistroDatosPersonalesServlet";
+            return "/PreRegistroDatosPersonalesServlet";
         } else {
 
             //Recuperamos lo que nos ha escrito el cliente para volver a mostrarlo en pantalla
@@ -49,7 +54,7 @@ public class RegistroUsuarioServicio implements ActionController {
 
             //Devolvemos los errores
             request.setAttribute("errores", exceptions);
-            return "PreRegistroUsuarioServlet";
+            return "/PreRegistroUsuarioServlet";
 
         }
     }

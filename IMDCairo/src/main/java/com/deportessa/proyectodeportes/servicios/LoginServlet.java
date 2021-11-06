@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- *
+ * Este Servlet lo usamos para validar el formulario de login de la pagina
  * @author Mefisto
  */
 @LoginQ

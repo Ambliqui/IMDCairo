@@ -38,15 +38,15 @@ public class PostRegistroDatosPersonalesServlet extends HttpServlet {
         ////////////// DATOS DE USUARIO //////////////////////
 
         String nombre = request.getParameter("nombre");
-        String apellidos = request.getParameter("Apellidos");
-        String telefono = request.getParameter("telefono");
+//        String apellidos = request.getParameter("Apellidos");
+//        String telefono = request.getParameter("telefono");
         
         //TODO: Pasar validadores y crear cliente en caso afirmativo
         
         Cliente cliente = new Cliente();
         cliente.setNombreCliente(nombre);
-        cliente.setApellido1Cliente(apellidos);
-        cliente.setTelefonoCliente(telefono);
+//        cliente.setApellido1Cliente(apellidos);
+//        cliente.setTelefonoCliente(telefono);
         
         //////////////// DATOS DE TARJETA ////////////////////////
         
@@ -71,6 +71,8 @@ public class PostRegistroDatosPersonalesServlet extends HttpServlet {
         //////////////// DATOS BANCARIA ///////////////////////
         
 //        Integer cuentaBancaria = Integer.parseInt(request.getParameter("cuentaBancaria"));
+
+        request.getRequestDispatcher("PrePrincipalServlet").forward(request, response);
         
         
     }

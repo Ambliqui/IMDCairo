@@ -11,10 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import com.deportessa.proyectodeportes.servicios.qualifiers.DatosPersonalesQ;
 
 /**
- *
+ * Servlet para validar los campos de entrada del formulario de datos perosonales
+ * del Cliente
  * @author Mefisto
  */
-
 @DatosPersonalesQ
 public class DatosPersonalesServlet implements ActionController {
 
@@ -26,28 +26,56 @@ public class DatosPersonalesServlet implements ActionController {
 
         List<Exception> exceptions = new ArrayList<>();
 
-        //TODO: Hacer validaciones patterns para ciertos tipos de campos
-        validaciones.emailNoFormateado(request.getParameter("email")).ifPresent((error) -> exceptions.add(error));
-        validaciones.camposIdenticos(request.getParameter("email"), request.getParameter("cemail")).ifPresent((error) -> exceptions.add(error));
-        validaciones.longitudCampo(request.getParameter("password"), 8).ifPresent((error) -> exceptions.add(error));
-        validaciones.camposIdenticos(request.getParameter("password"), request.getParameter("cpassword")).ifPresent((error) -> exceptions.add(error));
-//        validaciones.emailNoExistente(request.getParameter("email")).ifPresent((error) -> exceptions.add(error));//        validaciones.emailNoExistente(request.getParameter("email")).ifPresent((error) -> exceptions.add(error));
+        validaciones.longitudCampo("Nombre", request.getParameter("nombre"), 4).ifPresent((error) -> exceptions.add(error));
+        validaciones.longitudCampo("Apellidos",request.getParameter("apellidos"), 4).ifPresent((error) -> exceptions.add(error));
+        validaciones.longitudCampo("Telefono",request.getParameter("telefono"), 9).ifPresent((error) -> exceptions.add(error));
+
+        String metodoPago = request.getParameter("metodoPago");
+
+//        switch (metodoPago) {
+//            case "tarjeta":
+//                validaciones.longitudCampo(request.getParameter("numeroTarjeta"), 4).ifPresent((error) -> exceptions.add(error));
+//                validaciones.longitudCampo(request.getParameter("mesTarjeta"), 4).ifPresent((error) -> exceptions.add(error));
+//                validaciones.longitudCampo(request.getParameter("annoTarjeta"), 4).ifPresent((error) -> exceptions.add(error));
+//                validaciones.longitudCampo(request.getParameter("cvsTarjeta"), 4).ifPresent((error) -> exceptions.add(error));
+//                break;
+//            case "paypal":
+//                validaciones.emailNoFormateado(request.getParameter("cuentaPaypal")).ifPresent((error) -> exceptions.add(error));
+//                break;
+//            case "transferencia":
+//                validaciones.longitudCampo(request.getParameter("IBAN"), 4).ifPresent((error) -> exceptions.add(error));
+//                break;
+//            default:
+//        }
 
         if (exceptions.isEmpty()) {
-            return "PreRegistroDatosPersonalesServlet";
-//            request.getRequestDispatcher("PreRegistroDatosPersonalesServlet").forward(request, response);
+            return "/PostRegistroDatosPersonalesServlet";
         } else {
 
             //Recuperamos lo que nos ha escrito el cliente para volver a mostrarlo en pantalla
-            request.setAttribute("email", request.getParameter("email"));
-            request.setAttribute("cemail", request.getParameter("cemail"));
-            request.setAttribute("password", request.getParameter("password"));
-            request.setAttribute("cpassword", request.getParameter("cpassword"));
+            request.setAttribute("nombre", request.getParameter("nombre"));
+            request.setAttribute("apellidos", request.getParameter("apellidos"));
+            request.setAttribute("telefono", request.getParameter("telefono"));
+            
+//            switch (metodoPago) {
+//                case "tarjeta":
+//                    request.setAttribute("numeroTarjeta", request.getParameter("numeroTarjeta"));
+//                    request.setAttribute("mesTarjeta", request.getParameter("mesTarjeta"));
+//                    request.setAttribute("annoTarjeta", request.getParameter("annoTarjeta"));
+//                    request.setAttribute("cvsTarjeta", request.getParameter("cvsTarjeta"));
+//                    break;
+//                case "paypal":
+//                    request.setAttribute("cuentaPaypal", request.getParameter("cuentaPaypal"));
+//                    break;
+//                case "transferencia":
+//                    request.setAttribute("IBAN", request.getParameter("IBAN"));
+//                    break;
+//                default:
+//            }
 
             //Devolvemos los errores
             request.setAttribute("errores", exceptions);
-            return "PreRegistroUsuarioServlet";
-//            request.getRequestDispatcher("PreRegistroUsuarioServlet").forward(request, response);
+            return "/PreRegistroDatosPersonalesServlet";
         }
 
     }

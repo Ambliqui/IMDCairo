@@ -12,7 +12,7 @@
                 <img src="resources/images/pagina/comun/logo.jpg" alt="100%" width="100%">          
             </div>
             <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                <form action="PostRegistroUsuarioServlet">
+                <form action="ActionsServices">
                     <div>
                         <label class="form-label">Email</label>
                         <input name="email" type="email" value="${email}" class="form-control" placeholder="Introduzca email" />
@@ -24,7 +24,7 @@
                         <input name="cpassword" type="password" value="${cpassword}" class="form-control" placeholder="Repite Password"/>
                     </div>
                     <div class="align-items-center">
-                        <input type="submit" class="link-primary" value="Siguiente"/>
+                        <input type="submit" class="link-primary" name="accion" value="Siguiente"/>
                     </div>
                     <c:forEach items="${errores}" var="error">
                         <c:out value="${error.getMessage()}"/><br/>
