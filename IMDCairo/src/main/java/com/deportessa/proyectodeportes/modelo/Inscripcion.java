@@ -6,8 +6,12 @@
 package com.deportessa.proyectodeportes.modelo;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Objects;
+import javafx.util.converter.LocalDateStringConverter;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
@@ -33,7 +37,7 @@ public class Inscripcion implements Serializable {
     protected ActividadMetodoPagoPK actividadMetodoPagoPK;
 
     @NotNull
-    @Column(name = "fecha_alta_inscripcion",columnDefinition = "TIMESTAMP default CURRENT_TIMESTAMP")
+    @Column(name = "fecha_alta_inscripcion", columnDefinition = "TIMESTAMP default CURRENT_TIMESTAMP")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaAltaInscripcion;
 
@@ -54,7 +58,6 @@ public class Inscripcion implements Serializable {
         this.actividadMetodoPagoPK = new ActividadMetodoPagoPK(idActividad, idPago);
     }
 
-    
     public Inscripcion(Actividad actividad, MetodoPago metodoPago) {
         this.actividad = actividad;
         this.metodoPago = metodoPago;
@@ -105,8 +108,10 @@ public class Inscripcion implements Serializable {
         fechaAltaInscripcion = new Date();
     }
 
-    public Date getFechaAlta() {
-        return fechaAltaInscripcion;
+    public String getFechaAlta() {
+        SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
+      return formato.format(fechaAltaInscripcion);
+      //  return LocalDate.parse(fechaAltaInscripcion.toString(), formato);
     }
 
     public void setFechaAlta(Date fechaAlta) {
