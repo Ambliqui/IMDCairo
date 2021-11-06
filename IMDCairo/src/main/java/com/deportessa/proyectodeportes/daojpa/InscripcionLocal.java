@@ -5,8 +5,12 @@
  */
 package com.deportessa.proyectodeportes.daojpa;
 
+import com.deportessa.proyectodeportes.modelo.ActividadMetodoPagoPK;
+import com.deportessa.proyectodeportes.modelo.Cliente;
 import com.deportessa.proyectodeportes.modelo.Inscripcion;
+import com.deportessa.proyectodeportes.servicios.dto.InscripcionDTO;
 import java.util.List;
+import java.util.Optional;
 import javax.ejb.Local;
 
 /**
@@ -24,10 +28,12 @@ public interface InscripcionLocal {
 
     List<Inscripcion> findAll();
     
-    Inscripcion find(Integer id);
+    Inscripcion find(ActividadMetodoPagoPK id);
 
     List<Inscripcion> findRange(int[] range);
 
     int count();
+    
+    List<InscripcionDTO> getinscripcionDTO(Cliente cliente);
     
 }

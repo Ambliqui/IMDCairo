@@ -75,5 +75,10 @@ public class Transferencia extends MetodoPago implements Serializable {
         return "Transferencia{" + "numCuenta=" + numCuenta + '}';
     }
 
+    @Override
+    public String getDatos() {
+        return String.valueOf(this.numCuenta);
+    }
+
     
 }

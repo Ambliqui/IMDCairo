@@ -20,4 +20,5 @@ public interface ActividadServicio {
     List<Actividad> findAll();
     
     Actividad find(Integer idActividad);
+    
 }
