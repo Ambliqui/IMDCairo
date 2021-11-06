@@ -6,6 +6,7 @@ package com.deportessa.proyectodeportes.servicios.validaciones;
 
 import com.deportessa.proyectodeportes.daojpa.factory.DaoAbstractFactoryLocal;
 import com.deportessa.proyectodeportes.daojpa.factory.qualifiers.FactoryDaoMySql;
+import com.deportessa.proyectodeportes.modelo.Cliente;
 import com.deportessa.proyectodeportes.servicios.excepciones.EmailNoFormateadoException;
 import com.deportessa.proyectodeportes.servicios.excepciones.LongitudNoDeseadaException;
 import com.deportessa.proyectodeportes.servicios.excepciones.CamposNoCoincidentesException;
@@ -54,9 +55,7 @@ public class ValidacionesImpl implements Validaciones {
     public Optional<EmailNoExistsException> emailNoExistente(String email) {
         //TODO: Cambiar a lo que nos devuelve realmente el metodo de la excepcion
         
-        Boolean pruebas = daoFactoryLocal.getClienteDaoLocal().findByEmail(email).isPresent();
-        
-        if (pruebas) {
+        if (daoFactoryLocal.getClienteDaoLocal().findByEmail(email).isPresent()) {
             return Optional.empty();
         } else {
             return Optional.of(new EmailNoExistsException("El email no se encuentra en la base de datos"));
@@ -64,8 +63,15 @@ public class ValidacionesImpl implements Validaciones {
     }
 
     @Override
-    public Optional<PasswordNoCoincidenteException> passwordNoCoincidente(String password) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Optional<PasswordNoCoincidenteException> passwordNoCoincidente(String email, String password) {
+        
+        Cliente cliente =  daoFactoryLocal.getClienteDaoLocal().findByEmail(email).get();
+        
+        if (cliente.getPassCliente().equals(password)) {
+            return Optional.empty();
+        } else {
+            return Optional.of(new PasswordNoCoincidenteException("El password no es correcto"));
+        }
     }
 
     @Override

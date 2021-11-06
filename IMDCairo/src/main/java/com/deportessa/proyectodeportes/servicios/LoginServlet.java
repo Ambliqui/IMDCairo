@@ -18,22 +18,25 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Mefisto
  */
-
 @LoginQ
 public class LoginServlet implements ActionController {
-    
+
     @Inject
     private Validaciones validaciones;
-    
+
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
+
         List<Exception> exceptions = new ArrayList<>();
-        
+
         validaciones.emailNoFormateado(request.getParameter("email")).ifPresent((error) -> exceptions.add(error));
-        validaciones.emailNoExistente(request.getParameter("email")).ifPresent((error) -> exceptions.add(error));
-//        validaciones.passwordNoCoincidente(request.getParameter("password")).ifPresent((error) -> exceptions.add(error));
-        
+        if (exceptions.isEmpty()) {
+            validaciones.emailNoExistente(request.getParameter("email")).ifPresent((error) -> exceptions.add(error));
+        }
+        if (exceptions.isEmpty()) {
+            validaciones.passwordNoCoincidente(request.getParameter("email"), request.getParameter("password")).ifPresent((error) -> exceptions.add(error));
+        }
+
         if (exceptions.isEmpty()) {
             return "/PostLoginServlet";
         } else {
@@ -45,7 +48,7 @@ public class LoginServlet implements ActionController {
             request.setAttribute("errores", exceptions);
             return "/PreLoginServlet";
         }
-        
+
     }
-    
+
 }

@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.deportessa.proyectodeportes.servlets.login;
 
+import com.deportessa.proyectodeportes.daojpa.factory.DaoAbstractFactoryLocal;
+import com.deportessa.proyectodeportes.daojpa.factory.qualifiers.FactoryDaoMySql;
 import com.deportessa.proyectodeportes.modelo.Cliente;
 import com.deportessa.proyectodeportes.pruebas.isi.ClienteTest;
 import com.deportessa.proyectodeportes.servicios.ClienteServicio;
@@ -36,29 +37,22 @@ public class PostLoginServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+
     @Inject
-    ClienteServicio clienteServicio;
-    //TODO: Quitar clase de pruebas cuando implemente Antonio el metodo en la fachada
-    @Inject
-    ClienteTest clienteTest;
+    @FactoryDaoMySql
+    private DaoAbstractFactoryLocal daoFactoryLocal;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         String email = request.getParameter("email");
-
         Cliente clienteSession = new Cliente();
-        try {
-            clienteSession = clienteServicio.findEmail("1@1.com");
-                request.getSession(true);
-                request.getSession().setAttribute("clienteSession", clienteSession);
-                request.getRequestDispatcher("PrePrincipalServlet").forward(request, response);
-
-        } catch (EmailNoExistsException ex) {
-            Logger.getLogger(PostLoginServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
         
+        clienteSession = daoFactoryLocal.getClienteDaoLocal().findByEmail(email).get();
+        request.getSession(true);
+        request.getSession().setAttribute("clienteSession", clienteSession);
+        request.getRequestDispatcher("PrePrincipalServlet").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

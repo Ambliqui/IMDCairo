@@ -19,7 +19,7 @@ public interface Validaciones {
     
     Optional<EmailNoExistsException> emailNoExistente(String email);
     
-    Optional<PasswordNoCoincidenteException> passwordNoCoincidente (String password);
+    Optional<PasswordNoCoincidenteException> passwordNoCoincidente (String email, String password);
     
     Boolean campoNuloVacio (String campo);
     
