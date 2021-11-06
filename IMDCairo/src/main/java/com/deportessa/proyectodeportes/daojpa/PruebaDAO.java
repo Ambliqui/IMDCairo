@@ -137,19 +137,26 @@ public class PruebaDAO extends HttpServlet {
     
     
      private void inicializarbbdd() {
+         
         //crear clientes
-        Cliente cliente = new Cliente("1@1", "1", "Paco", "perez", "666555444");
-        Cliente cliente1 = new Cliente("2@2", "1", "Maria", "Martínez", "666333999");
+        Cliente cliente = new Cliente("1@1.com", "1", "George", "Hurtado", "111111111");
+        Cliente cliente1 = new Cliente("2@2.com", "1", "Pedro", "Perez", "222222222");
+        Cliente cliente2 = new Cliente("3@3.com", "1", "Antonio", "Prieto", "333333333");
+        Cliente cliente3 = new Cliente("4@4.com", "1", "Ruben", "Beltran", "444444444");
+        Cliente cliente4 = new Cliente("5@5.com", "1", "Agustin", "Morillo", "555555555");
         daoFactoryLocal.getClienteDaoLocal().create(cliente);
         daoFactoryLocal.getClienteDaoLocal().create(cliente1);
+        daoFactoryLocal.getClienteDaoLocal().create(cliente2);
+        daoFactoryLocal.getClienteDaoLocal().create(cliente3);
+        daoFactoryLocal.getClienteDaoLocal().create(cliente4);
 
         //crear actividades
-        Actividad actividad = new Actividad("Fútbol", "Campo de fútbol", "Dale a la pelota con el pie", new BigDecimal(13), "M-Mi-J");
-        Actividad actividad2 = new Actividad("Natación", "Piscina cubierta", "Respirar siempre con la cabeza fuera del agua", new BigDecimal(18), "M-Mi-J");
-        Actividad actividad3 = new Actividad("Ajedrez", "Sala de ajedrez", "Si no quieres lesionarte esta es tu actividad", new BigDecimal(7), "L-M-V");
-        Actividad actividad4 = new Actividad("Baloncesto", "Polideportivo", "Te vas a doblar el dedo para atras", new BigDecimal(10), "Mi-V");
-        Actividad actividad5 = new Actividad("Jockey", "Polideportivo", "Dale a la pelota con el palo", new BigDecimal(10), "L-Mi-V");
-        Actividad actividad6 = new Actividad("Tenis", "Polideportivo", "Por la tele se ve mas facil", new BigDecimal(18), "M-Mi-J");
+        Actividad actividad = new Actividad("Fútbol", "Macarena", "El sueño de todo niño iberico, ser como un portugues o como un argentino", new BigDecimal(10), "M-Mi-J");
+        Actividad actividad2 = new Actividad("Natación", "Tiro de linea", "Si quieres participar en la pelicula live action de la sirenita este es tu momento", new BigDecimal(11), "M-Mi-J");
+        Actividad actividad3 = new Actividad("Ajedrez", "Hytassa", "Con todo lo mejor de Gambito de Dama y Juego de Tronos. Vive la experiencia sin tener plataformas streaming", new BigDecimal(12), "L-M-V");
+        Actividad actividad4 = new Actividad("Baloncesto", "San Pablo", "Todo se centra en pasar por el aro. Una bella oda a la vida misma y lo que vas a pasar dia a dia", new BigDecimal(13), "Mi-V");
+        Actividad actividad5 = new Actividad("Hockey", "Centro Deportivo Sevilla 3000", "Deporte exotico que solo vemos en las olimpiadas y no conoces a nadie que lo practique. Se tu el primero", new BigDecimal(14), "L-Mi-V");
+        Actividad actividad6 = new Actividad("Tenis", "Centro Deportivo Tenis Betis", "Por la tele se ve mas facil, todos quieren ser Rafa Nadal", new BigDecimal(15), "M-Mi-J");
         daoFactoryLocal.getActividadDaoLocal().create(actividad);
         daoFactoryLocal.getActividadDaoLocal().create(actividad2);
         daoFactoryLocal.getActividadDaoLocal().create(actividad3);

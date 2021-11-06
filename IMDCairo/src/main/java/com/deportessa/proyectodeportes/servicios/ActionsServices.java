@@ -27,7 +27,7 @@ public class ActionsServices extends HttpServlet {
 
     @Inject
     @DatosPersonalesQ
-    private ActionController datosPersonalesVal;
+    private ActionController registroUsuario;
     
     @Inject
     @LoginQ
@@ -39,14 +39,14 @@ public class ActionsServices extends HttpServlet {
     @Override
     public void init() throws ServletException {
         super.init();
-        acciones.put("datosPersonales", datosPersonalesVal);
-        acciones.put("login", login);
+        acciones.put("Login", login);
+        acciones.put("Siguiente", registroUsuario);
     }
 
     @Override
     public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String actionKey = "login";//request.getParameter("accion");
+        String actionKey = request.getParameter("accion");
 
         ActionController accion = acciones.get(actionKey);
         String page = accion.execute(request, response);

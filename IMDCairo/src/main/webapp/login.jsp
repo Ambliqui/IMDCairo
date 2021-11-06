@@ -14,7 +14,7 @@
                         <img src="resources/images/pagina/comun/logo.jpg" alt="100%" width="100%">          
                     </div>
                     <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                        <form action="ActionsServices?accion=login">
+                        <form action="ActionsServices">
                             <div class="form-outline mb-4">
                                 <label class="form-label">Email</label>
                                 <input type="email" name="email" class="form-control form-control-lg" value="${email}"
@@ -27,12 +27,11 @@
                             </div>
                             <!-- TODO: Revisar ubicacion -->
                             <c:forEach items="${errores}" var="error">
-                                Error
                                 <c:out value="${error.getMessage()}"/><br/>
                             </c:forEach>
                             <div class="text-center text-lg-start mt-4 pt-2">
                                 <!-- TODO: En serio un button? -->
-                                <input type="submit" value="Login" class="btn btn-outline-info" style="padding-left: 2.5rem; padding-right: 2.5rem;"></input>
+                                <input type="submit" name="accion" value="Login" class="btn btn-outline-info" style="padding-left: 2.5rem; padding-right: 2.5rem;"></input>
                                 <p class="small fw-bold mt-2 pt-1 mb-0">¿No tienes cuenta? <a href="PreRegistroUsuarioServlet" class="link-danger">Registrate</a></p>
                             </div>
                         </form>
