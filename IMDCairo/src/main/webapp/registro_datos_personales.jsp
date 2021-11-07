@@ -33,9 +33,9 @@
                         <div class="align-items-center">
                             <input type="submit" name ="accion" value="Registrar" class="btn btn-outline-primary">
                         </div> 
-                    <c:forEach items="${errores}" var="error">
-                        <c:out value="${error.getMessage()}"/><br/>
-                    </c:forEach>
+                        <c:forEach items="${errores}" var="error">
+                            <c:out value="${error.getMessage()}"/><br/>
+                        </c:forEach>
                     </div>
                     <div class="col-md-9 col-lg-6 col-xl-5">
                         <div class="container py-5">
@@ -58,7 +58,7 @@
                                     </h2>
                                     <div id="flush-collapseOne" class="accordion-collapse collapse show" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                         <div class="accordion-body">
-                                            <form role="form" onsubmit="event.preventDefault()">
+                                            
                                                 <div class="form-group"> <label for="cardNumber">
                                                         <h6>Numero de tarjeta</h6>
                                                     </label>
@@ -83,7 +83,7 @@
                                                         </div>
                                                     </div>
                                                 </div>       
-                                            </form>
+                                           
                                         </div>
                                     </div>
                                 </div>
