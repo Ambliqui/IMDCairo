@@ -3,7 +3,7 @@
 <html lang="es" class="h-100">
     <%@ include file="structure/head.jsp" %>
     <body class="d-flex flex-column h-100">
-        <%@ include file="structure/header_no_login.jsp" %>
+        <%@ include file="structure/header.jsp" %>
         <div style="height: 5px;" >
             <h2 class="text-center" >Registro</h2>
         </div>

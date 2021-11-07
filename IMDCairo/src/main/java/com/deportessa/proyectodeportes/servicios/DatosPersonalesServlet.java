@@ -32,21 +32,21 @@ public class DatosPersonalesServlet implements ActionController {
 
         String metodoPago = request.getParameter("metodoPago");
 
-//        switch (metodoPago) {
-//            case "tarjeta":
-//                validaciones.longitudCampo(request.getParameter("numeroTarjeta"), 4).ifPresent((error) -> exceptions.add(error));
-//                validaciones.longitudCampo(request.getParameter("mesTarjeta"), 4).ifPresent((error) -> exceptions.add(error));
-//                validaciones.longitudCampo(request.getParameter("annoTarjeta"), 4).ifPresent((error) -> exceptions.add(error));
-//                validaciones.longitudCampo(request.getParameter("cvsTarjeta"), 4).ifPresent((error) -> exceptions.add(error));
-//                break;
-//            case "paypal":
+        switch (metodoPago) {
+            case "tarjeta":
+//                validaciones.longitudCampo("Numero de Tarjeta: ", request.getParameter("numeroTarjeta"), 4).ifPresent((error) -> exceptions.add(error));
+//                validaciones.longitudCampo("Mes Tarjeta: ", request.getParameter("mesTarjeta"), 4).ifPresent((error) -> exceptions.add(error));
+//                validaciones.longitudCampo("Año Tarjeta: ", request.getParameter("annoTarjeta"), 4).ifPresent((error) -> exceptions.add(error));
+//                validaciones.longitudCampo("CVS: ", request.getParameter("cvsTarjeta"), 4).ifPresent((error) -> exceptions.add(error));
+                break;
+            case "paypal":
 //                validaciones.emailNoFormateado(request.getParameter("cuentaPaypal")).ifPresent((error) -> exceptions.add(error));
-//                break;
-//            case "transferencia":
-//                validaciones.longitudCampo(request.getParameter("IBAN"), 4).ifPresent((error) -> exceptions.add(error));
-//                break;
-//            default:
-//        }
+                break;
+            case "transferencia":
+//                validaciones.longitudCampo("IBAN: ",  request.getParameter("IBAN"), 4).ifPresent((error) -> exceptions.add(error));
+                break;
+            default:
+        }
 
         if (exceptions.isEmpty()) {
             return "/PostRegistroDatosPersonalesServlet";

@@ -11,7 +11,7 @@
             <div class="container-fluid h-custom">
                 <div class="row d-flex justify-content-center align-items-center h-100">
                     <div class="col-md-9 col-lg-6 col-xl-5">
-                        <img src="resources/images/pagina/comun/logo.jpg" alt="100%" width="100%">          
+                        <img src="resources/images/pagina/comun/logo.png" alt="100%" width="100%">          
                     </div>
                     <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
                         <form action="ActionsServices">

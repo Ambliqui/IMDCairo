@@ -40,7 +40,7 @@ public class ValidacionesImpl implements Validaciones {
      * @param nombreCampo2  Nombre del segundo campo a validar
      * @param campo1    Valor del primer campo a validar
      * @param campo2    Valor del segundo campo a validar
-     * @return          Devuelve una excepcion personalizada
+     * @return          Devuelve una excepcion personalizada envuelta en un Optional
      * @see <CamposNoCoincidentesException>
      */
     @Override
@@ -74,7 +74,7 @@ public class ValidacionesImpl implements Validaciones {
      * @param nombreCampo
      * @param campo
      * @param longitudMinima
-     * @return Devuelve una excepcion personalizada
+     * @return Devuelve una excepcion personalizada envuelta en un Optional
      * @see <LongitudNoDeseadaException>
      */
     @Override
@@ -93,7 +93,7 @@ public class ValidacionesImpl implements Validaciones {
      * @param valor     Valor a comprobar
      * @param minimo    Valor minimo establecido
      * @param maximo    Valor maximo establecido
-     * @return          Devuelve una excepcion personalizada
+     * @return          Devuelve una excepcion personalizada envuelta en un Optional
      * @see             <RangoNoDeseadoException>
      */
     @Override
@@ -123,7 +123,7 @@ public class ValidacionesImpl implements Validaciones {
      * Comprueba si un texto tiene formato de email
      * @author Mefisto
      * @param email Campo a comprobar
-     * @return      Devuelve una excepcion personalizada
+     * @return      Devuelve una excepcion personalizada envuelta en un Optional
      * @see         <EmailNoFormateadoException>
      */
     @Override
