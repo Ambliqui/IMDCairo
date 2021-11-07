@@ -28,17 +28,20 @@ public class DatosPersonalesServlet implements ActionController {
 
         validaciones.longitudCampo("Nombre", request.getParameter("nombre"), 4).ifPresent((error) -> exceptions.add(error));
         validaciones.longitudCampo("Apellidos",request.getParameter("apellidos"), 4).ifPresent((error) -> exceptions.add(error));
-        validaciones.longitudCampo("Telefono",request.getParameter("telefono"), 9).ifPresent((error) -> exceptions.add(error));
+        validaciones.campoNumerico(request.getParameter("telefono")).ifPresent((error) -> exceptions.add(error));
+//        if () {
+            validaciones.longitudCampo("Telefono",request.getParameter("telefono"), 9).ifPresent((error) -> exceptions.add(error));
+//        }
 
         String metodoPago = request.getParameter("metodoPago");
 
         switch (metodoPago) {
             case "tarjeta":
-                validaciones.longitudCampo("Numero de Tarjeta: ", request.getParameter("numeroTarjeta"), 4).ifPresent((error) -> exceptions.add(error));
-                validaciones.rangoValores(Integer.parseInt(request.getParameter("mesTarjeta")), 1L, 12L);
-                validaciones.longitudCampo("Mes Tarjeta: ", request.getParameter("mesTarjeta"), 4).ifPresent((error) -> exceptions.add(error));
-                validaciones.longitudCampo("Año Tarjeta: ", request.getParameter("annoTarjeta"), 4).ifPresent((error) -> exceptions.add(error));
-                validaciones.longitudCampo("CVS: ", request.getParameter("cvsTarjeta"), 4).ifPresent((error) -> exceptions.add(error));
+//                validaciones.longitudCampo("Numero de Tarjeta: ", request.getParameter("numeroTarjeta"), 4).ifPresent((error) -> exceptions.add(error));
+//                validaciones.rangoValores(Integer.parseInt(request.getParameter("mesTarjeta")), 1L, 12L);
+//                validaciones.longitudCampo("Mes Tarjeta: ", request.getParameter("mesTarjeta"), 4).ifPresent((error) -> exceptions.add(error));
+//                validaciones.longitudCampo("Año Tarjeta: ", request.getParameter("annoTarjeta"), 4).ifPresent((error) -> exceptions.add(error));
+//                validaciones.longitudCampo("CVS: ", request.getParameter("cvsTarjeta"), 4).ifPresent((error) -> exceptions.add(error));
                 break;
             case "paypal":
 //                validaciones.emailNoFormateado(request.getParameter("cuentaPaypal")).ifPresent((error) -> exceptions.add(error));

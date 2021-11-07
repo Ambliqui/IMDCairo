@@ -97,7 +97,7 @@ public class ValidacionesImpl implements Validaciones {
      * @see             <RangoNoDeseadoException>
      */
     @Override
-    public Optional<RangoNoDeseadoException> rangoValores(Integer valor, Long minimo, Long maximo) {
+    public Optional<RangoNoDeseadoException> rangoValores(Integer valor, Integer minimo, Integer maximo) {
         if (valor >= minimo && valor <= maximo) {
             return Optional.empty();
         } else {
@@ -107,7 +107,7 @@ public class ValidacionesImpl implements Validaciones {
     }
     
     /**
-     * Sobrecarga del metodo (a desallorar)
+     * Sobrecarga del metodo (a desallorar, no creada la excepcion personalizada)
      * @author Mefisto
      * @param valor
      * @param minimo
@@ -115,8 +115,25 @@ public class ValidacionesImpl implements Validaciones {
      * @return 
      */
     @Override
-    public Optional<RangoNoDeseadoException> rangoValores(String valor, Long minimo, Long maximo) {
+    public Optional<RangoNoDeseadoException> rangoValores(String valor, Integer minimo, Integer maximo) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    /**
+     * Maneja un NumberFormatException
+     * @author Mefisto
+     * @param valor campo a validar
+     * @return 
+     */
+    @Override
+    public Optional<NumberFormatException> campoNumerico(String valor) {
+        try {
+            Integer.parseInt(valor);
+            return Optional.empty();
+        } catch (NumberFormatException e) {
+            //TODO: Cambiar mensaje de error personalizado o error personalizado
+            return Optional.of(e);
+        }
     }
     
     /**

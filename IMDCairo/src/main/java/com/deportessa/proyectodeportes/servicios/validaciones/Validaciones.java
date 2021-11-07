@@ -18,11 +18,13 @@ public interface Validaciones {
         
     Boolean campoNuloVacio (String campo);
     
+    Optional<NumberFormatException> campoNumerico(String valor);
+    
     Optional<LongitudNoDeseadaException> longitudCampo(String nombreCampo, String campo, Integer longitudMinima);
     
-    Optional<RangoNoDeseadoException> rangoValores(Integer valor, Long minimo, Long maximo);
+    Optional<RangoNoDeseadoException> rangoValores(Integer valor, Integer minimo, Integer maximo);
     
-    Optional<RangoNoDeseadoException> rangoValores(String valor, Long minimo, Long maximo);
+    Optional<RangoNoDeseadoException> rangoValores(String valor, Integer minimo, Integer maximo);
     
     Optional<EmailNoFormateadoException> emailNoFormateado(String email);
     

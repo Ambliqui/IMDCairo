@@ -6,9 +6,7 @@
 package com.deportessa.proyectodeportes.servlets.registro;
 
 import com.deportessa.proyectodeportes.modelo.Cliente;
-import com.deportessa.proyectodeportes.modelo.Tarjeta;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,16 +35,20 @@ public class PostRegistroDatosPersonalesServlet extends HttpServlet {
 
         ////////////// DATOS DE USUARIO //////////////////////
 
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
         String nombre = request.getParameter("nombre");
-//        String apellidos = request.getParameter("Apellidos");
-//        String telefono = request.getParameter("telefono");
+        String apellidos = request.getParameter("apellidos");
+        String telefono = request.getParameter("telefono");
         
         //TODO: Pasar validadores y crear cliente en caso afirmativo
         
         Cliente cliente = new Cliente();
+        cliente.setEmailCliente(email);
+        cliente.setPassCliente(password);
         cliente.setNombreCliente(nombre);
-//        cliente.setApellido1Cliente(apellidos);
-//        cliente.setTelefonoCliente(telefono);
+        cliente.setApellido1Cliente(apellidos);
+        cliente.setTelefonoCliente(telefono);
         
         //////////////// DATOS DE TARJETA ////////////////////////
         
