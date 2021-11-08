@@ -71,8 +71,8 @@
                                                     <div class="form-group">
                                                         <h6>Fecha de caducidad</h6>
                                                         <div class="input-group">
-                                                            <input type="number" min="01" max="12" placeholder="MM" id="mesTarjeta" name="mesTarjeta" class="form-control" value="${mesTarjeta}">
-                                                            <input type="number" min="00" max="99" placeholder="YY" id="annoTarjeta" name="annoTarjeta" class="form-control" value="${annoTarjeta}">
+                                                            <input type="number" min="01" max="12" placeholder="MM" id="mesTarjeta" required name="mesTarjeta" class="form-control" value="${mesTarjeta}">
+                                                            <input type="number" min="00" max="99" placeholder="YY" id="annoTarjeta" required name="annoTarjeta" class="form-control" value="${annoTarjeta}">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -121,7 +121,7 @@
                                     <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                                         <div class="accordion-body"><h6>Registra tu numero de cuenta</h6>
                                             <div class="form-group">
-                                                <input type="text" id="IBAN" name="IBAN" required class="form-control" placeholder="Inserte IBAN">
+                                                <input type="text" id="IBAN" name="IBAN" class="form-control" placeholder="Inserte IBAN">
                                             </div>
                                         </div>
                                     </div>
