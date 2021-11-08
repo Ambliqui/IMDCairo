@@ -11,8 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.deportessa.proyectodeportes.servicios.qualifiers.DatosPersonalesQ;
 
 /**
- * Servlet para validar los campos de entrada del formulario de datos perosonales
- * del Cliente
+ * Servlet para validar los campos de entrada del formulario de datos
+ * perosonales del Cliente
+ *
  * @author Mefisto
  */
 @DatosPersonalesQ
@@ -23,25 +24,25 @@ public class DatosPersonalesServlet implements ActionController {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        
 
         List<Exception> exceptions = new ArrayList<>();
 
         validaciones.longitudCampo("Nombre", request.getParameter("nombre"), 4).ifPresent((error) -> exceptions.add(error));
-        validaciones.longitudCampo("Apellidos",request.getParameter("apellidos"), 4).ifPresent((error) -> exceptions.add(error));
+        validaciones.longitudCampo("Apellidos", request.getParameter("apellidos"), 4).ifPresent((error) -> exceptions.add(error));
         validaciones.campoNumerico(request.getParameter("telefono")).ifPresent((error) -> exceptions.add(error));
-//        if () {
-            validaciones.longitudCampo("Telefono",request.getParameter("telefono"), 9).ifPresent((error) -> exceptions.add(error));
-//        }
+        validaciones.longitudCampo("Telefono", request.getParameter("telefono"), 9).ifPresent((error) -> exceptions.add(error));
 
         String metodoPago = request.getParameter("metodoPago");
 
         switch (metodoPago) {
             case "tarjeta":
-//                validaciones.longitudCampo("Numero de Tarjeta: ", request.getParameter("numeroTarjeta"), 4).ifPresent((error) -> exceptions.add(error));
-//                validaciones.rangoValores(Integer.parseInt(request.getParameter("mesTarjeta")), 1L, 12L);
-//                validaciones.longitudCampo("Mes Tarjeta: ", request.getParameter("mesTarjeta"), 4).ifPresent((error) -> exceptions.add(error));
-//                validaciones.longitudCampo("Año Tarjeta: ", request.getParameter("annoTarjeta"), 4).ifPresent((error) -> exceptions.add(error));
-//                validaciones.longitudCampo("CVS: ", request.getParameter("cvsTarjeta"), 4).ifPresent((error) -> exceptions.add(error));
+                validaciones.longitudCampo("Numero de Tarjeta: ", request.getParameter("numeroTarjeta"), 1).ifPresent((error) -> exceptions.add(error));
+                validaciones.rangoValores(Integer.parseInt(request.getParameter("mesTarjeta")), 1, 1);
+                validaciones.longitudCampo("Mes Tarjeta: ", request.getParameter("mesTarjeta"), 1).ifPresent((error) -> exceptions.add(error));
+                validaciones.longitudCampo("Año Tarjeta: ", request.getParameter("annoTarjeta"), 1).ifPresent((error) -> exceptions.add(error));
+                validaciones.longitudCampo("CVS: ", request.getParameter("cvsTarjeta"), 1).ifPresent((error) -> exceptions.add(error));
                 break;
             case "paypal":
 //                validaciones.emailNoFormateado(request.getParameter("cuentaPaypal")).ifPresent((error) -> exceptions.add(error));
@@ -60,7 +61,7 @@ public class DatosPersonalesServlet implements ActionController {
             request.setAttribute("nombre", request.getParameter("nombre"));
             request.setAttribute("apellidos", request.getParameter("apellidos"));
             request.setAttribute("telefono", request.getParameter("telefono"));
-            
+
             switch (metodoPago) {
                 case "tarjeta":
                     request.setAttribute("numeroTarjeta", request.getParameter("numeroTarjeta"));
