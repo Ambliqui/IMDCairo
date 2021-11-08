@@ -6,12 +6,30 @@
 
 btnTarjeta.addEventListener("click",function(){
     tarjeta.checked=true; 
+    resetRequired();
+    numeroTarjeta.required=true;
+    mesTarjeta.required=true;
+    annoTarjeta.required=true;
 });
 
 btnPaypal.addEventListener("click",function(){
     paypal.checked=true; 
+    resetRequired();
+    cuentaPaypal.required=true;
 });
 
 btnTransferencia.addEventListener("click",function(){
     transferencia.checked=true; 
+    resetRequired();
+    IBAN.required=true;
 });
+
+function resetRequired(){
+    
+    numeroTarjeta.required=false;
+    mesTarjeta.required=false;
+    annoTarjeta.required=false;
+    cvsTarjeta.required=false;
+    cuentaPaypal.required=false;
+    IBAN.required=false;
+}
