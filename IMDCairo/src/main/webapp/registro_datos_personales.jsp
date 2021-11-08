@@ -43,7 +43,8 @@
                                 <div class="col-lg-8 mx-auto text-center">
                                     <h4>Metodo de pago</h4>
                                 </div>
-                            </div> 
+                            </div>
+                            
                             <div class="accordion accordion-flush" id="accordionFlushExample">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="flush-headingOne">
@@ -58,12 +59,11 @@
                                     </h2>
                                     <div id="flush-collapseOne" class="accordion-collapse collapse show" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                         <div class="accordion-body">
-                                            
                                                 <div class="form-group"> <label for="cardNumber">
                                                         <h6>Numero de tarjeta</h6>
                                                     </label>
-                                                    <div class="input-group"> 
-                                                        <input type="text" name="numeroTarjeta" placeholder="Numero de tarjeta" class="form-control" form="RegistroForm" required>
+                                                    <div class="input-group">
+                                                        <input type="text" name="numeroTarjeta" placeholder="Numero de tarjeta" class="form-control" required>
                                                     </div>
                                                 </div>
                                                 <div class="row">
@@ -71,15 +71,15 @@
                                                         <div class="form-group">
                                                             <h6>Fecha de caducidad</h6>
                                                             <div class="input-group">
-                                                                <input type="number" min="01" max="12" placeholder="MM" name="mesTarjeta" class="form-control" form="RegistroForm" required> 
-                                                                <input type="number" min="00" max="99" placeholder="YY" name="annoTarjeta" class="form-control" form="RegistroForm" required> 
+                                                                <input type="number" min="01" max="12" placeholder="MM" name="mesTarjeta" class="form-control" required> 
+                                                                <input type="number" min="00" max="99" placeholder="YY" name="annoTarjeta" class="form-control" required> 
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-4">
                                                         <div class="form-group mb-4"> 
                                                             <h6>CVS</h6>
-                                                            <input type="text" name="cvsTarjeta" required class="form-control" form="RegistroForm">
+                                                            <input type="number" min="000" max="999" name="cvsTarjeta" class="form-control" required>
                                                         </div>
                                                     </div>
                                                 </div>       
@@ -99,7 +99,8 @@
                                         </button>
                                     </h2>
                                     <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                                        <div class="accordion-body"><h6 class="pb-2">Paypal</h6>
+                                        <div class="accordion-body">
+                                            <h6 class="pb-2">Paypal</h6>
                                             <div class="form-group">
                                                 <input type="text" name="cuentaPaypal" required class="form-control" placeholder="Inserte cuenta paypal" form="RegistroForm">
                                             </div>
