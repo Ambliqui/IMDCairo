@@ -9,7 +9,7 @@
         </div>
         <section class="flex-shrink-0">
             <div class="container-fluid h-custom">       
-                <form id="registroForm" class="row d-flex justify-content-center align-items-start h-75 " action="ActionsServices">
+                <form id="registroForm" class="row d-flex justify-content-center align-items-start h-75 " action="ActionsServices?accion=Registrar">
                     <div class="container py-5 col-md-8 col-lg-6 col-xl-4 offset-xl-1" >
                         <div class="row mb-4">
                             <div class="col-lg-8 mx-auto text-center">
@@ -44,7 +44,7 @@
                                     <h4>Metodo de pago</h4>
                                 </div>
                             </div>
-                            
+
                             <div class="accordion accordion-flush" id="accordionFlushExample">
                                 <div class="accordion-item">
                                     <h2 class="accordion-header" id="flush-headingOne">
@@ -59,31 +59,31 @@
                                     </h2>
                                     <div id="flush-collapseOne" class="accordion-collapse collapse show" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                                         <div class="accordion-body">
-                                                <div class="form-group"> <label for="cardNumber">
-                                                        <h6>Numero de tarjeta</h6>
-                                                    </label>
-                                                    <div class="input-group">
-                                                        <input type="text" name="numeroTarjeta" placeholder="Numero de tarjeta" class="form-control" value="${numeroTarjeta}" required>
+                                            <div class="form-group"> <label for="cardNumber">
+                                                    <h6>Numero de tarjeta</h6>
+                                                </label>
+                                                <div class="input-group">
+                                                    <input type="text" id="numeroTarjeta" name="numeroTarjeta" placeholder="Numero de tarjeta" class="form-control" value="${numeroTarjeta}" required>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-sm-8">
+                                                    <div class="form-group">
+                                                        <h6>Fecha de caducidad</h6>
+                                                        <div class="input-group">
+                                                            <input type="number" min="01" max="12" placeholder="MM" id="mesTarjeta" name="mesTarjeta" class="form-control" value="${mesTarjeta}">
+                                                            <input type="number" min="00" max="99" placeholder="YY" id="annoTarjeta" name="annoTarjeta" class="form-control" value="${annoTarjeta}">
+                                                        </div>
                                                     </div>
                                                 </div>
-                                                <div class="row">
-                                                    <div class="col-sm-8">
-                                                        <div class="form-group">
-                                                            <h6>Fecha de caducidad</h6>
-                                                            <div class="input-group">
-                                                                <input type="number" min="01" max="12" placeholder="MM" name="mesTarjeta" class="form-control" value="${mesTarjeta}" required>
-                                                                <input type="number" min="00" max="99" placeholder="YY" name="annoTarjeta" class="form-control" value="${annoTarjeta}" required>
-                                                            </div>
-                                                        </div>
+                                                <div class="col-sm-4">
+                                                    <div class="form-group mb-4"> 
+                                                        <h6>CVS</h6>
+                                                        <input type="number" min="000" max="999" id="cvsTarjeta" name="cvsTarjeta" class="form-control" value="${cvsTarjeta}">
                                                     </div>
-                                                    <div class="col-sm-4">
-                                                        <div class="form-group mb-4"> 
-                                                            <h6>CVS</h6>
-                                                            <input type="number" min="000" max="999" name="cvsTarjeta" class="form-control" value="${cvsTarjeta}" required>
-                                                        </div>
-                                                    </div>
-                                                </div>       
-                                           
+                                                </div>
+                                            </div>       
+
                                         </div>
                                     </div>
                                 </div>
@@ -102,7 +102,7 @@
                                         <div class="accordion-body">
                                             <h6 class="pb-2">Paypal</h6>
                                             <div class="form-group">
-                                                <input type="text" name="cuentaPaypal" required class="form-control" placeholder="Inserte cuenta paypal" form="RegistroForm">
+                                                <input type="text" id="cuentaPaypal" name="cuentaPaypal" class="form-control" placeholder="Inserte cuenta paypal">
                                             </div>
                                         </div>
                                     </div>
@@ -121,7 +121,7 @@
                                     <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                                         <div class="accordion-body"><h6>Registra tu numero de cuenta</h6>
                                             <div class="form-group">
-                                                <input type="text" name="IBAN" required class="form-control" placeholder="Inserte IBAN" form="RegistroForm">
+                                                <input type="text" id="IBAN" name="IBAN" required class="form-control" placeholder="Inserte IBAN">
                                             </div>
                                         </div>
                                     </div>
