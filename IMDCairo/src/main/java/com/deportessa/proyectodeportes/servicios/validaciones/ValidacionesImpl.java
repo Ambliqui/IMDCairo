@@ -7,6 +7,7 @@ package com.deportessa.proyectodeportes.servicios.validaciones;
 import com.deportessa.proyectodeportes.daojpa.factory.DaoAbstractFactoryLocal;
 import com.deportessa.proyectodeportes.daojpa.factory.qualifiers.FactoryDaoMySql;
 import com.deportessa.proyectodeportes.modelo.Cliente;
+import com.deportessa.proyectodeportes.servicios.excepciones.CampoNoNumericoException;
 import com.deportessa.proyectodeportes.servicios.excepciones.EmailNoFormateadoException;
 import com.deportessa.proyectodeportes.servicios.excepciones.LongitudNoDeseadaException;
 import com.deportessa.proyectodeportes.servicios.excepciones.CamposNoCoincidentesException;
@@ -126,13 +127,13 @@ public class ValidacionesImpl implements Validaciones {
      * @return 
      */
     @Override
-    public Optional<NumberFormatException> campoNumerico(String valor) {
+    public Optional<CampoNoNumericoException> campoNumerico(String valor) {
         try {
             Integer.parseInt(valor);
             return Optional.empty();
         } catch (NumberFormatException e) {
-            //TODO: Cambiar mensaje de error personalizado o error personalizado
-            return Optional.of(e);
+            CampoNoNumericoException exception = new CampoNoNumericoException("El campo no es numerico");
+            return Optional.of(exception);
         }
     }
     

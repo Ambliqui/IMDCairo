@@ -18,7 +18,7 @@ public interface Validaciones {
         
     Boolean campoNuloVacio (String campo);
     
-    Optional<NumberFormatException> campoNumerico(String valor);
+    Optional<CampoNoNumericoException> campoNumerico(String valor);
     
     Optional<LongitudNoDeseadaException> longitudCampo(String nombreCampo, String campo, Integer longitudMinima);
     
