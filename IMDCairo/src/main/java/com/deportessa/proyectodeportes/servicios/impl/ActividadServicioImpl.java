@@ -5,7 +5,8 @@
  */
 package com.deportessa.proyectodeportes.servicios.impl;
 
-import com.deportessa.proyectodeportes.daojpa.ActividadFacadeLocal;
+import com.deportessa.proyectodeportes.daojpa.factory.DaoAbstractFactoryLocal;
+import com.deportessa.proyectodeportes.daojpa.factory.qualifiers.FactoryDaoMySql;
 import com.deportessa.proyectodeportes.modelo.Actividad;
 import com.deportessa.proyectodeportes.servicios.ActividadServicio;
 import java.util.List;
@@ -16,11 +17,17 @@ import javax.inject.Inject;
 public class ActividadServicioImpl implements ActividadServicio {
 
     @Inject
-    ActividadFacadeLocal actividadDao;
-    
+    @FactoryDaoMySql
+    private DaoAbstractFactoryLocal daoFactoryLocal;
+
     @Override
     public List<Actividad> findAll() {
-        return actividadDao.findAll();
+        return daoFactoryLocal.getActividadDaoLocal().findAll();
     }
-    
+
+    @Override
+    public Actividad find(Integer idActividad) {
+        return daoFactoryLocal.getActividadDaoLocal().find(idActividad);
+    }
+
 }

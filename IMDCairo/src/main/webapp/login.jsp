@@ -1,4 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" session="false"%>
 <!DOCTYPE html>
 <html>
     <%@ include file="structure/head.jsp" %>
@@ -11,23 +11,27 @@
             <div class="container-fluid h-custom">
                 <div class="row d-flex justify-content-center align-items-center h-100">
                     <div class="col-md-9 col-lg-6 col-xl-5">
-                        <img src="img/logo.jpg" alt="100%" width="100%">          
+                        <img src="resources/images/pagina/comun/logo.png" alt="100%" width="100%">          
                     </div>
                     <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
-                        <form action="PostLoginServlet">
+                        <form action="ActionsServices">
                             <div class="form-outline mb-4">
                                 <label class="form-label">Email</label>
-                                <input type="email" name="email" class="form-control form-control-lg"
+                                <input type="email" name="email" class="form-control form-control-lg" value="${email}"
                                        placeholder="Introduzca email" />                              
                             </div>
                             <div class="form-outline mb-3">
                                 <label class="form-label">Password</label>
-                                <input type="password" name="password" class="form-control form-control-lg"
+                                <input type="password" name="password" class="form-control form-control-lg" value="${password}"
                                        placeholder="Introduzca password" />
                             </div>
+                            <!-- TODO: Revisar ubicacion -->
+                            <c:forEach items="${errores}" var="error">
+                                <c:out value="${error.getMessage()}"/><br/>
+                            </c:forEach>
                             <div class="text-center text-lg-start mt-4 pt-2">
                                 <!-- TODO: En serio un button? -->
-                                <input type="submit" value="Login" class="btn btn-outline-info" style="padding-left: 2.5rem; padding-right: 2.5rem;"></input>
+                                <input type="submit" name="accion" value="Login" class="btn btn-outline-info" style="padding-left: 2.5rem; padding-right: 2.5rem;"></input>
                                 <p class="small fw-bold mt-2 pt-1 mb-0">¿No tienes cuenta? <a href="PreRegistroUsuarioServlet" class="link-danger">Registrate</a></p>
                             </div>
                         </form>

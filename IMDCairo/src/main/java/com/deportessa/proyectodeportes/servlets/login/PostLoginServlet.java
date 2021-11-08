@@ -5,10 +5,12 @@
  */
 package com.deportessa.proyectodeportes.servlets.login;
 
+import com.deportessa.proyectodeportes.daojpa.factory.DaoAbstractFactoryLocal;
+import com.deportessa.proyectodeportes.daojpa.factory.qualifiers.FactoryDaoMySql;
 import com.deportessa.proyectodeportes.modelo.Cliente;
 import com.deportessa.proyectodeportes.pruebas.isi.ClienteTest;
 import com.deportessa.proyectodeportes.servicios.ClienteServicio;
-import com.deportessa.proyectodeportes.servicios.Excepciones.EmailNoExistsException;
+import com.deportessa.proyectodeportes.servicios.excepciones.EmailNoExistsException;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,38 +37,22 @@ public class PostLoginServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+
     @Inject
-    ClienteServicio clienteServicio;
-    //TODO: Quitar clase de pruebas cuando implemente Antonio el metodo en la fachada
-    @Inject
-    ClienteTest clienteTest;
+    @FactoryDaoMySql
+    private DaoAbstractFactoryLocal daoFactoryLocal;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        Cliente cliente = new Cliente();
-
         String email = request.getParameter("email");
-        String password = request.getParameter("password");
-
-        cliente.setPassCliente(password);
-        cliente.setEmailCliente(email);
-
-        //TODO: Controlar los escenarios del caso de uso de Login
         Cliente clienteSession = new Cliente();
-        try {
-            clienteSession = clienteServicio.findEmail(email);
-            request.getSession(true);
-            request.getSession().setAttribute("clienteSession", clienteSession);
-        } catch (EmailNoExistsException ex) {
-            Logger.getLogger(PostLoginServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        //Escenario email sin formato correcto
-        //Escenario email no encontrado
-        //Escenario password no coincidente
-        //Caso OK
+        
+        clienteSession = daoFactoryLocal.getClienteDaoLocal().findByEmail(email).get();
+        request.getSession(true);
+        request.getSession().setAttribute("clienteSession", clienteSession);
         request.getRequestDispatcher("PrePrincipalServlet").forward(request, response);
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
