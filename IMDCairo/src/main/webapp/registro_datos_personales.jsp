@@ -102,7 +102,7 @@
                                         <div class="accordion-body">
                                             <h6 class="pb-2">Paypal</h6>
                                             <div class="form-group">
-                                                <input type="text" id="cuentaPaypal" name="cuentaPaypal" class="form-control" placeholder="Inserte cuenta paypal">
+                                                <input type="text" id="cuentaPaypal" name="cuentaPaypal" class="form-control" placeholder="Inserte cuenta paypal" value="${cuentaPaypal}">
                                             </div>
                                         </div>
                                     </div>
@@ -121,7 +121,7 @@
                                     <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                                         <div class="accordion-body"><h6>Registra tu numero de cuenta</h6>
                                             <div class="form-group">
-                                                <input type="text" id="IBAN" name="IBAN" required class="form-control" placeholder="Inserte IBAN">
+                                                <input type="text" id="IBAN" name="IBAN" required class="form-control" placeholder="Inserte IBAN" value="${IBAN}">
                                             </div>
                                         </div>
                                     </div>

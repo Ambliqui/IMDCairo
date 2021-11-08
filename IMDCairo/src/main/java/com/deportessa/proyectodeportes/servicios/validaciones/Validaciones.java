@@ -22,9 +22,11 @@ public interface Validaciones {
     
     Optional<LongitudNoDeseadaException> longitudCampo(String nombreCampo, String campo, Integer longitudMinima);
     
+    Optional <LongitudNoDeseadaException> rangoLongitudCampo(String nombreCampo, String campo, Integer longitudMinima, Integer longitudMaxima);
+    
     Optional<RangoNoDeseadoException> rangoValores(Integer valor, Integer minimo, Integer maximo);
     
-    Optional<RangoNoDeseadoException> rangoValores(String valor, Integer minimo, Integer maximo);
+    Optional<RangoNoDeseadoException> rangoValores(String campoNombre, String valor, Integer minimo, Integer maximo);
     
     Optional<EmailNoFormateadoException> emailNoFormateado(String email);
     
