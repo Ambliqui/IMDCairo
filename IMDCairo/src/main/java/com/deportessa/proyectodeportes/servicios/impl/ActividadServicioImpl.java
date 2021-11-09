@@ -6,7 +6,6 @@
 package com.deportessa.proyectodeportes.servicios.impl;
 
 import com.deportessa.proyectodeportes.daojpa.factory.DaoAbstractFactoryLocal;
-import com.deportessa.proyectodeportes.daojpa.factory.qualifiers.FactoryDaoMySql;
 import com.deportessa.proyectodeportes.modelo.Actividad;
 import com.deportessa.proyectodeportes.servicios.ActividadServicio;
 import java.util.List;
@@ -17,7 +16,6 @@ import javax.inject.Inject;
 public class ActividadServicioImpl implements ActividadServicio {
 
     @Inject
-    @FactoryDaoMySql
     private DaoAbstractFactoryLocal daoFactoryLocal;
 
     @Override

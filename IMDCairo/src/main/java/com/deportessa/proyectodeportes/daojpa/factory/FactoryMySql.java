@@ -12,7 +12,6 @@ import com.deportessa.proyectodeportes.daojpa.MetodoPagoLocal;
 import com.deportessa.proyectodeportes.daojpa.PaypalLocal;
 import com.deportessa.proyectodeportes.daojpa.TarjetaLocal;
 import com.deportessa.proyectodeportes.daojpa.TransferenciaLocal;
-import com.deportessa.proyectodeportes.daojpa.factory.qualifiers.FactoryDaoMySql;
 import com.deportessa.proyectodeportes.daojpa.qulifiers.ActividadMysql;
 import com.deportessa.proyectodeportes.daojpa.qulifiers.ClienteMysql;
 import com.deportessa.proyectodeportes.daojpa.qulifiers.EntrenadorMysql;
@@ -22,6 +21,7 @@ import com.deportessa.proyectodeportes.daojpa.qulifiers.PaypalMysql;
 import com.deportessa.proyectodeportes.daojpa.qulifiers.TarjetaMysql;
 import com.deportessa.proyectodeportes.daojpa.qulifiers.TransferenciaMysql;
 import javax.ejb.Singleton;
+import javax.enterprise.inject.Alternative;
 import javax.inject.Inject;
 
 
@@ -30,7 +30,7 @@ import javax.inject.Inject;
  * @author Antonio
  */
 @Singleton
-@FactoryDaoMySql
+@Alternative
 public class FactoryMySql implements DaoAbstractFactoryLocal {
 
     @Inject

@@ -6,16 +6,10 @@
 package com.deportessa.proyectodeportes.listener;
 
 import com.deportessa.proyectodeportes.daojpa.factory.DaoAbstractFactoryLocal;
-import com.deportessa.proyectodeportes.daojpa.factory.qualifiers.FactoryDaoMySql;
-import com.deportessa.proyectodeportes.modelo.Actividad;
-import com.deportessa.proyectodeportes.modelo.Cliente;
-import com.deportessa.proyectodeportes.modelo.Inscripcion;
-import com.deportessa.proyectodeportes.modelo.Tarjeta;
 import com.deportessa.proyectodeportes.servicios.ActionController;
 import com.deportessa.proyectodeportes.servicios.qualifiers.DatosPersonalesQ;
 import com.deportessa.proyectodeportes.servicios.qualifiers.LoginQ;
 import com.deportessa.proyectodeportes.servicios.qualifiers.RegistroUsuarioServicioQ;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import javax.inject.Inject;
@@ -32,7 +26,6 @@ public class InicioAppListener implements ServletContextListener {
     // @Inject
     // ActividadServicio actividadServicio;
     @Inject
-    @FactoryDaoMySql
     private DaoAbstractFactoryLocal daoFactoryLocal;
 
     @Inject
