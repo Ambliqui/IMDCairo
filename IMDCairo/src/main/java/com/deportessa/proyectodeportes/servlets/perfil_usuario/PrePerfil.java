@@ -5,21 +5,18 @@
  */
 package com.deportessa.proyectodeportes.servlets.perfil_usuario;
 
-import com.deportessa.proyectodeportes.servlets.inscripciones.*;
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
 /**
  *
- * @author Mefisto
+ * @author damon
  */
-@WebServlet(name = "PreInscripcionesServlet", urlPatterns = {"/PreInscripcionesServlet"})
-public class PreInscripcionesServlet extends HttpServlet {
+public class PrePerfil extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,7 +29,7 @@ public class PreInscripcionesServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        response.setContentType("text/html;charset=UTF-8");
         response.sendRedirect("./perfil_usuario.jsp");
     }
 
