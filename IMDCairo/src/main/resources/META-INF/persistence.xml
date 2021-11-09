@@ -4,7 +4,7 @@
   <persistence-unit name="mysql" transaction-type="JTA">
     <jta-data-source>jdbc/Sakila</jta-data-source>
   </persistence-unit>
-  <persistence-unit name="postgre" transaction-type="JTA">
+  <!--<persistence-unit name="postgre" transaction-type="JTA">
     <jta-data-source>jdbc/postgre</jta-data-source>
-  </persistence-unit>
+  </persistence-unit>-->
 </persistence>
