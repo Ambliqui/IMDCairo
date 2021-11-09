@@ -1,10 +1,10 @@
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" session="false"%>
 <!DOCTYPE html>
 <html>
     <%@ include file="structure/head.jsp" %>
     <body> 
-        <%@ include file="structure/header_login.jsp" %>
+        <%@ include file="structure/header.jsp" %>
         <div style="height: 100px;" >
             <h2 class="text-center" ><p>Nuestros deportes</p></h2>
         </div>        

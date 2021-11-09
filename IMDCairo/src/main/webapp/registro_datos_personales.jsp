@@ -50,7 +50,7 @@
                                     <h2 class="accordion-header" id="flush-headingOne">
                                         <button id="btnTarjeta" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="metodoPago" id="tarjeta" value="tarjeta" checked>
+                                                <input class="form-check-input" type="checkbox" name="metodoPago" id="tarjeta" value="tarjeta" checked>
                                                 <label class="form-check-label" for="tarjeta">
                                                     Tarjeta
                                                 </label>
@@ -91,7 +91,7 @@
                                     <h2 class="accordion-header" id="flush-headingTwo">
                                         <button id="btnPaypal" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="metodoPago" id="paypal" value="paypal">
+                                                <input class="form-check-input" type="checkbox" name="metodoPago" id="paypal" value="paypal">
                                                 <label class="form-check-label" for="paypal">
                                                     PayPal
                                                 </label>
@@ -111,7 +111,7 @@
                                     <h2 class="accordion-header" id="flush-headingThree">
                                         <button id="btnTransferencia" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
                                             <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="metodoPago" id="transferencia" value="transferencia" >
+                                                <input class="form-check-input" type="checkbox" name="metodoPago" id="transferencia" value="transferencia" >
                                                 <label style="display:block;" class="form-check-label" for="transferencia">
                                                     Transferencia
                                                 </label>

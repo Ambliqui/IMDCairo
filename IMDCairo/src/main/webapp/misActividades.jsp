@@ -4,13 +4,13 @@
     Author     : pryet
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" session="false"%>
 <!DOCTYPE html>
 <html lang="es" class="h-100">
     <%@ include file="structure/head.jsp" %>
     <body class="d-flex flex-column h-100">       
 
-        <%@ include file="structure/header_login.jsp" %>
+        <%@ include file="structure/header.jsp" %>
         <header style="height: 100px;" >
             <h2 class="text-center" > Sus actividades</h2>
         </header>
