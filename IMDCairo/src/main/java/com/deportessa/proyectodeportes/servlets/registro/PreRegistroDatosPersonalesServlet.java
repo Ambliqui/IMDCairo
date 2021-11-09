@@ -7,7 +7,6 @@
 package com.deportessa.proyectodeportes.servlets.registro;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,6 +31,12 @@ public class PreRegistroDatosPersonalesServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+
+        System.out.println(email);
+        System.out.println(password);
 
         request.getRequestDispatcher("registro_datos_personales.jsp").forward(request, response);
     }

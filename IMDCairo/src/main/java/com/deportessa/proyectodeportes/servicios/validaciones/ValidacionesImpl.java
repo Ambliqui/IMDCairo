@@ -135,10 +135,10 @@ public class ValidacionesImpl implements Validaciones {
     }
 
     /**
-     * Sobrecarga del metodo (a desallorar, no creada la excepcion
-     * personalizada)
+     * Sobrecarga del metodo
      *
      * @author Mefisto
+     * @param campoNombre
      * @param valor
      * @param minimo
      * @param maximo

@@ -51,7 +51,7 @@ public class RegistroUsuarioServicio implements ActionController {
             request.setAttribute("cemail", request.getParameter("cemail"));
             request.setAttribute("password", request.getParameter("password"));
             request.setAttribute("cpassword", request.getParameter("cpassword"));
-
+            
             //Devolvemos los errores
             request.setAttribute("errores", exceptions);
             return "/PreRegistroUsuarioServlet";
