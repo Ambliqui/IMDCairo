@@ -20,7 +20,7 @@ import javax.persistence.PersistenceContext;
 @TransferenciaPostgre
 public class TransferenciaPostgreImpl extends DaoGenericoAbstracto<Transferencia, Integer> implements TransferenciaLocal {
 
-    @PersistenceContext(unitName = "postgre")
+    @PersistenceContext(unitName = "mysql")
     private EntityManager em;
 
     public TransferenciaPostgreImpl() {

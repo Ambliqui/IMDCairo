@@ -26,7 +26,7 @@ import javax.persistence.criteria.Root;
 @ClientePostgre
 public class ClientePostgreImpl extends DaoGenericoAbstracto<Cliente, Integer> implements ClienteLocal{
 
-    @PersistenceContext(unitName = "postgre")
+    @PersistenceContext(unitName = "mysql")
     private EntityManager em;
 
     public ClientePostgreImpl() {

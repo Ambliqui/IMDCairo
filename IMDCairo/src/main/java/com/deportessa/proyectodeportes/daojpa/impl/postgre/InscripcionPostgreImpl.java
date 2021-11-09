@@ -24,7 +24,7 @@ import javax.persistence.PersistenceContext;
 @InscripcionPostgre
 public class InscripcionPostgreImpl extends DaoGenericoAbstracto<Inscripcion, Integer> implements InscripcionLocal {
 
-    @PersistenceContext(unitName = "postgre")
+    @PersistenceContext(unitName = "mysql")
     private EntityManager em;
 
     public InscripcionPostgreImpl() {

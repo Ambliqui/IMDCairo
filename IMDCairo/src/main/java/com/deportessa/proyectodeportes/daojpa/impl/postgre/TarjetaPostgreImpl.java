@@ -20,7 +20,7 @@ import javax.persistence.PersistenceContext;
 @TarjetaPostgre
 public class TarjetaPostgreImpl extends DaoGenericoAbstracto<Tarjeta, Integer> implements TarjetaLocal{
 
-    @PersistenceContext(unitName = "postgre")
+    @PersistenceContext(unitName = "mysql")
     private EntityManager em;
 
     public TarjetaPostgreImpl() {

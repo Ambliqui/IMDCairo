@@ -20,7 +20,7 @@ import javax.persistence.PersistenceContext;
 @ActividadPostgre
 public class ActividadPostgreImpl extends DaoGenericoAbstracto<Actividad, Integer> implements ActividadLocal{
     
-    @PersistenceContext(unitName = "postgre")
+    @PersistenceContext(unitName = "mysql")
     private EntityManager em;
 
     public ActividadPostgreImpl() {

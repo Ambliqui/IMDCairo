@@ -20,7 +20,7 @@ import javax.persistence.PersistenceContext;
 @EntrenadorPostgre
 public class EntrenadorPostgreImpl extends DaoGenericoAbstracto<Entrenador, Integer> implements EntrenadorLocal {
 
-    @PersistenceContext(unitName = "postgre")
+    @PersistenceContext(unitName = "mysql")
     private EntityManager em;
 
     public EntrenadorPostgreImpl() {

@@ -20,7 +20,7 @@ import javax.persistence.PersistenceContext;
 @MetodoPagoPostgre
 public class MetodoPagoPostgreImpl extends DaoGenericoAbstracto<MetodoPago, Integer> implements MetodoPagoLocal{
 
-     @PersistenceContext(unitName = "postgre")
+     @PersistenceContext(unitName = "mysql")
     private EntityManager em;
 
     public MetodoPagoPostgreImpl() {

@@ -20,7 +20,7 @@ import javax.persistence.PersistenceContext;
 @PaypalPostgre
 public class PaypalPostgreImpl extends DaoGenericoAbstracto<Paypal, Integer> implements PaypalLocal {
 
-    @PersistenceContext(unitName = "postgre")
+    @PersistenceContext(unitName = "mysql")
     private EntityManager em;
 
     public PaypalPostgreImpl() {
