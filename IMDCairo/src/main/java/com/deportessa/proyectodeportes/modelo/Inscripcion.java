@@ -7,11 +7,8 @@ package com.deportessa.proyectodeportes.modelo;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Objects;
-import javafx.util.converter.LocalDateStringConverter;
 import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;

@@ -37,6 +37,7 @@ public class LoginServlet implements ActionController {
             validaciones.passwordNoCoincidente(request.getParameter("email"), request.getParameter("password")).ifPresent((error) -> exceptions.add(error));
         }
 
+        //Mandamos a la pagina de destino
         if (exceptions.isEmpty()) {
             return "/PostLoginServlet";
         } else {
