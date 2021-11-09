@@ -23,31 +23,31 @@ import com.deportessa.proyectodeportes.servicios.qualifiers.RegistroUsuarioServi
 public class ActionsServices extends HttpServlet {
 
     //Inyeccion de dependencias
-    @Inject
-    @LoginQ
-    private ActionController login;
-
-    @Inject
-    @RegistroUsuarioServicioQ
-    private ActionController registroUsuario;
-    
-    @Inject
-    @DatosPersonalesQ
-    private ActionController datosUsuario;
-
-    private final Map<String, ActionController> acciones = new HashMap<>();
+//    @Inject
+//    @LoginQ
+//    private ActionController login;
+//
+//    @Inject
+//    @RegistroUsuarioServicioQ
+//    private ActionController registroUsuario;
+//    
+//    @Inject
+//    @DatosPersonalesQ
+//    private ActionController datosUsuario;
+//
+//    private final Map<String, ActionController> acciones = new HashMap<>();
 
     /**
      * Inicializacion de los pares del mapa
      * @throws ServletException 
      */
-    @Override
-    public void init() throws ServletException {
-        super.init();
-        acciones.put("Login", login);
-        acciones.put("Siguiente", registroUsuario);
-        acciones.put("Registrar", datosUsuario);
-    }
+//    @Override
+//    public void init() throws ServletException {
+//        super.init();
+//        acciones.put("Login", login);
+//        acciones.put("Siguiente", registroUsuario);
+//        acciones.put("Registrar", datosUsuario);
+//    }
 
     /**
      * Este metodo recoge el "accion" que nos llegue de cualquier formulario
@@ -59,7 +59,7 @@ public class ActionsServices extends HttpServlet {
     @Override
     public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        //TODO: Traer el mapa de validaciones del contexto
+        Map<String, ActionController> acciones = (Map<String, ActionController>) request.getServletContext().getAttribute("acciones");
         String actionKey = request.getParameter("accion");
 
         ActionController accion = acciones.get(actionKey);

@@ -50,13 +50,14 @@ public class InicioAppListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
 
+        //Mapa para el comando de la aplicacion
         final Map<String, ActionController> acciones = new HashMap<>();
         acciones.put("Login", login);
         acciones.put("Siguiente", registroUsuario);
         acciones.put("Registrar", datosUsuario);
 
-        //TODO: Poner actividades en Contexto
-        // sce.getServletContext().setAttribute("listaActividades", daoFactoryLocal.getActividadDaoLocal().findAll());
+        //Subimos las actividades al contexto
+        sce.getServletContext().setAttribute("listaActividades", daoFactoryLocal.getActividadDaoLocal().findAll());
     }
 
     @Override

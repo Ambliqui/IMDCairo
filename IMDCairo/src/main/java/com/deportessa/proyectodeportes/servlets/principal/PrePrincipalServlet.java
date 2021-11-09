@@ -40,15 +40,7 @@ public class PrePrincipalServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-
-        //TODO: No se esta trayendo la lista del contexto
-//        List<Actividad> actividades = (List<Actividad>) request.getServletContext().getAttribute("listaActividades");
-//        request.setAttribute("listaActividades", actividades);
-
-        List<Actividad> actividades = actividadFacade.findAll();
-        request.setAttribute("listaActividades", actividades);
         request.getRequestDispatcher("principal.jsp").forward(request, response);
-        
         
     }
 
