@@ -5,8 +5,15 @@
  */
 package com.deportessa.proyectodeportes.servlets.registro;
 
+import com.deportessa.proyectodeportes.daojpa.factory.DaoAbstractFactoryLocal;
+import com.deportessa.proyectodeportes.daojpa.factory.qualifiers.FactoryDaoMySql;
 import com.deportessa.proyectodeportes.modelo.Cliente;
+import com.deportessa.proyectodeportes.modelo.MetodoPago;
+import com.deportessa.proyectodeportes.modelo.Paypal;
+import com.deportessa.proyectodeportes.modelo.Tarjeta;
+import com.deportessa.proyectodeportes.servicios.ActionMetodoPago;
 import java.io.IOException;
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,7 +27,6 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "PostRegistroDatosPersonalesServlet", urlPatterns = {"/PostRegistroDatosPersonalesServlet"})
 public class PostRegistroDatosPersonalesServlet extends HttpServlet {
 
-    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -30,53 +36,51 @@ public class PostRegistroDatosPersonalesServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
+    @Inject
+    @FactoryDaoMySql
+    private DaoAbstractFactoryLocal daoFactoryLocal;
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         ////////////// DATOS DE USUARIO //////////////////////
-
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String nombre = request.getParameter("nombre");
         String apellidos = request.getParameter("apellidos");
         String telefono = request.getParameter("telefono");
-        
+
         //TODO: Pasar validadores y crear cliente en caso afirmativo
-        
         Cliente cliente = new Cliente();
         cliente.setEmailCliente(email);
         cliente.setPassCliente(password);
         cliente.setNombreCliente(nombre);
         cliente.setApellido1Cliente(apellidos);
         cliente.setTelefonoCliente(telefono);
+
+        MetodoPago metodoPago;
         
-        //////////////// DATOS DE TARJETA ////////////////////////
+        if (request.getParameter("metodoPago").equalsIgnoreCase("tarjeta")) {
+            Integer numeroTarjeta = Integer.parseInt(request.getParameter("numeroTarjeta"));
+            Integer mesTarjeta = Integer.parseInt(request.getParameter("mesTarjeta"));
+            Integer annoTarjeta = Integer.parseInt(request.getParameter("annoTarjeta"));
+//            Integer csvTarjeta = Integer.parseInt(request.getParameter("csvTarjeta"));
+            System.out.println("Parada");
+            metodoPago = new Tarjeta(numeroTarjeta, mesTarjeta, annoTarjeta, 123);
+            
+        } else if (request.getParameter("metodoPago").equalsIgnoreCase("paypal")) {
+            metodoPago = new Paypal(request.getParameter("cuentaPaypal"));
         
-//        Integer numeroTarjeta = Integer.parseInt(request.getParameter("numeroTarjeta"));
-//        Integer mesTarjeta = Integer.parseInt(request.getParameter("mesTarjeta"));
-//        Integer annoTarjeta = Integer.parseInt(request.getParameter("annoTarjeta"));
-//        Integer csvTarjeta = Integer.parseInt(request.getParameter("csvTarjeta"));
+        } else {
+            metodoPago = new Paypal(request.getParameter("IBAN"));
+        }
         
-        //TODO: Pasar validadores y crear tarjeta en caso afirmativo
-        
-//        Tarjeta tarjeta = new Tarjeta();
-//        tarjeta.setNumTarjeta(numeroTarjeta);
-//        tarjeta.setMesTarjeta(mesTarjeta);
-//        tarjeta.setAnnoTarjeta(annoTarjeta);
-//        tarjeta.setCvsTarjeta(csvTarjeta);
-        
-        //////////////// DATOS PAYPAL //////////////////////
-        
-//        String cuentaPaypal = request.getParameter("cuentaPaypal");
-        
-        
-        //////////////// DATOS BANCARIA ///////////////////////
-        
-//        Integer cuentaBancaria = Integer.parseInt(request.getParameter("cuentaBancaria"));
+        daoFactoryLocal.getClienteDaoLocal().create(cliente);
+        cliente.addMPago(metodoPago);
 
         request.getRequestDispatcher("PrePrincipalServlet").forward(request, response);
-        
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

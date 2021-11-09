@@ -7,20 +7,15 @@ package com.deportessa.proyectodeportes.listener;
 
 import com.deportessa.proyectodeportes.daojpa.factory.DaoAbstractFactoryLocal;
 import com.deportessa.proyectodeportes.daojpa.factory.qualifiers.FactoryDaoMySql;
-import com.deportessa.proyectodeportes.modelo.Actividad;
-import com.deportessa.proyectodeportes.modelo.Cliente;
-import com.deportessa.proyectodeportes.modelo.Inscripcion;
-import com.deportessa.proyectodeportes.modelo.Tarjeta;
-import com.deportessa.proyectodeportes.servicios.ActionController;
-import com.deportessa.proyectodeportes.servicios.qualifiers.DatosPersonalesQ;
-import com.deportessa.proyectodeportes.servicios.qualifiers.LoginQ;
-import com.deportessa.proyectodeportes.servicios.qualifiers.RegistroUsuarioServicioQ;
-import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 import javax.inject.Inject;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+import com.deportessa.proyectodeportes.servicios.ActionValidator;
+import com.deportessa.proyectodeportes.servicios.qualifiers.ActionValidatorDatosPersonalesImplQ;
+import com.deportessa.proyectodeportes.servicios.qualifiers.ActionValidatorRegistroUsuarioQ;
+import com.deportessa.proyectodeportes.servicios.qualifiers.ActionValidatorLoginQ;
 
 /**
  * Web application lifecycle listener.
@@ -29,33 +24,35 @@ import javax.servlet.ServletContextListener;
  */
 public class InicioAppListener implements ServletContextListener {
 
-    // @Inject
-    // ActividadServicio actividadServicio;
+
+    //Inyeccion de dependencias
     @Inject
     @FactoryDaoMySql
     private DaoAbstractFactoryLocal daoFactoryLocal;
 
     @Inject
-    @LoginQ
-    private ActionController login;
+    @ActionValidatorLoginQ
+    private ActionValidator login;
 
     @Inject
-    @RegistroUsuarioServicioQ
-    private ActionController registroUsuario;
+    @ActionValidatorRegistroUsuarioQ
+    private ActionValidator registroUsuario;
 
     @Inject
-    @DatosPersonalesQ
-    private ActionController datosUsuario;
+    @ActionValidatorDatosPersonalesImplQ
+    private ActionValidator datosUsuario;
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
 
         //Mapa para el comando de la aplicacion
-        final Map<String, ActionController> acciones = new HashMap<>();
+        Map<String, ActionValidator> acciones = new HashMap<>();
         acciones.put("Login", login);
         acciones.put("Siguiente", registroUsuario);
         acciones.put("Registrar", datosUsuario);
-
+        sce.getServletContext().setAttribute("acciones", acciones);
+        
+        
         //Subimos las actividades al contexto
         sce.getServletContext().setAttribute("listaActividades", daoFactoryLocal.getActividadDaoLocal().findAll());
     }
