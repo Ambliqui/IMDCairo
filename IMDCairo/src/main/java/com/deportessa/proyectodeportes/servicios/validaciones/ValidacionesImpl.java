@@ -5,7 +5,6 @@
 package com.deportessa.proyectodeportes.servicios.validaciones;
 
 import com.deportessa.proyectodeportes.daojpa.factory.DaoAbstractFactoryLocal;
-import com.deportessa.proyectodeportes.daojpa.factory.qualifiers.FactoryDaoMySql;
 import com.deportessa.proyectodeportes.modelo.Cliente;
 import com.deportessa.proyectodeportes.servicios.excepciones.CampoNoNumericoException;
 import com.deportessa.proyectodeportes.servicios.excepciones.EmailNoFormateadoException;
@@ -23,25 +22,25 @@ import javax.inject.Inject;
 
 /**
  * Implementacion de las distintas validaciones
+ *
  * @author Mefisto
  */
-
-
 @Stateless
 public class ValidacionesImpl implements Validaciones {
 
     @Inject
-    @FactoryDaoMySql
     private DaoAbstractFactoryLocal daoFactoryLocal;
 
     /**
-     * Metodo para comprobar que dos campos son iguales diferenciando mayusculas y minusculas
+     * Metodo para comprobar que dos campos son iguales diferenciando mayusculas
+     * y minusculas
+     *
      * @author Mefisto
-     * @param nombreCampo1  Nombre del primer campo a validar
-     * @param nombreCampo2  Nombre del segundo campo a validar
-     * @param campo1    Valor del primer campo a validar
-     * @param campo2    Valor del segundo campo a validar
-     * @return          Devuelve una excepcion personalizada envuelta en un Optional
+     * @param nombreCampo1 Nombre del primer campo a validar
+     * @param nombreCampo2 Nombre del segundo campo a validar
+     * @param campo1 Valor del primer campo a validar
+     * @param campo2 Valor del segundo campo a validar
+     * @return Devuelve una excepcion personalizada envuelta en un Optional
      * @see <CamposNoCoincidentesException>
      */
     @Override
@@ -53,12 +52,13 @@ public class ValidacionesImpl implements Validaciones {
             return Optional.of(exception);
         }
     }
-    
+
     /**
      * Metodo dummy para desarrolar, no está testeado
-     * @author      Mefisto
+     *
+     * @author Mefisto
      * @param campo Valor a comprobar
-     * @return      Boolean
+     * @return Boolean
      */
     @Override
     public Boolean campoNuloVacio(String campo) {
@@ -71,6 +71,7 @@ public class ValidacionesImpl implements Validaciones {
 
     /**
      * Mide la longitud de una cadena quitando los espacios
+     *
      * @author Mefisto
      * @param nombreCampo
      * @param campo
@@ -89,16 +90,40 @@ public class ValidacionesImpl implements Validaciones {
     }
 
     /**
+     * Devuelve un excepcion personalizada envuelta en un Optional
+     * si la longitud del campo no se encuentra dentro de los parametros establecidos
+     * author Mefisto
+     * 
+     * @param nombreCampo       Nombre del campo que se mostrara en la vista
+     * @param campo             Campo a validar
+     * @param longitudMinima    Longitud minima del campo
+     * @param longitudMaxima    Longitud maxima del campo
+     * @return                  Devuelve una excepcion personalizada envuelta en un Optional
+     * @see                     <LongitudNoDeseadaException>
+     */
+    @Override
+    public Optional<LongitudNoDeseadaException> rangoLongitudCampo(String nombreCampo, String campo, Integer longitudMinima, Integer longitudMaxima) {
+        if (campo.trim().length() >= longitudMinima) {
+            return Optional.empty();
+        } else {
+            LongitudNoDeseadaException exception = new LongitudNoDeseadaException(nombreCampo + ": La longuitud mínima del campo debe ser: " + longitudMinima);
+            return Optional.of(exception);
+        }
+    }
+    
+    /**
      * Comprueba que el valor que pasamos esta un un rango que le definimos
+     *
      * @author Mefisto
-     * @param valor     Valor a comprobar
-     * @param minimo    Valor minimo establecido
-     * @param maximo    Valor maximo establecido
-     * @return          Devuelve una excepcion personalizada envuelta en un Optional
+     * @param valor Valor a comprobar
+     * @param minimo Valor minimo establecido
+     * @param maximo Valor maximo establecido
+     * @return Devuelve una excepcion personalizada envuelta en un Optional
      * @see             <RangoNoDeseadoException>
      */
     @Override
     public Optional<RangoNoDeseadoException> rangoValores(Integer valor, Integer minimo, Integer maximo) {
+
         if (valor >= minimo && valor <= maximo) {
             return Optional.empty();
         } else {
@@ -106,25 +131,42 @@ public class ValidacionesImpl implements Validaciones {
             return Optional.of(exception);
         }
     }
-    
+
     /**
-     * Sobrecarga del metodo (a desallorar, no creada la excepcion personalizada)
+     * Sobrecarga del metodo (a desallorar, no creada la excepcion
+     * personalizada)
+     *
      * @author Mefisto
      * @param valor
      * @param minimo
      * @param maximo
-     * @return 
+     * @return
      */
     @Override
-    public Optional<RangoNoDeseadoException> rangoValores(String valor, Integer minimo, Integer maximo) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Optional<RangoNoDeseadoException> rangoValores(String campoNombre, String valor, Integer minimo, Integer maximo) {
+
+        Optional<CampoNoNumericoException> convertible = campoNumerico(valor);
+
+        if (!convertible.isPresent()) {
+            Integer conversionTipo = Integer.parseInt(valor);
+            if (conversionTipo >= minimo && conversionTipo <= maximo) {
+                return Optional.empty();
+            } else {
+                RangoNoDeseadoException exception = new RangoNoDeseadoException("El valor de " + campoNombre + " debe estar comprendido entre: " + minimo + " y " + maximo);
+                return Optional.of(exception);
+            }
+        } else {
+                RangoNoDeseadoException exception = new RangoNoDeseadoException(campoNombre + ": El valor debe ser un número entero");
+                return Optional.of(exception);
+        }
     }
-    
+
     /**
      * Maneja un NumberFormatException
+     *
      * @author Mefisto
      * @param valor campo a validar
-     * @return 
+     * @return
      */
     @Override
     public Optional<CampoNoNumericoException> campoNumerico(String valor) {
@@ -136,17 +178,18 @@ public class ValidacionesImpl implements Validaciones {
             return Optional.of(exception);
         }
     }
-    
+
     /**
      * Comprueba si un texto tiene formato de email
+     *
      * @author Mefisto
      * @param email Campo a comprobar
-     * @return      Devuelve una excepcion personalizada envuelta en un Optional
+     * @return Devuelve una excepcion personalizada envuelta en un Optional
      * @see         <EmailNoFormateadoException>
      */
     @Override
     public Optional<EmailNoFormateadoException> emailNoFormateado(String email) {
-        //TODO: Pasar a bundle
+        
         Pattern pattern = Pattern
                 .compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
 
@@ -160,8 +203,9 @@ public class ValidacionesImpl implements Validaciones {
     }
 
     /**
-     * Comprueba si un email existe en nuestra base de datos
-     * Tiene que tener un metodo para buscar dicho email
+     * Comprueba si un email existe en nuestra base de datos Tiene que tener un
+     * metodo para buscar dicho email
+     *
      * @author      Mefisto
      * @param email Valor a comprobar
      * @return      Devuelve una excepcion personalizada envuelta en un Optional
@@ -178,8 +222,9 @@ public class ValidacionesImpl implements Validaciones {
     }
 
     /**
-     * Comprueba si el email existe en la base de datos
-     * Tiene que tener un metodo para buscar dicho email
+     * Comprueba si el email existe en la base de datos Tiene que tener un
+     * metodo para buscar dicho email
+     *
      * @author      Mefisto
      * @param email Valor a comprobar
      * @return      Devuelve una excepcion personalizada envuelta en un Optional
@@ -195,7 +240,9 @@ public class ValidacionesImpl implements Validaciones {
     }
 
     /**
-     * Busca un Cliente por email y comprueba si coincide el usuario que le pasamos
+     * Busca un Cliente por email y comprueba si coincide el usuario que le
+     * pasamos
+     *
      * @param email     Cliente a buscar
      * @param password  Password a comprobar
      * @return          Devuelve una excepcion personalizada envuelta en un Optional

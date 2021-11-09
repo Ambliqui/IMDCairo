@@ -29,26 +29,25 @@ public class DatosPersonalesServlet implements ActionController {
 
         List<Exception> exceptions = new ArrayList<>();
 
-        validaciones.longitudCampo("Nombre", request.getParameter("nombre"), 4).ifPresent((error) -> exceptions.add(error));
-        validaciones.longitudCampo("Apellidos", request.getParameter("apellidos"), 4).ifPresent((error) -> exceptions.add(error));
-        validaciones.campoNumerico(request.getParameter("telefono")).ifPresent((error) -> exceptions.add(error));
-        validaciones.longitudCampo("Telefono", request.getParameter("telefono"), 9).ifPresent((error) -> exceptions.add(error));
+        validaciones.longitudCampo("Nombre: ", request.getParameter("nombre"), 4).ifPresent((error) -> exceptions.add(error));
+        validaciones.longitudCampo("Apellidos: ", request.getParameter("apellidos"), 4).ifPresent((error) -> exceptions.add(error));
+        validaciones.rangoValores("Telefono: ", request.getParameter("telefono"), 111111111, 999999999).ifPresent((error) -> exceptions.add(error));
 
         String metodoPago = request.getParameter("metodoPago");
 
         switch (metodoPago) {
             case "tarjeta":
-                validaciones.longitudCampo("Numero de Tarjeta: ", request.getParameter("numeroTarjeta"), 1).ifPresent((error) -> exceptions.add(error));
-                validaciones.rangoValores(Integer.parseInt(request.getParameter("mesTarjeta")), 1, 1);
-                validaciones.longitudCampo("Mes Tarjeta: ", request.getParameter("mesTarjeta"), 1).ifPresent((error) -> exceptions.add(error));
-                validaciones.longitudCampo("Año Tarjeta: ", request.getParameter("annoTarjeta"), 1).ifPresent((error) -> exceptions.add(error));
-                validaciones.longitudCampo("CVS: ", request.getParameter("cvsTarjeta"), 1).ifPresent((error) -> exceptions.add(error));
+                //TODO: hacer las comprobaciones sobre un Long
+                validaciones.rangoValores("Numero Tarjeta ", request.getParameter("numeroTarjeta"), 01, 2899999).ifPresent((error) -> exceptions.add(error));
+                validaciones.rangoValores("Mes Tarjeta: ", request.getParameter("mesTarjeta"), 01, 12).ifPresent((error) -> exceptions.add(error));
+                validaciones.rangoValores("Año Tarjeta: ",request.getParameter("annoTarjeta"), 01, 31).ifPresent((error) -> exceptions.add(error));
+                validaciones.rangoValores("CSV Tarjeta:", request.getParameter("cvsTarjeta"), 01, 999).ifPresent((error) -> exceptions.add(error));
                 break;
             case "paypal":
-//                validaciones.emailNoFormateado(request.getParameter("cuentaPaypal")).ifPresent((error) -> exceptions.add(error));
+                validaciones.emailNoFormateado(request.getParameter("cuentaPaypal")).ifPresent((error) -> exceptions.add(error));
                 break;
             case "transferencia":
-//                validaciones.longitudCampo("IBAN: ",  request.getParameter("IBAN"), 4).ifPresent((error) -> exceptions.add(error));
+                validaciones.longitudCampo("IBAN: ",  request.getParameter("IBAN"), 20).ifPresent((error) -> exceptions.add(error));
                 break;
             default:
         }
@@ -58,6 +57,8 @@ public class DatosPersonalesServlet implements ActionController {
         } else {
 
             //Recuperamos lo que nos ha escrito el cliente para volver a mostrarlo en pantalla
+            request.setAttribute("email", request.getParameter("email"));
+            request.setAttribute("password", request.getParameter("password"));
             request.setAttribute("nombre", request.getParameter("nombre"));
             request.setAttribute("apellidos", request.getParameter("apellidos"));
             request.setAttribute("telefono", request.getParameter("telefono"));
@@ -69,12 +70,12 @@ public class DatosPersonalesServlet implements ActionController {
                     request.setAttribute("annoTarjeta", request.getParameter("annoTarjeta"));
                     request.setAttribute("cvsTarjeta", request.getParameter("cvsTarjeta"));
                     break;
-//                case "paypal":
-//                    request.setAttribute("cuentaPaypal", request.getParameter("cuentaPaypal"));
-//                    break;
-//                case "transferencia":
-//                    request.setAttribute("IBAN", request.getParameter("IBAN"));
-//                    break;
+                case "paypal":
+                    request.setAttribute("cuentaPaypal", request.getParameter("cuentaPaypal"));
+                    break;
+                case "transferencia":
+                    request.setAttribute("IBAN", request.getParameter("IBAN"));
+                    break;
                 default:
             }
 

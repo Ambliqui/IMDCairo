@@ -15,14 +15,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.deportessa.proyectodeportes.daojpa.factory.DaoAbstractFactoryLocal;
-import com.deportessa.proyectodeportes.daojpa.factory.qualifiers.FactoryDaoMySql;
 import com.deportessa.proyectodeportes.modelo.Actividad;
 import com.deportessa.proyectodeportes.modelo.Inscripcion;
 import com.deportessa.proyectodeportes.modelo.MetodoPago;
-import com.deportessa.proyectodeportes.modelo.Paypal;
 import com.deportessa.proyectodeportes.modelo.Tarjeta;
 import java.math.BigDecimal;
-import java.util.List;
 
 /**
  *
@@ -33,7 +30,6 @@ public class PruebaDAO extends HttpServlet {
 
     
     @Inject
-    @FactoryDaoMySql
     private DaoAbstractFactoryLocal daoFactoryLocal;
 
     /**
