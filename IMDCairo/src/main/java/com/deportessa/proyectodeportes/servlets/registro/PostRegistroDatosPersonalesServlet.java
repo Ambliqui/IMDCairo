@@ -11,6 +11,7 @@ import com.deportessa.proyectodeportes.modelo.Cliente;
 import com.deportessa.proyectodeportes.modelo.MetodoPago;
 import com.deportessa.proyectodeportes.modelo.Paypal;
 import com.deportessa.proyectodeportes.modelo.Tarjeta;
+import com.deportessa.proyectodeportes.modelo.Transferencia;
 import com.deportessa.proyectodeportes.servicios.ActionMetodoPago;
 import java.io.IOException;
 import javax.inject.Inject;
@@ -36,11 +37,10 @@ public class PostRegistroDatosPersonalesServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
     @Inject
     @FactoryDaoMySql
     private DaoAbstractFactoryLocal daoFactoryLocal;
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -58,27 +58,44 @@ public class PostRegistroDatosPersonalesServlet extends HttpServlet {
         cliente.setNombreCliente(nombre);
         cliente.setApellido1Cliente(apellidos);
         cliente.setTelefonoCliente(telefono);
+        daoFactoryLocal.getClienteDaoLocal().create(cliente);
 
         MetodoPago metodoPago;
-        
+        Tarjeta tarjeta = null;
+        Paypal paypal = null;
+        Transferencia transferencia = null;
+
         if (request.getParameter("metodoPago").equalsIgnoreCase("tarjeta")) {
+
             Integer numeroTarjeta = Integer.parseInt(request.getParameter("numeroTarjeta"));
             Integer mesTarjeta = Integer.parseInt(request.getParameter("mesTarjeta"));
             Integer annoTarjeta = Integer.parseInt(request.getParameter("annoTarjeta"));
-//            Integer csvTarjeta = Integer.parseInt(request.getParameter("csvTarjeta"));
-            System.out.println("Parada");
-            metodoPago = new Tarjeta(numeroTarjeta, mesTarjeta, annoTarjeta, 123);
-            
-        } else if (request.getParameter("metodoPago").equalsIgnoreCase("paypal")) {
-            metodoPago = new Paypal(request.getParameter("cuentaPaypal"));
-        
-        } else {
-            metodoPago = new Paypal(request.getParameter("IBAN"));
-        }
-        
-        daoFactoryLocal.getClienteDaoLocal().create(cliente);
-        cliente.addMPago(metodoPago);
+            Integer csvTarjeta = Integer.parseInt(request.getParameter("cvsTarjeta"));
+            tarjeta = new Tarjeta(numeroTarjeta, mesTarjeta, annoTarjeta, csvTarjeta);
+            daoFactoryLocal.getTarjetaDaoLocal().create(tarjeta);
 
+            cliente = daoFactoryLocal.getClienteDaoLocal().findByEmail(cliente.getEmailCliente()).get();
+            cliente.addMPago(tarjeta);
+            daoFactoryLocal.getClienteDaoLocal().edit(cliente);
+
+        } else if (request.getParameter("metodoPago").equalsIgnoreCase("paypal")) {
+
+            paypal = new Paypal(request.getParameter("cuentaPaypal"));
+            cliente = daoFactoryLocal.getClienteDaoLocal().findByEmail(cliente.getEmailCliente()).get();
+            cliente.addMPago(paypal);
+            daoFactoryLocal.getClienteDaoLocal().edit(cliente);
+
+        } else {
+
+            transferencia = new Transferencia(Integer.parseInt(request.getParameter("IBAN")));
+            cliente = daoFactoryLocal.getClienteDaoLocal().findByEmail(cliente.getEmailCliente()).get();
+            cliente.addMPago(transferencia);
+            daoFactoryLocal.getClienteDaoLocal().edit(cliente);
+
+        }
+
+        request.getSession(true);
+        request.getSession().setAttribute("clienteSession", cliente);
         request.getRequestDispatcher("PrePrincipalServlet").forward(request, response);
 
     }
