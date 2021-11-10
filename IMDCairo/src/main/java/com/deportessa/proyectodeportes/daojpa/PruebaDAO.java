@@ -46,7 +46,7 @@ public class PruebaDAO extends HttpServlet {
 
         
         
-        //inicializarbbdd();
+//        inicializarbbdd();
         
         
         
@@ -58,24 +58,25 @@ public class PruebaDAO extends HttpServlet {
 //
 //        /////////////// AÑADIR CLIENTE /////////////////
 //
-//        Cliente cliente1 = new Cliente("prueba@email.com", "1234", "paco", "garcia", "666555444");
-////        Cliente cliente2 = new Cliente("prueba2@email.com", "1234", "paco2", "perez2", "garcia2", "222222222");
-//            daoFactoryLocal.getClienteDaoLocal().create(cliente1);
-        //clienteDAO.create(cliente1);
-//        clienteDAO.create(cliente2);
+//        Cliente cliente1 = new Cliente("prueba3@email.com", "1234", "paco", "garcia", "666555444");
+//        Cliente cliente2 = new Cliente("prueba4@email.com", "1234", "paco2", "perez2", "222222222");
+//
+//        daoFactoryLocal.getClienteDaoLocal().create(cliente1);
+//        daoFactoryLocal.getClienteDaoLocal().create(cliente2);
 //
 //        /////////////// AÑADIR TARJETA /////////////////
-//        Tarjeta t2 = new Tarjeta(123, 12, 2022, 555);
-//        Tarjeta t3 = new Tarjeta(222, 12, 2022, 555);
-//        Tarjeta t4 = new Tarjeta(333, 12, 2022, 555);
+//        Tarjeta t2 = new Tarjeta(123, 5, 2022, 254);
+//        Tarjeta t3 = new Tarjeta(345, 12, 2022, 555);
+//        Tarjeta t4 = new Tarjeta(678, 12, 2022, 555);
 //        
 //        Paypal p=new Paypal("prueba@email.com");
 //        
 //        cliente1.addMPago(t2);
 //        cliente1.addMPago(t3);
 //        cliente1.addMPago(p);
-////        cliente2.addMPago(t4);
+//        cliente2.addMPago(t4);
 //        daoFactoryLocal.getClienteDaoLocal().edit(cliente1);
+//        daoFactoryLocal.getClienteDaoLocal().edit(cliente2);
 //        try {
 //            clienteDAO.edit(cliente1);
 //            clienteDAO.edit(cliente2);

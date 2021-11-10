@@ -25,17 +25,17 @@ public class InscripcionServicioImpl implements InscripcionServicio {
 
     @Inject
     private DaoAbstractFactoryLocal daoFactoryLocal;
-
+    
     @Override
     public List<Inscripcion> getInscripciones(Cliente cliente) {
         List<Inscripcion> inscripciones = new ArrayList<>();
-        cliente.getMetodosPagoCliente().forEach((cli) -> inscripciones.addAll(cli.getInscripciones()));
+        cliente.getMetodosPagoCliente().forEach((mp) -> inscripciones.addAll(mp.getInscripciones()));
         return inscripciones;
     }
 
     @Override
     public List<InscripcionDTO> getInscripcionesDTO(Cliente cliente) {
-        return daoFactoryLocal.getInscripcionDaoLocal().getinscripcionDTO(cliente);
+        return daoFactoryLocal.getInscripcionDaoLocal().getinscripcionDTO(cliente); 
     }
 
     @Override

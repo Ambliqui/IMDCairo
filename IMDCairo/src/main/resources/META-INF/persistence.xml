@@ -3,6 +3,8 @@
   <!-- Define Persistence Unit -->
   <persistence-unit name="mysql" transaction-type="JTA">
     <jta-data-source>jdbc/Sakila</jta-data-source>
+    <properties>
+    </properties>
   </persistence-unit>
   <persistence-unit name="postgre" transaction-type="JTA">
     <jta-data-source>jdbc/postgre</jta-data-source>

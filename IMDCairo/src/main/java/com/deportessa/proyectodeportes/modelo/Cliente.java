@@ -71,6 +71,7 @@ public class Cliente implements Serializable {
     @Column(name = "telefono_cliente")
     private String telefonoCliente;
 
+    @NotNull
     @Basic(optional = false)
     @Column(name = "fecha_registro_cliente",columnDefinition = "TIMESTAMP default CURRENT_TIMESTAMP")
     @Temporal(TemporalType.TIMESTAMP)

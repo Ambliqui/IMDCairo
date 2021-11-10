@@ -26,7 +26,7 @@ public class Paypal extends MetodoPago implements Serializable {
     private static final long serialVersionUID = 1L;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "correo")
+    @Column(name = "correo",unique = true)
     private String correo;
 
     public Paypal() {

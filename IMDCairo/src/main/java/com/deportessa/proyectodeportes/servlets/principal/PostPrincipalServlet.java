@@ -6,7 +6,6 @@
 package com.deportessa.proyectodeportes.servlets.principal;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -32,7 +31,6 @@ public class PostPrincipalServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        
         request.getSession().getServletContext().getAttribute("listaActividades");
     }
 

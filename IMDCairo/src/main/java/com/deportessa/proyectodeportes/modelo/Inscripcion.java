@@ -5,6 +5,7 @@
  */
 package com.deportessa.proyectodeportes.modelo;
 
+import com.deportessa.proyectodeportes.servicios.helper.FormatoFecha;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -105,10 +106,18 @@ public class Inscripcion implements Serializable {
         fechaAltaInscripcion = new Date();
     }
 
-    public String getFechaAlta() {
-        SimpleDateFormat formato = new SimpleDateFormat("dd-MM-yyyy");
-      return formato.format(fechaAltaInscripcion);
-      //  return LocalDate.parse(fechaAltaInscripcion.toString(), formato);
+    public Date getFechaAlta() {
+      return fechaAltaInscripcion;
+    }
+    
+    public String getFechaFormateada(FormatoFecha formato){
+      SimpleDateFormat f = new SimpleDateFormat(formato.getFormato());
+      return f.format(fechaAltaInscripcion);
+    }
+    
+    public String getFechaFormateada(){
+      SimpleDateFormat f = new SimpleDateFormat(FormatoFecha.DD_MM_AAAA.getFormato());
+      return f.format(fechaAltaInscripcion);
     }
 
     public void setFechaAlta(Date fechaAlta) {

@@ -31,7 +31,7 @@
                             <td>${insc.actividad.nombre}</td>
                             <td>${insc.metodoPago.getClass().getSimpleName()}</td>
                             <td>${insc.metodoPago.getDatos()}</td>
-                            <td>${insc.inscripcion.getFechaAlta()}</td>
+                            <td>${insc.inscripcion.getFechaFormateada()}</td>
                             <td><a class="btn btn-outline-danger" href="./baja?actividad=${insc.actividad.idActividad}&mPago=${insc.metodoPago.idPago}">Baja Actividad</a></td>
                         </tr>
 
