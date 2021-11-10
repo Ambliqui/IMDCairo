@@ -14,6 +14,7 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import com.deportessa.proyectodeportes.servicios.ActionValidator;
 import com.deportessa.proyectodeportes.servicios.qualifiers.ActionValidatorDatosPersonalesImplQ;
+import com.deportessa.proyectodeportes.servicios.qualifiers.ActionValidatorInscripcionQ;
 import com.deportessa.proyectodeportes.servicios.qualifiers.ActionValidatorRegistroUsuarioQ;
 import com.deportessa.proyectodeportes.servicios.qualifiers.ActionValidatorLoginQ;
 
@@ -41,6 +42,10 @@ public class InicioAppListener implements ServletContextListener {
     @Inject
     @ActionValidatorDatosPersonalesImplQ
     private ActionValidator datosUsuario;
+    
+    @Inject
+    @ActionValidatorInscripcionQ
+    private ActionValidator inscripcionActividad;
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
@@ -50,6 +55,7 @@ public class InicioAppListener implements ServletContextListener {
         acciones.put("Login", login);
         acciones.put("Siguiente", registroUsuario);
         acciones.put("Registrar", datosUsuario);
+        acciones.put("Inscribirse", inscripcionActividad);
         sce.getServletContext().setAttribute("acciones", acciones);
         
         

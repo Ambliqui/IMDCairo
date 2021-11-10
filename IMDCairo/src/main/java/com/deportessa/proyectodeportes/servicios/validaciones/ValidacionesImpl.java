@@ -5,7 +5,10 @@
 package com.deportessa.proyectodeportes.servicios.validaciones;
 
 import com.deportessa.proyectodeportes.daojpa.factory.DaoAbstractFactoryLocal;
+import com.deportessa.proyectodeportes.daojpa.factory.qualifiers.FactoryDaoMySql;
+import com.deportessa.proyectodeportes.modelo.Actividad;
 import com.deportessa.proyectodeportes.modelo.Cliente;
+import com.deportessa.proyectodeportes.servicios.dto.InscripcionDTO;
 import com.deportessa.proyectodeportes.servicios.excepciones.CampoNoNumericoException;
 import com.deportessa.proyectodeportes.servicios.excepciones.EmailNoFormateadoException;
 import com.deportessa.proyectodeportes.servicios.excepciones.LongitudNoDeseadaException;
@@ -14,6 +17,8 @@ import com.deportessa.proyectodeportes.servicios.excepciones.EmailNoExistsExcept
 import com.deportessa.proyectodeportes.servicios.excepciones.EmailRepetidoException;
 import com.deportessa.proyectodeportes.servicios.excepciones.PasswordNoCoincidenteException;
 import com.deportessa.proyectodeportes.servicios.excepciones.RangoNoDeseadoException;
+import com.deportessa.proyectodeportes.servicios.excepciones.UsuarioYaInscritoException;
+import java.util.List;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -29,6 +34,7 @@ import javax.inject.Inject;
 public class ValidacionesImpl implements Validaciones {
 
     @Inject
+    @FactoryDaoMySql
     private DaoAbstractFactoryLocal daoFactoryLocal;
 
     /**
@@ -90,15 +96,15 @@ public class ValidacionesImpl implements Validaciones {
     }
 
     /**
-     * Devuelve un excepcion personalizada envuelta en un Optional
-     * si la longitud del campo no se encuentra dentro de los parametros establecidos
+     * Devuelve un excepcion personalizada envuelta en un Optional si la
+     * longitud del campo no se encuentra dentro de los parametros establecidos
      * author Mefisto
-     * 
-     * @param nombreCampo       Nombre del campo que se mostrara en la vista
-     * @param campo             Campo a validar
-     * @param longitudMinima    Longitud minima del campo
-     * @param longitudMaxima    Longitud maxima del campo
-     * @return                  Devuelve una excepcion personalizada envuelta en un Optional
+     *
+     * @param nombreCampo Nombre del campo que se mostrara en la vista
+     * @param campo Campo a validar
+     * @param longitudMinima Longitud minima del campo
+     * @param longitudMaxima Longitud maxima del campo
+     * @return Devuelve una excepcion personalizada envuelta en un Optional
      * @see                     <LongitudNoDeseadaException>
      */
     @Override
@@ -110,7 +116,7 @@ public class ValidacionesImpl implements Validaciones {
             return Optional.of(exception);
         }
     }
-    
+
     /**
      * Comprueba que el valor que pasamos esta un un rango que le definimos
      *
@@ -156,8 +162,8 @@ public class ValidacionesImpl implements Validaciones {
                 return Optional.of(exception);
             }
         } else {
-                RangoNoDeseadoException exception = new RangoNoDeseadoException(campoNombre + ": El valor debe ser un número entero");
-                return Optional.of(exception);
+            RangoNoDeseadoException exception = new RangoNoDeseadoException(campoNombre + ": El valor debe ser un número entero");
+            return Optional.of(exception);
         }
     }
 
@@ -189,7 +195,7 @@ public class ValidacionesImpl implements Validaciones {
      */
     @Override
     public Optional<EmailNoFormateadoException> emailNoFormateado(String email) {
-        
+
         Pattern pattern = Pattern
                 .compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
 
@@ -206,9 +212,9 @@ public class ValidacionesImpl implements Validaciones {
      * Comprueba si un email existe en nuestra base de datos Tiene que tener un
      * metodo para buscar dicho email
      *
-     * @author      Mefisto
+     * @author Mefisto
      * @param email Valor a comprobar
-     * @return      Devuelve una excepcion personalizada envuelta en un Optional
+     * @return Devuelve una excepcion personalizada envuelta en un Optional
      * @see         <EmailNoExistsException>
      */
     @Override
@@ -225,9 +231,9 @@ public class ValidacionesImpl implements Validaciones {
      * Comprueba si el email existe en la base de datos Tiene que tener un
      * metodo para buscar dicho email
      *
-     * @author      Mefisto
+     * @author Mefisto
      * @param email Valor a comprobar
-     * @return      Devuelve una excepcion personalizada envuelta en un Optional
+     * @return Devuelve una excepcion personalizada envuelta en un Optional
      * @see         <EmailRepetidoException>
      */
     @Override
@@ -243,9 +249,9 @@ public class ValidacionesImpl implements Validaciones {
      * Busca un Cliente por email y comprueba si coincide el usuario que le
      * pasamos
      *
-     * @param email     Cliente a buscar
-     * @param password  Password a comprobar
-     * @return          Devuelve una excepcion personalizada envuelta en un Optional
+     * @param email Cliente a buscar
+     * @param password Password a comprobar
+     * @return Devuelve una excepcion personalizada envuelta en un Optional
      * @see             <PasswordNoCoincidenteException>
      */
     @Override
@@ -258,5 +264,26 @@ public class ValidacionesImpl implements Validaciones {
         } else {
             return Optional.of(new PasswordNoCoincidenteException("El password no es correcto"));
         }
+    }
+
+    @Override
+    public Optional<UsuarioYaInscritoException> usuarioYaInscrito(Integer idCliente, Integer idActividad) {
+        
+        //TODO: Hacer una consulta en el DAO que nos resuelva todo este codigo --> derivado a Antonio
+        Cliente cliente = daoFactoryLocal.getClienteDaoLocal().find(idCliente);
+        Actividad actividad = daoFactoryLocal.getActividadDaoLocal().find(idActividad);
+        List<InscripcionDTO> inscripcionesCliente = daoFactoryLocal.getInscripcionDaoLocal().getinscripcionDTO(cliente);
+        
+        for (InscripcionDTO inscripcion : inscripcionesCliente) {
+            if (inscripcion.getactividad().equals(actividad)) {
+                return Optional.of(new UsuarioYaInscritoException("El usuario ya está inscrito en esta actividad"));
+            }
+        }
+        return Optional.empty();
+    }
+
+    @Override
+    public Optional<UsuarioYaInscritoException> usuarioYaInscrito(Cliente cliente, Actividad actividad) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

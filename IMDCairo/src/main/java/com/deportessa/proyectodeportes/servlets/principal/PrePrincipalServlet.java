@@ -33,10 +33,6 @@ public class PrePrincipalServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     
-    
-    @Inject
-    ActividadServicio actividadFacade;
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 

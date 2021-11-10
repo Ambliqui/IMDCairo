@@ -51,7 +51,6 @@ public class PostRegistroDatosPersonalesServlet extends HttpServlet {
         String apellidos = request.getParameter("apellidos");
         String telefono = request.getParameter("telefono");
 
-        //TODO: Pasar validadores y crear cliente en caso afirmativo
         Cliente cliente = new Cliente();
         cliente.setEmailCliente(email);
         cliente.setPassCliente(password);

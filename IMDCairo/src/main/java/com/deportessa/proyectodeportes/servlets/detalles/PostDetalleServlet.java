@@ -4,8 +4,15 @@
  */
 package com.deportessa.proyectodeportes.servlets.detalles;
 
+import com.deportessa.proyectodeportes.daojpa.factory.DaoAbstractFactoryLocal;
+import com.deportessa.proyectodeportes.daojpa.factory.qualifiers.FactoryDaoMySql;
+import com.deportessa.proyectodeportes.modelo.Actividad;
+import com.deportessa.proyectodeportes.modelo.Cliente;
+import com.deportessa.proyectodeportes.modelo.Inscripcion;
+import com.deportessa.proyectodeportes.modelo.MetodoPago;
 import java.io.IOException;
 import java.io.PrintWriter;
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,21 +35,23 @@ public class PostDetalleServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
+    @Inject
+    @FactoryDaoMySql
+    private DaoAbstractFactoryLocal daoFactoryLocal;
+        
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet PostDetalleServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet PostDetalleServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+        
+        Actividad actividad = daoFactoryLocal.getActividadDaoLocal().find(Integer.parseInt(request.getParameter("idActividad")));
+        MetodoPago mp = daoFactoryLocal.getMetodoPagoDaoLocal().find(Integer.parseInt(request.getParameter("metodoPago")));
+        
+        Inscripcion inscripcion=new Inscripcion(actividad, mp);
+        mp.addInscripcion(inscripcion);
+        daoFactoryLocal.getMetodoPagoDaoLocal().edit(mp);
+        
+        request.getRequestDispatcher("/preMisActividades").forward(request, response);
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
