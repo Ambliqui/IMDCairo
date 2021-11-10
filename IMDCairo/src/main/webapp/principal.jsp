@@ -1,5 +1,5 @@
 
-<%@page contentType="text/html" pageEncoding="UTF-8" session=" "%>
+<%@page contentType="text/html" pageEncoding="UTF-8" session="false"%>
 <!DOCTYPE html>
 <html>
     <%@ include file="structure/head.jsp" %>

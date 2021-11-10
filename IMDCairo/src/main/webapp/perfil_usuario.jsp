@@ -1,4 +1,4 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"  session="false"%>
 <%@page session="true"%>
 <!DOCTYPE html>
 <html>
