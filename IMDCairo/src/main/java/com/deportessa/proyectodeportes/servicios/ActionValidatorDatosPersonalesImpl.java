@@ -8,24 +8,22 @@ import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import com.deportessa.proyectodeportes.servicios.qualifiers.DatosPersonalesQ;
+import com.deportessa.proyectodeportes.servicios.qualifiers.ActionValidatorDatosPersonalesImplQ;
 
 /**
  * Servlet para validar los campos de entrada del formulario de datos
- * perosonales del Cliente
+ * personales del Cliente
  *
  * @author Mefisto
  */
-@DatosPersonalesQ
-public class DatosPersonalesServlet implements ActionController {
+@ActionValidatorDatosPersonalesImplQ
+public class ActionValidatorDatosPersonalesImpl implements ActionValidator {
 
     @Inject
     private Validaciones validaciones;
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-        
 
         List<Exception> exceptions = new ArrayList<>();
 

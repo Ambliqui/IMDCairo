@@ -4,6 +4,7 @@
  */
 package com.deportessa.proyectodeportes.servicios;
 
+import com.deportessa.proyectodeportes.modelo.MetodoPago;
 import java.io.IOException;
 import javax.ejb.Local;
 import javax.servlet.ServletException;
@@ -17,8 +18,8 @@ import javax.servlet.http.HttpServletResponse;
 
 @Local
 @FunctionalInterface
-public interface ActionController {
+public interface ActionMetodoPago {
     
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+    public MetodoPago execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
     
 }

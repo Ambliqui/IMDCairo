@@ -3,13 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.deportessa.proyectodeportes.servlets.principal;
+package com.deportessa.proyectodeportes.pruebas.isi;
 
-import com.deportessa.proyectodeportes.modelo.Actividad;
-import com.deportessa.proyectodeportes.servicios.ActividadServicio;
 import java.io.IOException;
-import java.util.List;
-import javax.inject.Inject;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Mefisto
  */
-@WebServlet(name = "PrePrincipalServlet", urlPatterns = {"/PrePrincipalServlet"})
-public class PrePrincipalServlet extends HttpServlet {
+@WebServlet(name = "CAI", urlPatterns = {"/CAI"})
+public class CAI extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,16 +29,22 @@ public class PrePrincipalServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
-    
-    @Inject
-    ActividadServicio actividadFacade;
-    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        request.getRequestDispatcher("principal.jsp").forward(request, response);
-        
+        request.getCharacterEncoding();
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet CAI</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet CAI at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
