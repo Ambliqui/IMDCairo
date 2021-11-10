@@ -1,9 +1,3 @@
-<%-- 
-    Document   : misActividades
-    Created on : 4 nov. 2021, 12:23:45
-    Author     : pryet
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8" session="false"%>
 <!DOCTYPE html>
 <html lang="es" class="h-100">
