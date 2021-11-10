@@ -6,14 +6,8 @@
 package com.deportessa.proyectodeportes.servlets.login;
 
 import com.deportessa.proyectodeportes.daojpa.factory.DaoAbstractFactoryLocal;
-import com.deportessa.proyectodeportes.daojpa.factory.qualifiers.FactoryDaoMySql;
 import com.deportessa.proyectodeportes.modelo.Cliente;
-import com.deportessa.proyectodeportes.pruebas.isi.ClienteTest;
-import com.deportessa.proyectodeportes.servicios.ClienteServicio;
-import com.deportessa.proyectodeportes.servicios.excepciones.EmailNoExistsException;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -39,7 +33,6 @@ public class PostLoginServlet extends HttpServlet {
      */
 
     @Inject
-    @FactoryDaoMySql
     private DaoAbstractFactoryLocal daoFactoryLocal;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

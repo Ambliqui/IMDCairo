@@ -7,7 +7,6 @@ package com.deportessa.proyectodeportes.servicios.impl;
 
 import com.deportessa.proyectodeportes.servicios.excepciones.EmailNoExistsException;
 import com.deportessa.proyectodeportes.daojpa.factory.DaoAbstractFactoryLocal;
-import com.deportessa.proyectodeportes.daojpa.factory.qualifiers.FactoryDaoMySql;
 import com.deportessa.proyectodeportes.modelo.Actividad;
 import com.deportessa.proyectodeportes.modelo.Cliente;
 import com.deportessa.proyectodeportes.servicios.ClienteServicio;
@@ -24,7 +23,6 @@ public class ClienteServicioImpl implements ClienteServicio {
 
     
     @Inject
-    @FactoryDaoMySql
     private DaoAbstractFactoryLocal daoFactoryLocal;
     
     @Inject

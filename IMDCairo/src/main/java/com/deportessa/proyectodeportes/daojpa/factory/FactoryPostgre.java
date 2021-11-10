@@ -13,7 +13,6 @@ import com.deportessa.proyectodeportes.daojpa.PaypalLocal;
 import com.deportessa.proyectodeportes.daojpa.TarjetaLocal;
 import com.deportessa.proyectodeportes.daojpa.TransferenciaLocal;
 import javax.ejb.Singleton;
-import com.deportessa.proyectodeportes.daojpa.factory.qualifiers.FactoryDaoPostgre;
 import com.deportessa.proyectodeportes.daojpa.qulifiers.ActividadPostgre;
 import com.deportessa.proyectodeportes.daojpa.qulifiers.ClientePostgre;
 import com.deportessa.proyectodeportes.daojpa.qulifiers.EntrenadorPostgre;
@@ -22,6 +21,7 @@ import com.deportessa.proyectodeportes.daojpa.qulifiers.MetodoPagoPostgre;
 import com.deportessa.proyectodeportes.daojpa.qulifiers.PaypalPostgre;
 import com.deportessa.proyectodeportes.daojpa.qulifiers.TarjetaPostgre;
 import com.deportessa.proyectodeportes.daojpa.qulifiers.TransferenciaPostgre;
+import javax.enterprise.inject.Alternative;
 import javax.inject.Inject;
 
 /**
@@ -29,7 +29,7 @@ import javax.inject.Inject;
  * @author Antonio
  */
 @Singleton
-@FactoryDaoPostgre
+@Alternative
 public class FactoryPostgre implements DaoAbstractFactoryLocal {
 
     @Inject

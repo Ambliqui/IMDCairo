@@ -6,7 +6,6 @@
 package com.deportessa.proyectodeportes.servicios.impl;
 
 import com.deportessa.proyectodeportes.daojpa.factory.DaoAbstractFactoryLocal;
-import com.deportessa.proyectodeportes.daojpa.factory.qualifiers.FactoryDaoMySql;
 import com.deportessa.proyectodeportes.modelo.ActividadMetodoPagoPK;
 import com.deportessa.proyectodeportes.modelo.Cliente;
 import com.deportessa.proyectodeportes.modelo.Inscripcion;
@@ -25,7 +24,6 @@ import javax.inject.Inject;
 public class InscripcionServicioImpl implements InscripcionServicio {
 
     @Inject
-    @FactoryDaoMySql
     private DaoAbstractFactoryLocal daoFactoryLocal;
 
     @Override
