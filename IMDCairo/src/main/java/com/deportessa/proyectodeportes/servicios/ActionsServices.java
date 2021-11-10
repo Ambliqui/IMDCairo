@@ -28,12 +28,6 @@ public class ActionsServices extends HttpServlet {
     public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         Map<String, ActionValidator> acciones = (Map<String, ActionValidator>) request.getServletContext().getAttribute("acciones");
-        
-        //TODO: pruebas de pagina de envio
-        String pruebasURI = request.getRequestURI();
-        String pruebasURL = request.getRequestURL().toString();
-        String prueba3 = request.getServletPath();
-        
         String actionKey = request.getParameter("accion");
 
         ActionValidator accion = acciones.get(actionKey);

@@ -9,20 +9,21 @@
             <h2 class="text-center" ><p>Detalles Actividad</p></h2>
         </div>
             <article class="row row-cols-3 row-cols-md-3 g-4" class="card-body" class="col-sm-6">
-                <form action="ActionsServices">
+                <form id="formDetalle" action="ActionsServices">
                     <h5 class="text-center"><c:out value="${actividad.nombre}"/></h5>
                     <img src=resources/images/deportes/${actividad.idActividad}.jpg alt="300" width="100%"/>
-                    <p><c:out value="${actividad.descripcion}"/></p>
+                    <input id="idActividad" type="number" name="idActividad" value="${actividad.idActividad}" hidden>
+                    <c:out value="${actividad.descripcion}"/></p>
                     <p class="text-center"><c:out value="${actividad.precio}€"/></p>
                     <label for="metodoPago">Escoge un metodo de pago</label>
-                    <select name="metodoPago" id="metodoPago">
+                    <select id="metodoPago" name="metodoPago">
                         <c:forEach items="${clienteSession.metodosPagoCliente}" var="metodo" >
-                            <option value="${metodo.idPago}"><c:out value="${metodo.getClass().getSimpleName()} ${metodo.idPago}"/></option>
+                            <option id="${metodo.getClass().getSimpleName()} ${metodo.idPago}" value="${metodo.idPago}"><c:out value="${metodo.getClass().getSimpleName()} ${metodo.idPago}"/></option>
                         </c:forEach>
                     </select>
                     <br><br>
-                    <input type="submit" class="btn btn-outline-info" value="Volver" formaction="PrePrincipalServlet">
-                    <input type="submit" class="btn btn-outline-info" value="Inscribirse">
+                    <input id="btnVolver" type="submit" class="btn btn-outline-info" name="accion" value="Volver" formaction="PrePrincipalServlet">
+                    <input id="btnInscribirse" type="submit" class="btn btn-outline-info" name="accion" value="Inscribirse">
                 </form>
             </article>
         <%@ include file="structure/footer.jsp" %>
