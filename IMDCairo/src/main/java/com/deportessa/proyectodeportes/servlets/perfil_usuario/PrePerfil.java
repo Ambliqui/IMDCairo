@@ -16,8 +16,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author damon
  */
-WebServlet(name = "PrePerfil", urlPatterns = {"/PrePerfil"})
 public class PrePerfil extends HttpServlet {
+
+    private static final long serialVersionUID = 1L;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
