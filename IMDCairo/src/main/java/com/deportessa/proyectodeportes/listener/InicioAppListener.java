@@ -6,7 +6,6 @@
 package com.deportessa.proyectodeportes.listener;
 
 import com.deportessa.proyectodeportes.daojpa.factory.DaoAbstractFactoryLocal;
-import com.deportessa.proyectodeportes.daojpa.factory.qualifiers.FactoryDaoMySql;
 import java.util.HashMap;
 import java.util.Map;
 import javax.inject.Inject;
@@ -28,7 +27,6 @@ public class InicioAppListener implements ServletContextListener {
 
     //Inyeccion de dependencias
     @Inject
-    @FactoryDaoMySql
     private DaoAbstractFactoryLocal daoFactoryLocal;
 
     @Inject

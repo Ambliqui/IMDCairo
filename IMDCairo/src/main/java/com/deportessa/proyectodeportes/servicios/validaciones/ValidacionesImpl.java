@@ -5,7 +5,6 @@
 package com.deportessa.proyectodeportes.servicios.validaciones;
 
 import com.deportessa.proyectodeportes.daojpa.factory.DaoAbstractFactoryLocal;
-import com.deportessa.proyectodeportes.daojpa.factory.qualifiers.FactoryDaoMySql;
 import com.deportessa.proyectodeportes.modelo.Actividad;
 import com.deportessa.proyectodeportes.modelo.Cliente;
 import com.deportessa.proyectodeportes.servicios.dto.InscripcionDTO;
@@ -34,7 +33,6 @@ import javax.inject.Inject;
 public class ValidacionesImpl implements Validaciones {
 
     @Inject
-    @FactoryDaoMySql
     private DaoAbstractFactoryLocal daoFactoryLocal;
 
     /**

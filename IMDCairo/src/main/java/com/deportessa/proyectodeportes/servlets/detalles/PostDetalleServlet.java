@@ -5,7 +5,6 @@
 package com.deportessa.proyectodeportes.servlets.detalles;
 
 import com.deportessa.proyectodeportes.daojpa.factory.DaoAbstractFactoryLocal;
-import com.deportessa.proyectodeportes.daojpa.factory.qualifiers.FactoryDaoMySql;
 import com.deportessa.proyectodeportes.modelo.Actividad;
 import com.deportessa.proyectodeportes.modelo.Cliente;
 import com.deportessa.proyectodeportes.modelo.Inscripcion;
@@ -37,7 +36,6 @@ public class PostDetalleServlet extends HttpServlet {
      */
     
     @Inject
-    @FactoryDaoMySql
     private DaoAbstractFactoryLocal daoFactoryLocal;
         
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

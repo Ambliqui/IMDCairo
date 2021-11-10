@@ -6,7 +6,6 @@
 package com.deportessa.proyectodeportes.servlets.registro;
 
 import com.deportessa.proyectodeportes.daojpa.factory.DaoAbstractFactoryLocal;
-import com.deportessa.proyectodeportes.daojpa.factory.qualifiers.FactoryDaoMySql;
 import com.deportessa.proyectodeportes.modelo.Cliente;
 import com.deportessa.proyectodeportes.modelo.MetodoPago;
 import com.deportessa.proyectodeportes.modelo.Paypal;
@@ -38,7 +37,6 @@ public class PostRegistroDatosPersonalesServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Inject
-    @FactoryDaoMySql
     private DaoAbstractFactoryLocal daoFactoryLocal;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
