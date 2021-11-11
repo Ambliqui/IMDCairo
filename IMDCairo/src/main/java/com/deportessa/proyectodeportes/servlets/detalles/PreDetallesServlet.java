@@ -6,9 +6,7 @@ package com.deportessa.proyectodeportes.servlets.detalles;
 
 import com.deportessa.proyectodeportes.modelo.Actividad;
 import com.deportessa.proyectodeportes.servicios.ActividadServicio;
-import com.deportessa.proyectodeportes.servicios.ClienteServicio;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
