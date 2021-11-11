@@ -94,8 +94,7 @@ public class Inscripcion implements Serializable {
     }
 
     @PrePersist
-    @PreUpdate
-    public void prePersist() {
+    private void datosNecesarios() {
         obtenerIds();
         obtenerFecha();
     }
@@ -103,7 +102,7 @@ public class Inscripcion implements Serializable {
     private void obtenerIds() {
         actividadMetodoPagoPK = new ActividadMetodoPagoPK(actividad.getIdActividad(), metodoPago.getIdPago());
     }
-
+    
     private void obtenerFecha() {
         fechaAltaInscripcion = new Date();
     }

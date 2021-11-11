@@ -36,8 +36,8 @@ public abstract class MetodoPago implements Serializable {
     @Column(name = "id_pago")
     private int idPago;
     
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_pago")
+    @OneToMany(cascade = CascadeType.ALL ,mappedBy = "metodoPago")
+   // @JoinColumn(name = "id_pago")
     private List<Inscripcion> inscripciones;
     
     public abstract void editarMetodoPago(MetodoPago metodoPago);
