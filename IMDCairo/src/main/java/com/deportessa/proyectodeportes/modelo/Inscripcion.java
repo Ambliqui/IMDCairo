@@ -16,6 +16,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -92,6 +93,7 @@ public class Inscripcion implements Serializable {
     }
 
     @PrePersist
+    @PreUpdate
     public void prePersist() {
         obtenerIds();
         obtenerFecha();
