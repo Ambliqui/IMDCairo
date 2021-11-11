@@ -6,15 +6,16 @@
 package com.deportessa.proyectodeportes.listener;
 
 import com.deportessa.proyectodeportes.daojpa.factory.DaoAbstractFactoryLocal;
-import com.deportessa.proyectodeportes.servicios.ActionController;
-import com.deportessa.proyectodeportes.servicios.qualifiers.DatosPersonalesQ;
-import com.deportessa.proyectodeportes.servicios.qualifiers.LoginQ;
-import com.deportessa.proyectodeportes.servicios.qualifiers.RegistroUsuarioServicioQ;
 import java.util.HashMap;
 import java.util.Map;
 import javax.inject.Inject;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+import com.deportessa.proyectodeportes.servicios.ActionValidator;
+import com.deportessa.proyectodeportes.servicios.qualifiers.ActionValidatorDatosPersonalesImplQ;
+import com.deportessa.proyectodeportes.servicios.qualifiers.ActionValidatorInscripcionQ;
+import com.deportessa.proyectodeportes.servicios.qualifiers.ActionValidatorRegistroUsuarioQ;
+import com.deportessa.proyectodeportes.servicios.qualifiers.ActionValidatorLoginQ;
 
 /**
  * Web application lifecycle listener.
@@ -23,33 +24,41 @@ import javax.servlet.ServletContextListener;
  */
 public class InicioAppListener implements ServletContextListener {
 
-    // @Inject
-    // ActividadServicio actividadServicio;
+
+    //Inyeccion de dependencias
     @Inject
     private DaoAbstractFactoryLocal daoFactoryLocal;
 
     @Inject
-    @LoginQ
-    private ActionController login;
+    @ActionValidatorLoginQ
+    private ActionValidator login;
 
     @Inject
-    @RegistroUsuarioServicioQ
-    private ActionController registroUsuario;
+    @ActionValidatorRegistroUsuarioQ
+    private ActionValidator registroUsuario;
 
     @Inject
-    @DatosPersonalesQ
-    private ActionController datosUsuario;
+    @ActionValidatorDatosPersonalesImplQ
+    private ActionValidator datosUsuario;
+    
+    @Inject
+    @ActionValidatorInscripcionQ
+    private ActionValidator inscripcionActividad;
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
 
-        final Map<String, ActionController> acciones = new HashMap<>();
+        //Mapa para el comando de la aplicacion
+        Map<String, ActionValidator> acciones = new HashMap<>();
         acciones.put("Login", login);
         acciones.put("Siguiente", registroUsuario);
         acciones.put("Registrar", datosUsuario);
-
-        //TODO: Poner actividades en Contexto
-        // sce.getServletContext().setAttribute("listaActividades", daoFactoryLocal.getActividadDaoLocal().findAll());
+        acciones.put("Inscribirse", inscripcionActividad);
+        sce.getServletContext().setAttribute("acciones", acciones);
+        
+        
+        //Subimos las actividades al contexto
+        sce.getServletContext().setAttribute("listaActividades", daoFactoryLocal.getActividadDaoLocal().findAll());
     }
 
     @Override
