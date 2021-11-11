@@ -42,10 +42,13 @@ public class PostRegistroUsuarioServlet extends HttpServlet {
 
 //        Cliente clienteSession = new Cliente();
 //        
-//        String email = request.getParameter("email");
+        String email = request.getParameter("email");
 //        String cEmail = request.getParameter("cemail");
-//        String password = request.getParameter("password");
+        String password = request.getParameter("password");
 //        String cPassword = request.getParameter("cpassword");
+
+          System.out.println(email);
+          System.out.println(password);
 //
 //        //Caso de uso --> introducir usuario y contraseña y que la contraseña no esté repetida
 //        //Escenario OK

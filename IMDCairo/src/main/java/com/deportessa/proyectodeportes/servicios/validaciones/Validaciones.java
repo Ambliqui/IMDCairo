@@ -4,6 +4,8 @@
  */
 package com.deportessa.proyectodeportes.servicios.validaciones;
 
+import com.deportessa.proyectodeportes.modelo.Actividad;
+import com.deportessa.proyectodeportes.modelo.Cliente;
 import com.deportessa.proyectodeportes.servicios.excepciones.*;
 import java.util.Optional;
 
@@ -35,5 +37,9 @@ public interface Validaciones {
     Optional<EmailRepetidoException> emailRepetido (String email);
     
     Optional<PasswordNoCoincidenteException> passwordNoCoincidente (String email, String password);
+    
+    Optional<UsuarioYaInscritoException> usuarioYaInscrito (Integer idCliente, Integer idActividad);
+    
+    Optional<UsuarioYaInscritoException> usuarioYaInscrito (Cliente cliente, Actividad actividad);
     
 }
