@@ -19,6 +19,7 @@
             <table class="table table-hover">
                 <thead>
                 <th>Actividad</th>
+                <th>Horario</th>
                 <th>Metodo de pago</th>
                 <th>Datos de pago</th>
                 <th>Fecha alta</th>
@@ -29,6 +30,7 @@
 
                         <tr>
                             <td>${insc.actividad.nombre}</td>
+                            <td>${insc.actividad.dias}</td>
                             <td>${insc.metodoPago.getClass().getSimpleName()}</td>
                             <td>${insc.metodoPago.getDatos()}</td>
                             <td>${insc.inscripcion.getFechaFormateada()}</td>
