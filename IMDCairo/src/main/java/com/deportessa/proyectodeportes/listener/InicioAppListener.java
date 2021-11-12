@@ -48,6 +48,10 @@ public class InicioAppListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
 
+        //Mapa
+        
+        
+        
         //Mapa para el comando de la aplicacion
         Map<String, ActionValidator> acciones = new HashMap<>();
         acciones.put("Login", login);

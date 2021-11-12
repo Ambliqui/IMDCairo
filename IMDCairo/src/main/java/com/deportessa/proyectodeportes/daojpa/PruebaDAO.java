@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.deportessa.proyectodeportes.daojpa.factory.DaoAbstractFactoryLocal;
+import com.deportessa.proyectodeportes.frontController.FrontControlerManager;
+import com.deportessa.proyectodeportes.frontController.FrontControllerManagerLocal;
 import com.deportessa.proyectodeportes.modelo.Actividad;
 import com.deportessa.proyectodeportes.modelo.Inscripcion;
 import com.deportessa.proyectodeportes.modelo.MetodoPago;
@@ -31,6 +33,9 @@ public class PruebaDAO extends HttpServlet {
     
     @Inject
     private DaoAbstractFactoryLocal daoFactoryLocal;
+    
+    @Inject
+    private FrontControllerManagerLocal controlerManager;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,7 +49,7 @@ public class PruebaDAO extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        
+        String xxx=controlerManager.getString();
         
 //        inicializarbbdd();
         
