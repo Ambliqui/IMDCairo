@@ -9,7 +9,6 @@
             <h2 class="text-center" ><p>Tus Datos Personales</p></h2>
         </div>
         <form id="formDetalle" action="ActionsServices" class="container">
-
             <div class="row gutters">
                 <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
                     <div class="card h-100">
@@ -17,7 +16,7 @@
                             <div class="account-settings">
                                 <div class="user-profile">
                                     <div class="user-avatar">
-                                        <img src="resources/images/pagina/perfiles/avatar.png" width="100%">
+                                        <img src="resources/images/pagina/perfiles/avatar.png" width="100%" alt="avatar">
                                     </div>
                                     <h5 class="user-name"> ${clienteSession.nombreCliente} </h5>
                                     <h5 class="user-surname">${clienteSession.apellido1Cliente}</h5>
@@ -161,7 +160,6 @@
                     </div>
                 </div>
             </div>
-
         </form>
         <%@ include file="structure/footer.jsp" %>
     </body>

@@ -35,7 +35,7 @@ public class ActionValidatorDatosPersonalesImpl implements ActionValidator {
 
         switch (metodoPago) {
             case "tarjeta":
-                //TODO: hacer las comprobaciones sobre un Long
+                //TODO: cambiar por bundles
                 validaciones.rangoValores("Numero Tarjeta ", request.getParameter("numeroTarjeta"), 01, 2899999).ifPresent((error) -> exceptions.add(error));
                 validaciones.rangoValores("Mes Tarjeta: ", request.getParameter("mesTarjeta"), 01, 12).ifPresent((error) -> exceptions.add(error));
                 validaciones.rangoValores("Año Tarjeta: ",request.getParameter("annoTarjeta"), 01, 31).ifPresent((error) -> exceptions.add(error));

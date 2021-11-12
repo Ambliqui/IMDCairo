@@ -42,8 +42,8 @@ public class ActionValidatorLoginImpl implements ActionValidator {
             return "/PostLoginServlet";
         } else {
             //Recuperamos lo que nos ha escrito el cliente para volver a mostrarlo en pantalla
-            request.setAttribute("email", request.getParameter("email"));
-            request.setAttribute("password", request.getParameter("password"));
+//            request.setAttribute("email", request.getParameter("email"));
+//            request.setAttribute("password", request.getParameter("password"));
 
             //Devolvemos los errores
             request.setAttribute("errores", exceptions);
