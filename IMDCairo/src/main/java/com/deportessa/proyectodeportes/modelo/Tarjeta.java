@@ -26,7 +26,7 @@ public class Tarjeta extends MetodoPago implements Serializable {
     
     @Basic(optional = false)
     @NotNull
-    @Column(name = "num_tarjeta")
+    @Column(name = "num_tarjeta",unique = true)
     private int numTarjeta;
     @NotNull
     @Column(name = "mes_tarjeta")

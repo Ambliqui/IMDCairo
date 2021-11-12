@@ -7,12 +7,12 @@
                     <a class="nav-link active" aria-current="page" href="PrePrincipalServlet">Inicio</a>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         ${clienteSession.nombreCliente} ${clienteSession.apellido1Cliente}
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
-                        <a class="dropdown-item" href="./PrePerfilUsuario">Mi Perfil</a>          
-                        <a href="./preMisActividades" class="dropdown-item">Mis Actividades</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="perfil_usuario.jsp">Mi Perfil</a>          
+                        <a class="dropdown-item" href="./preMisActividades">Mis Actividades</a>
                         <a class="dropdown-item" href="CerrarSesionServlet">Cerrar Sesion</a>
                     </div>
                 </li>

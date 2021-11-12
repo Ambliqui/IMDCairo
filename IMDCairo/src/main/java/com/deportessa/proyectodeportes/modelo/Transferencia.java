@@ -24,7 +24,7 @@ public class Transferencia extends MetodoPago implements Serializable {
     private static final long serialVersionUID = 1L;
     
     @NotNull
-    @Column(name = "num_cuenta")
+    @Column(name = "num_cuenta",unique = true)
     private int numCuenta;
 
     public Transferencia() {

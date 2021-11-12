@@ -44,16 +44,20 @@
                                     <h6 class="mb-2 text-primary">Ficha Actividad</h6>
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 form-group">
+                                    <label for="localizacion">Localización</label>
+                                    <input id="localizacion" type="text" class="form-control" value="${actividad.lugar}" disabled>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 form-group">
+                                    <label for="dias">Dias de actividad</label>
+                                    <input id="dias" type="text" class="form-control" value="${actividad.dias}" disabled>
+                                </div>
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 form-group">
                                     <label for="entrenador">Entrenador</label>
-                                    <input type="text" class="form-control" id="entrenador" value="${actividad.idEntrenadorActividad.nombreEntrenador} ${actividad.idEntrenadorActividad.apellido1Entrenador}" disabled>
+                                    <input id="entrenador" type="text" class="form-control" value="${actividad.idEntrenadorActividad.nombreEntrenador} ${actividad.idEntrenadorActividad.apellido1Entrenador}" disabled>
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 form-group">
-                                    <label for="lugar">Dias de actividad</label>
-                                    <input type="text" class="form-control" id="lugar" value="${actividad.dias}" disabled>
-                                </div>
-                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 form-group">
-                                    <label for="lugar">Localización</label>
-                                    <input type="text" class="form-control" id="lugar" value="${actividad.lugar}" disabled>
+                                    <label for="entrenador">Precio</label>
+                                    <input id="precio" type="text" class="form-control" value="${actividad.precio}€" disabled>
                                 </div>
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 form-group">
                                     <label for="descripcion">Descripción de la actividad</label>
