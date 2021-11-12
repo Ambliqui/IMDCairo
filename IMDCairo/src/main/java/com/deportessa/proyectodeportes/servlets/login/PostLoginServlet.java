@@ -7,6 +7,7 @@ package com.deportessa.proyectodeportes.servlets.login;
 
 import com.deportessa.proyectodeportes.daojpa.factory.DaoAbstractFactoryLocal;
 import com.deportessa.proyectodeportes.modelo.Cliente;
+import com.deportessa.proyectodeportes.servicios.dto.DatosLoginVO;
 import java.io.IOException;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -38,13 +39,14 @@ public class PostLoginServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String email = request.getParameter("email");
-        Cliente clienteSession = new Cliente();
+        Cliente clienteSession= new Cliente();
+        DatosLoginVO datosLoginVO = (DatosLoginVO) request.getAttribute("datosLogin");
         
-        clienteSession = daoFactoryLocal.getClienteDaoLocal().findByEmail(email).get();
-        request.getSession(true);
+        clienteSession = daoFactoryLocal.getClienteDaoLocal().findByEmail(datosLoginVO.getEmailCliente()).get();
+//        request.getSession(true);
         request.getSession().setAttribute("clienteSession", clienteSession);
-        request.getRequestDispatcher("PrePrincipalServlet").forward(request, response);
+        response.sendRedirect("PrePrincipalServlet");
+//        request.getRequestDispatcher("PrePrincipalServlet").forward(request, response);
 
     }
 

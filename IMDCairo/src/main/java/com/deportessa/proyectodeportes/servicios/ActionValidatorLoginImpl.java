@@ -4,6 +4,7 @@
  */
 package com.deportessa.proyectodeportes.servicios;
 
+import com.deportessa.proyectodeportes.servicios.dto.DatosLoginVO;
 import com.deportessa.proyectodeportes.servicios.validaciones.Validaciones;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,19 +29,22 @@ public class ActionValidatorLoginImpl implements ActionValidator {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         List<Exception> exceptions = new ArrayList<>();
-
-        validaciones.emailNoFormateado(request.getParameter("email")).ifPresent((error) -> exceptions.add(error));
+        DatosLoginVO datosLoginVO = new DatosLoginVO(request.getParameter("email"), request.getParameter("password"));
+        
+        validaciones.emailNoFormateado(datosLoginVO.getEmailCliente()).ifPresent((error) -> exceptions.add(error));
         if (exceptions.isEmpty()) {
-            validaciones.emailNoExistente(request.getParameter("email")).ifPresent((error) -> exceptions.add(error));
+            validaciones.emailNoExistente(datosLoginVO.getEmailCliente()).ifPresent((error) -> exceptions.add(error));
         }
         if (exceptions.isEmpty()) {
-            validaciones.passwordNoCoincidente(request.getParameter("email"), request.getParameter("password")).ifPresent((error) -> exceptions.add(error));
+            validaciones.passwordNoCoincidente(datosLoginVO.getEmailCliente(), datosLoginVO.getPassCliente()).ifPresent((error) -> exceptions.add(error));
         }
 
         //Mandamos a la pagina de destino
         if (exceptions.isEmpty()) {
+            request.setAttribute("datosLogin", datosLoginVO);
             return "/PostLoginServlet";
         } else {
+        //XXX: Recuperar los parametros en lugar de convertirlos en atributos
             //Recuperamos lo que nos ha escrito el cliente para volver a mostrarlo en pantalla
 //            request.setAttribute("email", request.getParameter("email"));
 //            request.setAttribute("password", request.getParameter("password"));
