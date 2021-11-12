@@ -15,7 +15,7 @@
                                         <img src="resources/images/pagina/perfil/avatar.png" width="100%">
 
                                     </div>
-                                    <h5 class="user-name"> ${clienteSession} </h5>
+                                    <h5 class="user-name"> ${clienteSession.nombreCliente} </h5>
                                     <h5 class="user-surname">${clienteSession.apellido1Cliente}</h5>
                                 </div>
                             </div>
@@ -44,13 +44,13 @@
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div class="form-group">
                                         <label for="telefono">Telefono</label>
-                                        <input type="text" class="form-control" id="phone" value="${clienteSession.telefono}" placeholder="Telefono">
+                                        <input type="text" class="form-control" id="phone" value=" ${clienteSession.telefonoCliente}" placeholder="Telefono">
                                     </div>
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div class="form-group">
                                         <label for="passWord">Password</label>
-                                        <input type="password" class="form-control" id="passWord" value="${clienteSession.password}" placeholder="Password">
+                                        <input type="password" class="form-control" id="passWord" value="${clienteSession.passCliente}" placeholder="Password">
                                     </div>
                                 </div>
                             </div>
