@@ -55,6 +55,8 @@
                                     <div class="form-group">
                                         <label id="lbPassword" for="password">Password</label>
                                         <input id="password" type="password" class="form-control" name="password" value="${clienteSession.passCliente}" placeholder="Password">
+                                        <label id="lbCPassword" for="password">Repite Password</label>
+                                        <input name="cpassword" type="password" value="${cpassword}" class="form-control" placeholder="Repite Password"/>
                                     </div>
                                 </div>
                             </div>
@@ -83,7 +85,7 @@
                                                                 <h6>Numero de tarjeta</h6>
                                                             </label>
                                                             <div class="input-group">
-                                                                <input id="numeroTarjeta" type="text" name="numeroTarjeta" placeholder="Numero de tarjeta" class="form-control" value="${metodoPago}" required>
+                                                                <input id="numeroTarjeta" type="text" name="numeroTarjeta" placeholder="Numero de tarjeta" class="form-control" value="" required>
                                                             </div>
                                                         </div>
                                                         <div class="row">
@@ -162,7 +164,15 @@
                 </div>
             </div>
 
-        </form>
+       
         <%@ include file="structure/footer.jsp" %>
     </body>
 </html>
+
+<select id="metodoPago" name="metodoPago">
+                                            
+                                                <option id="Tarjeta 1" value="1">Tarjeta 1</option>
+                                            
+                                                <option id="Tarjeta 2" value="2">Tarjeta 2</option>
+                                            
+                                        </select>
