@@ -19,8 +19,8 @@
                                     <div class="user-avatar">
                                         <img src="resources/images/pagina/perfiles/avatar.png" width="100%">
                                     </div>
-                                    <h5 class="user-name"> ${clienteSession.nombreCliente} </h5>
-                                    <h5 class="user-surname">${clienteSession.apellido1Cliente}</h5>
+                                    <h5 class="user-name"> ${clienteSession.nombreCliente} ${clienteSession.apellido1Cliente}</h5>
+                                    
                                 </div>
                             </div>
                         </div>
@@ -169,10 +169,3 @@
     </body>
 </html>
 
-<select id="metodoPago" name="metodoPago">
-                                            
-                                                <option id="Tarjeta 1" value="1">Tarjeta 1</option>
-                                            
-                                                <option id="Tarjeta 2" value="2">Tarjeta 2</option>
-                                            
-                                        </select>
