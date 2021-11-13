@@ -4,7 +4,7 @@
     <div style="height: 100px;" >
         <h2 class="text-center" ><p>Tus Datos Personales</p></h2>
     </div>
-    <form id="formDetalle" action="ActionsServices" class="container">
+    <form id="formPerfilUsuario" action="ActionsServices" class="container">
         <div class="row gutters">
             <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
                 <div class="card h-100">
