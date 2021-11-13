@@ -13,11 +13,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.deportessa.proyectodeportes.servicios.qualifiers.ActionValidatorLoginQ;
+import javax.ejb.Stateless;
 
 /**
  * Este Servlet lo usamos para validar el formulario de login de la pagina
  * @author Mefisto
  */
+@Stateless
 @ActionValidatorLoginQ
 public class ActionValidatorLoginImpl implements ActionValidator {
 
@@ -25,7 +27,7 @@ public class ActionValidatorLoginImpl implements ActionValidator {
     private Validaciones validaciones;
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public List<Exception> execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         List<Exception> exceptions = new ArrayList<>();
 
@@ -36,20 +38,7 @@ public class ActionValidatorLoginImpl implements ActionValidator {
         if (exceptions.isEmpty()) {
             validaciones.passwordNoCoincidente(request.getParameter("email"), request.getParameter("password")).ifPresent((error) -> exceptions.add(error));
         }
-
-        //Mandamos a la pagina de destino
-        if (exceptions.isEmpty()) {
-            return "/PostLoginServlet";
-        } else {
-            //Recuperamos lo que nos ha escrito el cliente para volver a mostrarlo en pantalla
-            request.setAttribute("email", request.getParameter("email"));
-            request.setAttribute("password", request.getParameter("password"));
-
-            //Devolvemos los errores
-            request.setAttribute("errores", exceptions);
-            return "/PreLoginServlet";
-        }
-
+        return exceptions;
     }
 
 }

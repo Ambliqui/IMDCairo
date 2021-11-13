@@ -5,6 +5,7 @@
 package com.deportessa.proyectodeportes.servicios;
 
 import java.io.IOException;
+import java.util.List;
 import javax.ejb.Local;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -19,6 +20,6 @@ import javax.servlet.http.HttpServletResponse;
 @FunctionalInterface
 public interface ActionValidator {
     
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
+    public List<Exception> execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException;
     
 }

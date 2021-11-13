@@ -1,9 +1,9 @@
 
 package com.deportessa.proyectodeportes.servicios;
 
+import com.deportessa.proyectodeportes.frontController.FrontControlerLocal;
 import java.io.IOException;
 import java.util.Map;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,6 +16,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "ActionsServices", urlPatterns = {"/ActionsServices"})
 public class ActionsServices extends HttpServlet {
+    
+    
 
     /**
      * Este metodo recoge el "accion" que nos llegue de cualquier formulario
@@ -26,15 +28,21 @@ public class ActionsServices extends HttpServlet {
      */
     @Override
     public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Map<String,FrontControlerLocal> accionesController=(Map<String, FrontControlerLocal>) request.getServletContext().getAttribute("accionesController");
+      FrontControlerLocal controller=accionesController.get(request.getParameter("accion"));
+      controller.getDispatcher(request, response).forward(request, response);
         
-        Map<String, ActionValidator> acciones = (Map<String, ActionValidator>) request.getServletContext().getAttribute("acciones");
-        String actionKey = request.getParameter("accion");
-
-        ActionValidator accion = acciones.get(actionKey);
-        String page = accion.execute(request, response);
-
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);
-        dispatcher.forward(request, response);
+        
+        
+        
+//        Map<String, ActionValidator> acciones = (Map<String, ActionValidator>) request.getServletContext().getAttribute("acciones");
+//        String actionKey = request.getParameter("accion");
+//
+//        ActionValidator accion = acciones.get(actionKey);
+//        String page = accion.execute(request, response);
+//
+//        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);
+//        dispatcher.forward(request, response);
 
     }
 

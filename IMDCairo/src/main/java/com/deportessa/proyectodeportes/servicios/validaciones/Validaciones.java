@@ -7,7 +7,11 @@ package com.deportessa.proyectodeportes.servicios.validaciones;
 import com.deportessa.proyectodeportes.modelo.Actividad;
 import com.deportessa.proyectodeportes.modelo.Cliente;
 import com.deportessa.proyectodeportes.servicios.excepciones.*;
+import java.io.IOException;
 import java.util.Optional;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Interfaz de las distintas validaciones de nuestro programa
@@ -41,5 +45,7 @@ public interface Validaciones {
     Optional<UsuarioYaInscritoException> usuarioYaInscrito (Integer idCliente, Integer idActividad);
     
     Optional<UsuarioYaInscritoException> usuarioYaInscrito (Cliente cliente, Actividad actividad);
+    
+    Optional<UsuarioNoLogadoException> usuarioNoLogado (HttpServletRequest request) throws ServletException, IOException;
     
 }

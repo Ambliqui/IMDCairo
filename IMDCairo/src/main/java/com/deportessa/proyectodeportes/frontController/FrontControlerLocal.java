@@ -7,10 +7,10 @@ package com.deportessa.proyectodeportes.frontController;
 
 import java.io.IOException;
 import javax.ejb.Local;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import sun.rmi.server.Dispatcher;
 
 /**
  *
@@ -18,9 +18,9 @@ import sun.rmi.server.Dispatcher;
  */
 @Local
 @FunctionalInterface
-public interface FrontControler {
+public interface FrontControlerLocal {
     
-    Dispatcher getRuta(HttpServletRequest request, HttpServletResponse response)
+    RequestDispatcher getDispatcher(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException ;
     
     
