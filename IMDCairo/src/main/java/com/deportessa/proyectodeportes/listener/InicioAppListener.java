@@ -15,11 +15,6 @@ import java.util.Map;
 import javax.inject.Inject;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
-import com.deportessa.proyectodeportes.servicios.ActionValidator;
-import com.deportessa.proyectodeportes.servicios.qualifiers.ActionValidatorDatosPersonalesImplQ;
-import com.deportessa.proyectodeportes.servicios.qualifiers.ActionValidatorInscripcionQ;
-import com.deportessa.proyectodeportes.servicios.qualifiers.ActionValidatorRegistroUsuarioQ;
-import com.deportessa.proyectodeportes.servicios.qualifiers.ActionValidatorLoginQ;
 import java.util.ResourceBundle;
 
 /**
@@ -43,21 +38,6 @@ public class InicioAppListener implements ServletContextListener {
     private final ResourceBundle bdAcciones = ResourceBundle.getBundle("bundle.acciones");
     private final ResourceBundle bdMPago = ResourceBundle.getBundle("bundle.metodosPago");
 
-//    @Inject
-//    @ActionValidatorLoginQ
-//    private ActionValidator login;
-//
-//    @Inject
-//    @ActionValidatorRegistroUsuarioQ
-//    private ActionValidator registroUsuario;
-//
-//    @Inject
-//    @ActionValidatorDatosPersonalesImplQ
-//    private ActionValidator datosUsuario;
-//    
-//    @Inject
-//    @ActionValidatorInscripcionQ
-//    private ActionValidator inscripcionActividad;
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
@@ -69,6 +49,12 @@ public class InicioAppListener implements ServletContextListener {
         accionesController.put(bdAcciones.getString("RegistroPag2"), factory.getRegistroUsuario());
         accionesController.put(bdAcciones.getString("Inscribirse"), factory.getInscripcion());
         accionesController.put(bdAcciones.getString("Modificar"), factory.getModificar());
+        accionesController.put(bdAcciones.getString("PrePrincipalServlet"), factory.getPreprincipal());
+        accionesController.put(bdAcciones.getString("PreRegistroUsuarioServlet"), factory.getPreRegistroUsuario());
+        accionesController.put(bdAcciones.getString("BajaActividad"), factory.getBajaActividad());
+        accionesController.put(bdAcciones.getString("DetalleActividad"), factory.getDetalleActividad());
+        accionesController.put(bdAcciones.getString("MisActividades"), factory.getMisActividades());
+        accionesController.put(bdAcciones.getString("CerrarSesion"), factory.getCerrarSesion());
         sce.getServletContext().setAttribute("accionesController", accionesController);
         
         //Mapa metodos de pago
@@ -78,16 +64,6 @@ public class InicioAppListener implements ServletContextListener {
         mPago.put(bdMPago.getString("Transferencia"), pagoFactory.getPagoTransferencia());
         sce.getServletContext().setAttribute("metodosPago", mPago);
 
-        
-        
-        
-//        //Mapa para el comando de la aplicacion
-//        Map<String, ActionValidator> acciones = new HashMap<>();
-//        acciones.put("Login", login);
-//        acciones.put("Siguiente", registroUsuario);
-//        acciones.put("Registrar", datosUsuario);
-//        acciones.put("Inscribirse", inscripcionActividad);
-//        sce.getServletContext().setAttribute("acciones", acciones);
         
         
         //Subimos las actividades al contexto

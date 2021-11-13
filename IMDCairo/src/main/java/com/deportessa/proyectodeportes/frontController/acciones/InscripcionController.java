@@ -6,11 +6,9 @@ package com.deportessa.proyectodeportes.frontController.acciones;
 
 import com.deportessa.proyectodeportes.frontController.FrontControlerLocal;
 import com.deportessa.proyectodeportes.frontController.qualifiers.Inscripcion;
-import com.deportessa.proyectodeportes.modelo.Cliente;
 import com.deportessa.proyectodeportes.servicios.ActionValidator;
 import com.deportessa.proyectodeportes.servicios.qualifiers.ActionValidatorInscripcionQ;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
