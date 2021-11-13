@@ -26,4 +26,5 @@ public interface AccionFactoryLocal {
     FrontControlerLocal getDetalleActividad();
     FrontControlerLocal getMisActividades();
     FrontControlerLocal getCerrarSesion();
+    FrontControlerLocal getPerfilUsuario();
 }

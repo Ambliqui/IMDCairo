@@ -19,12 +19,12 @@ import com.deportessa.proyectodeportes.frontController.qualifiers.RegistroUsuari
 import javax.ejb.Stateless;
 import com.deportessa.proyectodeportes.frontController.qualifiers.DetalleActividad;
 import com.deportessa.proyectodeportes.frontController.qualifiers.MisActividades;
+import com.deportessa.proyectodeportes.frontController.qualifiers.Perfil;
 
 /**
  *
  * @author pryet
  */
-
 @Stateless
 public class AccionFactory implements AccionFactoryLocal {
 
@@ -43,7 +43,7 @@ public class AccionFactory implements AccionFactoryLocal {
     @Inject
     @Inscripcion
     private FrontControlerLocal controlerInscripcion;
-    
+
     @Inject
     @ModificarUsuarioQ
     private FrontControlerLocal controlerModificar;
@@ -51,26 +51,30 @@ public class AccionFactory implements AccionFactoryLocal {
     @Inject
     @PrePrincipal
     private FrontControlerLocal controlerPrePrincipal;
-    
+
     @Inject
     @PreRegistro
     private FrontControlerLocal controlerPreRegistro;
-    
+
     @Inject
     @BajaActividad
     private FrontControlerLocal controlerBaja;
-    
+
     @Inject
     @DetalleActividad
     private FrontControlerLocal controlerDetalle;
-    
+
     @Inject
     @MisActividades
     private FrontControlerLocal controlerMisActividades;
-    
+
     @Inject
     @CerrarSesion
     private FrontControlerLocal controlerCerrarSesion;
+
+    @Inject
+    @Perfil
+    private FrontControlerLocal controlerPerfilUsuario;
 
     @Override
     public FrontControlerLocal getControlerLogin() {
@@ -96,6 +100,7 @@ public class AccionFactory implements AccionFactoryLocal {
     public FrontControlerLocal getModificar() {
         return controlerModificar;
     }
+
     public FrontControlerLocal getPreprincipal() {
         return controlerPrePrincipal;
     }
@@ -123,5 +128,10 @@ public class AccionFactory implements AccionFactoryLocal {
     @Override
     public FrontControlerLocal getCerrarSesion() {
         return controlerCerrarSesion;
+    }
+
+    @Override
+    public FrontControlerLocal getPerfilUsuario() {
+        return controlerPerfilUsuario;
     }
 }

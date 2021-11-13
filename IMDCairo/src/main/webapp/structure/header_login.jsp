@@ -11,7 +11,7 @@
                         ${clienteSession.nombreCliente} ${clienteSession.apellido1Cliente}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="perfil_usuario.jsp">Mi Perfil</a>          
+                        <a class="dropdown-item" href="./ActionsServices?accion=Perfil">Mi Perfil</a>         
                         <a class="dropdown-item" href="./ActionsServices?accion=MisActividades">Mis Actividades</a>
                         <a class="dropdown-item" href="./ActionsServices?accion=CerrarSesion">Cerrar Sesion</a>
                     </div>
