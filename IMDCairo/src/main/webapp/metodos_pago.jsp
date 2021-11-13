@@ -1,17 +1,19 @@
-<%-- 
-    Document   : metodos_pago
-    Created on : 13-nov-2021, 17:29:27
-    Author     : Mefisto
---%>
+<%@page contentType="text/html" pageEncoding="UTF-8" session="false"%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
+    <%@include file="structure/head.jsp"%>
     <body>
-        <h1>Hello World!</h1>
+        <%@include file="structure/header.jsp"%>
+        <div class="wrapper">
+            <!-- Sidebar  -->
+            <%@include file="structure/sidebar_definitiva.jsp"%>
+            <!-- Page Content  -->
+            <div id="content">
+                <%@ include file="includePages/metodos_pago.jsp" %>
+                <%@ include file="botoneras/modificar_usuario.jsp" %>
+            </div>
+        </div>
     </body>
+    <%@ include file="structure/footer.jsp"%>
 </html>

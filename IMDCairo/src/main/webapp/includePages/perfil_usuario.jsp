@@ -1,6 +1,5 @@
 
-<body> 
-
+<body>
     <div style="height: 100px;" >
         <h2 class="text-center" ><p>Tus Datos Personales</p></h2>
     </div>
@@ -12,7 +11,7 @@
                         <div class="account-settings">
                             <div class="user-profile">
                                 <div class="user-avatar">
-                                    <img src="../resources/images/pagina/perfiles/avatar.png" width="100%" alt="avatar">
+                                    <img src="resources/images/pagina/perfiles/avatar.png" width="100%" alt="avatar">
                                 </div>
                                 <h5 class="user-name"> ${clienteSession.nombreCliente} </h5>
                                 <h5 class="user-surname">${clienteSession.apellido1Cliente}</h5>
@@ -52,7 +51,6 @@
                                     <input id="password" type="password" class="form-control" name="password" value="${clienteSession.passCliente}" placeholder="Password">
                                 </div>
                             </div>
-                                
                         </div>
                     </div>
                 </div>
