@@ -71,15 +71,15 @@
                                                     <div class="form-group">
                                                         <h6>Fecha de caducidad</h6>
                                                         <div class="input-group">
-                                                            <input type="number" min="01" max="12" placeholder="MM" id="mesTarjeta" name="mesTarjeta" class="form-control" value="${mesTarjeta}">
-                                                            <input type="number" min="00" max="99" placeholder="YY" id="annoTarjeta" name="annoTarjeta" class="form-control" value="${annoTarjeta}">
+                                                            <input type="number" min="01" max="12" placeholder="MM" id="mesTarjeta" name="mesTarjeta" class="form-control" value="${mesTarjeta}" required>
+                                                            <input type="number" min="00" max="99" placeholder="YY" id="annoTarjeta" name="annoTarjeta" class="form-control" value="${annoTarjeta}" required>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
                                                     <div class="form-group mb-4"> 
                                                         <h6>CVS</h6>
-                                                        <input type="number" min="000" max="999" id="cvsTarjeta" name="cvsTarjeta" class="form-control" value="${cvsTarjeta}">
+                                                        <input type="number" min="000" max="999" id="cvsTarjeta" name="cvsTarjeta" class="form-control" value="${cvsTarjeta}" required>
                                                     </div>
                                                 </div>
                                             </div>       
@@ -121,7 +121,7 @@
                                     <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                                         <div class="accordion-body"><h6>Registra tu numero de cuenta</h6>
                                             <div class="form-group">
-                                                <input type="text" id="IBAN" name="IBAN" required class="form-control" placeholder="Inserte IBAN" value="${IBAN}">
+                                                <input type="text" id="IBAN" name="IBAN" class="form-control" placeholder="Inserte IBAN" value="${IBAN}">
                                             </div>
                                         </div>
                                     </div>

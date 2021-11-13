@@ -16,13 +16,17 @@ import com.deportessa.proyectodeportes.servicios.excepciones.EmailNoExistsExcept
 import com.deportessa.proyectodeportes.servicios.excepciones.EmailRepetidoException;
 import com.deportessa.proyectodeportes.servicios.excepciones.PasswordNoCoincidenteException;
 import com.deportessa.proyectodeportes.servicios.excepciones.RangoNoDeseadoException;
+import com.deportessa.proyectodeportes.servicios.excepciones.UsuarioNoLogadoException;
 import com.deportessa.proyectodeportes.servicios.excepciones.UsuarioYaInscritoException;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * Implementacion de las distintas validaciones
@@ -284,4 +288,14 @@ public class ValidacionesImpl implements Validaciones {
     public Optional<UsuarioYaInscritoException> usuarioYaInscrito(Cliente cliente, Actividad actividad) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
+    @Override
+    public Optional<UsuarioNoLogadoException> usuarioNoLogado(HttpServletRequest request) throws ServletException, IOException {
+        if(request.getSession(false)!=null){
+            if(request.getSession(false).getAttribute("clienteSession")!=null){
+                return Optional.empty(); 
+            }   
+        }
+        return Optional.of(new UsuarioNoLogadoException("Debes iniciar sesión"));
+   }
 }

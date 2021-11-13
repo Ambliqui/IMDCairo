@@ -26,7 +26,7 @@ public class ActionValidatorRegistroUsuarioImpl implements ActionValidator {
     private Validaciones validaciones;
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public List<Exception> execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         List<Exception> exceptions = new ArrayList<>();
 
@@ -41,21 +41,7 @@ public class ActionValidatorRegistroUsuarioImpl implements ActionValidator {
                 }
             }
         }
-
-        if (exceptions.isEmpty()) {
-            return "/PreRegistroDatosPersonalesServlet";
-        } else {
-
-            //Recuperamos lo que nos ha escrito el cliente para volver a mostrarlo en pantalla
-            request.setAttribute("email", request.getParameter("email"));
-            request.setAttribute("cemail", request.getParameter("cemail"));
-            request.setAttribute("password", request.getParameter("password"));
-            request.setAttribute("cpassword", request.getParameter("cpassword"));
-            
-            //Devolvemos los errores
-            request.setAttribute("errores", exceptions);
-            return "/PreRegistroUsuarioServlet";
-
-        }
+        return exceptions;
+        
     }
 }

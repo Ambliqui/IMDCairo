@@ -1,5 +1,6 @@
 package com.deportessa.proyectodeportes.servicios;
 
+import com.deportessa.proyectodeportes.metodosPago.MetodoPagoLocal;
 import com.deportessa.proyectodeportes.servicios.validaciones.Validaciones;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,6 +10,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.deportessa.proyectodeportes.servicios.qualifiers.ActionValidatorDatosPersonalesImplQ;
+import java.util.Map;
+import javax.ejb.Stateless;
 
 /**
  * Servlet para validar los campos de entrada del formulario de datos
@@ -16,14 +19,16 @@ import com.deportessa.proyectodeportes.servicios.qualifiers.ActionValidatorDatos
  *
  * @author Mefisto
  */
+@Stateless
 @ActionValidatorDatosPersonalesImplQ
 public class ActionValidatorDatosPersonalesImpl implements ActionValidator {
 
     @Inject
     private Validaciones validaciones;
-
+  
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public List<Exception> execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+         Map<String,MetodoPagoLocal> mPago=(Map<String,MetodoPagoLocal>) request.getServletContext().getAttribute("metodosPago");
 
         List<Exception> exceptions = new ArrayList<>();
 
@@ -33,54 +38,8 @@ public class ActionValidatorDatosPersonalesImpl implements ActionValidator {
 
         String metodoPago = request.getParameter("metodoPago");
 
-        switch (metodoPago) {
-            case "tarjeta":
-                //TODO: cambiar por bundles
-                validaciones.rangoValores("Numero Tarjeta ", request.getParameter("numeroTarjeta"), 01, 2899999).ifPresent((error) -> exceptions.add(error));
-                validaciones.rangoValores("Mes Tarjeta: ", request.getParameter("mesTarjeta"), 01, 12).ifPresent((error) -> exceptions.add(error));
-                validaciones.rangoValores("Año Tarjeta: ",request.getParameter("annoTarjeta"), 01, 31).ifPresent((error) -> exceptions.add(error));
-                validaciones.rangoValores("CSV Tarjeta:", request.getParameter("cvsTarjeta"), 01, 999).ifPresent((error) -> exceptions.add(error));
-                break;
-            case "paypal":
-                validaciones.emailNoFormateado(request.getParameter("cuentaPaypal")).ifPresent((error) -> exceptions.add(error));
-                break;
-            case "transferencia":
-                validaciones.longitudCampo("IBAN: ",  request.getParameter("IBAN"), 20).ifPresent((error) -> exceptions.add(error));
-                break;
-            default:
+        exceptions.addAll(mPago.get(metodoPago).validar(request, response));
+        return exceptions;    
         }
 
-        if (exceptions.isEmpty()) {
-            return "/PostRegistroDatosPersonalesServlet";
-        } else {
-
-            //Recuperamos lo que nos ha escrito el cliente para volver a mostrarlo en pantalla
-            request.setAttribute("email", request.getParameter("email"));
-            request.setAttribute("password", request.getParameter("password"));
-            request.setAttribute("nombre", request.getParameter("nombre"));
-            request.setAttribute("apellidos", request.getParameter("apellidos"));
-            request.setAttribute("telefono", request.getParameter("telefono"));
-
-            switch (metodoPago) {
-                case "tarjeta":
-                    request.setAttribute("numeroTarjeta", request.getParameter("numeroTarjeta"));
-                    request.setAttribute("mesTarjeta", request.getParameter("mesTarjeta"));
-                    request.setAttribute("annoTarjeta", request.getParameter("annoTarjeta"));
-                    request.setAttribute("cvsTarjeta", request.getParameter("cvsTarjeta"));
-                    break;
-                case "paypal":
-                    request.setAttribute("cuentaPaypal", request.getParameter("cuentaPaypal"));
-                    break;
-                case "transferencia":
-                    request.setAttribute("IBAN", request.getParameter("IBAN"));
-                    break;
-                default:
-            }
-
-            //Devolvemos los errores
-            request.setAttribute("errores", exceptions);
-            return "/PreRegistroDatosPersonalesServlet";
-        }
-
-    }
 }

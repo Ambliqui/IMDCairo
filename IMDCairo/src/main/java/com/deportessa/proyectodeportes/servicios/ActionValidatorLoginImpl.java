@@ -14,11 +14,13 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import com.deportessa.proyectodeportes.servicios.qualifiers.ActionValidatorLoginQ;
+import javax.ejb.Stateless;
 
 /**
  * Este Servlet lo usamos para validar el formulario de login de la pagina
  * @author Mefisto
  */
+@Stateless
 @ActionValidatorLoginQ
 public class ActionValidatorLoginImpl implements ActionValidator {
 
@@ -26,7 +28,7 @@ public class ActionValidatorLoginImpl implements ActionValidator {
     private Validaciones validaciones;
 
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public List<Exception> execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         List<Exception> exceptions = new ArrayList<>();
         DatosLoginVO datosLoginVO = new DatosLoginVO(request.getParameter("email"), request.getParameter("password"));
@@ -38,22 +40,7 @@ public class ActionValidatorLoginImpl implements ActionValidator {
         if (exceptions.isEmpty()) {
             validaciones.passwordNoCoincidente(datosLoginVO.getEmailCliente(), datosLoginVO.getPassCliente()).ifPresent((error) -> exceptions.add(error));
         }
-
-        //Mandamos a la pagina de destino
-        if (exceptions.isEmpty()) {
-            request.setAttribute("datosLogin", datosLoginVO);
-            return "/PostLoginServlet";
-        } else {
-        //XXX: Recuperar los parametros en lugar de convertirlos en atributos
-            //Recuperamos lo que nos ha escrito el cliente para volver a mostrarlo en pantalla
-//            request.setAttribute("email", request.getParameter("email"));
-//            request.setAttribute("password", request.getParameter("password"));
-
-            //Devolvemos los errores
-            request.setAttribute("errores", exceptions);
-            return "/PreLoginServlet";
-        }
-
+        return exceptions;
     }
 
 }

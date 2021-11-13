@@ -32,6 +32,7 @@ public class PruebaDAO extends HttpServlet {
     @Inject
     private DaoAbstractFactoryLocal daoFactoryLocal;
 
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -44,7 +45,7 @@ public class PruebaDAO extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        
+       // String xxx=controlerManager.getString();
         
 //        inicializarbbdd();
         
