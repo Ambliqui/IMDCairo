@@ -32,17 +32,6 @@ public class ActionsServices extends HttpServlet {
       FrontControlerLocal controller=accionesController.get(request.getParameter("accion"));
       controller.getDispatcher(request, response).forward(request, response);
         
-        
-        
-        
-//        Map<String, ActionValidator> acciones = (Map<String, ActionValidator>) request.getServletContext().getAttribute("acciones");
-//        String actionKey = request.getParameter("accion");
-//
-//        ActionValidator accion = acciones.get(actionKey);
-//        String page = accion.execute(request, response);
-//
-//        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(page);
-//        dispatcher.forward(request, response);
 
     }
 

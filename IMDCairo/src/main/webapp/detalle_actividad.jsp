@@ -19,7 +19,7 @@
                                     <h5 class="mb-2 text-primary"><c:out value="${actividad.nombre}"/></h5>
                                     <img class="user-avatar" src="resources/images/deportes/${actividad.idActividad}.jpg" width="100%"><br/><br/>
                                     <div class="text-right">
-                                        <input id="btnVolver" type="submit" class="btn btn-secondary" name="accion" value="Volver" formaction="PrePrincipalServlet">
+                                        <input id="btnVolver" type="submit" class="btn btn-secondary" name="accion" value="Volver">
                                         <input id="btnInscribirse" type="submit" class="btn btn-primary" name="accion" value="Inscribirse">
                                         <select id="metodoPago" name="metodoPago">
                                             <c:forEach items="${clienteSession.metodosPagoCliente}" var="metodo" >
