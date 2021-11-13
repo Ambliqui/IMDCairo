@@ -4,32 +4,40 @@
  */
 
 
-btnTarjeta.addEventListener("click",function(){
-    tarjeta.checked=true; 
+btnTarjeta.addEventListener("click", function () {
+    tarjeta.checked = true;
     resetRequired();
-    numeroTarjeta.required=true;
-    mesTarjeta.required=true;
-    annoTarjeta.required=true;
+    numeroTarjeta.required = true;
+    mesTarjeta.required = true;
+    annoTarjeta.required = true;
 });
 
-btnPaypal.addEventListener("click",function(){
-    paypal.checked=true; 
+window.onload = function () {
+    tarjeta.checked = true;
     resetRequired();
-    cuentaPaypal.required=true;
+    numeroTarjeta.required = true;
+    mesTarjeta.required = true;
+    annoTarjeta.required = true;
+};
+
+btnPaypal.addEventListener("click", function () {
+    paypal.checked = true;
+    resetRequired();
+    cuentaPaypal.required = true;
 });
 
-btnTransferencia.addEventListener("click",function(){
-    transferencia.checked=true; 
+btnTransferencia.addEventListener("click", function () {
+    transferencia.checked = true;
     resetRequired();
-    IBAN.required=true;
+    IBAN.required = true;
 });
 
-function resetRequired(){
-    
-    numeroTarjeta.required=false;
-    mesTarjeta.required=false;
-    annoTarjeta.required=false;
-    cvsTarjeta.required=false;
-    cuentaPaypal.required=false;
-    IBAN.required=false;
+function resetRequired() {
+
+    numeroTarjeta.required = false;
+    mesTarjeta.required = false;
+    annoTarjeta.required = false;
+    cvsTarjeta.required = false;
+    cuentaPaypal.required = false;
+    IBAN.required = false;
 }

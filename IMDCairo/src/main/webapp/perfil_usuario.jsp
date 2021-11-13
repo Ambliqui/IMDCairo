@@ -160,5 +160,6 @@
             </div>
         </form>
         <%@ include file="structure/footer.jsp" %>
+        <script src="resources/js/acordeon.js"></script>
     </body>
 </html>
