@@ -79,6 +79,8 @@ public class PostRegistroDatosPersonalesServlet extends HttpServlet {
 
             paypal = new Paypal(request.getParameter("cuentaPaypal"));
             cliente = daoFactoryLocal.getClienteDaoLocal().findByEmail(cliente.getEmailCliente()).get();
+            daoFactoryLocal.getPayPalDaoLocal().create(paypal);
+            
             cliente.addMPago(paypal);
             daoFactoryLocal.getClienteDaoLocal().edit(cliente);
 
@@ -86,6 +88,8 @@ public class PostRegistroDatosPersonalesServlet extends HttpServlet {
 
             transferencia = new Transferencia(Integer.parseInt(request.getParameter("IBAN")));
             cliente = daoFactoryLocal.getClienteDaoLocal().findByEmail(cliente.getEmailCliente()).get();
+            daoFactoryLocal.getTransferenciaDaoLocal().create(transferencia);
+            
             cliente.addMPago(transferencia);
             daoFactoryLocal.getClienteDaoLocal().edit(cliente);
 
