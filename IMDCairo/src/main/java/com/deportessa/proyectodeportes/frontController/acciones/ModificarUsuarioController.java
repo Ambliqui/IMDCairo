@@ -1,15 +1,13 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.deportessa.proyectodeportes.frontController.acciones;
 
 import com.deportessa.proyectodeportes.frontController.FrontControlerLocal;
-import com.deportessa.proyectodeportes.frontController.qualifiers.AccionLogin;
+import com.deportessa.proyectodeportes.frontController.qualifiers.ModificarUsuarioQ;
 import com.deportessa.proyectodeportes.servicios.ActionValidator;
-import com.deportessa.proyectodeportes.servicios.dto.DatosLoginVO;
-import com.deportessa.proyectodeportes.servicios.qualifiers.ActionValidatorLoginQ;
+import com.deportessa.proyectodeportes.servicios.qualifiers.ActionValidatorDatosPersonalesImplQ;
 import java.io.IOException;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -21,26 +19,25 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author pryet
+ * @author Mefisto
  */
 
 @Stateless
-@AccionLogin
-public class LoginController implements FrontControlerLocal{
+@ModificarUsuarioQ
+public class ModificarUsuarioController  implements FrontControlerLocal{
     
     @Inject
-    @ActionValidatorLoginQ
-    private ActionValidator validadorLogin;
+    @ActionValidatorDatosPersonalesImplQ
+    private ActionValidator validadorDatosUsuario;
 
     @Override
     public RequestDispatcher getDispatcher(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Exception> exceptions = validadorLogin.execute(request, response);
+        
+        List<Exception> exceptions = validadorDatosUsuario.execute(request, response);
 
         //Mandamos a la pagina de destino
         if (exceptions.isEmpty()) {
-            DatosLoginVO datosLoginVO = new DatosLoginVO(request.getParameter("email"), request.getParameter("password"));
-            request.setAttribute("datosLoginVO", datosLoginVO);
-            return request.getRequestDispatcher("/PostLoginServlet");
+            return request.getRequestDispatcher("/PostPerfilUsuarioServlet");
         } else {
             //Recuperamos lo que nos ha escrito el cliente para volver a mostrarlo en pantalla
             request.setAttribute("email", request.getParameter("email"));
@@ -48,8 +45,7 @@ public class LoginController implements FrontControlerLocal{
 
             //Devolvemos los errores
             request.setAttribute("errores", exceptions);
-            return request.getRequestDispatcher("/PreLoginServlet");
+            return request.getRequestDispatcher("/PrePerfilUsuarioServlet");
         }
     }
-    
 }

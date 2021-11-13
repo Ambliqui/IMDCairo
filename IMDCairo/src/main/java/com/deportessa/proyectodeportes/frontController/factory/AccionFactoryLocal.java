@@ -19,4 +19,5 @@ public interface AccionFactoryLocal {
     FrontControlerLocal getRegistroDatosLogin();
     FrontControlerLocal getRegistroUsuario();
     FrontControlerLocal getInscripcion();
+    FrontControlerLocal getModificar();
 }

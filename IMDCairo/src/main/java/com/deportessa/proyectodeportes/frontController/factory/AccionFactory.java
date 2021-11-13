@@ -11,6 +11,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import com.deportessa.proyectodeportes.frontController.FrontControlerLocal;
 import com.deportessa.proyectodeportes.frontController.qualifiers.Inscripcion;
+import com.deportessa.proyectodeportes.frontController.qualifiers.ModificarUsuarioQ;
 import com.deportessa.proyectodeportes.frontController.qualifiers.RegistroUsuario;
 import javax.ejb.Stateless;
 
@@ -18,6 +19,7 @@ import javax.ejb.Stateless;
  *
  * @author pryet
  */
+
 @Stateless
 public class AccionFactory implements AccionFactoryLocal {
 
@@ -36,6 +38,10 @@ public class AccionFactory implements AccionFactoryLocal {
     @Inject
     @Inscripcion
     private FrontControlerLocal controlerInscripcion;
+    
+    @Inject
+    @ModificarUsuarioQ
+    private FrontControlerLocal controlerModificar;
 
     @Override
     public FrontControlerLocal getControlerLogin() {
@@ -55,5 +61,10 @@ public class AccionFactory implements AccionFactoryLocal {
     @Override
     public FrontControlerLocal getInscripcion() {
         return controlerInscripcion;
+    }
+
+    @Override
+    public FrontControlerLocal getModificar() {
+        return controlerModificar;
     }
 }

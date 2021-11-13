@@ -39,6 +39,7 @@ public class PrePerfilUsuarioServlet extends HttpServlet {
         for (MetodoPago mp : metodosPago) {
             System.out.println(mp.getDatos());
         }
+        request.getRequestDispatcher("perfil_usuario.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

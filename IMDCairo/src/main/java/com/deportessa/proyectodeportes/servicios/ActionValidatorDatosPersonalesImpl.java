@@ -14,8 +14,8 @@ import java.util.Map;
 import javax.ejb.Stateless;
 
 /**
- * Servlet para validar los campos de entrada del formulario de datos
- * personales del Cliente
+ * Servlet para validar los campos de entrada del formulario de datos personales
+ * del Cliente
  *
  * @author Mefisto
  */
@@ -25,10 +25,10 @@ public class ActionValidatorDatosPersonalesImpl implements ActionValidator {
 
     @Inject
     private Validaciones validaciones;
-  
+
     @Override
     public List<Exception> execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-         Map<String,MetodoPagoLocal> mPago=(Map<String,MetodoPagoLocal>) request.getServletContext().getAttribute("metodosPago");
+        Map<String, MetodoPagoLocal> mPago = (Map<String, MetodoPagoLocal>) request.getServletContext().getAttribute("metodosPago");
 
         List<Exception> exceptions = new ArrayList<>();
 
@@ -39,7 +39,7 @@ public class ActionValidatorDatosPersonalesImpl implements ActionValidator {
         String metodoPago = request.getParameter("metodoPago");
 
         exceptions.addAll(mPago.get(metodoPago).validar(request, response));
-        return exceptions;    
-        }
+        return exceptions;
+    }
 
 }

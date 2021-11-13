@@ -63,49 +63,47 @@
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div class="accordion accordion-flush" id="accordionFlushExample">
-                                        <c:forEach items="clienteSession.metodosPagoCliente" var="metodoPago">
-                                            <div class="accordion-item">
-                                                <h2 class="accordion-header" id="flush-headingOne">
-                                                    <button id="btnTarjeta" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                                        <div class="form-check">
-                                                            <input class="form-check-input" type="radio" name="metodoPago" id="tarjeta" value="tarjeta" checked>
-                                                            <label id="lbTarjeta" class="form-check-label" for="tarjeta">
-                                                                Tarjeta
-                                                            </label>
-                                                        </div>
-                                                    </button>
-                                                </h2>
-                                                <div id="flush-collapseOne" class="accordion-collapse collapse show" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                                    <div class="accordion-body">
-                                                        <div class="form-group">
-                                                            <label for="numeroTarjeta">
-                                                                <h6>Numero de tarjeta</h6>
-                                                            </label>
-                                                            <div class="input-group">
-                                                                <input id="numeroTarjeta" type="text" name="numeroTarjeta" placeholder="Numero de tarjeta" class="form-control" value="${metodoPago}" required>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-8">
-                                                                <div class="form-group">
-                                                                    <h6>Fecha de caducidad</h6>
-                                                                    <div class="input-group">
-                                                                        <input id="mesTarjeta" type="number" min="01" max="12" placeholder="MM" name="mesTarjeta" class="form-control" value="${metodoPago}">
-                                                                        <input id="annoTarjeta" type="number" min="00" max="99" placeholder="YY" name="annoTarjeta" class="form-control" value="${metodoPago}">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-sm-4">
-                                                                <div class="form-group mb-4"> 
-                                                                    <h6>CVS</h6>
-                                                                    <input type="number" min="000" max="999" id="cvsTarjeta" name="cvsTarjeta" class="form-control" value="${metodoPago}">
-                                                                </div>
-                                                            </div>
-                                                        </div>       
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="flush-headingOne">
+                                                <button id="btnTarjeta" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="metodoPago" id="tarjeta" value="tarjeta" checked>
+                                                        <label id="lbTarjeta" class="form-check-label" for="tarjeta">
+                                                            Tarjeta
+                                                        </label>
                                                     </div>
+                                                </button>
+                                            </h2>
+                                            <div id="flush-collapseOne" class="accordion-collapse collapse show" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                                <div class="accordion-body">
+                                                    <div class="form-group">
+                                                        <label for="numeroTarjeta">
+                                                            <h6>Numero de tarjeta</h6>
+                                                        </label>
+                                                        <div class="input-group">
+                                                            <input id="numeroTarjeta" type="text" name="numeroTarjeta" placeholder="Numero de tarjeta" class="form-control" value="${metodoPago}" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-sm-8">
+                                                            <div class="form-group">
+                                                                <h6>Fecha de caducidad</h6>
+                                                                <div class="input-group">
+                                                                    <input id="mesTarjeta" type="number" min="01" max="12" placeholder="MM" name="mesTarjeta" class="form-control" value="${metodoPago}">
+                                                                    <input id="annoTarjeta" type="number" min="00" max="99" placeholder="YY" name="annoTarjeta" class="form-control" value="${metodoPago}">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4">
+                                                            <div class="form-group mb-4"> 
+                                                                <h6>CVS</h6>
+                                                                <input type="number" min="000" max="999" id="cvsTarjeta" name="cvsTarjeta" class="form-control" value="${metodoPago}">
+                                                            </div>
+                                                        </div>
+                                                    </div>       
                                                 </div>
                                             </div>
-                                        </c:forEach>
+                                        </div>
                                         <div class="accordion-item">
                                             <h2 class="accordion-header" id="flush-headingTwo">
                                                 <button id="btnPaypal" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">

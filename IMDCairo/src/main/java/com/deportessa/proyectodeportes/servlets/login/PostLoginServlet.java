@@ -40,7 +40,7 @@ public class PostLoginServlet extends HttpServlet {
             throws ServletException, IOException {
 
         Cliente clienteSession= new Cliente();
-        DatosLoginVO datosLoginVO = (DatosLoginVO) request.getAttribute("datosLogin");
+        DatosLoginVO datosLoginVO = (DatosLoginVO) request.getAttribute("datosLoginVO");
         
         clienteSession = daoFactoryLocal.getClienteDaoLocal().findByEmail(datosLoginVO.getEmailCliente()).get();
 //        request.getSession(true);
