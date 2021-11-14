@@ -10,6 +10,7 @@ import com.deportessa.proyectodeportes.frontController.qualifiers.RegistroDatosL
 import javax.inject.Inject;
 import com.deportessa.proyectodeportes.frontController.FrontControlerLocal;
 import com.deportessa.proyectodeportes.frontController.qualifiers.BajaActividad;
+import com.deportessa.proyectodeportes.frontController.qualifiers.BajaUsuarioQ;
 import com.deportessa.proyectodeportes.frontController.qualifiers.CerrarSesion;
 import com.deportessa.proyectodeportes.frontController.qualifiers.Inscripcion;
 import com.deportessa.proyectodeportes.frontController.qualifiers.ModificarUsuarioQ;
@@ -75,6 +76,10 @@ public class AccionFactory implements AccionFactoryLocal {
     @Inject
     @Perfil
     private FrontControlerLocal controlerPerfilUsuario;
+    
+    @Inject
+    @BajaUsuarioQ
+    private FrontControlerLocal controlerBajaUsuario;
 
     @Override
     public FrontControlerLocal getControlerLogin() {
@@ -133,5 +138,10 @@ public class AccionFactory implements AccionFactoryLocal {
     @Override
     public FrontControlerLocal getPerfilUsuario() {
         return controlerPerfilUsuario;
+    }
+
+    @Override
+    public FrontControlerLocal getBajaUsuario() {
+        return controlerBajaUsuario;
     }
 }
