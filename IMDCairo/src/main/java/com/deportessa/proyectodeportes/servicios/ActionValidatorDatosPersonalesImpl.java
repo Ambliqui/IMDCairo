@@ -39,7 +39,7 @@ public class ActionValidatorDatosPersonalesImpl implements ActionValidator {
         //TODO: Desacoplar
 
 //        String metodoPago = request.getParameter("metodoPago");
-
+//
 //        exceptions.addAll(mPago.get(metodoPago).validar(request, response));
         return exceptions;
     }
