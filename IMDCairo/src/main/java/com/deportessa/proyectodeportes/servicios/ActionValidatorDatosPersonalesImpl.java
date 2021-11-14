@@ -35,10 +35,12 @@ public class ActionValidatorDatosPersonalesImpl implements ActionValidator {
         validaciones.longitudCampo("Nombre: ", request.getParameter("nombre"), 4).ifPresent((error) -> exceptions.add(error));
         validaciones.longitudCampo("Apellidos: ", request.getParameter("apellidos"), 4).ifPresent((error) -> exceptions.add(error));
         validaciones.rangoValores("Telefono: ", request.getParameter("telefono"), 111111111, 999999999).ifPresent((error) -> exceptions.add(error));
+        
+        //TODO: Desacoplar
 
-        String metodoPago = request.getParameter("metodoPago");
+//        String metodoPago = request.getParameter("metodoPago");
 
-        exceptions.addAll(mPago.get(metodoPago).validar(request, response));
+//        exceptions.addAll(mPago.get(metodoPago).validar(request, response));
         return exceptions;
     }
 

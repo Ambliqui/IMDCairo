@@ -6,13 +6,13 @@
 
                 <ul class="list-unstyled components">
                     <li>
-                        <a href="PrePerfilUsuarioServlet">Datos Personales</a>
+                        <a href="./ActionsServices?accion=Perfil">Datos Personales</a>
                     </li>
                     <li>
-                        <a href="ActionsServices?accion=MisActividades">Mis Actividades</a>
+                        <a href="./ActionsServices?accion=MisActividades">Mis Actividades</a>
                     </li>
                     <li>
-                        <a href="PreMetodosPagoServlet">Métodos de pago</a>
+                        <a href="./PreMetodosPagoServlet">Métodos de pago</a>
                     </li>
                 </ul>
             </nav>

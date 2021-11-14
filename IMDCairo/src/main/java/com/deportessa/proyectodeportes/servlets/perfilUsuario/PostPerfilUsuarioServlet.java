@@ -41,10 +41,12 @@ public class PostPerfilUsuarioServlet extends HttpServlet {
         Cliente cliente = daoFactoryLocal.getClienteDaoLocal().findByEmail(clienteSession.getEmailCliente()).get();
         
         cliente.setNombreCliente(request.getParameter("nombre"));
-        cliente.setApellido1Cliente(request.getParameter("apellido"));
+        cliente.setApellido1Cliente(request.getParameter("apellidos"));
         cliente.setTelefonoCliente(request.getParameter("telefono"));
+        cliente.setPassCliente(request.getParameter("password"));
         
         daoFactoryLocal.getClienteDaoLocal().edit(cliente);
+        request.getSession().setAttribute("clienteSession", cliente);
         
         request.getRequestDispatcher("PrePerfilUsuarioServlet").forward(request, response);
     }

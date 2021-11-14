@@ -2,12 +2,10 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package com.deportessa.proyectodeportes.servlets.perfilUsuario;
+package com.deportessa.proyectodeportes.servlets.metodosPago;
 
-import com.deportessa.proyectodeportes.modelo.Cliente;
-import com.deportessa.proyectodeportes.modelo.MetodoPago;
 import java.io.IOException;
-import java.util.List;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -18,8 +16,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Mefisto
  */
-@WebServlet(name = "PrePerfilUsuarioServlet", urlPatterns = {"/PrePerfilUsuarioServlet"})
-public class PrePerfilUsuarioServlet extends HttpServlet {
+@WebServlet(name = "PreMetodosPago", urlPatterns = {"/PreMetodosPago"})
+public class PreMetodosPagoServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,8 +30,8 @@ public class PrePerfilUsuarioServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        request.getRequestDispatcher("perfil_usuario.jsp").forward(request, response);
+        
+        request.getRequestDispatcher("metodos_pago.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

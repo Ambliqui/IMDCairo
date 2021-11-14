@@ -7,11 +7,11 @@
         <%@include file="structure/header.jsp"%>
         <div class="wrapper">
             <!-- Sidebar  -->
-            <%@include file="structure/sidebar_definitiva.jsp"%>
+            <%@include file="structure/sidebar.jsp"%>
             <!-- Page Content  -->
             <div id="content">
                 <%@ include file="includePages/metodos_pago.jsp" %>
-                <%@ include file="botoneras/modificar_usuario.jsp" %>
+                <%@ include file="botoneras/modificar_metodo_pago.jsp" %>
             </div>
         </div>
     </body>

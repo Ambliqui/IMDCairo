@@ -1,9 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
-package com.deportessa.proyectodeportes.servlets;
+package com.deportessa.proyectodeportes.servlets.metodosPago;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,8 +16,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Mefisto
  */
-@WebServlet(name = "xxx", urlPatterns = {"/xxx"})
-public class xxx extends HttpServlet {
+@WebServlet(name = "PostMetodosPago", urlPatterns = {"/PostMetodosPago"})
+public class PostMetodosPagoServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -37,10 +36,10 @@ public class xxx extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet xxx</title>");            
+            out.println("<title>Servlet PostMetodosPago</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet xxx at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet PostMetodosPago at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
