@@ -47,7 +47,7 @@ public class InicioAppListener implements ServletContextListener {
         accionesController.put(bdAcciones.getString("Login"), factory.getControlerLogin());
         accionesController.put(bdAcciones.getString("RegistroPag1"), factory.getRegistroDatosLogin());
         accionesController.put(bdAcciones.getString("RegistroPag2"), factory.getRegistroUsuario());
-        accionesController.put(bdAcciones.getString("RegistroPag3"), factory.getRegistroUsuario());
+        accionesController.put(bdAcciones.getString("RegistroPag3"), factory.getAltaMedotoPago());
         accionesController.put(bdAcciones.getString("Inscribirse"), factory.getInscripcion());
         accionesController.put(bdAcciones.getString("Modificar"), factory.getModificar());
         accionesController.put(bdAcciones.getString("PrePrincipalServlet"), factory.getPreprincipal());
