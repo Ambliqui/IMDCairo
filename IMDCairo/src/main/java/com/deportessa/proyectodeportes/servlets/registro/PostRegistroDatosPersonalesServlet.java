@@ -48,7 +48,7 @@ public class PostRegistroDatosPersonalesServlet extends HttpServlet {
         );
         
         request.setAttribute("datosCliente", datosCliente);
-        request.getRequestDispatcher("PrePrincipalServlet").forward(request, response);
+        request.getRequestDispatcher("PreRegistroMetodoPagoServlet").forward(request, response);
 
     }
 

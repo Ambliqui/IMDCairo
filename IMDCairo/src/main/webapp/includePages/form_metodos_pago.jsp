@@ -1,11 +1,8 @@
-<div class="row mb-4">
-    <div class="col-lg-8 mx-auto text-center">
-        <h4>Metodo de pago</h4>
-    </div>
+<div style="height: 100px;" >
+    <h2 class="text-center" ><p>Metodos de pago</p></h2>
 </div>
-<div class="col-md-12 col-lg-12 col-xl-12">
+<form class="col-md-12 col-lg-12 col-xl-12">
     <div class="container py-5">
-
         <div class="accordion accordion-flush" id="accordionFlushExample">
             <div class="accordion-item">
                 <h2 class="accordion-header" id="flush-headingOne">
@@ -44,7 +41,6 @@
                                 </div>
                             </div>
                         </div>       
-
                     </div>
                 </div>
             </div>
@@ -88,5 +84,5 @@
                 </div>
             </div>
         </div>
-    </div>        
-</div>
+    </div>
+</form>

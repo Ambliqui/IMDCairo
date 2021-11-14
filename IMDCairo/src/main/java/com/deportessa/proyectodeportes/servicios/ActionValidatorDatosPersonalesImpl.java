@@ -28,8 +28,8 @@ public class ActionValidatorDatosPersonalesImpl implements ActionValidator {
 
     @Override
     public List<Exception> execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
         Map<String, MetodoPagoLocal> mPago = (Map<String, MetodoPagoLocal>) request.getServletContext().getAttribute("metodosPago");
-
         List<Exception> exceptions = new ArrayList<>();
 
         validaciones.longitudCampo("Nombre: ", request.getParameter("nombre"), 4).ifPresent((error) -> exceptions.add(error));
