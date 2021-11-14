@@ -4,10 +4,8 @@
  */
 package com.deportessa.proyectodeportes.servlets.perfilUsuario;
 
-import com.deportessa.proyectodeportes.modelo.Cliente;
-import com.deportessa.proyectodeportes.modelo.MetodoPago;
+
 import java.io.IOException;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,6 +18,8 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "PrePerfilUsuarioServlet", urlPatterns = {"/PrePerfilUsuarioServlet"})
 public class PrePerfilUsuarioServlet extends HttpServlet {
+    
+
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,7 +32,7 @@ public class PrePerfilUsuarioServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
         request.getRequestDispatcher("perfil_usuario.jsp").forward(request, response);
     }
 

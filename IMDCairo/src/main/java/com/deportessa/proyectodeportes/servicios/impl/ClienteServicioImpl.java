@@ -9,12 +9,14 @@ import com.deportessa.proyectodeportes.servicios.excepciones.EmailNoExistsExcept
 import com.deportessa.proyectodeportes.daojpa.factory.DaoAbstractFactoryLocal;
 import com.deportessa.proyectodeportes.modelo.Actividad;
 import com.deportessa.proyectodeportes.modelo.Cliente;
+import com.deportessa.proyectodeportes.modelo.MetodoPago;
 import com.deportessa.proyectodeportes.servicios.ClienteServicio;
 import com.deportessa.proyectodeportes.servicios.InscripcionServicio;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -50,6 +52,13 @@ public class ClienteServicioImpl implements ClienteServicio {
     public Cliente findEmail(String email) throws EmailNoExistsException{
         Optional <Cliente> cliente =daoFactoryLocal.getClienteDaoLocal().findByEmail(email);
         return cliente.orElseThrow(() -> new EmailNoExistsException(ResourceBundle.getBundle("bundle.errores").getString("cliente.emailnotfound")));
+    }
+
+    @Override
+    public List<MetodoPago> findMetodoPagoByTipo(Cliente cliente,Class tipo) {
+        
+       return cliente.getMetodosPagoCliente().stream().filter(mp->mp.getClass().equals(tipo)).collect(Collectors.toList());
+    
     }
     
 }

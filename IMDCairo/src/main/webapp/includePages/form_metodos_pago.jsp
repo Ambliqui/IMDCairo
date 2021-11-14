@@ -90,3 +90,4 @@
         </div>        
     </div>
 </form>
+<script src="resources/js/acordeon.js"></script>

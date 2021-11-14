@@ -7,6 +7,7 @@ package com.deportessa.proyectodeportes.servicios;
 
 import com.deportessa.proyectodeportes.modelo.Actividad;
 import com.deportessa.proyectodeportes.modelo.Cliente;
+import com.deportessa.proyectodeportes.modelo.MetodoPago;
 import com.deportessa.proyectodeportes.servicios.excepciones.EmailNoExistsException;
 import java.util.List;
 import javax.ejb.Local;
@@ -14,6 +15,7 @@ import javax.ejb.Local;
 /**
  *
  * @author Mefisto
+ * @param <T>
  */
 @Local
 public interface ClienteServicio {
@@ -25,4 +27,6 @@ public interface ClienteServicio {
     Cliente findEmail(Cliente cliente);
 
     Cliente findEmail(String email)throws EmailNoExistsException;
+    
+    List<MetodoPago> findMetodoPagoByTipo(Cliente cliente,Class tipo);
 }
