@@ -1,17 +1,7 @@
-<%-- 
-    Document   : registrar_usuario
-    Created on : 13-nov-2021, 15:45:20
-    Author     : Mefisto
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-    </body>
-</html>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                            <div class="text-right">
+                                <input id="btnCancelar" type="submit" name="accion" class="btn btn-primary" form="formPerfilUsuario" formnovalidate formaction="PrePrincipalServlet" value="Volver">
+                                <input id="btnModificar" type="reset" name="accion" class="btn btn-danger" form="formPerfilUsuario" formnovalidate value="Limpiar">
+                                <input id="btnModificar" type="submit" name="accion" class="btn btn-success" form="formPerfilUsuario" value="Registrar">
+                            </div>
+                        </div>

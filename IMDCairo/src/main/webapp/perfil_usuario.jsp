@@ -10,7 +10,7 @@
             <!-- Page Content  -->
             <div id="content">
                 <%@ include file="includePages/form_perfil_usuario.jsp" %>
-                <%@ include file="botoneras/modificar_usuario.jsp" %>
+                <%@ include file="botoneras/modificar_usuario.jsp"%>
             </div>
         </div>
     </body>

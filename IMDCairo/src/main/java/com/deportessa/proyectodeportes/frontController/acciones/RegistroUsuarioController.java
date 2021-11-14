@@ -45,7 +45,7 @@ public class RegistroUsuarioController implements FrontControlerLocal{
             request.setAttribute("apellidos", request.getParameter("apellidos"));
             request.setAttribute("telefono", request.getParameter("telefono"));
             
-            request=mPago.get(request.getParameter("metodoPago")).reenviarDatos(request);
+//            request=mPago.get(request.getParameter("metodoPago")).reenviarDatos(request);
 
             //Devolvemos los errores
             request.setAttribute("errores", exceptions);
