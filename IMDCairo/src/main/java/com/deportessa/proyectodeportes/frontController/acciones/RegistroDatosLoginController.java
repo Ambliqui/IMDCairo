@@ -10,6 +10,7 @@ import com.deportessa.proyectodeportes.servicios.ActionValidator;
 import com.deportessa.proyectodeportes.servicios.dto.DatosLoginVO;
 import com.deportessa.proyectodeportes.servicios.qualifiers.ActionMetodoPagoQ;
 import com.deportessa.proyectodeportes.servicios.qualifiers.ActionValidatorDatosPersonalesImplQ;
+import com.deportessa.proyectodeportes.servicios.qualifiers.ActionValidatorLoginQ;
 import com.deportessa.proyectodeportes.servicios.qualifiers.ActionValidatorRegistroUsuarioQ;
 import java.io.IOException;
 import java.util.List;
@@ -31,7 +32,7 @@ import javax.servlet.http.HttpServletResponse;
 public class RegistroDatosLoginController implements FrontControlerLocal{
     
     @Inject
-    @ActionMetodoPagoQ
+    @com.deportessa.proyectodeportes.servicios.qualifiers.ActionValidatorRegistroUsuarioQ
     private ActionValidator validadorMetodoPago;
 
     @Override
