@@ -14,7 +14,7 @@ import javax.ejb.Local;
  * @author Antonio
  */
 @Local
-public interface MetodoPagoLocal {
+public interface MetodoPagoLocal{
 
     void create(MetodoPago metodoPago);
     

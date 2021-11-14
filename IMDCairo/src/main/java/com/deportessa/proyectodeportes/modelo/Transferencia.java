@@ -30,7 +30,7 @@ public class Transferencia extends MetodoPago implements Serializable {
     
     @NotNull
     @Column(name = "pais_cuenta")
-    private String paisCuenta;    
+    private Integer paisCuenta;    
     
     @NotNull
     @Column(name = "entidad_cuenta")
@@ -51,7 +51,7 @@ public class Transferencia extends MetodoPago implements Serializable {
     public Transferencia() {
     }
 
-    public Transferencia(int numCuenta, String paisCuenta, Integer entidadCuenta, Integer oficinaCuenta, Integer dcCuenta, Integer numeroCuenta) {
+    public Transferencia(int numCuenta, Integer paisCuenta, Integer entidadCuenta, Integer oficinaCuenta, Integer dcCuenta, Integer numeroCuenta) {
         this.numCuenta = numCuenta;
         this.paisCuenta = paisCuenta;
         this.entidadCuenta = entidadCuenta;
@@ -82,11 +82,11 @@ public class Transferencia extends MetodoPago implements Serializable {
         this.numCuenta = numCuenta;
     }
 
-    public String getPaisCuenta() {
+    public Integer getPaisCuenta() {
         return paisCuenta;
     }
 
-    public void setPaisCuenta(String paisCuenta) {
+    public void setPaisCuenta(Integer paisCuenta) {
         this.paisCuenta = paisCuenta;
     }
 

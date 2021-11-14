@@ -6,6 +6,8 @@
 package com.deportessa.proyectodeportes.servlets.misActividades;
 
 import com.deportessa.proyectodeportes.modelo.Cliente;
+import com.deportessa.proyectodeportes.modelo.Tarjeta;
+import com.deportessa.proyectodeportes.servicios.ClienteServicio;
 import java.io.IOException;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -33,12 +35,12 @@ public class PreMisActividades extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+     @Inject
+    ClienteServicio cliServicio;
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         Cliente cliente=(Cliente) request.getSession().getAttribute("clienteSession");
         request.setAttribute("inscripciones", inscripcionServicio.getInscripcionesDTO(cliente));
-       //request.setAttribute("inscripciones", inscripcionServicio.getInscripciones(cliente));
-       
         request.getRequestDispatcher("./misActividades.jsp").forward(request, response);
     }
 
