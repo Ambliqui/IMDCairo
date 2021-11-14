@@ -9,7 +9,7 @@
             <%@include file="structure/sidebar.jsp"%>
             <!-- Page Content  -->
             <div id="content">
-                <%@ include file="includePages/perfil_usuario.jsp" %>
+                <%@ include file="includePages/form_perfil_usuario.jsp" %>
                 <%@ include file="botoneras/modificar_usuario.jsp" %>
             </div>
         </div>

@@ -4,8 +4,14 @@
  */
 package com.deportessa.proyectodeportes.servlets.metodosPago;
 
+import com.deportessa.proyectodeportes.daojpa.MetodoPagoLocal;
+import com.deportessa.proyectodeportes.daojpa.factory.DaoAbstractFactoryLocal;
+import com.deportessa.proyectodeportes.modelo.Cliente;
+import com.deportessa.proyectodeportes.modelo.MetodoPago;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,7 +22,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Mefisto
  */
-@WebServlet(name = "PreMetodosPago", urlPatterns = {"/PreMetodosPago"})
+@WebServlet(name = "PreMetodosPagoServlet", urlPatterns = {"/PreMetodosPagoServlet"})
 public class PreMetodosPagoServlet extends HttpServlet {
 
     /**
@@ -28,9 +34,20 @@ public class PreMetodosPagoServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
+    @Inject
+    private DaoAbstractFactoryLocal daoFactoryLocal;
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
+        Cliente cliente = (Cliente) request.getSession().getAttribute("clienteSession");
+        List<MetodoPago> metodoPago = cliente.getMetodosPagoCliente();
         
+        for (MetodoPago mP : metodoPago) {
+            
+        }
+
         request.getRequestDispatcher("metodos_pago.jsp").forward(request, response);
     }
 

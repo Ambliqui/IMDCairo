@@ -12,7 +12,8 @@
                         <a href="./ActionsServices?accion=MisActividades">Mis Actividades</a>
                     </li>
                     <li>
-                        <a href="./metodos_pago.jsp">Métodos de pago</a>
+                        <!-- <a href="./metodos_pago.jsp">Métodos de pago</a> -->
+                        <a href="./PreMetodosPagoServlet">Métodos de pago</a>
                     </li>
                 </ul>
             </nav>

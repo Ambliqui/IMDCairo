@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Mefisto
  */
-@WebServlet(name = "PostMetodosPago", urlPatterns = {"/PostMetodosPago"})
+@WebServlet(name = "PostMetodosPagoServlet", urlPatterns = {"/PostMetodosPagoServlet"})
 public class PostMetodosPagoServlet extends HttpServlet {
 
     /**
@@ -36,10 +36,10 @@ public class PostMetodosPagoServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet PostMetodosPago</title>");            
+            out.println("<title>Servlet PostMetodosPagoServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet PostMetodosPago at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet PostMetodosPagoServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

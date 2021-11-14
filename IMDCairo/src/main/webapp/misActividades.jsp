@@ -7,7 +7,7 @@
             <%@include file="structure/sidebar.jsp"%>
             <!-- Page Content  -->
             <div id="content">
-                <%@ include file="includePages/mis_actividades.jsp" %>
+                <%@ include file="includePages/form_mis_actividades.jsp" %>
             </div>
         </div>
     </body>
