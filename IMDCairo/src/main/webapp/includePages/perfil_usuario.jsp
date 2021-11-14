@@ -1,7 +1,7 @@
 
 <body>
     <div style="height: 100px;" >
-        <h2 class="text-center" ><p>Tus Datos Personales</p></h2>
+        <h2 class="text-center" ><p>Mis Datos Personales</p></h2>
     </div>
     <form id="formPerfilUsuario" action="ActionsServices" class="container">
         <div class="row gutters">
@@ -13,6 +13,7 @@
                                 <div class="user-avatar">
                                     <img src="resources/images/pagina/perfiles/avatar.png" width="100%" alt="avatar">
                                 </div>
+                                <br>
                                 <h5 class="user-name"> ${clienteSession.nombreCliente} </h5>
                                 <h5 class="user-surname">${clienteSession.apellido1Cliente}</h5>
                             </div>
