@@ -11,7 +11,6 @@ import com.deportessa.proyectodeportes.modelo.MetodoPago;
 import com.deportessa.proyectodeportes.modelo.Paypal;
 import com.deportessa.proyectodeportes.modelo.Tarjeta;
 import com.deportessa.proyectodeportes.modelo.Transferencia;
-import com.deportessa.proyectodeportes.servicios.ActionMetodoPago;
 import java.io.IOException;
 import javax.inject.Inject;
 import javax.servlet.ServletException;

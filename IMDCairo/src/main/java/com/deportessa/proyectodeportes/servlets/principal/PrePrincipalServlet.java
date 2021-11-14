@@ -5,11 +5,10 @@
  */
 package com.deportessa.proyectodeportes.servlets.principal;
 
-import com.deportessa.proyectodeportes.modelo.Actividad;
-import com.deportessa.proyectodeportes.servicios.ActividadServicio;
 import java.io.IOException;
+import java.util.Enumeration;
+import java.util.Iterator;
 import java.util.List;
-import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,7 +34,7 @@ public class PrePrincipalServlet extends HttpServlet {
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+ 
         request.getRequestDispatcher("principal.jsp").forward(request, response);
         
     }
