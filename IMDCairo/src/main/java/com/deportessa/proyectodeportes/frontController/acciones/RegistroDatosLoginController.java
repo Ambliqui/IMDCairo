@@ -6,6 +6,7 @@
 package com.deportessa.proyectodeportes.frontController.acciones;
 
 import com.deportessa.proyectodeportes.frontController.FrontControlerLocal;
+import com.deportessa.proyectodeportes.frontController.qualifiers.RegistroDatosLogin;
 import com.deportessa.proyectodeportes.servicios.ActionValidator;
 import com.deportessa.proyectodeportes.servicios.qualifiers.ActionValidatorDatosPersonalesImplQ;
 import com.deportessa.proyectodeportes.servicios.qualifiers.ActionValidatorRegistroUsuarioQ;
@@ -25,7 +26,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author pryet
  */
 @Stateless
-@com.deportessa.proyectodeportes.frontController.qualifiers.RegistroDatosLogin
+@RegistroDatosLogin
 public class RegistroDatosLoginController implements FrontControlerLocal{
     
     @Inject

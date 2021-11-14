@@ -20,6 +20,7 @@ import com.deportessa.proyectodeportes.frontController.qualifiers.RegistroUsuari
 import javax.ejb.Stateless;
 import com.deportessa.proyectodeportes.frontController.qualifiers.DetalleActividad;
 import com.deportessa.proyectodeportes.frontController.qualifiers.MisActividades;
+import com.deportessa.proyectodeportes.frontController.qualifiers.ModificacionMetodosPagoQ;
 import com.deportessa.proyectodeportes.frontController.qualifiers.Perfil;
 
 /**
@@ -76,10 +77,14 @@ public class AccionFactory implements AccionFactoryLocal {
     @Inject
     @Perfil
     private FrontControlerLocal controlerPerfilUsuario;
-    
+
     @Inject
     @BajaUsuarioQ
     private FrontControlerLocal controlerBajaUsuario;
+
+    @Inject
+    @ModificacionMetodosPagoQ
+    private FrontControlerLocal controlerModificarMetodosPago;
 
     @Override
     public FrontControlerLocal getControlerLogin() {
@@ -143,5 +148,10 @@ public class AccionFactory implements AccionFactoryLocal {
     @Override
     public FrontControlerLocal getBajaUsuario() {
         return controlerBajaUsuario;
+    }
+
+    @Override
+    public FrontControlerLocal getModificarMetodoPago() {
+        return controlerModificarMetodosPago;
     }
 }

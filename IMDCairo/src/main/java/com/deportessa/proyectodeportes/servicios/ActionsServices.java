@@ -31,26 +31,9 @@ public class ActionsServices extends HttpServlet {
     public void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Map<String, FrontControlerLocal> accionesController = (Map<String, FrontControlerLocal>) request.getServletContext().getAttribute("accionesController");
-        String ruta1 = request.getContextPath();
-        String ruta2 = request.getLocalAddr();
-        String ruta3 = request.getRequestURI();
-        String ruta4 = request.getPathInfo();
-        String ruta5 = request.getServletPath();
-        String ruta6 = request.getContextPath();
-        String ruta7 = request.getRequestURL().toString();
-        String ruta8 = (String) request.getAttribute("javax.servlet.forward.request_uri");
-        String ruta10 = request.getHeader("Referer");
-        Enumeration<String> ruta9 = request.getHeaderNames();
-       
-        
-        
-        String scheme = request.getScheme();
-        String serverName = request.getServerName();
-        int serverPort = request.getServerPort();
-        String uri = (String) request.getAttribute("javax.servlet.forward.request_uri");
-        String prmstr = (String) request.getAttribute("javax.servlet.forward.query_string");
-        String url = scheme + "://" + serverName + ":" + serverPort + uri + "?" + prmstr;
+        String ruta = request.getHeader("Referer");
 
+        String derivar = request.getParameter("accion");
         FrontControlerLocal controller = accionesController.get(request.getParameter("accion"));
         controller.getDispatcher(request, response).forward(request, response);
 

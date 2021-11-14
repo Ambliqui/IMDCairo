@@ -6,7 +6,6 @@
         <%@ include file="structure/header.jsp" %>
         <%@ include file="includePages/form_perfil_usuario.jsp" %>
         <%@ include file="botoneras/registrar_usuario.jsp" %>
-        <input id="btnSiguiente" type="text" name="accion" form="formPerfilUsuario" value=PrePrincipalServlet hidden>;
         <c:forEach items="${errores}" var="error">
             <c:out value="${error.getMessage()}"/><br/>
         </c:forEach>

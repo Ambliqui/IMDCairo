@@ -5,6 +5,7 @@
 package com.deportessa.proyectodeportes.frontController.acciones;
 
 import com.deportessa.proyectodeportes.frontController.FrontControlerLocal;
+import com.deportessa.proyectodeportes.frontController.qualifiers.RegistroUsuario;
 import com.deportessa.proyectodeportes.metodosPago.MetodoPagoLocal;
 import com.deportessa.proyectodeportes.servicios.ActionValidator;
 import com.deportessa.proyectodeportes.servicios.qualifiers.ActionValidatorDatosPersonalesImplQ;
@@ -23,7 +24,7 @@ import javax.servlet.http.HttpServletResponse;
  * @author Antonio
  */
 @Stateless
-@com.deportessa.proyectodeportes.frontController.qualifiers.RegistroUsuario
+@RegistroUsuario
 public class RegistroUsuarioController implements FrontControlerLocal{
 
     @Inject
@@ -32,8 +33,10 @@ public class RegistroUsuarioController implements FrontControlerLocal{
     
     @Override
     public RequestDispatcher getDispatcher(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        List<Exception> exceptions= validadorDatosLogin.execute(request, response);
+        
         Map<String,MetodoPagoLocal> mPago=(Map<String,MetodoPagoLocal>) request.getServletContext().getAttribute("metodosPago");
+        List<Exception> exceptions= validadorDatosLogin.execute(request, response);
+        
         if (exceptions.isEmpty()) {
             return request.getRequestDispatcher("/PostRegistroDatosPersonalesServlet");
         } else {

@@ -46,7 +46,8 @@ public class InicioAppListener implements ServletContextListener {
         Map<String,FrontControlerLocal> accionesController=new HashMap<>();
         accionesController.put(bdAcciones.getString("Login"), factory.getControlerLogin());
         accionesController.put(bdAcciones.getString("RegistroPag1"), factory.getRegistroDatosLogin());
-        accionesController.put(bdAcciones.getString("RegistroPag2"), factory.getRegistroUsuario());
+        accionesController.put("Alta Pago", factory.getRegistroUsuario());
+        accionesController.put(("RegistroPag2"), factory.getModificarMetodoPago());
         accionesController.put(bdAcciones.getString("Inscribirse"), factory.getInscripcion());
         accionesController.put(bdAcciones.getString("Modificar"), factory.getModificar());
         accionesController.put(bdAcciones.getString("PrePrincipalServlet"), factory.getPreprincipal());
@@ -66,8 +67,6 @@ public class InicioAppListener implements ServletContextListener {
         mPago.put(bdMPago.getString("Transferencia"), pagoFactory.getPagoTransferencia());
         sce.getServletContext().setAttribute("metodosPago", mPago);
 
-        
-        
         //Subimos las actividades al contexto
         sce.getServletContext().setAttribute("listaActividades", daoFactoryLocal.getActividadDaoLocal().findAll());
     }

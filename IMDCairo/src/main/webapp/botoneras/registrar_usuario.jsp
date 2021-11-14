@@ -2,6 +2,6 @@
     <div class="text-right">
         <input id="btnCancelar" type="submit" name="accion" class="btn btn-primary" form="formPerfilUsuario" formnovalidate formaction="PrePrincipalServlet" value="Volver">
         <input id="btnModificar" type="reset" name="accion" class="btn btn-danger" form="formPerfilUsuario" formnovalidate value="Limpiar">
-        <input id="btnModificar" type="submit" name="accionVisible" class="btn btn-success" form="formPerfilUsuario" value="Siguiente">
+        <input id="btnModificar" type="submit" name="accion" class="btn btn-success" form="formPerfilUsuario" value="Alta Pago">
     </div>
 </div>

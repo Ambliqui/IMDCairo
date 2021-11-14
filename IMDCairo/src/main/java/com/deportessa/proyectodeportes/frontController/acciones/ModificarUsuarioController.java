@@ -37,14 +37,14 @@ public class ModificarUsuarioController implements FrontControlerLocal{
 
         //Mandamos a la pagina de destino
         if (exceptions.isEmpty()) {
-            return request.getRequestDispatcher("/PostPerfilUsuarioServlet");
+            return request.getRequestDispatcher("/PreMetodosPagoServlet");
         } else {
             //Recuperamos lo que nos ha escrito el cliente para volver a mostrarlo en pantalla
             request.setAttribute("password", request.getParameter("password"));
 
             //Devolvemos los errores
             request.setAttribute("errores", exceptions);
-            return request.getRequestDispatcher("/PrePerfilUsuarioServlet");
+            return request.getRequestDispatcher("/PostRegistroDetalleUsuarioServlet");
         }
     }
 }

@@ -27,12 +27,12 @@ public class ModificacionMetodosPagoController implements FrontControlerLocal {
 
     @Inject
     @ActionValidatorDatosPersonalesImplQ
-    private ActionValidator validadorMetodosPago;
+    private ActionValidator validatorDatosPersoanles;
 
     @Override
     public RequestDispatcher getDispatcher(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
-        List<Exception> exceptions = validadorMetodosPago.execute(request, response);
+        List<Exception> exceptions = validatorDatosPersoanles.execute(request, response);
 
         //Mandamos a la pagina de destino
         if (exceptions.isEmpty()) {
@@ -43,7 +43,7 @@ public class ModificacionMetodosPagoController implements FrontControlerLocal {
 
             //Devolvemos los errores
             request.setAttribute("errores", exceptions);
-            return request.getRequestDispatcher("/PostMetodosPagoServlet");
+            return request.getRequestDispatcher("/PreRegistroDatosPersonalesServlet");
         }
     }
 }
