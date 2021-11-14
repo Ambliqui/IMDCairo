@@ -5,16 +5,8 @@
  */
 package com.deportessa.proyectodeportes.servlets.registro;
 
-import com.deportessa.proyectodeportes.daojpa.factory.DaoAbstractFactoryLocal;
-import com.deportessa.proyectodeportes.modelo.Cliente;
-import com.deportessa.proyectodeportes.modelo.MetodoPago;
-import com.deportessa.proyectodeportes.modelo.Paypal;
-import com.deportessa.proyectodeportes.modelo.Tarjeta;
-import com.deportessa.proyectodeportes.modelo.Transferencia;
-import com.deportessa.proyectodeportes.servicios.ActionMetodoPago;
 import com.deportessa.proyectodeportes.servicios.dto.DatosPersonalesVO;
 import java.io.IOException;
-import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -48,7 +40,7 @@ public class PostRegistroDatosPersonalesServlet extends HttpServlet {
         );
         
         request.setAttribute("datosCliente", datosCliente);
-        request.getRequestDispatcher("PreRegistroMetodoPagoServlet").forward(request, response);
+        request.getRequestDispatcher("PreRegistroMetodoPago").forward(request, response);
 
     }
 

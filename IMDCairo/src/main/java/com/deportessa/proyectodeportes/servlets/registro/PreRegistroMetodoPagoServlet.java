@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  *
  * @author Mefisto
- */
+ */                                                        
 @WebServlet(name = "PreRegistroMetodoPago", urlPatterns = {"/PreRegistroMetodoPago"})
 public class PreRegistroMetodoPagoServlet extends HttpServlet {
 
