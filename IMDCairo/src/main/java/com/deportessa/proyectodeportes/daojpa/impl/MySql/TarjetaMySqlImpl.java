@@ -7,7 +7,6 @@ package com.deportessa.proyectodeportes.daojpa.impl.MySql;
 
 import com.deportessa.proyectodeportes.daojpa.DaoGenericoAbstracto;
 import com.deportessa.proyectodeportes.modelo.Tarjeta;
-import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import com.deportessa.proyectodeportes.daojpa.TarjetaLocal;
@@ -33,5 +32,7 @@ public class TarjetaMySqlImpl extends DaoGenericoAbstracto<Tarjeta, Integer> imp
     public TarjetaMySqlImpl() {
         super(Tarjeta.class);
     }
+
+
     
 }
