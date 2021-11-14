@@ -8,7 +8,6 @@
         <%@ include file="botoneras/registrar_usuario.jsp" %>
         <%@ include file="structure/footer.jsp" %>   
     </body>
-    <%@ include file="structure/footer.jsp"%>
 </html>
 
 
