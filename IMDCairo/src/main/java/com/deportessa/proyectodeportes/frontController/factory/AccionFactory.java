@@ -10,6 +10,7 @@ import com.deportessa.proyectodeportes.frontController.qualifiers.AccionLogin;
 import com.deportessa.proyectodeportes.frontController.qualifiers.RegistroDatosLogin;
 import javax.inject.Inject;
 import com.deportessa.proyectodeportes.frontController.FrontControlerLocal;
+import com.deportessa.proyectodeportes.frontController.qualifiers.AltaMetodoPagoQ;
 import com.deportessa.proyectodeportes.frontController.qualifiers.BajaActividad;
 import com.deportessa.proyectodeportes.frontController.qualifiers.BajaUsuarioQ;
 import com.deportessa.proyectodeportes.frontController.qualifiers.CerrarSesion;
@@ -90,6 +91,9 @@ public class AccionFactory implements AccionFactoryLocal {
     @Inject
     @CambiarMetodoPago
     private FrontControlerLocal controlerCambiarMetodoPago;
+    
+    @AltaMetodoPagoQ
+    private FrontControlerLocal controlerAltaMetodoPago;
 
     @Override
     public FrontControlerLocal getControlerLogin() {
@@ -163,5 +167,9 @@ public class AccionFactory implements AccionFactoryLocal {
     @Override
     public FrontControlerLocal getCambiarMetodoPago() {
         return controlerCambiarMetodoPago;
+    }
+    @Override
+    public FrontControlerLocal getAltaMedotoPago() {
+        return controlerAltaMetodoPago;
     }
 }

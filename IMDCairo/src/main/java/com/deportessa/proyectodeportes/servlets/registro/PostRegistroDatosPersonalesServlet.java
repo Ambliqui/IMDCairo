@@ -11,6 +11,8 @@ import com.deportessa.proyectodeportes.modelo.MetodoPago;
 import com.deportessa.proyectodeportes.modelo.Paypal;
 import com.deportessa.proyectodeportes.modelo.Tarjeta;
 import com.deportessa.proyectodeportes.modelo.Transferencia;
+import com.deportessa.proyectodeportes.servicios.ActionMetodoPago;
+import com.deportessa.proyectodeportes.servicios.dto.DatosPersonalesVO;
 import java.io.IOException;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
@@ -35,68 +37,18 @@ public class PostRegistroDatosPersonalesServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Inject
-    private DaoAbstractFactoryLocal daoFactoryLocal;
+
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        ////////////// DATOS DE USUARIO //////////////////////
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        String nombre = request.getParameter("nombre");
-        String apellidos = request.getParameter("apellidos");
-        String telefono = request.getParameter("telefono");
-
-        Cliente cliente = new Cliente();
-        cliente.setEmailCliente(email);
-        cliente.setPassCliente(password);
-        cliente.setNombreCliente(nombre);
-        cliente.setApellido1Cliente(apellidos);
-        cliente.setTelefonoCliente(telefono);
-        daoFactoryLocal.getClienteDaoLocal().create(cliente);
-
-        MetodoPago metodoPago;
-        Tarjeta tarjeta = null;
-        Paypal paypal = null;
-        Transferencia transferencia = null;
-
-        if (request.getParameter("metodoPago").equalsIgnoreCase("tarjeta")) {
-
-            Integer numeroTarjeta = Integer.parseInt(request.getParameter("numeroTarjeta"));
-            Integer mesTarjeta = Integer.parseInt(request.getParameter("mesTarjeta"));
-            Integer annoTarjeta = Integer.parseInt(request.getParameter("annoTarjeta"));
-            Integer csvTarjeta = Integer.parseInt(request.getParameter("cvsTarjeta"));
-            tarjeta = new Tarjeta(numeroTarjeta, mesTarjeta, annoTarjeta, csvTarjeta);
-            daoFactoryLocal.getTarjetaDaoLocal().create(tarjeta);
-
-            cliente = daoFactoryLocal.getClienteDaoLocal().findByEmail(cliente.getEmailCliente()).get();
-            cliente.addMPago(tarjeta);
-            daoFactoryLocal.getClienteDaoLocal().edit(cliente);
-
-        } else if (request.getParameter("metodoPago").equalsIgnoreCase("paypal")) {
-
-            paypal = new Paypal(request.getParameter("cuentaPaypal"));
-            cliente = daoFactoryLocal.getClienteDaoLocal().findByEmail(cliente.getEmailCliente()).get();
-            daoFactoryLocal.getPayPalDaoLocal().create(paypal);
-            
-            cliente.addMPago(paypal);
-            daoFactoryLocal.getClienteDaoLocal().edit(cliente);
-
-        } else {
-
-            transferencia = new Transferencia(Integer.parseInt(request.getParameter("IBAN")));
-            cliente = daoFactoryLocal.getClienteDaoLocal().findByEmail(cliente.getEmailCliente()).get();
-            daoFactoryLocal.getTransferenciaDaoLocal().create(transferencia);
-            
-            cliente.addMPago(transferencia);
-            daoFactoryLocal.getClienteDaoLocal().edit(cliente);
-
-        }
-
-        request.getSession(true);
-        request.getSession().setAttribute("clienteSession", cliente);
-        request.getRequestDispatcher("PrePrincipalServlet").forward(request, response);
+        DatosPersonalesVO datosCliente = new DatosPersonalesVO(request.getParameter("nombre"), 
+               request.getParameter("apellidos"),
+                request.getParameter("telefono")
+        );
+        
+        request.setAttribute("datosCliente", datosCliente);
+        request.getRequestDispatcher("PreRegistroMetodoPagoServlet").forward(request, response);
 
     }
 

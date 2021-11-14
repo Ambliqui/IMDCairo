@@ -1,14 +1,11 @@
-
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
  */
 package com.deportessa.proyectodeportes.servlets.registro;
 
-import com.deportessa.proyectodeportes.servicios.ClienteServicio;
 import java.io.IOException;
-import javax.inject.Inject;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,8 +16,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Mefisto
  */
-@WebServlet(name = "PostRegistroUsuarioServlet", urlPatterns = {"/PostRegistroUsuarioServlet"})
-public class PostRegistroUsuarioServlet extends HttpServlet {
+@WebServlet(name = "PreRegistroMetodoPago", urlPatterns = {"/PreRegistroMetodoPago"})
+public class PreRegistroMetodoPagoServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -31,20 +28,10 @@ public class PostRegistroUsuarioServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Inject
-    ClienteServicio clienteServicio;
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-
-        System.out.println(email);
-        System.out.println(password);
-
-        request.getRequestDispatcher("PreRegistroDatosPersonalesServlet").forward(request, response);
-
+ 
+        request.getRequestDispatcher("registro_metodos_pago.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

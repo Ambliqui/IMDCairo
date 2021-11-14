@@ -30,4 +30,5 @@ public interface AccionFactoryLocal {
     FrontControlerLocal getBajaUsuario();
     FrontControlerLocal getModificarActividad();
     FrontControlerLocal getCambiarMetodoPago();
+    FrontControlerLocal getAltaMedotoPago();
 }
