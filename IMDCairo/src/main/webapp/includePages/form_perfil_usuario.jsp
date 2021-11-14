@@ -61,40 +61,29 @@
                                     <label id="lbTelefono" for="telefono">Telefono</label>
                                     <input id="telefono" type="text" class="form-control" name="telefono" 
 
-                                           <c:if test="${clienteSession!=null}">
-                                               value="${clienteSession.telefonoCliente}" 
-                                           </c:if>
-                                           <c:if test="${telefono==null}">
-                                               value="${telefono}" 
-                                           </c:if>
-
+                                           <c:if test="${clienteSession!=null}">value="${clienteSession.telefonoCliente}"</c:if>
+                                           <c:if test="${telefono==null}">value="${telefono}"</c:if>
                                            placeholder="Telefono">
                                 </div>
                             </div>
                             <c:if test="${clienteSession!=null}">
-
-
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div class="form-group">
                                         <label id="lbPassword" for="password">Password</label>
                                         <input id="password" type="password" class="form-control" name="password" 
-                                               <c:if test="${clienteSession!=null}">
-                                                   value="${clienteSession.passCliente}"
-                                               </c:if>
-                                               <c:if test="${password==null}">
-                                                   value="${password}" 
-                                               </c:if>
-                                               placeholder="Password">
+                                               <c:if test="${clienteSession!=null}">value="${clienteSession.passCliente}"</c:if>
+                                               <c:if test="${password==null}">value="${password}"</c:if>
+                                                   placeholder="Password">
+                                        </div>
                                     </div>
-                                </div>
                             </c:if>
                         </div>
                     </div>
                 </div>
             </div>
+            <c:forEach items="${errores}" var="error">
+                <c:out value="${error.getMessage()}"/><br/>
+            </c:forEach>
         </div>
-        <c:forEach items="${errores}" var="error">
-            <c:out value="${error.getMessage()}"/><br/>
-        </c:forEach>
     </form>
 </body>
