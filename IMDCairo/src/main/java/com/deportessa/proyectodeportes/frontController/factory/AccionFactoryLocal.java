@@ -28,4 +28,6 @@ public interface AccionFactoryLocal {
     FrontControlerLocal getCerrarSesion();
     FrontControlerLocal getPerfilUsuario();
     FrontControlerLocal getBajaUsuario();
+    FrontControlerLocal getModificarActividad();
+    FrontControlerLocal getCambiarMetodoPago();
 }

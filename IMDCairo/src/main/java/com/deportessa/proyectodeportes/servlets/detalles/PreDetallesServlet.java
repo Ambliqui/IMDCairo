@@ -5,8 +5,11 @@
 package com.deportessa.proyectodeportes.servlets.detalles;
 
 import com.deportessa.proyectodeportes.modelo.Actividad;
+import com.deportessa.proyectodeportes.modelo.Cliente;
 import com.deportessa.proyectodeportes.servicios.ActividadServicio;
+import com.deportessa.proyectodeportes.servicios.ClienteServicio;
 import java.io.IOException;
+import java.util.Optional;
 import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,13 +33,18 @@ public class PreDetallesServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    
     @Inject
     ActividadServicio ActividadServicio;
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         Actividad actividad = ActividadServicio.find(Integer.parseInt(request.getParameter("actividad")));
+        if (request.getSession(false) != null) {
+            Cliente cliente = (Cliente) request.getSession(false).getAttribute("clienteSession");
+            request.setAttribute("clienteSession", cliente);
+        }
+
         request.setAttribute("actividad", actividad);
         request.getRequestDispatcher("detalle_actividad.jsp").forward(request, response);
     }

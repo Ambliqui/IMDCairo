@@ -5,6 +5,7 @@
  */
 package com.deportessa.proyectodeportes.frontController.factory;
 
+import com.deportessa.proyectodeportes.daojpa.qulifiers.CambiarMetodoPago;
 import com.deportessa.proyectodeportes.frontController.qualifiers.AccionLogin;
 import com.deportessa.proyectodeportes.frontController.qualifiers.RegistroDatosLogin;
 import javax.inject.Inject;
@@ -20,6 +21,7 @@ import com.deportessa.proyectodeportes.frontController.qualifiers.RegistroUsuari
 import javax.ejb.Stateless;
 import com.deportessa.proyectodeportes.frontController.qualifiers.DetalleActividad;
 import com.deportessa.proyectodeportes.frontController.qualifiers.MisActividades;
+import com.deportessa.proyectodeportes.frontController.qualifiers.ModificarActividad;
 import com.deportessa.proyectodeportes.frontController.qualifiers.Perfil;
 
 /**
@@ -80,6 +82,14 @@ public class AccionFactory implements AccionFactoryLocal {
     @Inject
     @BajaUsuarioQ
     private FrontControlerLocal controlerBajaUsuario;
+    
+    @Inject
+    @ModificarActividad
+    private FrontControlerLocal controlerModificarActividad;
+    
+    @Inject
+    @CambiarMetodoPago
+    private FrontControlerLocal controlerCambiarMetodoPago;
 
     @Override
     public FrontControlerLocal getControlerLogin() {
@@ -143,5 +153,15 @@ public class AccionFactory implements AccionFactoryLocal {
     @Override
     public FrontControlerLocal getBajaUsuario() {
         return controlerBajaUsuario;
+    }
+
+    @Override
+    public FrontControlerLocal getModificarActividad() {
+        return controlerModificarActividad;
+    }
+
+    @Override
+    public FrontControlerLocal getCambiarMetodoPago() {
+        return controlerCambiarMetodoPago;
     }
 }
