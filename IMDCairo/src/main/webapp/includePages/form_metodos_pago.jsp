@@ -4,7 +4,11 @@
 <form id="formMetodosPago">
     <div class="col-md-12 col-lg-12 col-xl-12">
         <div class="container py-5">
-
+            <input type="text" name="email" value="${email}" hidden="">
+            <input type="text" name="password" value="${password}" hidden="">
+            <input type="text" name="nombre" value="${nombre}" hidden="">
+            <input type="text" name="apellidos" value="${apellidos}" hidden="">
+            <input type="text" name="telefono" value="${telefono}" hidden="">
             <div class="accordion accordion-flush" id="accordionFlushExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-headingOne">
