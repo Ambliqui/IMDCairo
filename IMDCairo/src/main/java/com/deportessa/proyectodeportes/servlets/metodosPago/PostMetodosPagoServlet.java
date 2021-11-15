@@ -44,9 +44,14 @@ public class PostMetodosPagoServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
          ////////////// DATOS DE USUARIO //////////////////////
+        String email=request.getParameter("email");
+        String password=request.getParameter("password");
+        DatosLoginVO datosLogin = new DatosLoginVO(email, password);
+        String nombre=request.getParameter("nombre");
+        String apellidos=request.getParameter("apellidos");
+        String telefono=request.getParameter("telefono");
         
-        DatosLoginVO datosLogin = (DatosLoginVO) request.getAttribute("datosLogin");
-        DatosPersonalesVO datosCliente = (DatosPersonalesVO) request.getAttribute("datosCliente");
+        DatosPersonalesVO datosCliente = new DatosPersonalesVO(nombre, apellidos, telefono);
 
         Cliente cliente = new Cliente();
         cliente.setEmailCliente(datosLogin.getEmailCliente());
