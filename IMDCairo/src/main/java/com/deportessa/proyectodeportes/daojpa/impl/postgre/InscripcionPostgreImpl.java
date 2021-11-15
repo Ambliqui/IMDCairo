@@ -38,7 +38,10 @@ public class InscripcionPostgreImpl extends DaoGenericoAbstracto<Inscripcion, In
 
     @Override
     public List<InscripcionDTO> getinscripcionDTO(Cliente cliente) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String query="Select new com.deportessa.proyectodeportes.servicios.dto.InscripcionDTO(c,a,i,m) "
+                + "From Cliente c Join c.metodosPagoCliente m Join m.inscripciones i Join i.actividad a "
+                + "Where c.idCliente= :idCliente";
+        return em.createQuery(query).setParameter("idCliente", cliente.getIdCliente()).getResultList();
     }
 
     @Override
