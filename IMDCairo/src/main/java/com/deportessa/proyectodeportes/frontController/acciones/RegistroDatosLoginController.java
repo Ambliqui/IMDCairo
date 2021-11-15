@@ -8,9 +8,6 @@ package com.deportessa.proyectodeportes.frontController.acciones;
 import com.deportessa.proyectodeportes.frontController.FrontControlerLocal;
 import com.deportessa.proyectodeportes.servicios.ActionValidator;
 import com.deportessa.proyectodeportes.servicios.dto.DatosLoginVO;
-import com.deportessa.proyectodeportes.servicios.qualifiers.ActionMetodoPagoQ;
-import com.deportessa.proyectodeportes.servicios.qualifiers.ActionValidatorDatosPersonalesImplQ;
-import com.deportessa.proyectodeportes.servicios.qualifiers.ActionValidatorRegistroUsuarioQ;
 import java.io.IOException;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -31,7 +28,7 @@ import javax.servlet.http.HttpServletResponse;
 public class RegistroDatosLoginController implements FrontControlerLocal{
     
     @Inject
-    @ActionMetodoPagoQ
+    @com.deportessa.proyectodeportes.servicios.qualifiers.ActionValidatorRegistroUsuarioQ
     private ActionValidator validadorMetodoPago;
 
     @Override
@@ -42,6 +39,8 @@ public class RegistroDatosLoginController implements FrontControlerLocal{
         if (exceptions.isEmpty()) {
             DatosLoginVO datosLogin = new DatosLoginVO(request.getParameter("email"), request.getParameter("password"));
             request.setAttribute("datosLogin", datosLogin);
+            request.setAttribute("email", request.getParameter("email"));
+            request.setAttribute("password", request.getParameter("password"));
             return request.getRequestDispatcher("/PreRegistroDatosPersonalesServlet");
         } else {
 

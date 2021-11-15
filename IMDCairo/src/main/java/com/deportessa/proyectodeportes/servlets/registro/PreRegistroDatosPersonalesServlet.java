@@ -31,10 +31,6 @@ public class PreRegistroDatosPersonalesServlet extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-//        request.setAttribute("email", request.getParameter("email"));
-//        request.setAttribute("password", request.getParameter("password"));
-
         request.getRequestDispatcher("registro_datos_personales.jsp").forward(request, response);
     }
 

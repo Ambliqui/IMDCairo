@@ -33,7 +33,12 @@ public class AltaMetodoPagoController implements FrontControlerLocal {
     @Override
     public RequestDispatcher getDispatcher(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Exception> exceptions = validadorMetodosPago.execute(request, response);
-
+        
+        request.setAttribute("email", request.getParameter("email"));
+        request.setAttribute("password", request.getParameter("password"));
+        request.setAttribute("nombre", request.getParameter("nombre"));
+        request.setAttribute("apellidos", request.getParameter("apellidos"));
+        request.setAttribute("telefono", request.getParameter("telefono"));
         if (exceptions.isEmpty()) {
             return request.getRequestDispatcher("/PostMetodosPagoServlet");
         } else {

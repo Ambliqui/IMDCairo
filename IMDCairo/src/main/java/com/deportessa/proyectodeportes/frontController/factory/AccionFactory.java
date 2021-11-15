@@ -92,6 +92,7 @@ public class AccionFactory implements AccionFactoryLocal {
     @CambiarMetodoPago
     private FrontControlerLocal controlerCambiarMetodoPago;
     
+    @Inject
     @AltaMetodoPagoQ
     private FrontControlerLocal controlerAltaMetodoPago;
 
