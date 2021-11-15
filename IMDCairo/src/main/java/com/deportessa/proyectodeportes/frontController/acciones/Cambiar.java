@@ -37,17 +37,17 @@ public class Cambiar implements FrontControlerLocal {
     public RequestDispatcher getDispatcher(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Cliente cliente = (Cliente) request.getSession(false).getAttribute("clienteSession");
         List<InscripcionDTO> listaDTO = daoFactoryLocal.getInscripcionDaoLocal().getinscripcionDTO(cliente);
-        Inscripcion inscripcion;
+        
         Actividad actividad = daoFactoryLocal.getActividadDaoLocal().find(Integer.parseInt(request.getParameter("idActividad")));
         for (InscripcionDTO inscripcionDTO : listaDTO) {
             if (inscripcionDTO.getactividad().getIdActividad() == actividad.getIdActividad()) {
-                inscripcion = inscripcionDTO.getInscripcion();
+                Inscripcion inscripcion = inscripcionDTO.getInscripcion();
                 MetodoPago mp = daoFactoryLocal.getMetodoPagoDaoLocal().find(Integer.parseInt(request.getParameter("metodoPago")));
                 Inscripcion nueva = new Inscripcion(actividad, mp);
                 nueva.setFechaAlta(inscripcion.getFechaAlta());
 
                 MetodoPago mpAntiguo = inscripcion.getMetodoPago();
-                if (mpAntiguo.getIdPago() != mp.getIdPago()) {
+                if (!mpAntiguo.equals(mp)) {
                     List<Inscripcion> listaIns = mpAntiguo.getInscripciones();
                     listaIns.remove(inscripcion);
                     mpAntiguo.setInscripciones(listaIns);

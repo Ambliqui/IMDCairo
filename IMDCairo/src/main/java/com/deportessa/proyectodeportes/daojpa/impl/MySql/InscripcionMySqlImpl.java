@@ -44,11 +44,5 @@ public class InscripcionMySqlImpl extends DaoGenericoAbstracto<Inscripcion, Acti
                 + "Where c.idCliente= :idCliente";
         return em.createQuery(query).setParameter("idCliente", cliente.getIdCliente()).getResultList();
     }
-
-//    @Override
-//    public Optional<Inscripcion> find(ActividadMetodoPagoPK id) {
-//        String query="Select i From Inscripcion i Where i.actividadMetodoPagoPK= :inscripcionPK ";
-//        return em.createQuery(query).setParameter("inscripcionPK", id).getResultStream().findFirst();
-//    }
     
 }

@@ -26,7 +26,7 @@ public class InscripcionServicioImpl implements InscripcionServicio {
 
     @Inject
     private DaoAbstractFactoryLocal daoFactoryLocal;
-    
+
     @Override
     public List<Inscripcion> getInscripciones(Cliente cliente) {
         List<Inscripcion> inscripciones = new ArrayList<>();
@@ -36,21 +36,18 @@ public class InscripcionServicioImpl implements InscripcionServicio {
 
     @Override
     public List<InscripcionDTO> getInscripcionesDTO(Cliente cliente) {
-        return daoFactoryLocal.getInscripcionDaoLocal().getinscripcionDTO(cliente); 
+        return daoFactoryLocal.getInscripcionDaoLocal().getinscripcionDTO(cliente);
     }
 
     @Override
     public void baja(Integer idActividad, Integer idPago) {
-        Inscripcion insc=daoFactoryLocal.getInscripcionDaoLocal()
-                        .find(new ActividadMetodoPagoPK(idActividad, idPago));
-        MetodoPago mp=daoFactoryLocal.getMetodoPagoDaoLocal().find(idPago);
-        
-        daoFactoryLocal.getInscripcionDaoLocal()
-                .remove(
-                        insc)
-                ;
-        
+        Inscripcion insc = daoFactoryLocal.getInscripcionDaoLocal()
+                .find(new ActividadMetodoPagoPK(idActividad, idPago));
+        MetodoPago mp = daoFactoryLocal.getMetodoPagoDaoLocal().find(idPago);
+
+        daoFactoryLocal.getInscripcionDaoLocal().remove(insc);
+
         mp.getInscripciones().remove(insc);
         daoFactoryLocal.getMetodoPagoDaoLocal().edit(mp);
-    }    
+    }
 }

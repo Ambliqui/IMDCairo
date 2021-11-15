@@ -10,7 +10,6 @@ import com.deportessa.proyectodeportes.modelo.Cliente;
 import com.deportessa.proyectodeportes.modelo.Inscripcion;
 import com.deportessa.proyectodeportes.servicios.dto.InscripcionDTO;
 import java.util.List;
-import java.util.Optional;
 import javax.ejb.Local;
 
 /**

@@ -22,7 +22,7 @@ import javax.persistence.PersistenceContext;
  */
 @Singleton
 @InscripcionPostgre
-public class InscripcionPostgreImpl extends DaoGenericoAbstracto<Inscripcion, Integer> implements InscripcionLocal {
+public class InscripcionPostgreImpl extends DaoGenericoAbstracto<Inscripcion, ActividadMetodoPagoPK> implements InscripcionLocal {
 
     @PersistenceContext(unitName = "postgre")
     private EntityManager em;
@@ -42,10 +42,5 @@ public class InscripcionPostgreImpl extends DaoGenericoAbstracto<Inscripcion, In
                 + "From Cliente c Join c.metodosPagoCliente m Join m.inscripciones i Join i.actividad a "
                 + "Where c.idCliente= :idCliente";
         return em.createQuery(query).setParameter("idCliente", cliente.getIdCliente()).getResultList();
-    }
-
-    @Override
-    public Inscripcion find(ActividadMetodoPagoPK id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

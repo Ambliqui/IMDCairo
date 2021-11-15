@@ -47,7 +47,7 @@ public class PruebaDAO extends HttpServlet {
 
        // String xxx=controlerManager.getString();
         
-//        inicializarbbdd();
+        inicializarbbdd();
         
         
         
