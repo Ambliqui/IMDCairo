@@ -47,15 +47,17 @@ public class Cambiar implements FrontControlerLocal {
                 nueva.setFechaAlta(inscripcion.getFechaAlta());
 
                 MetodoPago mpAntiguo = inscripcion.getMetodoPago();
+                if (mpAntiguo.getIdPago() != mp.getIdPago()) {
+                    List<Inscripcion> listaIns = mpAntiguo.getInscripciones();
+                    listaIns.remove(inscripcion);
+                    mpAntiguo.setInscripciones(listaIns);
+                    daoFactoryLocal.getMetodoPagoDaoLocal().edit(mpAntiguo);
+                    daoFactoryLocal.getInscripcionDaoLocal().remove(inscripcion);
+                    mp.addInscripcion(nueva);
+                    daoFactoryLocal.getMetodoPagoDaoLocal().edit(mpAntiguo);
+                    daoFactoryLocal.getMetodoPagoDaoLocal().edit(mp);
+                }
 
-                List<Inscripcion> listaIns = mpAntiguo.getInscripciones();
-                listaIns.remove(inscripcion);
-                mpAntiguo.setInscripciones(listaIns);
-                daoFactoryLocal.getMetodoPagoDaoLocal().edit(mpAntiguo);
-                daoFactoryLocal.getInscripcionDaoLocal().remove(inscripcion);
-                mp.addInscripcion(nueva);
-                daoFactoryLocal.getMetodoPagoDaoLocal().edit(mpAntiguo);
-                daoFactoryLocal.getMetodoPagoDaoLocal().edit(mp);
                 break;
             }
         }
