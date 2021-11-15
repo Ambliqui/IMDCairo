@@ -7,6 +7,7 @@ package com.deportessa.proyectodeportes.frontController.acciones;
 import com.deportessa.proyectodeportes.frontController.FrontControlerLocal;
 import com.deportessa.proyectodeportes.metodosPago.MetodoPagoLocal;
 import com.deportessa.proyectodeportes.servicios.ActionValidator;
+import com.deportessa.proyectodeportes.servicios.dto.DatosPersonalesVO;
 import com.deportessa.proyectodeportes.servicios.qualifiers.ActionValidatorDatosPersonalesImplQ;
 import java.io.IOException;
 import java.util.List;
@@ -36,6 +37,11 @@ public class RegistroUsuarioController implements FrontControlerLocal{
         List<Exception> exceptions= validadorDatosLogin.execute(request, response);
         
         if (exceptions.isEmpty()) {
+            DatosPersonalesVO datosCliente = new DatosPersonalesVO(request.getParameter("nombre"), 
+                    request.getParameter("apellidos"), 
+                    request.getParameter("telefono")
+            );
+            request.setAttribute("datosCliente", datosCliente);
             return request.getRequestDispatcher("/PostRegistroDatosPersonalesServlet");
         } else {
 
