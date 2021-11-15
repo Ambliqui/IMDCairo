@@ -39,6 +39,8 @@ public class RegistroDatosLoginController implements FrontControlerLocal{
         if (exceptions.isEmpty()) {
             DatosLoginVO datosLogin = new DatosLoginVO(request.getParameter("email"), request.getParameter("password"));
             request.setAttribute("datosLogin", datosLogin);
+            request.setAttribute("email", request.getParameter("email"));
+            request.setAttribute("password", request.getParameter("password"));
             return request.getRequestDispatcher("/PreRegistroDatosPersonalesServlet");
         } else {
 

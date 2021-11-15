@@ -37,11 +37,16 @@ public class RegistroUsuarioController implements FrontControlerLocal{
         List<Exception> exceptions= validadorDatosLogin.execute(request, response);
         
         if (exceptions.isEmpty()) {
-            DatosPersonalesVO datosCliente = new DatosPersonalesVO(request.getParameter("nombre"), 
-                    request.getParameter("apellidos"), 
-                    request.getParameter("telefono")
-            );
-            request.setAttribute("datosCliente", datosCliente);
+//            DatosPersonalesVO datosCliente = new DatosPersonalesVO(request.getParameter("nombre"), 
+//                    request.getParameter("apellidos"), 
+//                    request.getParameter("telefono")
+//            );
+            request.setAttribute("email", request.getParameter("email"));
+            request.setAttribute("password", request.getParameter("password"));
+            request.setAttribute("nombre", request.getParameter("nombre"));
+            request.setAttribute("apellidos", request.getParameter("apellidos"));
+            request.setAttribute("telefono", request.getParameter("telefono"));
+            //request.setAttribute("datosCliente", datosCliente);
             return request.getRequestDispatcher("/PostRegistroDatosPersonalesServlet");
         } else {
 
