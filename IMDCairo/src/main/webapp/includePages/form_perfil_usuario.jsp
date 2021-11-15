@@ -6,7 +6,9 @@
     </div>
     <form id="formPerfilUsuario" action="ActionsServices" class="container">
         <input id="email" type="email" name="email" value="${email}" hidden/>
-        <input id="password" type="password" name="password" value="${password}" hidden/>
+        <c:if test="${clienteSession==null}">
+            <input id="password" type="password" name="password" value="${password}" hidden/>
+        </c:if>
         <div class="row gutters">
             <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
                 <div class="card h-100">
@@ -37,27 +39,27 @@
                                     <input id="nombre" type="text" class="form-control" name="nombre" 
                                            <c:if test="${clienteSession!=null}">value="${clienteSession.nombreCliente}"</c:if>
                                            <c:if test="${nombre==null}">value="${nombre}"</c:if>
-                                           placeholder="Nombre">
+                                               placeholder="Nombre">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <label id="lbApellidos" for="apellidos">Apellidos</label>
-                                    <input id="apellidos" type="text" class="form-control" name="apellidos" 
-                                           <c:if test="${clienteSession!=null}">value="${clienteSession.apellido1Cliente}"</c:if>
-                                           <c:if test="${apellidos==null}">value="${apellidos}"</c:if>
-                                           placeholder="Apellidos">
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label id="lbApellidos" for="apellidos">Apellidos</label>
+                                        <input id="apellidos" type="text" class="form-control" name="apellidos" 
+                                        <c:if test="${clienteSession!=null}">value="${clienteSession.apellido1Cliente}"</c:if>
+                                        <c:if test="${apellidos==null}">value="${apellidos}"</c:if>
+                                            placeholder="Apellidos">
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
-                                <div class="form-group">
-                                    <label id="lbTelefono" for="telefono">Telefono</label>
-                                    <input id="telefono" type="text" class="form-control" name="telefono" 
-                                           <c:if test="${clienteSession!=null}">value="${clienteSession.telefonoCliente}"</c:if>
-                                           <c:if test="${telefono==null}">value="${telefono}"</c:if>
-                                           placeholder="Telefono">
+                                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+                                    <div class="form-group">
+                                        <label id="lbTelefono" for="telefono">Telefono</label>
+                                        <input id="telefono" type="text" class="form-control" name="telefono" 
+                                        <c:if test="${clienteSession!=null}">value="${clienteSession.telefonoCliente}"</c:if>
+                                        <c:if test="${telefono==null}">value="${telefono}"</c:if>
+                                            placeholder="Telefono">
+                                    </div>
                                 </div>
-                            </div>
                             <c:if test="${clienteSession!=null}">
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
                                     <div class="form-group">
@@ -65,9 +67,9 @@
                                         <input id="password" type="password" class="form-control" name="password" 
                                                <c:if test="${clienteSession!=null}">value="${clienteSession.passCliente}"</c:if>
                                                <c:if test="${password==null}">value="${password}"</c:if>
-                                               placeholder="Password">
+                                                   placeholder="Password">
+                                        </div>
                                     </div>
-                                </div>
                             </c:if>
                             <c:forEach items="${errores}" var="error">
                                 <c:out value="${error.getMessage()}"/><br/>
