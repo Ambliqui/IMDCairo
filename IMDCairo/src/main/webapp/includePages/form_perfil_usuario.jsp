@@ -5,6 +5,8 @@
         <h2 class="text-center" ><p>Mis Datos Personales</p></h2>
     </div>
     <form id="formPerfilUsuario" action="ActionsServices" class="container">
+        <input id="email" type="email" name="email" value="${email}" hidden/>
+        <input id="password" type="password" name="password" value="${password}" hidden/>
         <div class="row gutters">
             <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
                 <div class="card h-100">
