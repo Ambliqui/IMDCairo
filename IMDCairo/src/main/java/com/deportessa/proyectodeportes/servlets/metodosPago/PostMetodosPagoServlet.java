@@ -4,8 +4,16 @@
  */
 package com.deportessa.proyectodeportes.servlets.metodosPago;
 
+import com.deportessa.proyectodeportes.daojpa.factory.DaoAbstractFactoryLocal;
+import com.deportessa.proyectodeportes.modelo.Cliente;
+import com.deportessa.proyectodeportes.modelo.MetodoPago;
+import com.deportessa.proyectodeportes.modelo.Paypal;
+import com.deportessa.proyectodeportes.modelo.Tarjeta;
+import com.deportessa.proyectodeportes.modelo.Transferencia;
+import com.deportessa.proyectodeportes.servicios.dto.DatosLoginVO;
+import com.deportessa.proyectodeportes.servicios.dto.DatosPersonalesVO;
 import java.io.IOException;
-import java.io.PrintWriter;
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,6 +27,11 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "PostMetodosPagoServlet", urlPatterns = {"/PostMetodosPagoServlet"})
 public class PostMetodosPagoServlet extends HttpServlet {
 
+    @Inject
+    private DaoAbstractFactoryLocal daoFactoryLocal;
+    
+    
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
