@@ -21,15 +21,17 @@
                                     <img class="user-avatar" src="resources/images/deportes/${actividad.idActividad}.jpg" width="100%"><br/><br/>
                                     <div class="text-right">
                                         <input id="btnVolver" type="submit" class="btn btn-secondary" name="accion" value="Volver">
-                                        <input id="btnInscribirse" type="submit" class="btn btn-primary" name="accion" value= "${editar==true?"Cambiar":"Inscribirse"}">
-                                        <select id="metodoPago" name="metodoPago">
-                                            <c:forEach items="${clienteSession.metodosPagoCliente}" var="metodo" >
-                                                <option id="${metodo.getClass().getSimpleName()} ${metodo.idPago}" value="${metodo.idPago}"><c:out value="${metodo.getClass().getSimpleName()} ${metodo.idPago}"/></option>
+                                        <c:if test="${clienteSession != null}">
+                                            <input id="btnInscribirse" type="submit" class="btn btn-primary" name="accion" value= "${editar==true?"Cambiar":"Inscribirse"}">
+                                            <select id="metodoPago" name="metodoPago">
+                                                <c:forEach items="${clienteSession.metodosPagoCliente}" var="metodo" >
+                                                    <option id="${metodo.getClass().getSimpleName()} ${metodo.idPago}" value="${metodo.idPago}"><c:out value="${metodo.getClass().getSimpleName()} ${metodo.idPago}"/></option>
+                                                </c:forEach>
+                                            </select>
+                                            <c:forEach items="${errores}" var="error">
+                                                <c:out value="${error.getMessage()}"/><br/>
                                             </c:forEach>
-                                        </select>
-                                        <c:forEach items="${errores}" var="error">
-                                            <c:out value="${error.getMessage()}"/><br/>
-                                        </c:forEach>
+                                        </c:if>
                                     </div>
                                 </div>
                             </div>
