@@ -11,9 +11,6 @@
             <!-- Page Content  -->
             <div id="content">
                 <%@ include file="includePages/form_metodos_pago.jsp"%>
-                <c:forEach items="${errores}" var="error">
-                    <c:out value="${error.getMessage()}"/><br/>
-                </c:forEach>
                 <%@ include file="botoneras/modificar_metodo_pago.jsp"%>
             </div>
         </div>

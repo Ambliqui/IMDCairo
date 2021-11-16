@@ -31,6 +31,7 @@ public class AltaMetodoPagoController implements FrontControlerLocal {
 
     @Override
     public RequestDispatcher getDispatcher(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
         List<Exception> exceptions = validadorMetodosPago.execute(request, response);
         
         request.setAttribute("email", request.getParameter("email"));
@@ -41,12 +42,10 @@ public class AltaMetodoPagoController implements FrontControlerLocal {
         if (exceptions.isEmpty()) {
             return request.getRequestDispatcher("/PostMetodosPagoServlet");
         } else {
-            //Recuperamos lo que nos ha escrito el cliente para volver a mostrarlo en pantalla
-            request.setAttribute("password", request.getParameter("password"));
-
+            
             //Devolvemos los errores
             request.setAttribute("errores", exceptions);
-            return request.getRequestDispatcher("/PostMetodosPagoServlet");
+            return request.getRequestDispatcher("/registro_metodos_pago.jsp");
         }
     }
 

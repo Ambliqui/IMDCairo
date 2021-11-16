@@ -94,6 +94,9 @@
                     </div>
                 </div>
             </div>
+            <c:forEach items="${errores}" var="error">
+                <label class="text-danger"><c:out value="${error.getMessage()}"/></label>
+            </c:forEach>
         </div>        
     </div>
 </form>
