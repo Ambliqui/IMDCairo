@@ -23,12 +23,12 @@
                         <input name="password" type="password" value="${password}" class="form-control" placeholder="Introduzca password" />
                         <input name="cpassword" type="password" value="${cpassword}" class="form-control" placeholder="Repite Password"/>
                     </div>
-                    <div class="align-items-center">
-                        <input type="submit" class="link-primary" name="accion" value="Siguiente"/>
-                    </div>
                     <c:forEach items="${errores}" var="error">
-                        <c:out value="${error.getMessage()}"/><br/>
+                        <label class="text-danger"><c:out value="${error.getMessage()}"/></label>
                     </c:forEach>
+                    <div class="align-items-center">
+                        <input type="submit" name="accion" value="Siguiente" class="btn btn-outline-primary" style="padding-left: 2.5rem; padding-right: 2.5rem;">
+                    </div>
                 </form>
             </div>
         </div> 

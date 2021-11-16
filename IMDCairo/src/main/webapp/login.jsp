@@ -27,7 +27,7 @@
                             </div>
                             <!-- TODO: Revisar ubicacion -->
                             <c:forEach items="${errores}" var="error">
-                                <c:out value="${error.getMessage()}"/><br/>
+                                <label class="text-danger"><c:out value="${error.getMessage()}"/></label>
                             </c:forEach>
                             <div class="text-center text-lg-start mt-4 pt-2">
                                 <input type="submit" name="accion" value="Login" class="btn btn-outline-primary" style="padding-left: 2.5rem; padding-right: 2.5rem;"></input>

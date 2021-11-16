@@ -72,7 +72,7 @@
                                     </div>
                             </c:if>
                             <c:forEach items="${errores}" var="error">
-                                <c:out value="${error.getMessage()}"/><br/>
+                                <label class="text-danger"><c:out value="${error.getMessage()}"/></label>
                             </c:forEach>
                         </div>
                     </div>

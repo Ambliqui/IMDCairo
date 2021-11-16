@@ -4,7 +4,7 @@
         <h2 class="text-center" ><p>Mis Actividades</p></h2>
     </div>
     <c:if test="${inscripciones.size() == 0}">
-        <p>Aún no te has inscrito en ninguna actividad</p>
+        <p>Aún no te has inscrito en ninguna actividad. <a href="PrePrincipalServlet" class="link-danger">Inscribete aquí</a></p>
     </c:if>
     <table class="table table-hover">
         <thead>
