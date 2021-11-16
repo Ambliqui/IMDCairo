@@ -25,7 +25,7 @@
                         <td>${insc.metodoPago.getClass().getSimpleName()}</td>
                         <td>${insc.metodoPago.getDatos()}</td>
                         <td>${insc.inscripcion.getFechaFormateada()}</td>
-                        <td><a class="btn btn-outline-primary" href="./ActionsServices?accion=ModificarActividad&actividad=${insc.actividad.idActividad}&mPago=${insc.metodoPago.idPago}">Modificar</a></td>
+                        <td><a class="btn btn-outline-success" href="./ActionsServices?accion=ModificarActividad&actividad=${insc.actividad.idActividad}&mPago=${insc.metodoPago.idPago}">Modificar</a></td>
                         <td><a class="btn btn-outline-danger" href="./ActionsServices?accion=BajaActividad&actividad=${insc.actividad.idActividad}&mPago=${insc.metodoPago.idPago}">Baja</a></td>
                     </tr>
                 </c:forEach> 

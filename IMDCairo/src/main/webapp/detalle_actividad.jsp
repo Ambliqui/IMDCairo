@@ -58,7 +58,7 @@
                                     <input id="entrenador" type="text" class="form-control" value="${actividad.idEntrenadorActividad.nombreEntrenador} ${actividad.idEntrenadorActividad.apellido1Entrenador}" disabled>
                                 </div>
                                 <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12 form-group">
-                                    <label for="entrenador">Precio</label>
+                                    <label for="precio">Precio</label>
                                     <input id="precio" type="text" class="form-control" value="${actividad.precio}€" disabled>
                                 </div>
                                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 form-group">

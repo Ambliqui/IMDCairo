@@ -13,9 +13,11 @@
                 <article id="articulo${actividad.idActividad}" class="border">
                     <img src=resources/images/deportes/${actividad.idActividad}.jpg alt="300" width="100%" class="border border-dark rounded-bottom"/>
                     <h5 class="text-center" style="padding-top: 10px;"><c:out value="${actividad.nombre}"/></h5>
-                    <p class="recortar-contenido"><c:out value="${actividad.descripcion}"/></p>
                     <p class="text-center">Precio: <c:out value="${actividad.precio}€"/></p>
+                    <hr>
+                    <p class="recortar-contenido"><c:out value="${actividad.descripcion}"/></p>
                     <p class="text-center"><button type="button" class="btn btn-outline-primary"><a href="./ActionsServices?accion=DetalleActividad&actividad=${actividad.idActividad}">Detalles</a></button></p>
+                    <hr>
                 </article>
             </c:forEach>                    
         </form>

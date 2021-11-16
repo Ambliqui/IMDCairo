@@ -6,6 +6,8 @@
                 <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="ActionsServices?accion=Volver">Inicio</a>
                 </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Adminstra ${clienteSession.nombreCliente} ${clienteSession.apellido1Cliente}
@@ -16,7 +18,7 @@
                         <a class="dropdown-item" href="./ActionsServices?accion=CerrarSesion">Cerrar Sesion</a>
                     </div>
                 </li>
-            </ul>                   
+            </ul>
         </div>
     </nav>
 </header>

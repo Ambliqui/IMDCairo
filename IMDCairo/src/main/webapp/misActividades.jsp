@@ -8,6 +8,7 @@
             <!-- Page Content  -->
             <div id="content">
                 <%@ include file="includePages/form_mis_actividades.jsp" %>
+                <%@ include file="botoneras/mis_acividades.jsp"%>
             </div>
         </div>
     </body>
