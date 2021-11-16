@@ -46,6 +46,13 @@ a:focus {
     margin: 40px 0;
 }
 
+.recortar-contenido {
+    width:100%;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+}
+
 /* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
