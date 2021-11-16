@@ -60,6 +60,7 @@ public class InicioAppListener implements ServletContextListener {
         accionesController.put(bdAcciones.getString("BajaUsuario"), factory.getBajaUsuario());
         accionesController.put(bdAcciones.getString("ModoficarActividad"), factory.getModificarActividad());
         accionesController.put(bdAcciones.getString("Cambiar"), factory.getCambiarMetodoPago());
+        accionesController.put(bdAcciones.getString("ModificarMetodo"), factory.getModificarMedotoPago());
         sce.getServletContext().setAttribute("accionesController", accionesController);
         
         //Mapa metodos de pago

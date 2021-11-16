@@ -28,7 +28,7 @@ public class PagoTransferencia implements MetodoPagoLocal{
     @Override
     public List<Exception> validar(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Exception> exceptions = new ArrayList<>();
-        validaciones.longitudCampo("IBAN: ",  request.getParameter("IBAN"), 20).ifPresent((error) -> exceptions.add(error));
+        validaciones.rangoValores("IBAN: ",request.getParameter("IBAN"), 10000, 99999).ifPresent((error) -> exceptions.add(error));
         return exceptions;
     }
 

@@ -8,7 +8,6 @@ import com.deportessa.proyectodeportes.frontController.FrontControlerLocal;
 import com.deportessa.proyectodeportes.frontController.qualifiers.AltaMetodoPagoQ;
 import com.deportessa.proyectodeportes.servicios.ActionValidator;
 import com.deportessa.proyectodeportes.servicios.qualifiers.ActionMetodoPagoQ;
-import com.deportessa.proyectodeportes.servicios.qualifiers.ActionValidatorRegistroUsuarioQ;
 import java.io.IOException;
 import java.util.List;
 import javax.ejb.Stateless;

@@ -27,7 +27,7 @@
                                     <h6>Numero de tarjeta</h6>
                                 </label>
                                 <div class="input-group">
-                                    <input type="text" id="numeroTarjeta" name="numeroTarjeta" placeholder="Numero de tarjeta" class="form-control" value="${numeroTarjeta}" required>
+                                    <input type="text" id="numeroTarjeta" name="numeroTarjeta" placeholder="Numero de tarjeta" class="form-control" value="${tarjeta.getNumTarjeta()}" required>
                                 </div>
                             </div>
                             <div class="row">
@@ -35,15 +35,16 @@
                                     <div class="form-group">
                                         <h6>Fecha de caducidad</h6>
                                         <div class="input-group">
-                                            <input type="number" min="01" max="12" placeholder="MM" id="mesTarjeta" name="mesTarjeta" class="form-control" value="${mesTarjeta}" required>
-                                            <input type="number" min="00" max="99" placeholder="YY" id="annoTarjeta" name="annoTarjeta" class="form-control" value="${annoTarjeta}" required>
+                                            <input type="hidden" id="idTarjeta" name="idTarjeta"  value="${tarjeta.getIdPago()}" >
+                                            <input type="number" min="01" max="12" placeholder="MM" id="mesTarjeta" name="mesTarjeta" class="form-control" value="${tarjeta.getMesTarjeta()}" required>
+                                            <input type="number" min="00" max="99" placeholder="YY" id="annoTarjeta" name="annoTarjeta" class="form-control" value="${tarjeta.getAnnoTarjeta()}" required>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
                                     <div class="form-group mb-4"> 
                                         <h6>CVS</h6>
-                                        <input type="number" min="000" max="999" id="cvsTarjeta" name="cvsTarjeta" class="form-control" value="${cvsTarjeta}" required>
+                                        <input type="number" min="000" max="999" id="cvsTarjeta" name="cvsTarjeta" class="form-control" value="${tarjeta.getCvsTarjeta()}" required>
                                     </div>
                                 </div>
                             </div>       
@@ -66,7 +67,8 @@
                         <div class="accordion-body">
                             <h6 class="pb-2">Paypal</h6>
                             <div class="form-group">
-                                <input type="text" id="cuentaPaypal" name="cuentaPaypal" class="form-control" placeholder="Inserte cuenta paypal" value="${cuentaPaypal}">
+                                <input type="hidden" id="idPaypal" name="idPaypal"  value="${paypal.getIdPago()}" >
+                                <input type="text" id="cuentaPaypal" name="cuentaPaypal" class="form-control" placeholder="Inserte cuenta paypal" value="${paypal.getCorreo()}">
                             </div>
                         </div>
                     </div>
@@ -85,7 +87,8 @@
                     <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body"><h6>Registra tu numero de cuenta</h6>
                             <div class="form-group">
-                                <input type="text" id="IBAN" name="IBAN" class="form-control" placeholder="Inserte IBAN" value="${IBAN}">
+                                <input type="hidden" id="idTransferencia" name="idTransferencia"  value="${transferencia.getIdPago()}" >
+                                <input type="text" id="IBAN" name="IBAN" class="form-control" placeholder="Inserte IBAN" value="${transferencia.getNumCuenta()}">
                             </div>
                         </div>
                     </div>

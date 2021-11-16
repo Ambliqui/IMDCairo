@@ -36,38 +36,44 @@ public class PreMetodosPagoServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    @Inject
-    private DaoAbstractFactoryLocal daoFactoryLocal;
 
     @Inject
     private ClienteServicio cliServ;
+    
+    @Inject
+    private DaoAbstractFactoryLocal daoFactoryLocal;
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         Cliente cli = (Cliente) request.getSession().getAttribute("clienteSession");
+        cli = daoFactoryLocal.getClienteDaoLocal().find(cli.getIdCliente());
         List<MetodoPago> tarjetas = cliServ.findMetodoPagoByTipo(cli, Tarjeta.class);
         if (!tarjetas.isEmpty()) {
             Tarjeta t = (Tarjeta) tarjetas.get(0);
-            request.setAttribute("annoTarjeta", t.getAnnoTarjeta());
-            request.setAttribute("cvsTarjeta", t.getCvsTarjeta());
-            request.setAttribute("mesTarjeta", t.getMesTarjeta());
-            request.setAttribute("numeroTarjeta", t.getNumTarjeta());
+            request.setAttribute("tarjeta", t);
+//            request.setAttribute("annoTarjeta", t.getAnnoTarjeta());
+//            request.setAttribute("cvsTarjeta", t.getCvsTarjeta());
+//            request.setAttribute("mesTarjeta", t.getMesTarjeta());
+//            request.setAttribute("numeroTarjeta", t.getNumTarjeta());
         }
         List<MetodoPago> paypals = cliServ.findMetodoPagoByTipo(cli, Paypal.class);
         if (!paypals.isEmpty()) {
             Paypal p = (Paypal) paypals.get(0);
-            request.setAttribute("cuentaPaypal", p.getCorreo());
+            request.setAttribute("paypal", p);
+//            request.setAttribute("cuentaPaypal", p.getCorreo());
 
         }
         List<MetodoPago> nCuentas = cliServ.findMetodoPagoByTipo(cli, Transferencia.class);
         if (!nCuentas.isEmpty()) {
             Transferencia trans = (Transferencia) nCuentas.get(0);
-            request.setAttribute("", trans.getDcCuenta());
-            request.setAttribute("", trans.getEntidadCuenta());
-            request.setAttribute("", trans.getNumeroCuenta());
-            request.setAttribute("", trans.getOficinaCuenta());
-            request.setAttribute("", trans.getPaisCuenta());
+            request.setAttribute("transferencia", trans);
+        
+//            request.setAttribute("", trans.getDcCuenta());
+//            request.setAttribute("", trans.getEntidadCuenta());
+//            request.setAttribute("", trans.getNumeroCuenta());
+//            request.setAttribute("", trans.getOficinaCuenta());
+//            request.setAttribute("", trans.getPaisCuenta());
         }
 
         request.getRequestDispatcher("metodos_pago.jsp").forward(request, response);

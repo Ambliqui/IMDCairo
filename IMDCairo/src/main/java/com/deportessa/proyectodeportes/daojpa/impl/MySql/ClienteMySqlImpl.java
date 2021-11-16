@@ -41,7 +41,6 @@ public class ClienteMySqlImpl extends DaoGenericoAbstracto<Cliente, Integer> imp
 
     @Override
     public Optional<Cliente> findByEmail(String email) {
-
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Cliente> query = cb.createQuery(Cliente.class);
         Root fromEmpleado = query.from(Cliente.class);
