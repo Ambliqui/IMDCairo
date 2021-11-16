@@ -15,7 +15,7 @@
                     <h5 class="text-center"><c:out value="${actividad.nombre}"/></h5>
                     <p><c:out value="${actividad.descripcion}"/></p>
                     <p class="text-center"><c:out value="${actividad.precio}€"/></p>
-                    <button type="button" class="btn btn-outline-primary"><a href="./ActionsServices?accion=DetalleActividad&actividad=${actividad.idActividad}">Detalles</a></button>
+                    <p class="text-center"><button type="button" class="btn btn-outline-primary"><a href="./ActionsServices?accion=DetalleActividad&actividad=${actividad.idActividad}">Detalles</a></button></p>
                 </article>
             </c:forEach>                    
         </form>
