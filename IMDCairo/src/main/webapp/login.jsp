@@ -24,7 +24,6 @@
                                 <input type="password" name="password" class="form-control form-control-lg" value="${password}"
                                        placeholder="Introduzca password" />
                             </div>
-                            <!-- TODO: Revisar ubicacion -->
                             <c:forEach items="${errores}" var="error">
                                 <label class="text-danger"><c:out value="${error.getMessage()}"/></label>
                             </c:forEach>

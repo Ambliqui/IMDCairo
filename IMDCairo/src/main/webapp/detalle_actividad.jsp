@@ -19,17 +19,17 @@
                                     <input id="idActividad" type="number" name="idActividad" value="${actividad.idActividad}" hidden>
                                     <h5 class="mb-2 text-primary"><c:out value="${actividad.nombre}"/></h5>
                                     <img class="user-avatar" src="resources/images/deportes/${actividad.idActividad}.jpg" width="100%"><br/><br/>
-                                    <div class="text-right">
-                                        <input id="btnVolver" type="submit" class="btn btn-secondary" name="accion" value="Volver">
+                                    <div class="text-center">
+                                        <input id="btnVolver" type="submit" class="btn btn-primary" name="accion" value="Volver">
                                         <c:if test="${clienteSession != null}">
-                                            <input id="btnInscribirse" type="submit" class="btn btn-primary" name="accion" value= "${editar==true?"Cambiar":"Inscribirse"}">
+                                            <input id="btnInscribirse" type="submit" class="btn btn-success" name="accion" value= "${editar==true?"Cambiar":"Inscribirse"}"><br/><br/>
                                             <select id="metodoPago" name="metodoPago">
                                                 <c:forEach items="${clienteSession.metodosPagoCliente}" var="metodo" >
                                                     <option id="${metodo.getClass().getSimpleName()} ${metodo.idPago}" value="${metodo.idPago}"><c:out value="${metodo.getClass().getSimpleName()} ${metodo.idPago}"/></option>
                                                 </c:forEach>
-                                            </select>
+                                            </select><br/><br/>
                                             <c:forEach items="${errores}" var="error">
-                                                <c:out value="${error.getMessage()}"/><br/>
+                                                <label class="text-danger"><c:out value="${error.getMessage()}"/></label>
                                             </c:forEach>
                                         </c:if>
                                     </div>
