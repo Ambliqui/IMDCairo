@@ -6,6 +6,6 @@
         <%@include file="structure/header.jsp"%>
         <%@ include file="includePages/form_metodos_pago.jsp" %>
         <%@ include file="botoneras/registrar_metodo_pago.jsp" %>
+        <%@ include file="structure/footer.jsp"%>
     </body>
-    <%@ include file="structure/footer.jsp"%>
 </html>

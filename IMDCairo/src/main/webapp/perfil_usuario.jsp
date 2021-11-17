@@ -13,6 +13,6 @@
                 <%@ include file="botoneras/modificar_usuario.jsp"%>
             </div>
         </div>
+        <%@ include file="structure/footer.jsp"%>
     </body>
-    <%@ include file="structure/footer.jsp"%>
 </html>

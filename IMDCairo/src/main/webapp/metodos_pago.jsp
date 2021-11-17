@@ -14,6 +14,6 @@
                 <%@ include file="botoneras/modificar_metodo_pago.jsp"%>
             </div>
         </div>
+        <%@ include file="structure/footer.jsp"%>
     </body>
-    <%@ include file="structure/footer.jsp"%>
 </html>

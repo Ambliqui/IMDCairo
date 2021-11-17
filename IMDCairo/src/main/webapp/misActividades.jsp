@@ -11,6 +11,6 @@
                 <%@ include file="botoneras/mis_acividades.jsp"%>
             </div>
         </div>
-    </body>
     <%@ include file="structure/footer.jsp"%>
+    </body>
 </html>

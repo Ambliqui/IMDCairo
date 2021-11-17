@@ -34,7 +34,7 @@
             </div>
         </div> 
     </section>
+    <%@ include file="structure/footer.jsp" %>
 </body>
-<%@ include file="structure/footer.jsp" %>
 </html>
 
